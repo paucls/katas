@@ -1,23 +1,24 @@
 object CalcStats {
 
   def process(numbers: Array[Double]): Stats = {
-    val min = numbers.reduce(minVal)
-    val max = numbers.reduce(maxVal)
-    val average = numbers.reduce(avgVal)
+    val minimum = numbers.reduce(min)
+    val maximum = numbers.reduce(max)
+    val numElements = numbers.length
+    val average = numbers.reduce(sum) / numElements
 
-    return new Stats(min, max, numbers.length, average)
+    return new Stats(minimum, maximum, numElements, average)
   }
 
-  def minVal(prev: Double, actual: Double): Double = {
+  def min(prev: Double, actual: Double): Double = {
     if (prev < actual) prev else actual
   }
 
-  def maxVal(prev: Double, actual: Double): Double = {
+  def max(prev: Double, actual: Double): Double = {
     if (prev > actual) prev else actual
   }
 
-  def avgVal(x: Double, y: Double): Double = {
-    x + y / 2
+  def sum(x: Double, y: Double): Double = {
+    x + y
   }
 
 }
