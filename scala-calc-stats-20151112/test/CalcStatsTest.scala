@@ -20,6 +20,13 @@ class CalcStatsTest extends FunSpec {
       assert(stats(1) === 8)
     }
 
+    it("should determine the number of elements in the sequence") {
+      val numbers = Array[Double](1, 2, 3)
+
+      val results = CalcStats.process(numbers)
+
+      assert(results(2) === 3)
+    }
   }
 
 }
