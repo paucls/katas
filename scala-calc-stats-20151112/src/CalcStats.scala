@@ -1,7 +1,4 @@
-/**
- * Created by paulo on 12/11/2015.
- */
-class CalcStats {
+object CalcStats {
 
   def process(numbers: Array[Double]): Array[Double] = {
     val min = numbers.reduce(minVal)
