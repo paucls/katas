@@ -1,11 +1,11 @@
 object CalcStats {
 
-  def process(numbers: Array[Double]): Array[Double] = {
+  def process(numbers: Array[Double]): Stats = {
     val min = numbers.reduce(minVal)
     val max = numbers.reduce(maxVal)
     val average = numbers.reduce(avgVal)
 
-    return Array(min, max, numbers.length, average)
+    return new Stats(min, max, numbers.length, average)
   }
 
   def minVal(prev: Double, actual: Double): Double = {
@@ -21,4 +21,6 @@ object CalcStats {
   }
 
 }
+
+class Stats(val minimum:Double, val maximum:Double, val numElements:Int, val average: Double)
 
