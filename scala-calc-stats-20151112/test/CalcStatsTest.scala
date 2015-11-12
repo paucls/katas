@@ -27,6 +27,14 @@ class CalcStatsTest extends FunSpec {
 
       assert(results(2) === 3)
     }
+
+    it("should determine the average value in the sequence") {
+      val numbers = Array[Double](0, 4, 6)
+
+      val results = CalcStats.process(numbers)
+
+      assert(results(3) === 5)
+    }
   }
 
 }
