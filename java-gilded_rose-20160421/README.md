@@ -1,17 +1,44 @@
-# [Kata Seeds](http://kata-seeds.github.io): Java + JUnit
-[![Build Status](https://travis-ci.org/kata-seeds/java-junit-seed.svg?branch=master)](https://travis-ci.org/kata-seeds/java-junit-seed)
+Gilded Rose Kata
+============
+Source: [https://github.com/ardalis/kata-catalog](https://github.com/ardalis/kata-catalog)
 
-## Getting Started
+# Background #
 
-Clone this repo with `git`:
+This kata puts you in the role of having to work with someone else's code. It is highly suggested that you use test-first development with this kata.
 
-    git clone https://github.com/kata-seeds/java-junit-seed.git
-    cd java-junit-seed
+Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a prominent city run by a friendly innkeeper named Allison. We also buy and sell only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. It was developed by a no-nonsense type named Leeroy, who has moved on to new adventures. The UpdateQuality() method is called each morning by another part of our system. Your task is to add the new feature to our system so that we can begin selling a new category of items. First an introduction to our system:
 
-Install dependencies and run your tests with `make`:
+- All items have a SellIn value which denotes the number of days we have to sell the item
+- All items have a Quality value which denotes how valuable the item is
+- At the end of each day our system lowers both values for every item
 
-    make
+Pretty simple, right? Well, this is where it gets interesting:
 
-You should eventually see 1 test ran and 0 failures. If `make` doesn't work for you, please open an issue.
+- Once the sell by date has passed, Quality degrades twice as fast
+- The Quality of an item is never negative
+- "Aged Brie" actually increases in Quality the older it gets
+- The Quality of an item is never more than 50
+- "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+- "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches
+	- Quality increases by 2 when there are 10 days or less 
+	- Quality increases by 3 when there are 5 days or less
+	- but Quality drops to 0 after the concert
 
-Now you can start your kata! May we suggest the [Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life)?
+# Instructions #
+
+We have recently signed a supplier of conjured items. This requires an update to our system:
+
+- "Conjured" items degrade in Quality twice as fast as normal items
+
+Feel free to make any changes to the UpdateQuality method and add any new code as long as everything still works correctly. However, **do not alter the Item class or Items property** as those belong to the goblin in the corner who will insta-rage and one-shot you as he doesn't believe in shared code ownership (you can make the UpdateQuality method and Items property static if you like, we'll cover for you).
+
+Just for clarification, an item can never have its Quality increased above 50, however "Sulfuras" is a legendary item and as such its Quality is 80 and it never alters.
+
+## Extra Credit ##
+
+- Item categories are determined by whether they contain a given string in their name (e.g. "Aged Brie" or "Sulfuras" or "Backstage passes")
+- Any item can thus be conjured, with the resulting effects (e.g. "Conjured Backstage passes")
+
+# Resources #
+- [Original Source by Bobby Johnson (NotMyself) on GitHub](https://github.com/NotMyself/GildedRose)
+- [Starting code in many languages](https://github.com/emilybache/GildedRose-Refactoring-Kata)
