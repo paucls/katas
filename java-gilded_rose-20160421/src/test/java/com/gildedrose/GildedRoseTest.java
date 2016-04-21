@@ -131,4 +131,18 @@ public class GildedRoseTest {
         assertEquals(0, app.items[0].quality);
     }
 
+    @Test
+    public void updateQuality_conjuredDegradesTwiceAsNormal() {
+        Item[] items = new Item[]{
+                new Item("Conjured", 10, 10),
+                new Item("Conjured", 0, 10)
+        };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(8, app.items[0].quality);
+        assertEquals(6, app.items[1].quality);
+    }
+
 }
