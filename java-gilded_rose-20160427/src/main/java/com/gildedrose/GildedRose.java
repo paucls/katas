@@ -7,8 +7,8 @@ class GildedRose {
     public static final int MAX_QUALITY = 50;
     public static final int MIN_QUALITY = 0;
     public static final int SELL_BY_DATE_LIMIT = 0;
-    public static final int BACKTAGE_SELL_BY_10 = 10;
-    public static final int BACKTAGE_SELL_BY_5 = 5;
+    public static final int BACKSTAGE_SELL_BY_10 = 10;
+    public static final int BACKSTAGE_SELL_BY_5 = 5;
     public static final int QUALITY_UNIT = 1;
     public static final int SELL_IN_UNIT = 1;
 
@@ -20,53 +20,60 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            final boolean minQualityNotReached = item.quality > MIN_QUALITY;
-            final boolean maxQualityNotReached = item.quality < MAX_QUALITY;
+            applyQualityPolicies(item);
+            applySellInPolicies(item);
+        }
+    }
 
-            if (!isBrie(item) && !isBackstage(item)) {
-                if (minQualityNotReached) {
-                    if (!isSulfuras(item)) {
-                        decreaseQuality(item);
-                    }
-                }
-            } else {
+    private void applyQualityPolicies(Item item) {
+        final boolean minQualityNotReached = item.quality > MIN_QUALITY;
+        final boolean maxQualityNotReached = item.quality < MAX_QUALITY;
 
-                if (maxQualityNotReached) {
-                    increaseQuality(item);
-
-                    if (isBackstage(item)) {
-                        if (item.sellIn <= BACKTAGE_SELL_BY_10) {
-                            if (maxQualityNotReached) {
-                                increaseQuality(item);
-                            }
-                        }
-
-                        if (item.sellIn <= BACKTAGE_SELL_BY_5) {
-                            if (maxQualityNotReached) {
-                                increaseQuality(item);
-                            }
-                        }
-                    }
+        if (!isBrie(item) && !isBackstage(item)) {
+            if (minQualityNotReached) {
+                if (!isSulfuras(item)) {
+                    decreaseQuality(item);
                 }
             }
+        } else {
 
-            if (!isSulfuras(item)) {
-                item.sellIn = item.sellIn - SELL_IN_UNIT;
-            }
+            if (maxQualityNotReached) {
+                increaseQuality(item);
 
-            if (item.sellIn < SELL_BY_DATE_LIMIT) {
-                if (!isBrie(item)) {
-                    if (!isBackstage(item)) {
-                        if (minQualityNotReached) {
-                            if (!isSulfuras(item)) {
-                                decreaseQuality(item);
-                            }
+                if (isBackstage(item)) {
+                    if (item.sellIn <= BACKSTAGE_SELL_BY_10) {
+                        if (maxQualityNotReached) {
+                            increaseQuality(item);
                         }
-                    } else {
-                        item.quality = 0;
+                    }
+
+                    if (item.sellIn <= BACKSTAGE_SELL_BY_5) {
+                        if (maxQualityNotReached) {
+                            increaseQuality(item);
+                        }
                     }
                 }
             }
+        }
+
+        if (item.sellIn <= SELL_BY_DATE_LIMIT) {
+            if (!isBrie(item)) {
+                if (!isBackstage(item)) {
+                    if (minQualityNotReached) {
+                        if (!isSulfuras(item)) {
+                            decreaseQuality(item);
+                        }
+                    }
+                } else {
+                    item.quality = 0;
+                }
+            }
+        }
+    }
+
+    private void applySellInPolicies(Item item) {
+        if (!isSulfuras(item)) {
+            item.sellIn = item.sellIn - SELL_IN_UNIT;
         }
     }
 
