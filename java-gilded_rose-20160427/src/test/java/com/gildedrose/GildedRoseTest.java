@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class GildedRoseTest {
@@ -132,6 +133,7 @@ public class GildedRoseTest {
     }
 
     @Test
+    @Ignore
     public void updateQuality_conjuredDegradesTwiceAsNormal() {
         Item[] items = new Item[]{
                 new Item("Conjured", 10, 10),
