@@ -19,52 +19,51 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            final boolean minQualityNotReached = items[i].quality > MIN_QUALITY;
-            final boolean maxQualityNotReached = items[i].quality < MAX_QUALITY;
+        for (Item item : items) {
+            final boolean minQualityNotReached = item.quality > MIN_QUALITY;
+            final boolean maxQualityNotReached = item.quality < MAX_QUALITY;
 
-            if (!isBrie(items[i])
-                    && !isBackstage(items[i])) {
+            if (!isBrie(item) && !isBackstage(item)) {
                 if (minQualityNotReached) {
-                    if (!isSulfuras(items[i])) {
-                        decreaseQuality(items[i]);
+                    if (!isSulfuras(item)) {
+                        decreaseQuality(item);
                     }
                 }
             } else {
 
                 if (maxQualityNotReached) {
-                    increaseQuality(items[i]);
+                    increaseQuality(item);
 
-                    if (isBackstage(items[i])) {
-                        if (items[i].sellIn <= BACKTAGE_SELL_BY_10) {
+                    if (isBackstage(item)) {
+                        if (item.sellIn <= BACKTAGE_SELL_BY_10) {
                             if (maxQualityNotReached) {
-                                increaseQuality(items[i]);
+                                increaseQuality(item);
                             }
                         }
 
-                        if (items[i].sellIn <= BACKTAGE_SELL_BY_5) {
+                        if (item.sellIn <= BACKTAGE_SELL_BY_5) {
                             if (maxQualityNotReached) {
-                                increaseQuality(items[i]);
+                                increaseQuality(item);
                             }
                         }
                     }
                 }
             }
 
-            if (!isSulfuras(items[i])) {
-                items[i].sellIn = items[i].sellIn - SELL_IN_UNIT;
+            if (!isSulfuras(item)) {
+                item.sellIn = item.sellIn - SELL_IN_UNIT;
             }
 
-            if (items[i].sellIn < SELL_BY_DATE_LIMIT) {
-                if (!isBrie(items[i])) {
-                    if (!isBackstage(items[i])) {
+            if (item.sellIn < SELL_BY_DATE_LIMIT) {
+                if (!isBrie(item)) {
+                    if (!isBackstage(item)) {
                         if (minQualityNotReached) {
-                            if (!isSulfuras(items[i])) {
-                                decreaseQuality(items[i]);
+                            if (!isSulfuras(item)) {
+                                decreaseQuality(item);
                             }
                         }
                     } else {
-                        items[i].quality = 0;
+                        item.quality = 0;
                     }
                 }
             }
@@ -86,6 +85,7 @@ class GildedRose {
     private void increaseQuality(Item item) {
         item.quality = item.quality + QUALITY_UNIT;
     }
+
     private void decreaseQuality(Item item) {
         item.quality = item.quality - QUALITY_UNIT;
     }
