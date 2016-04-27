@@ -27,24 +27,24 @@ class GildedRose {
                     && !isBackstage(items[i])) {
                 if (minQualityNotReached) {
                     if (!isSulfuras(items[i])) {
-                        items[i].quality = items[i].quality - QUALITY_UNIT;
+                        decreaseQuality(items[i]);
                     }
                 }
             } else {
 
                 if (maxQualityNotReached) {
-                    items[i].quality = items[i].quality + QUALITY_UNIT;
+                    increaseQuality(items[i]);
 
                     if (isBackstage(items[i])) {
                         if (items[i].sellIn <= BACKTAGE_SELL_BY_10) {
                             if (maxQualityNotReached) {
-                                items[i].quality = items[i].quality + QUALITY_UNIT;
+                                increaseQuality(items[i]);
                             }
                         }
 
                         if (items[i].sellIn <= BACKTAGE_SELL_BY_5) {
                             if (maxQualityNotReached) {
-                                items[i].quality = items[i].quality + QUALITY_UNIT;
+                                increaseQuality(items[i]);
                             }
                         }
                     }
@@ -60,11 +60,11 @@ class GildedRose {
                     if (!isBackstage(items[i])) {
                         if (minQualityNotReached) {
                             if (!isSulfuras(items[i])) {
-                                items[i].quality = items[i].quality - QUALITY_UNIT;
+                                decreaseQuality(items[i]);
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        items[i].quality = 0;
                     }
                 }
             }
@@ -81,5 +81,12 @@ class GildedRose {
 
     private boolean isBackstage(Item item) {
         return item.name.equals(BACKSTAGE_PASSES);
+    }
+
+    private void increaseQuality(Item item) {
+        item.quality = item.quality + QUALITY_UNIT;
+    }
+    private void decreaseQuality(Item item) {
+        item.quality = item.quality - QUALITY_UNIT;
     }
 }
