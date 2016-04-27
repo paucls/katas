@@ -20,26 +20,30 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
+            final boolean minQualityNotReached = items[i].quality > MIN_QUALITY;
+            final boolean maxQualityNotReached = items[i].quality < MAX_QUALITY;
+
             if (!items[i].name.equals(AGED_BRIE)
                     && !items[i].name.equals(BACKSTAGE_PASSES)) {
-                if (items[i].quality > MIN_QUALITY) {
+                if (minQualityNotReached) {
                     if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
                         items[i].quality = items[i].quality - QUALITY_UNIT;
                     }
                 }
             } else {
-                if (items[i].quality < MAX_QUALITY) {
+
+                if (maxQualityNotReached) {
                     items[i].quality = items[i].quality + QUALITY_UNIT;
 
                     if (items[i].name.equals(BACKSTAGE_PASSES)) {
                         if (items[i].sellIn <= BACKTAGE_SELL_BY_10) {
-                            if (items[i].quality < MAX_QUALITY) {
+                            if (maxQualityNotReached) {
                                 items[i].quality = items[i].quality + QUALITY_UNIT;
                             }
                         }
 
                         if (items[i].sellIn <= BACKTAGE_SELL_BY_5) {
-                            if (items[i].quality < MAX_QUALITY) {
+                            if (maxQualityNotReached) {
                                 items[i].quality = items[i].quality + QUALITY_UNIT;
                             }
                         }
@@ -54,7 +58,7 @@ class GildedRose {
             if (items[i].sellIn < SELL_BY_DATE_LIMIT) {
                 if (!items[i].name.equals(AGED_BRIE)) {
                     if (!items[i].name.equals(BACKSTAGE_PASSES)) {
-                        if (items[i].quality > MIN_QUALITY) {
+                        if (minQualityNotReached) {
                             if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
                                 items[i].quality = items[i].quality - QUALITY_UNIT;
                             }
