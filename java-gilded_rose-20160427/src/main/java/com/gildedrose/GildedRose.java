@@ -72,9 +72,11 @@ class GildedRose {
     }
 
     private void applySellInPolicies(Item item) {
-        if (!isSulfuras(item)) {
-            item.sellIn = item.sellIn - SELL_IN_UNIT;
+        if (isSulfuras(item)) {
+            return;
         }
+
+        item.sellIn = item.sellIn - SELL_IN_UNIT;
     }
 
     private boolean isSulfuras(Item item) {
