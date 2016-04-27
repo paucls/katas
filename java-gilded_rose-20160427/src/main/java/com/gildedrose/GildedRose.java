@@ -23,10 +23,10 @@ class GildedRose {
             final boolean minQualityNotReached = items[i].quality > MIN_QUALITY;
             final boolean maxQualityNotReached = items[i].quality < MAX_QUALITY;
 
-            if (!items[i].name.equals(AGED_BRIE)
-                    && !items[i].name.equals(BACKSTAGE_PASSES)) {
+            if (!isBrie(items[i])
+                    && !isBackstage(items[i])) {
                 if (minQualityNotReached) {
-                    if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+                    if (!isSulfuras(items[i])) {
                         items[i].quality = items[i].quality - QUALITY_UNIT;
                     }
                 }
@@ -35,7 +35,7 @@ class GildedRose {
                 if (maxQualityNotReached) {
                     items[i].quality = items[i].quality + QUALITY_UNIT;
 
-                    if (items[i].name.equals(BACKSTAGE_PASSES)) {
+                    if (isBackstage(items[i])) {
                         if (items[i].sellIn <= BACKTAGE_SELL_BY_10) {
                             if (maxQualityNotReached) {
                                 items[i].quality = items[i].quality + QUALITY_UNIT;
@@ -51,15 +51,15 @@ class GildedRose {
                 }
             }
 
-            if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+            if (!isSulfuras(items[i])) {
                 items[i].sellIn = items[i].sellIn - SELL_IN_UNIT;
             }
 
             if (items[i].sellIn < SELL_BY_DATE_LIMIT) {
-                if (!items[i].name.equals(AGED_BRIE)) {
-                    if (!items[i].name.equals(BACKSTAGE_PASSES)) {
+                if (!isBrie(items[i])) {
+                    if (!isBackstage(items[i])) {
                         if (minQualityNotReached) {
-                            if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+                            if (!isSulfuras(items[i])) {
                                 items[i].quality = items[i].quality - QUALITY_UNIT;
                             }
                         }
@@ -69,5 +69,17 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean isSulfuras(Item item) {
+        return item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
+    }
+
+    private boolean isBrie(Item item) {
+        return item.name.equals(AGED_BRIE);
+    }
+
+    private boolean isBackstage(Item item) {
+        return item.name.equals(BACKSTAGE_PASSES);
     }
 }
