@@ -20,13 +20,13 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            applyQualityPolicies(item);
+            applyIncreaseQualityPolicies(item);
+            applyDecreaseQualityPolicies(item);
             applySellInPolicies(item);
         }
     }
 
-    private void applyQualityPolicies(Item item) {
-        final boolean minQualityNotReached = item.quality > MIN_QUALITY;
+    private void applyIncreaseQualityPolicies(Item item) {
         final boolean maxQualityNotReached = item.quality < MAX_QUALITY;
 
         if (maxQualityNotReached) {
@@ -43,6 +43,11 @@ class GildedRose {
                 }
             }
         }
+
+    }
+
+    private void applyDecreaseQualityPolicies(Item item) {
+        final boolean minQualityNotReached = item.quality > MIN_QUALITY;
 
         if (minQualityNotReached) {
             if (!isBrie(item) && !isBackstage(item) && !isSulfuras(item)) {
