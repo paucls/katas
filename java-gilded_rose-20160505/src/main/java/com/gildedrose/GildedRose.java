@@ -10,7 +10,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            ItemType itemType = new ItemType(item);
+            ItemType itemType = ItemType.create(item);
             itemType.updateQuality();
         }
     }

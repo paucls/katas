@@ -21,6 +21,15 @@ public class ItemType {
         this.item = item;
     }
 
+    public static ItemType create(Item item) {
+        boolean isSulfuras = item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
+
+        if (isSulfuras) {
+            return new ItemSulfuras(item);
+        }
+        return new ItemType(item);
+    }
+
     public void updateQuality() {
         applyIncreaseQualityPolicies();
         applyDecreaseQualityPolicies();
@@ -60,13 +69,6 @@ public class ItemType {
                 return;
             }
 
-            if (isSulfuras()) {
-                if (item.sellIn <= SELL_BY_DATE_LIMIT) {
-                    item.quality = 0;
-                }
-                return;
-            }
-
             if (item.sellIn <= SELL_BY_DATE_LIMIT) {
                 decreaseQuality();
             }
@@ -77,15 +79,7 @@ public class ItemType {
     }
 
     private void applySellInPolicies() {
-        if (isSulfuras()) {
-            return;
-        }
-
         item.sellIn = item.sellIn - SELL_IN_UNIT;
-    }
-
-    private boolean isSulfuras() {
-        return item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
     }
 
     private boolean isBrie() {
