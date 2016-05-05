@@ -29,22 +29,22 @@ class GildedRose {
         final boolean minQualityNotReached = item.quality > MIN_QUALITY;
         final boolean maxQualityNotReached = item.quality < MAX_QUALITY;
 
-        if (!isBrie(item) && !isBackstage(item)) {
-            if (minQualityNotReached && !isSulfuras(item)) {
-                decreaseQuality(item);
+        if (isBrie(item)) {
+            if (maxQualityNotReached) {
+                increaseQuality(item);
             }
-        } else if (maxQualityNotReached) {
-            increaseQuality(item);
-
-            if (isBackstage(item)) {
-                if (item.sellIn <= BACKSTAGE_SELL_BY_10) {
-                    increaseQuality(item);
-                }
-
+        } else if (isBackstage(item)) {
+            if (maxQualityNotReached) {
+                increaseQuality(item);
                 if (item.sellIn <= BACKSTAGE_SELL_BY_5) {
                     increaseQuality(item);
+                    increaseQuality(item);
+                } else if (item.sellIn <= BACKSTAGE_SELL_BY_10) {
+                    increaseQuality(item);
                 }
             }
+        } else if (minQualityNotReached && !isSulfuras(item)) {
+            decreaseQuality(item);
         }
 
         if (!isBrie(item) && (item.sellIn <= SELL_BY_DATE_LIMIT)) {
