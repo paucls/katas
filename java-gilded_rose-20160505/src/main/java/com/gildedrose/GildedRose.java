@@ -30,45 +30,31 @@ class GildedRose {
         final boolean maxQualityNotReached = item.quality < MAX_QUALITY;
 
         if (!isBrie(item) && !isBackstage(item)) {
-            if (minQualityNotReached) {
-                if (!isSulfuras(item)) {
-                    decreaseQuality(item);
-                }
+            if (minQualityNotReached && !isSulfuras(item)) {
+                decreaseQuality(item);
             }
-        } else {
+        } else if (maxQualityNotReached) {
+            increaseQuality(item);
 
-            if (maxQualityNotReached) {
-                increaseQuality(item);
+            if (isBackstage(item)) {
+                if (item.sellIn <= BACKSTAGE_SELL_BY_10) {
+                    increaseQuality(item);
+                }
 
-                if (isBackstage(item)) {
-                    if (item.sellIn <= BACKSTAGE_SELL_BY_10) {
-                        if (maxQualityNotReached) {
-                            increaseQuality(item);
-                        }
-                    }
-
-                    if (item.sellIn <= BACKSTAGE_SELL_BY_5) {
-                        if (maxQualityNotReached) {
-                            increaseQuality(item);
-                        }
-                    }
+                if (item.sellIn <= BACKSTAGE_SELL_BY_5) {
+                    increaseQuality(item);
                 }
             }
         }
 
-        if (item.sellIn <= SELL_BY_DATE_LIMIT) {
-            if (!isBrie(item)) {
-                if (!isBackstage(item)) {
-                    if (minQualityNotReached) {
-                        if (!isSulfuras(item)) {
-                            decreaseQuality(item);
-                        }
-                    }
-                } else {
-                    item.quality = 0;
-                }
+        if (!isBrie(item) && (item.sellIn <= SELL_BY_DATE_LIMIT)) {
+            if (minQualityNotReached && !isBackstage(item) && !isSulfuras(item)) {
+                decreaseQuality(item);
+            } else {
+                item.quality = 0;
             }
         }
+
     }
 
     private void applySellInPolicies(Item item) {
