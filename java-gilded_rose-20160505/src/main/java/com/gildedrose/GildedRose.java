@@ -50,9 +50,7 @@ class GildedRose {
         final boolean minQualityNotReached = item.quality > MIN_QUALITY;
 
         if (minQualityNotReached) {
-            if (!isBrie(item) && !isBackstage(item) && !isSulfuras(item)) {
-                decreaseQuality(item);
-            }
+            if (isBrie(item)) return;
 
             if (!isBrie(item) && (item.sellIn <= SELL_BY_DATE_LIMIT)) {
                 if (!isBackstage(item) && !isSulfuras(item)) {
@@ -60,6 +58,10 @@ class GildedRose {
                 } else {
                     item.quality = 0;
                 }
+            }
+
+            if (!isBackstage(item) && !isSulfuras(item)) {
+                decreaseQuality(item);
             }
         }
 
