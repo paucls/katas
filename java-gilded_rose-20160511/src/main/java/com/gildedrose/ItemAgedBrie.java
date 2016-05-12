@@ -16,6 +16,8 @@ public class ItemAgedBrie extends ItemType {
         if (maxQualityNotReached) {
             increaseQuality();
         }
+
+        applySellInPolicies();
     }
 
 }

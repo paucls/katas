@@ -1,9 +1,9 @@
 package com.gildedrose;
 
-import static org.junit.Assert.*;
-
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
 
@@ -19,12 +19,18 @@ public class GildedRoseTest {
 
     @Test
     public void updateQuality_decreasesSellin() {
-        Item[] items = new Item[]{new Item("foo", 2, 2)};
+        Item[] items = new Item[]{
+                new Item("foo", 2, 2),
+                new Item("Aged Brie", 2, 2),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 2, 2)
+        };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
         assertEquals(1, app.items[0].sellIn);
+        assertEquals(1, app.items[1].sellIn);
+        assertEquals(1, app.items[2].sellIn);
     }
 
     @Test
