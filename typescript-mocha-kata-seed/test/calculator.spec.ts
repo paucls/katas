@@ -1,6 +1,6 @@
 /// <reference path="../typings/chai/chai.d.ts" />
 /// <reference path="../typings/mocha/mocha.d.ts" />
-import Calculator from '../app/Calculator';
+import Calculator from '../app/calculator';
 import {expect} from 'chai';
 
 describe('Calculator', () => {
