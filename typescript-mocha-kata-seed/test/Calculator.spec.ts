@@ -1,0 +1,21 @@
+/// <reference path="../typings/chai/chai.d.ts" />
+/// <reference path="../typings/mocha/mocha.d.ts" />
+import Calculator from '../app/Calculator';
+import {expect} from 'chai';
+
+describe('Calculator', () => {
+    let calculator:Calculator;
+
+    beforeEach(() => {
+        calculator = new Calculator();
+    });
+
+    describe('add()', () => {
+
+        it('should add two numbers together', () => {
+            const result:number = calculator.add(2, 3);
+            expect(result).to.equal(5);
+        });
+
+    });
+});
