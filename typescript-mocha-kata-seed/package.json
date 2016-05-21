@@ -1,0 +1,19 @@
+{
+  "name": "typescript-mocha-kata-seed",
+  "version": "1.0.0",
+  "description": "Seed project for TDD code katas on TypeScript and mocha",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "tsc app/*.ts --module commonjs ",
+    "pretest": "tsc test/*Test.ts --module commonjs",
+    "test": "mocha"
+  },
+  "author": "paucls",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "~1.8.10"
+  },
+  "devDependencies": {
+    "mocha": "~2.4.5"
+  }
+}
