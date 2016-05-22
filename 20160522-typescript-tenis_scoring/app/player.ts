@@ -1,15 +1,24 @@
+const A_LOVE_POINT = 0;
+const A_30_POINT = 30;
+const A_40_POINT = 40;
+
 export class Player {
 
-    private score:number = 0;
+    private points:number = A_LOVE_POINT;
 
     constructor() {
     }
 
-    getScore():number {
-        return this.score;
+    getWonPoints():number {
+        return this.points;
     }
 
     scores() {
-        this.score += 15;
+        if (this.points === A_30_POINT) {
+            this.points = A_40_POINT;
+            return;
+        }
+
+        this.points += 15;
     }
 }
