@@ -11,4 +11,16 @@ describe('Player', function () {
         expect(player.getScore()).to.equal(0);
     });
 
+    describe('scores()', function() {
+    
+        it('should score a 15point the first time', function() {
+            let player = new Player();
+
+            player.scores();
+    
+            expect(player.getScore()).to.equal(15);
+        });
+    
+    });
+
 });

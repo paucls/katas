@@ -1,9 +1,15 @@
 export class Player {
 
+    private score:number = 0;
+
     constructor() {
     }
 
     getScore():number {
-        return 0;
+        return this.score;
+    }
+
+    scores() {
+        this.score += 15;
     }
 }
