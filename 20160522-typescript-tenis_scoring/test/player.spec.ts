@@ -11,7 +11,7 @@ describe('Player', function () {
         player = new Player();
     });
 
-    it('should begin with a 0 points', function () {
+    it('should begin with 0 points', function () {
         expect(player.getWonPoints()).to.equal(0);
     });
 
