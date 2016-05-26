@@ -1,13 +1,11 @@
 package kata;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by estebp on 5/19/16.
- */
 public class TennisGameTest {
     private Player player1;
     private Player player2;
@@ -26,22 +24,52 @@ public class TennisGameTest {
     }
 
     @Test
+    public void player_scores_point_first_time() {
+        tennisGame.playerScores(player1);
+
+        assertEquals(15, player1.getScore());
+    }
+
+    @Test
     public void player_scores_winning_point() {
-        player1.scores();
-        player1.scores();
-        player1.scores();
-        player1.scores();
+        tennisGame.playerScores(player1);
+        tennisGame.playerScores(player1);
+        tennisGame.playerScores(player1);
+        tennisGame.playerScores(player1);
 
         assertEquals(tennisGame.getWinner(), player1);
     }
 
-    @Test
-    public void second_player_scores_winning_point() {
-        player2.scores();
-        player2.scores();
-        player2.scores();
-        player2.scores();
+	@Test
+	public void should_indicate_when_game_is_in_deuce() {
+		tennisGame.playerScores(player1);
+		tennisGame.playerScores(player1);
+		tennisGame.playerScores(player1);
+		assertEquals(40, player1.getScore());
 
-        assertEquals(tennisGame.getWinner(), player2);
+		tennisGame.playerScores(player2);
+		tennisGame.playerScores(player2);
+		tennisGame.playerScores(player2);
+		assertEquals(40, player2.getScore());
+
+		assertTrue(tennisGame.isDeuce());
+		assertNull(tennisGame.getWinner());
+	}
+
+    @Test
+    public void in_a_deuce_a_player_scores_again_but_does_not_win() {
+        tennisGame.playerScores(player1);
+        tennisGame.playerScores(player1);
+        tennisGame.playerScores(player1);
+
+        tennisGame.playerScores(player2);
+        tennisGame.playerScores(player2);
+        tennisGame.playerScores(player2);
+
+        tennisGame.playerScores(player1);
+
+        assertTrue(player1.hasAdvantage());
+        assertFalse(player2.hasAdvantage());
+        assertNull(tennisGame.getWinner());
     }
 }

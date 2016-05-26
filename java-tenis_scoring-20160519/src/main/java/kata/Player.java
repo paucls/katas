@@ -8,6 +8,7 @@ public class Player {
     public static final int INITIAL_SCORE = 0;
 
     private int score = INITIAL_SCORE;
+	private boolean hasAdvantage = false;
 
 	public int getScore() {
 		return score;
@@ -20,5 +21,13 @@ public class Player {
 		}
 
 		score += POINT;
+	}
+
+	public boolean hasAdvantage() {
+		return this.hasAdvantage;
+	}
+
+	public void setHasAdvantage(boolean hasAdvantage) {
+		this.hasAdvantage = hasAdvantage;
 	}
 }

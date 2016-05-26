@@ -17,8 +17,20 @@ public class TennisGame {
 			return player1;
 		} else if (player2.getScore() > FORTY_SCORE) {
 			return player2;
-		} else {
-			return null;
 		}
+		return null;
+	}
+
+	public void playerScores(Player player) {
+		if (isDeuce()) {
+			player.setHasAdvantage(true);
+			return;
+		}
+
+		player.scores();
+	}
+
+	public boolean isDeuce() {
+		return player1.getScore() == 40 && player2.getScore() == 40;
 	}
 }
