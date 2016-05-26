@@ -6,6 +6,7 @@ public class TennisGame {
 
     private Player player1;
     private Player player2;
+    private Player playerWithAdvantage;
 
     public TennisGame(Player player1, Player player2) {
         this.player1 = player1;
@@ -22,9 +23,17 @@ public class TennisGame {
     }
 
     public void playerScores(Player player) {
+
         if (isDeuce()) {
-            player.setHasAdvantage(true);
-            return;
+            if (playerWithAdvantage == null) {
+                playerWithAdvantage = player;
+                return;
+            }
+
+            if (!player.equals(playerWithAdvantage)) {
+                playerWithAdvantage = null;
+                return;
+            }
         }
 
         player.scores();
@@ -35,6 +44,7 @@ public class TennisGame {
     }
 
     public Player getPlayerWithAdvantage() {
-        return player1.hasAdvantage() ? player1 : player2;
+        return playerWithAdvantage;
     }
+
 }
