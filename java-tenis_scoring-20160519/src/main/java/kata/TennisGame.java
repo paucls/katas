@@ -40,7 +40,7 @@ public class TennisGame {
     }
 
     public boolean isDeuce() {
-        return player1.getScore() == 40 && player2.getScore() == 40;
+        return player1.getScore() == FORTY_SCORE && player2.getScore() == FORTY_SCORE;
     }
 
     public Player getPlayerWithAdvantage() {
