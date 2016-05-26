@@ -68,8 +68,7 @@ public class TennisGameTest {
 
         tennisGame.playerScores(player1);
 
-        assertTrue(player1.hasAdvantage());
-        assertFalse(player2.hasAdvantage());
+        assertEquals(player1, tennisGame.getPlayerWithAdvantage());
         assertNull(tennisGame.getWinner());
     }
 }
