@@ -28,4 +28,9 @@ public class RomanNumeralTest {
         assertThat(RomanNumeral.convert(5), is("V"));
     }
 
+    @Test
+    public void convert_6() {
+        assertThat(RomanNumeral.convert(6), is("VI"));
+    }
+
 }
