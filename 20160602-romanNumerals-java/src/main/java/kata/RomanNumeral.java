@@ -7,6 +7,10 @@ public class RomanNumeral {
 
     public static String convert(int number) {
 
+		if (number == 5) {
+			return SYMBOL_FOR_5;
+		}
+
 		if (number == 4) {
 			return SYMBOL_FOR_1 + SYMBOL_FOR_5;
 		}

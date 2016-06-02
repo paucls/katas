@@ -23,4 +23,9 @@ public class RomanNumeralTest {
         assertThat(RomanNumeral.convert(4), is("IV"));
     }
 
+    @Test
+    public void convert_5() {
+        assertThat(RomanNumeral.convert(5), is("V"));
+    }
+
 }
