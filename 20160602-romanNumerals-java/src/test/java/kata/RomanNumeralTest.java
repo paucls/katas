@@ -13,4 +13,14 @@ public class RomanNumeralTest {
         assertThat(RomanNumeral.convert(1), is("I"));
     }
 
+    @Test
+    public void corvert_3() {
+        assertThat(RomanNumeral.convert(3), is("III"));
+    }
+
+    @Test
+    public void corvert_4() {
+        assertThat(RomanNumeral.convert(4), is("IV"));
+    }
+
 }
