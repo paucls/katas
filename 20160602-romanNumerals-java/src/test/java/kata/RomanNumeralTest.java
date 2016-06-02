@@ -38,4 +38,14 @@ public class RomanNumeralTest {
         assertThat(RomanNumeral.convert(9), is("IX"));
     }
 
+    @Test
+    public void convert_10() {
+        assertThat(RomanNumeral.convert(10), is("X"));
+    }
+
+    @Test
+    public void convert_13() {
+        assertThat(RomanNumeral.convert(13), is("XIII"));
+    }
+
 }

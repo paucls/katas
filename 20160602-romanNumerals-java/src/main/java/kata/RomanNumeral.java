@@ -8,20 +8,22 @@ public class RomanNumeral {
 
 	public static String convert(int number) {
 
-		if (number == 4) {
-			return SYMBOL_FOR_1 + SYMBOL_FOR_5;
-		}
-
-		if (number == 9) {
-			return SYMBOL_FOR_1 + SYMBOL_FOR_10;
-		}
-
 		StringBuffer result = new StringBuffer();
+
 		int mod = number % 5;
 
+		if (mod == 4) {
+			result.append(SYMBOL_FOR_1);
+			number++;
+			mod = number % 5;
+		}
+
+		boolean isDivisibleBy10 = number / 10 == 1;
 		boolean isDivisibleBy5 = number / 5 == 1;
 
-		if (isDivisibleBy5) {
+		if (isDivisibleBy10) {
+			appendSymbol(result, SYMBOL_FOR_10);
+		} else if (isDivisibleBy5) {
 			appendSymbol(result, SYMBOL_FOR_5);
 		}
 
@@ -32,8 +34,8 @@ public class RomanNumeral {
 		return result.toString();
 	}
 
-	private static void appendSymbol(StringBuffer romanNumeralSB, String symbolFor5) {
-		romanNumeralSB.append(symbolFor5);
+	private static void appendSymbol(StringBuffer buffer, String symbol) {
+		buffer.append(symbol);
 	}
 
 }
