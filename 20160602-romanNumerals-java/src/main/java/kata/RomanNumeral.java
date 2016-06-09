@@ -12,18 +12,18 @@ public class RomanNumeral {
 
 		String roman = "";
 
-		int modBy5 = number % 5;
-
-		if (modBy5 == 4) {
-			return SYMBOL_FOR_1 + convert(number + 1);
-		}
-
 		int absDivisionBy10 = abs(number / 10);
 		int modBy10 = number % 10;
 
 		if (isMultipleOf10(number)) {
 			roman += timesSymbol(absDivisionBy10, SYMBOL_FOR_10);
 			return roman + convert(modBy10);
+		}
+
+		int modBy5 = number % 5;
+
+		if (modBy5 == 4) {
+			return SYMBOL_FOR_1 + convert(number + 1);
 		}
 
 		if (isMultipleOf5(number)) {
