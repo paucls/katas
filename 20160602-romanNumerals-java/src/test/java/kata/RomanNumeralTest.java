@@ -19,12 +19,12 @@ public class RomanNumeralTest {
 	}
 
 	@Test
-	public void corvert_4() {
+	public void convert_4_means_subtract_I_to_V() {
 		assertThat(RomanNumeral.convert(4), is("IV"));
 	}
 
 	@Test
-	public void convert_5() {
+	public void convert_5_is_V() {
 		assertThat(RomanNumeral.convert(5), is("V"));
 	}
 
@@ -39,12 +39,12 @@ public class RomanNumeralTest {
 	}
 
 	@Test
-	public void convert_9() {
+	public void convert_9_means_subtract_I_to_X() {
 		assertThat(RomanNumeral.convert(9), is("IX"));
 	}
 
 	@Test
-	public void convert_10() {
+	public void convert_10_is_X() {
 		assertThat(RomanNumeral.convert(10), is("X"));
 	}
 
