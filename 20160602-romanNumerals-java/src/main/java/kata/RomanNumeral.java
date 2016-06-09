@@ -18,14 +18,12 @@ public class RomanNumeral {
 			return SYMBOL_FOR_10 + convert(number + 10);
 		}
 
-		int modBy50 = number % 50;
-
 		if (number >= 50) {
-			return SYMBOL_FOR_50 + convert(modBy50);
+			return SYMBOL_FOR_50 + convert(number - 50);
 		}
 
-		if (modBy50 >= 40) {
-			return SYMBOL_FOR_10 + SYMBOL_FOR_50 + convert(number % 40);
+		if (number >= 40) {
+			return SYMBOL_FOR_10 + convert(number + 10);
 		}
 
 		if (number >= 10) {
