@@ -73,9 +73,20 @@ public class RomanNumeralTest {
 		assertThat(RomanNumeral.convert(19), is("XIX"));
 	}
 
+    @Test
+    public void convert_25() {
+        assertThat(RomanNumeral.convert(25), is("XXV"));
+    }
+
 	@Test
 	public void convert_31() {
 		assertThat(RomanNumeral.convert(31), is("XXXI"));
 	}
+
+
+    @Test
+    public void convert_50_is_L() {
+        assertThat(RomanNumeral.convert(50), is("L"));
+    }
 
 }
