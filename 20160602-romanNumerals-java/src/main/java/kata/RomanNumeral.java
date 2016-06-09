@@ -11,7 +11,11 @@ public class RomanNumeral {
 	public static String convert(int number) {
 
 		if (number >= 100) {
-			return SYMBOL_FOR_100 + convert(number % 100);
+			return SYMBOL_FOR_100 + convert(number - 100);
+		}
+
+		if (number >= 90) {
+			return SYMBOL_FOR_10 + convert(number + 10);
 		}
 
 		int modBy50 = number % 50;

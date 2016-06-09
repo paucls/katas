@@ -108,4 +108,19 @@ public class RomanNumeralTest {
         assertThat(RomanNumeral.convert(100), is("C"));
     }
 
+    @Test
+    public void convert_90_means_subtract_X_to_C() {
+        assertThat(RomanNumeral.convert(90), is("XC"));
+    }
+
+    @Test
+    public void convert_101_means_C_and_add_I() {
+        assertThat(RomanNumeral.convert(101), is("CI"));
+    }
+
+    @Test
+    public void convert_300_means_three_C() {
+        assertThat(RomanNumeral.convert(300), is("CCC"));
+    }
+
 }
