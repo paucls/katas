@@ -6,8 +6,13 @@ public class RomanNumeral {
 	public static final String SYMBOL_FOR_5 = "V";
 	public static final String SYMBOL_FOR_10 = "X";
 	public static final String SYMBOL_FOR_50 = "L";
+	public static final String SYMBOL_FOR_100 = "C";
 
 	public static String convert(int number) {
+
+		if (number >= 100) {
+			return SYMBOL_FOR_100 + convert(number % 100);
+		}
 
 		int modBy50 = number % 50;
 
