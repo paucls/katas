@@ -30,14 +30,16 @@ public class RomanNumeral {
 			return SYMBOL_FOR_10 + convert(number - 10);
 		}
 
-		int modBy5 = number % 5;
-
-		if (modBy5 == 4) {
+		if (number >= 9) {
 			return SYMBOL_FOR_1 + convert(number + 1);
 		}
 
 		if (number >= 5) {
-			return SYMBOL_FOR_5 + convert(modBy5);
+			return SYMBOL_FOR_5 + convert(number - 5);
+		}
+
+		if (number >= 4) {
+			return SYMBOL_FOR_1 + convert(number + 1);
 		}
 
 		if (number >= 1) {
