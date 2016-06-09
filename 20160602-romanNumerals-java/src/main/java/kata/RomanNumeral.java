@@ -12,8 +12,13 @@ public class RomanNumeral {
 
 		if (number >= 100) {
 			return SYMBOL_FOR_100 + convert(number - 100);
+		} else if (number >= 10) {
+			return handleHundreds(number);
 		}
+		return handleTens(number);
+	}
 
+	private static String handleHundreds(int number) {
 		if (number >= 100 - 10) {
 			return SYMBOL_FOR_10 + convert(number + 10);
 		}
@@ -30,6 +35,10 @@ public class RomanNumeral {
 			return SYMBOL_FOR_10 + convert(number - 10);
 		}
 
+		return "";
+	}
+
+	private static String handleTens(int number) {
 		if (number >= 10 - 1) {
 			return SYMBOL_FOR_1 + convert(number + 1);
 		}
