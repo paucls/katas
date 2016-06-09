@@ -14,7 +14,7 @@ public class RomanNumeral {
 			return SYMBOL_FOR_100 + convert(number - 100);
 		}
 
-		if (number >= 90) {
+		if (number >= 100 - 10) {
 			return SYMBOL_FOR_10 + convert(number + 10);
 		}
 
@@ -22,7 +22,7 @@ public class RomanNumeral {
 			return SYMBOL_FOR_50 + convert(number - 50);
 		}
 
-		if (number >= 40) {
+		if (number >= 50 - 10) {
 			return SYMBOL_FOR_10 + convert(number + 10);
 		}
 
@@ -30,7 +30,7 @@ public class RomanNumeral {
 			return SYMBOL_FOR_10 + convert(number - 10);
 		}
 
-		if (number >= 9) {
+		if (number >= 10 - 1) {
 			return SYMBOL_FOR_1 + convert(number + 1);
 		}
 
@@ -38,7 +38,7 @@ public class RomanNumeral {
 			return SYMBOL_FOR_5 + convert(number - 5);
 		}
 
-		if (number >= 4) {
+		if (number >= 5 - 1) {
 			return SYMBOL_FOR_1 + convert(number + 1);
 		}
 
