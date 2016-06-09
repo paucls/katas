@@ -73,20 +73,37 @@ public class RomanNumeralTest {
 		assertThat(RomanNumeral.convert(19), is("XIX"));
 	}
 
-    @Test
-    public void convert_25() {
-        assertThat(RomanNumeral.convert(25), is("XXV"));
-    }
+	@Test
+	public void convert_25() {
+		assertThat(RomanNumeral.convert(25), is("XXV"));
+	}
 
 	@Test
 	public void convert_31() {
 		assertThat(RomanNumeral.convert(31), is("XXXI"));
 	}
 
+	@Test
+	public void convert_40_means_subtract_X_to_L() {
+		assertThat(RomanNumeral.convert(40), is("XL"));
+	}
 
     @Test
-    public void convert_50_is_L() {
-        assertThat(RomanNumeral.convert(50), is("L"));
+    public void convert_41_means_subtract_X_to_L_and_add_I() {
+        assertThat(RomanNumeral.convert(41), is("XLI"));
+        assertThat(RomanNumeral.convert(45), is("XLV"));
+        assertThat(RomanNumeral.convert(48), is("XLVIII"));
+        assertThat(RomanNumeral.convert(49), is("XLIX"));
+    }
+
+	@Test
+	public void convert_50_is_L() {
+		assertThat(RomanNumeral.convert(50), is("L"));
+	}
+
+    @Test
+    public void convert_60_means_L_and_add_X() {
+        assertThat(RomanNumeral.convert(60), is("LX"));
     }
 
 }

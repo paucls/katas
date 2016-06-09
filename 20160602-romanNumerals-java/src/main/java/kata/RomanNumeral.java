@@ -13,11 +13,15 @@ public class RomanNumeral {
 
 		String roman = "";
 
-		int absDivisionBy10 = abs(number / 10);
-		if (number == 50) {
-			return SYMBOL_FOR_50;
+		if (number >= 50) {
+			return SYMBOL_FOR_50 + convert(number % 50);
 		}
 
+		if (number >= 40) {
+			return SYMBOL_FOR_10 + SYMBOL_FOR_50 + convert(number % 40);
+		}
+
+		int absDivisionBy10 = abs(number / 10);
 		int modBy10 = number % 10;
 
 		if (isGreaterOrEqual10(number)) {
