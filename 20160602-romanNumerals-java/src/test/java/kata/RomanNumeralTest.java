@@ -104,8 +104,23 @@ public class RomanNumeralTest {
 	}
 
 	@Test
-	public void convert_300_means_three_C() {
-		assertThat(RomanNumeral.convert(300), is("CCC"));
+	public void convert_369_means_three_C_and_add_L_and_add_X_and_subtract_I_to_X() {
+		assertThat(RomanNumeral.convert(369), is("CCCLXIX"));
+	}
+
+	@Test
+	public void convert_500_is_D() {
+		assertThat(RomanNumeral.convert(500), is("D"));
+	}
+
+	@Test
+	public void convert_1000_is_M() {
+		assertThat(RomanNumeral.convert(1000), is("M"));
+	}
+
+	@Test
+	public void convert_1990_means_M_and_add_CM_and_add_XC() {
+		assertThat(RomanNumeral.convert(1990), is("MCMXC"));
 	}
 
 }
