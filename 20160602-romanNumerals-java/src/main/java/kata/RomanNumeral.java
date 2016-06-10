@@ -18,13 +18,13 @@ public class RomanNumeral {
 	};
 
 	public static String convert(int number) {
+		if (number == 0) {
+			return "";
+		}
+
 		int length = String.valueOf(number).length();
 		int base = (int) Math.pow(10, length - 1);
 
-		return handleNumberForBase(number, base);
-	}
-
-	private static String handleNumberForBase(int number, int base) {
 		if (number % (5 * base) >= (4 * base)) {
 			return NUMERALS.get(base) + convert(number + base);
 		}
@@ -33,11 +33,7 @@ public class RomanNumeral {
 			return NUMERALS.get(5 * base) + convert(number - (5 * base));
 		}
 
-		if (number >= base) {
-			return NUMERALS.get(base) + convert(number - base);
-		}
-
-		return "";
+		return NUMERALS.get(base) + convert(number - base);
 	}
 
 }
