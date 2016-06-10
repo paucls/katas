@@ -18,29 +18,23 @@ public class RomanNumeral {
 	};
 
 	public static String convert(int number) {
-		if (number >= 1000) {
-			return handleNumberForBase(number, 1000);
-		}
-		if (number >= 100) {
-			return handleNumberForBase(number, 100);
-		}
-		if (number >= 10) {
-			return handleNumberForBase(number, 10);
-		}
-		return handleNumberForBase(number, 1);
+		int length = String.valueOf(number).length();
+		int base = (int) Math.pow(10, length - 1);
+
+		return handleNumberForBase(number, base);
 	}
 
 	private static String handleNumberForBase(int number, int base) {
 		if (number % (5 * base) >= (4 * base)) {
-			return NUMERALS.get(1 * base) + convert(number + (1 * base));
+			return NUMERALS.get(base) + convert(number + base);
 		}
 
 		if (number >= (5 * base)) {
 			return NUMERALS.get(5 * base) + convert(number - (5 * base));
 		}
 
-		if (number >= (1 * base)) {
-			return NUMERALS.get(1 * base) + convert(number - (1 * base));
+		if (number >= base) {
+			return NUMERALS.get(base) + convert(number - base);
 		}
 
 		return "";
