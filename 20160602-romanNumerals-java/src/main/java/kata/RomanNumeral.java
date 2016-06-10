@@ -19,64 +19,28 @@ public class RomanNumeral {
 
 	public static String convert(int number) {
 		if (number >= 1000) {
-			return handleThousands(number);
+			return handleNumberForBase(number, 1000);
 		}
 		if (number >= 100) {
-			return handleHundreds(number);
+			return handleNumberForBase(number, 100);
 		}
 		if (number >= 10) {
-			return handleTens(number);
+			return handleNumberForBase(number, 10);
 		}
-		return handleUnits(number);
+		return handleNumberForBase(number, 1);
 	}
 
-	private static String handleThousands(int number) {
-		return NUMERALS.get(1000) + convert(number - 1000);
-	}
-
-	private static String handleHundreds(int number) {
-        if (number % 500 >= 400) {
-            return NUMERALS.get(100) + convert(number + 100);
-        }
-
-		if (number >= 500) {
-			return NUMERALS.get(500) + convert(number - 500);
+	private static String handleNumberForBase(int number, int base) {
+		if (number % (5 * base) >= (4 * base)) {
+			return NUMERALS.get(1 * base) + convert(number + (1 * base));
 		}
 
-		if (number >= 100) {
-			return NUMERALS.get(100) + convert(number - 100);
+		if (number >= (5 * base)) {
+			return NUMERALS.get(5 * base) + convert(number - (5 * base));
 		}
 
-		return "";
-	}
-
-	private static String handleTens(int number) {
-        if (number % 50 >= 40) {
-            return NUMERALS.get(10) + convert(number + 10);
-        }
-
-		if (number >= 50) {
-			return NUMERALS.get(50) + convert(number - 50);
-		}
-
-		if (number >= 10) {
-			return NUMERALS.get(10) + convert(number - 10);
-		}
-
-		return "";
-	}
-
-	private static String handleUnits(int number) {
-        if (number % 5 >= 4) {
-            return NUMERALS.get(1) + convert(number + 1);
-        }
-
-		if (number >= 5) {
-			return NUMERALS.get(5) + convert(number - 5);
-		}
-
-		if (number >= 1) {
-			return NUMERALS.get(1) + convert(number - 1);
+		if (number >= (1 * base)) {
+			return NUMERALS.get(1 * base) + convert(number - (1 * base));
 		}
 
 		return "";
