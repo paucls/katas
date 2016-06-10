@@ -108,6 +108,11 @@ public class RomanNumeralTest {
 		assertThat(RomanNumeral.convert(369), is("CCCLXIX"));
 	}
 
+    @Test
+    public void convert_490_means_CD_and_add_XC() {
+        assertThat(RomanNumeral.convert(490), is("CDXC"));
+    }
+
 	@Test
 	public void convert_500_is_D() {
 		assertThat(RomanNumeral.convert(500), is("D"));
