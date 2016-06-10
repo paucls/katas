@@ -19,16 +19,22 @@ public class RomanNumeral {
 
 	public static String convert(int number) {
 		if (number >= 1000) {
-			return NUMERALS.get(1000) + convert(number - 1000);
-		} else if (number >= 100) {
 			return handleThousands(number);
-		} else if (number >= 10) {
+		}
+		if (number >= 100) {
 			return handleHundreds(number);
 		}
-		return handleTens(number);
+		if (number >= 10) {
+			return handleTens(number);
+		}
+		return handleUnits(number);
 	}
 
 	private static String handleThousands(int number) {
+		return NUMERALS.get(1000) + convert(number - 1000);
+	}
+
+	private static String handleHundreds(int number) {
 		if (number >= 1000 - 100) {
 			return NUMERALS.get(100) + convert(number + 100);
 		}
@@ -48,7 +54,7 @@ public class RomanNumeral {
 		return "";
 	}
 
-	private static String handleHundreds(int number) {
+	private static String handleTens(int number) {
 		if (number >= 100 - 10) {
 			return NUMERALS.get(10) + convert(number + 10);
 		}
@@ -68,7 +74,7 @@ public class RomanNumeral {
 		return "";
 	}
 
-	private static String handleTens(int number) {
+	private static String handleUnits(int number) {
 		if (number >= 10 - 1) {
 			return NUMERALS.get(1) + convert(number + 1);
 		}
