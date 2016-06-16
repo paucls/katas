@@ -1,4 +1,7 @@
-export default class PhoneNumberList {
+export class PhoneNumberList {
+
+    constructor(phoneNumbers:string[]) {
+    }
 
     isConsistent() {
         return true;
