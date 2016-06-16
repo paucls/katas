@@ -1,0 +1,24 @@
+{
+  "name": "typescript-mocha-kata-seed",
+  "version": "1.0.0",
+  "description": "Seed project for TDD code katas on TypeScript and mocha",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "tsd install",
+    "precompile": "rimraf app/**/*.js test/**/*.js",
+    "compile": "tsc --experimentalDecorators --target es5 --module commonjs --noImplicitAny",
+    "prepublish": "npm run compile app/*.ts",
+    "pretest": "npm run compile app/*.ts test/*.spec.ts",
+    "test": "mocha test/**/*.js"
+  },
+  "author": "paucls",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "mocha": "~2.4.5",
+    "rimraf": "~2.5.2",
+    "tsd": "~0.6.5",
+    "typescript": "~1.8.10"
+  }
+}
