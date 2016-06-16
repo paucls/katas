@@ -19,5 +19,11 @@ describe('PhoneNumbersList', () => {
             expect(phoneNumberList.isConsistent()).to.be.true;
         });
 
+        it('should return false for a list with two clashing numbers', function () {
+            let phoneNumberList = new PhoneNumberList(['911','91125426']);
+
+            expect(phoneNumberList.isConsistent()).to.be.false;
+        })
+
     });
 });
