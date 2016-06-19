@@ -1,12 +1,5 @@
 export class RomanNumerals {
 
-    static ROMAN_SYMBOLS = {
-        1: 'I',
-        10: 'X',
-        100: 'C',
-        1000: 'M'
-    };
-
     static convert(normalNumber:number):string {
         if (normalNumber === 0) {
             return '';
@@ -15,7 +8,14 @@ export class RomanNumerals {
         const length = normalNumber.toString().length;
         const base = Math.pow(10, length - 1);
 
-        return RomanNumerals.ROMAN_SYMBOLS[base] + this.convert(normalNumber - base);
+        return RomanNumeralSymbols[base] + this.convert(normalNumber - base);
     }
 
+}
+
+enum RomanNumeralSymbols {
+    'I' = 1,
+    'X' = 10,
+    'C' = 100,
+    'M' = 1000
 }
