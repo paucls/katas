@@ -1,14 +1,18 @@
 export class RomanNumerals {
 
-    static convert(normalNumber:number):string {
+    convert(normalNumber:number):string {
         if (normalNumber === 0) {
             return '';
         }
 
-        const length = normalNumber.toString().length;
-        const base = Math.pow(10, length - 1);
+        const base = this.getNumberBase(normalNumber);
 
         return RomanNumeralSymbols[base] + this.convert(normalNumber - base);
+    }
+
+    private getNumberBase(number:number) {
+        const length = number.toString().length;
+        return Math.pow(10, length - 1);
     }
 
 }

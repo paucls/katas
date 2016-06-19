@@ -8,6 +8,7 @@
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "prepublish": "npm run compile app/*.ts",
+    "pretest": "npm run compile app/*.ts test/*.spec.ts",
     "test": "mocha test/**/*.js"
   },
   "author": "paucls",
