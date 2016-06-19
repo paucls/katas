@@ -16,6 +16,10 @@ export class RomanNumerals {
             return RomanNumerals.ROMAN_SYMBOLS[1] + this.convert(normalNumber - 1);
         }
 
+        if (normalNumber < 100) {
+            return RomanNumerals.ROMAN_SYMBOLS[10] + this.convert(normalNumber - 10);
+        }
+
         return RomanNumerals.ROMAN_SYMBOLS[normalNumber];
     }
 

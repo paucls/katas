@@ -35,6 +35,10 @@ describe('RomanNumerals', () => {
             expect(RomanNumerals.convert(3)).to.be.equal("III");
         });
 
+        it('should convert 30 to XXX', () => {
+            expect(RomanNumerals.convert(30)).to.be.equal("XXX");
+        });
+
     });
 
 });
