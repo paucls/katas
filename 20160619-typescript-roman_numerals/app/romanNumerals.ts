@@ -12,15 +12,10 @@ export class RomanNumerals {
             return '';
         }
 
-        if (normalNumber < 10) {
-            return RomanNumerals.ROMAN_SYMBOLS[1] + this.convert(normalNumber - 1);
-        }
+        let length = normalNumber.toString().length;
+        let base = Math.pow(10, length - 1);
 
-        if (normalNumber < 100) {
-            return RomanNumerals.ROMAN_SYMBOLS[10] + this.convert(normalNumber - 10);
-        }
-
-        return RomanNumerals.ROMAN_SYMBOLS[normalNumber];
+        return RomanNumerals.ROMAN_SYMBOLS[base] + this.convert(normalNumber - base);
     }
 
 }
