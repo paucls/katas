@@ -27,6 +27,14 @@ describe('RomanNumerals', () => {
             expect(RomanNumerals.convert(1000)).to.be.equal("M");
         });
 
+        it('should convert 2 to II', () => {
+            expect(RomanNumerals.convert(2)).to.be.equal("II");
+        });
+
+        it('should convert 3 to III', () => {
+            expect(RomanNumerals.convert(3)).to.be.equal("III");
+        });
+
     });
 
 });
