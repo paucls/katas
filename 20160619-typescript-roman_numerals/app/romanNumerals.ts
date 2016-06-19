@@ -5,8 +5,8 @@ export class RomanNumerals {
             return '';
         }
 
-        if (normalNumber === 5) {
-            return RomanNumeralSymbols[5];
+        if (normalNumber === 5 || normalNumber === 50 || normalNumber === 500) {
+            return RomanNumeralSymbols[normalNumber];
         }
 
         const base = this.getNumberBase(normalNumber);
@@ -25,6 +25,8 @@ enum RomanNumeralSymbols {
     'I' = 1,
     'V' = 5,
     'X' = 10,
+    'L' = 50,
     'C' = 100,
+    'D' = 500,
     'M' = 1000
 }

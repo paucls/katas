@@ -49,6 +49,13 @@ describe('RomanNumerals', () => {
             expect(romanNumerals.convert(5)).to.be.equal('V');
         });
 
+        it('should convert 50 to L', () => {
+            expect(romanNumerals.convert(50)).to.be.equal('L');
+        });
+
+        it('should convert 500 to D', () => {
+            expect(romanNumerals.convert(500)).to.be.equal('D');
+        });
     });
 
 });
