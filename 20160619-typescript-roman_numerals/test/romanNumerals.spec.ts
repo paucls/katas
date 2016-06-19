@@ -31,12 +31,12 @@ describe('RomanNumerals', () => {
             expect(RomanNumerals.convert(2)).to.be.equal("II");
         });
 
-        it('should convert 3 to III', () => {
-            expect(RomanNumerals.convert(3)).to.be.equal("III");
-        });
-
         it('should convert 30 to XXX', () => {
             expect(RomanNumerals.convert(30)).to.be.equal("XXX");
+        });
+
+        it('should convert 2321 to MMCCCXXI', () => {
+            expect(RomanNumerals.convert(2321)).to.be.equal("MMCCCXXI");
         });
 
     });

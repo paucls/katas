@@ -12,8 +12,8 @@ export class RomanNumerals {
             return '';
         }
 
-        let length = normalNumber.toString().length;
-        let base = Math.pow(10, length - 1);
+        const length = normalNumber.toString().length;
+        const base = Math.pow(10, length - 1);
 
         return RomanNumerals.ROMAN_SYMBOLS[base] + this.convert(normalNumber - base);
     }
