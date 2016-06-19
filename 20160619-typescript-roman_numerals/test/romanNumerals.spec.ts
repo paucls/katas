@@ -19,6 +19,14 @@ describe('RomanNumerals', () => {
             expect(RomanNumerals.convert(10)).to.be.equal("X");
         });
 
+        it('should convert 100 to C', () => {
+            expect(RomanNumerals.convert(100)).to.be.equal("C");
+        });
+
+        it('should convert 1000 to M', () => {
+            expect(RomanNumerals.convert(1000)).to.be.equal("M");
+        });
+
     });
 
 });
