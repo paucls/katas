@@ -1,7 +1,14 @@
 export class RomanNumerals {
 
+    static NO_SYMBOL = '';
+    static SYMBOL_FOR_1 = 'I';
+
     static convert(normalNumber:number) {
-        return "";
+        if (normalNumber === 0) {
+            return this.NO_SYMBOL;
+        }
+
+        return this.SYMBOL_FOR_1;
     }
 
 }

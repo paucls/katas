@@ -7,8 +7,12 @@ describe('RomanNumerals', () => {
 
     describe('convert()', () => {
 
-        it('should return empty string for 0', () => {
+        it('should convert 0 to empty string', () => {
             expect(RomanNumerals.convert(0)).to.be.equal("");
+        });
+
+        it('should convert 1 to I', () => {
+            expect(RomanNumerals.convert(1)).to.be.equal("I");
         });
 
     });
