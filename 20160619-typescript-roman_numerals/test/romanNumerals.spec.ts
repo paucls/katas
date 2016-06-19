@@ -15,6 +15,10 @@ describe('RomanNumerals', () => {
             expect(RomanNumerals.convert(1)).to.be.equal("I");
         });
 
+        it('should convert 10 to X', () => {
+            expect(RomanNumerals.convert(10)).to.be.equal("X");
+        });
+
     });
 
 });

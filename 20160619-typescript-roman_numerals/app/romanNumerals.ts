@@ -1,14 +1,13 @@
 export class RomanNumerals {
 
-    static NO_SYMBOL = '';
-    static SYMBOL_FOR_1 = 'I';
+    static ROMAN_SYMBOLS = {
+        0: '',
+        1: 'I',
+        10: 'X'
+    };
 
     static convert(normalNumber:number) {
-        if (normalNumber === 0) {
-            return this.NO_SYMBOL;
-        }
-
-        return this.SYMBOL_FOR_1;
+        return RomanNumerals.ROMAN_SYMBOLS[normalNumber];
     }
 
 }
