@@ -5,6 +5,10 @@ export class RomanNumerals {
             return '';
         }
 
+        if (normalNumber === 5) {
+            return RomanNumeralSymbols[5];
+        }
+
         const base = this.getNumberBase(normalNumber);
 
         return RomanNumeralSymbols[base] + this.convert(normalNumber - base);
@@ -19,6 +23,7 @@ export class RomanNumerals {
 
 enum RomanNumeralSymbols {
     'I' = 1,
+    'V' = 5,
     'X' = 10,
     'C' = 100,
     'M' = 1000
