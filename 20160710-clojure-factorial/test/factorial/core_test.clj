@@ -8,4 +8,6 @@
   (testing "factorial of 1"
     (is (= 1 (factorial 1))))
   (testing "factorial of 2"
-    (is (= 2 (factorial 2)))))
+    (is (= 2 (factorial 2))))
+  (testing "factorial of 5"
+    (is (= 120 (factorial 5)))))
