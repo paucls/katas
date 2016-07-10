@@ -2,6 +2,6 @@
   (:require [clojure.test :refer :all]
             [factorial.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest factorial-of-1
+  (testing "factorial of 1 is 1"
+    (is (= 1 (factorial 1)))))
