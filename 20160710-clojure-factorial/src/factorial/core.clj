@@ -3,4 +3,4 @@
 (defn factorial
   "Calculates the factorial of a number."
   [n]
-  (+ 1))
+  (if (= 0 n) 1 n))
