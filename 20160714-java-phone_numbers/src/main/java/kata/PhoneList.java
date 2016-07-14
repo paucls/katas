@@ -8,11 +8,18 @@ public class PhoneList {
     List<String> phones = new ArrayList<>();
 
     public boolean isConsistent() {
-        if (phones.size() < 2) {
-            return true;
+
+        int size = phones.size();
+
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
+                if (phones.get(i).indexOf(phones.get(j)) == 0) {
+                    return false;
+                }
+            }
         }
 
-        return phones.get(0).indexOf(phones.get(1)) != 0;
+        return true;
     }
 
     public void add(String phoneNumber) {
