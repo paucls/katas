@@ -13,14 +13,18 @@ public class PhoneList {
 
         for (int i = 0; i < size; i++) {
             for (int j = i + 1; j < size; j++) {
-                if (phones.get(i).indexOf(phones.get(j)) == 0 ||
-                        phones.get(j).indexOf(phones.get(i)) == 0) {
+                if (isPrefix(phones.get(i), phones.get(j)) ||
+                        isPrefix(phones.get(j), phones.get(i))) {
                     return false;
                 }
             }
         }
 
         return true;
+    }
+
+    private boolean isPrefix(String phoneA, String phoneB) {
+        return phoneA.indexOf(phoneB) == 0;
     }
 
     public void add(String phoneNumber) {
