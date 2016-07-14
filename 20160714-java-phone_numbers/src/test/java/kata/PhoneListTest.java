@@ -53,4 +53,14 @@ public class PhoneListTest {
         assertThat(phoneList.isConsistent(), is(false));
     }
 
+    @Test
+    public void it_should_not_be_consistent_when_some_phones_are_prefix_of_others_no_mather_order() {
+        phoneList.add("911");
+        phoneList.add("97 625 992");
+        phoneList.add("91125426");
+        phoneList.add("083 123");
+
+        assertThat(phoneList.isConsistent(), is(false));
+    }
+
 }

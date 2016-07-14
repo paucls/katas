@@ -13,7 +13,8 @@ public class PhoneList {
 
         for (int i = 0; i < size; i++) {
             for (int j = i + 1; j < size; j++) {
-                if (phones.get(i).indexOf(phones.get(j)) == 0) {
+                if (phones.get(i).indexOf(phones.get(j)) == 0 ||
+                        phones.get(j).indexOf(phones.get(i)) == 0) {
                     return false;
                 }
             }
