@@ -8,18 +8,24 @@ import org.junit.Test;
 public class DeviceDriverTest {
 
     @Test
-    public void read_From_Hardware() {
-        FlashMemoryDevice hardware = new MockFlashMemoryDevice();
+    public void read_should_read_from_hardware() {
+        MockFlashMemoryDevice hardware = new MockFlashMemoryDevice();
         DeviceDriver driver = new DeviceDriver(hardware);
+
         byte data = driver.read(0xFF);
+
         assertEquals(0, data);
+        assertEquals("read not called", 1, hardware.readCallsCount);
     }
 
 }
 
 class MockFlashMemoryDevice implements FlashMemoryDevice {
 
+    int readCallsCount = 0;
+
     public byte read(long address) {
+        readCallsCount++;
         return 0;
     }
 
