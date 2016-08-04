@@ -5,6 +5,9 @@ package codekata;
  */
 public class DeviceDriver {
 
+    public static final int PROGRAM_COMMAND_ADDRESS = 0x0;
+    public static final byte PROGRAM_COMMAND_DATA = (byte) 0x40;
+
     private FlashMemoryDevice hardware;
 
     public DeviceDriver(FlashMemoryDevice hardware) {
@@ -16,6 +19,7 @@ public class DeviceDriver {
     }
 
     public void write(long address, byte data) {
-        // TODO: implement this method
+        hardware.write(PROGRAM_COMMAND_ADDRESS, PROGRAM_COMMAND_DATA);
     }
+
 }
