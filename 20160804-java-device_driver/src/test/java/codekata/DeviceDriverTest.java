@@ -1,5 +1,6 @@
 package codekata;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -14,8 +15,8 @@ public class DeviceDriverTest {
 
         byte data = driver.read(0xFF);
 
-        assertEquals(0, data);
-        assertEquals("read not called", 1, hardware.readCallsCount);
+        assertThat(data, is((byte) 0));
+        assertThat(hardware.readCallsCount, is(1));
     }
 
 }
