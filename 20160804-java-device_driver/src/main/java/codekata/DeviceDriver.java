@@ -20,6 +20,7 @@ public class DeviceDriver {
 
     public void write(long address, byte data) {
         hardware.write(PROGRAM_COMMAND_ADDRESS, PROGRAM_COMMAND_DATA);
+        hardware.write(address, data);
     }
 
 }

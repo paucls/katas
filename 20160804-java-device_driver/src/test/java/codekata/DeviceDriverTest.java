@@ -28,8 +28,8 @@ public class DeviceDriverTest {
         byte data = driver.read(0xFF);
 
         // Assert
-        assertThat(data, is((byte) 0));
         verify(deviceMock).read(0xFF);
+        assertThat(data, is((byte) 0));
     }
 
     @Test
@@ -39,6 +39,16 @@ public class DeviceDriverTest {
 
         // Assert
         verify(deviceMock).write(0x0, (byte) 0x40);
+    }
+
+    @Test
+    public void write_should_make_a_call_to_write_data_to_address(){
+        // Act
+        driver.write(0xFF, (byte) 10);
+
+        // Assert
+        verify(deviceMock).write(0x0, (byte) 0x40);
+        verify(deviceMock).write(0xFF, (byte) 10);
     }
 
 }
