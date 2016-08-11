@@ -8,6 +8,7 @@ public class DeviceDriver {
     public static final int PROGRAM_COMMAND_ADDRESS = 0x0;
     public static final byte PROGRAM_COMMAND_DATA = (byte) 0x40;
     public static final byte READY_BIT_MASK = 0b01000000;
+    public static final int ERROR_BITS_MASK = 0b10111111;
     public static final byte READY_BIT_IS_READY = 0b01000000;
 
     private FlashMemoryDevice hardware;
@@ -24,10 +25,17 @@ public class DeviceDriver {
         hardware.write(PROGRAM_COMMAND_ADDRESS, PROGRAM_COMMAND_DATA);
         hardware.write(address, data);
 
-        int ready_bit;
+        int commandResult;
+        boolean isNotReady;
         do {
-            ready_bit = hardware.read(PROGRAM_COMMAND_ADDRESS) & READY_BIT_MASK;
-        } while (ready_bit != READY_BIT_IS_READY);
+            commandResult = hardware.read(PROGRAM_COMMAND_ADDRESS);
+            isNotReady = (commandResult & READY_BIT_MASK) != READY_BIT_IS_READY;
+        } while (isNotReady);
+
+        boolean noErrors = (commandResult & ERROR_BITS_MASK) == 0;
+        if (noErrors) {
+            hardware.read(address);
+        }
     }
 
 }

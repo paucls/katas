@@ -69,9 +69,33 @@ public class DeviceDriverTest {
         driver.write(0xFF, (byte) 10);
 
         // Assert
-        verify(deviceMock).write(0x0, (byte) 0x40);
-        verify(deviceMock).write(0xFF, (byte) 10);
         verify(deviceMock, times(3)).read(0x0);
+    }
+
+    @Test
+    public void write_should_check_after_successful_completion_that_correct_value_was_written() {
+        // Arrange
+        when(deviceMock.read(0x0)).thenReturn((byte) 0b01000000);
+        when(deviceMock.read(0xFF)).thenReturn((byte) 10);
+
+        // Act
+        driver.write(0xFF, (byte) 10);
+
+        // Assert
+        verify(deviceMock).read(0xFF);
+    }
+
+    @Test
+    public void write_should_not_check_value_after_completion_with_error() {
+        // Arrange
+        when(deviceMock.read(0x0)).thenReturn((byte) 0b01000001);
+        when(deviceMock.read(0xFF)).thenReturn((byte) 10);
+
+        // Act
+        driver.write(0xFF, (byte) 10);
+
+        // Assert
+        verify(deviceMock, never()).read(0xFF);
     }
 
 }
