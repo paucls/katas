@@ -94,6 +94,20 @@ public final class ApplicationTest {
         execute("quit");
     }
 
+    @Test(timeout = 1000)
+    public void deadline_command_should_give_a_given_task_a_deadline_date() throws IOException {
+        execute("add project katas");
+        execute("add task katas roman numbers");
+        execute("deadline roman numbers 22/08/2016");
+        execute("today");
+        readLines(
+                "katas",
+                "    [ ] 1: roman numbers",
+                ""
+        );
+        execute("quit");
+    }
+
     private void execute(String command) throws IOException {
         read(PROMPT);
         write(command);
