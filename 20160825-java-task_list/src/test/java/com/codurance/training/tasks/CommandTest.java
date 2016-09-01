@@ -2,8 +2,13 @@ package com.codurance.training.tasks;
 
 import org.junit.Test;
 
+import java.io.PrintWriter;
+
+import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import static org.mockito.Mockito.*;
 
 public class CommandTest {
     @Test
@@ -26,4 +31,16 @@ public class CommandTest {
 
         assertThat(command.getArguments(), is("project secrets"));
     }
+
+    @Test
+    public void a_command_help_can_be_executed() {
+        PrintWriter mockPrintWriter = mock(PrintWriter.class);
+
+        Command command = new Command("help", mockPrintWriter);
+
+        command.execute();
+        verify(mockPrintWriter, times(6)).println(anyString());
+        verify(mockPrintWriter, times(1)).println();
+    }
+
 }

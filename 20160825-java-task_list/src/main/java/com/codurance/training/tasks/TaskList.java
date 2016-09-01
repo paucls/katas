@@ -61,7 +61,7 @@ public final class TaskList implements Runnable {
                 uncheck(command.getArguments());
                 break;
             case "help":
-                help();
+                command.execute();
                 break;
             default:
                 error(command.getName());
@@ -123,16 +123,6 @@ public final class TaskList implements Runnable {
             }
         }
         out.printf("Could not find a task with an ID of %d.", id);
-        out.println();
-    }
-
-    private void help() {
-        out.println("Commands:");
-        out.println("  show");
-        out.println("  add project <project name>");
-        out.println("  add task <project name> <task description>");
-        out.println("  check <task ID>");
-        out.println("  uncheck <task ID>");
         out.println();
     }
 
