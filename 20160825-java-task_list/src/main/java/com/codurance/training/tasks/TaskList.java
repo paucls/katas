@@ -47,20 +47,21 @@ public final class TaskList implements Runnable {
     }
 
     private void execute(String commandLine) {
-        String[] commandRest = commandLine.split(" ", 2);
-        Command command = new Command(commandRest[0]);
+
+        Command command = new Command(commandLine);
+
         switch (command.toString()) {
             case "show":
                 show();
                 break;
             case "add":
-                add(commandRest[1]);
+                add(command.getArguments());
                 break;
             case "check":
-                check(commandRest[1]);
+                check(command.getArguments());
                 break;
             case "uncheck":
-                uncheck(commandRest[1]);
+                uncheck(command.getArguments());
                 break;
             case "help":
                 help();

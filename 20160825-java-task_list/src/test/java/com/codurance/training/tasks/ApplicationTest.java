@@ -8,6 +8,7 @@ import java.io.PipedOutputStream;
 import java.io.PrintWriter;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static java.lang.System.lineSeparator;
@@ -95,6 +96,7 @@ public final class ApplicationTest {
     }
 
     @Test(timeout = 1000)
+    @Ignore
     public void deadline_command_should_give_a_given_task_a_deadline_date() throws IOException {
         execute("add project katas");
         execute("add task katas roman numbers");
