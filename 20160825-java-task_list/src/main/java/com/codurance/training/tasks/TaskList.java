@@ -48,8 +48,8 @@ public final class TaskList implements Runnable {
 
     private void execute(String commandLine) {
         String[] commandRest = commandLine.split(" ", 2);
-        String command = commandRest[0];
-        switch (command) {
+        Command command = new Command(commandRest[0]);
+        switch (command.toString()) {
             case "show":
                 show();
                 break;
@@ -66,7 +66,7 @@ public final class TaskList implements Runnable {
                 help();
                 break;
             default:
-                error(command);
+                error(command.toString());
                 break;
         }
     }

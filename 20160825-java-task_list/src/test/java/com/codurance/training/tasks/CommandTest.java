@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class CommandTest {
     @Test
-    public void a_command_must_be_constructed_with_a_name() {
+    public void a_command_must_be_constructed_with_a_command_line() {
         Command command = new Command("help");
 
         assertThat(command.toString(), is("help"));
