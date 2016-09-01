@@ -42,14 +42,11 @@ public final class TaskList implements Runnable {
             if (command.equals(QUIT)) {
                 break;
             }
-            execute(command);
+            execute(new Command(command));
         }
     }
 
-    private void execute(String commandLine) {
-
-        Command command = new Command(commandLine);
-
+    private void execute(Command command) {
         switch (command.getName()) {
             case "show":
                 show();
