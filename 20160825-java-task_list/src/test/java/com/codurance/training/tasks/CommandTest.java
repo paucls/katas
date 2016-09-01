@@ -10,14 +10,14 @@ public class CommandTest {
     public void a_command_must_be_constructed_with_a_command_line() {
         Command command = new Command("help");
 
-        assertThat(command.toString(), is("help"));
+        assertThat(command.getName(), is("help"));
     }
 
     @Test
     public void a_command_can_have_arguments() {
         Command command = new Command("add project secrets");
 
-        assertThat(command.toString(), is("add"));
+        assertThat(command.getName(), is("add"));
     }
 
     @Test

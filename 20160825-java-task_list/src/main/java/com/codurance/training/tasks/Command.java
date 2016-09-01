@@ -24,8 +24,7 @@ public class Command {
         return commandLine.split(COMMAND_SEPARATOR, 2);
     }
 
-    @Override
-    public String toString() {
+    public String getName() {
         return this.name;
     }
 

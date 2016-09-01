@@ -50,7 +50,7 @@ public final class TaskList implements Runnable {
 
         Command command = new Command(commandLine);
 
-        switch (command.toString()) {
+        switch (command.getName()) {
             case "show":
                 show();
                 break;
@@ -67,7 +67,7 @@ public final class TaskList implements Runnable {
                 help();
                 break;
             default:
-                error(command.toString());
+                error(command.getName());
                 break;
         }
     }
