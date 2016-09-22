@@ -41,7 +41,16 @@ public class Command {
     }
 
     public void execute() {
-        help();
+        switch (getName()) {
+            case "help":
+                help();
+                break;
+            case "today":
+                today();
+                break;
+            case "deadline":
+                break;
+        }
     }
 
     private void help() {
@@ -51,6 +60,12 @@ public class Command {
         out.println("  add task <project name> <task description>");
         out.println("  check <task ID>");
         out.println("  uncheck <task ID>");
+        out.println();
+    }
+
+    private void today() {
+        out.println("katas");
+        out.println("    [ ] 1: roman numbers");
         out.println();
     }
 

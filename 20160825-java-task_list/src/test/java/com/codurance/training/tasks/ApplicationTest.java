@@ -96,7 +96,6 @@ public final class ApplicationTest {
     }
 
     @Test(timeout = 1000)
-    @Ignore
     public void deadline_command_should_give_a_given_task_a_deadline_date() throws IOException {
         execute("add project katas");
         execute("add task katas roman numbers");

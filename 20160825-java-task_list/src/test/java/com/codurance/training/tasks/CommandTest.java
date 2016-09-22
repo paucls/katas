@@ -43,4 +43,25 @@ public class CommandTest {
         verify(mockPrintWriter, times(1)).println();
     }
 
+    @Test
+    public void a_command_deadline_can_be_executed() {
+        PrintWriter mockPrintWriter = mock(PrintWriter.class);
+
+        Command command = new Command("deadline", mockPrintWriter);
+
+        command.execute();
+        verify(mockPrintWriter, times(0)).println();
+    }
+
+    @Test
+    public void a_command_today_can_be_executed() {
+        PrintWriter mockPrintWriter = mock(PrintWriter.class);
+
+        Command command = new Command("today", mockPrintWriter);
+
+        command.execute();
+        verify(mockPrintWriter, times(2)).println(anyString());
+        verify(mockPrintWriter, times(1)).println();
+    }
+
 }

@@ -42,7 +42,7 @@ public final class TaskList implements Runnable {
             if (command.equals(QUIT)) {
                 break;
             }
-            execute(new Command(command));
+            execute(new Command(command, out));
         }
     }
 
@@ -61,6 +61,12 @@ public final class TaskList implements Runnable {
                 uncheck(command.getArguments());
                 break;
             case "help":
+                command.execute();
+                break;
+            case "deadline":
+                command.execute();
+                break;
+            case "today":
                 command.execute();
                 break;
             default:
