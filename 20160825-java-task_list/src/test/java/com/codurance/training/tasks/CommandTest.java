@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.PrintWriter;
 
 import static org.hamcrest.Matchers.any;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -33,12 +34,21 @@ public class CommandTest {
     }
 
     @Test
-    public void a_command_help_can_be_executed() {
+    public void a_command_can_be_created() {
+        PrintWriter mockPrintWriter = mock(PrintWriter.class);
+        Command helpCommand = Command.create("help", mockPrintWriter);
+
+        assertThat(helpCommand, instanceOf(Command.class));
+        assertThat(helpCommand, instanceOf(HelpCommand.class));
+    }
+
+    @Test
+    public void a_command_can_be_executed() {
         PrintWriter mockPrintWriter = mock(PrintWriter.class);
 
-        Command command = new Command("help", mockPrintWriter);
+        Command helpCommand = Command.create("help", mockPrintWriter);
 
-        command.execute();
+        helpCommand.execute();
         verify(mockPrintWriter, times(6)).println(anyString());
         verify(mockPrintWriter, times(1)).println();
     }

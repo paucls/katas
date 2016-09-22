@@ -7,7 +7,7 @@ public class Command {
     private static final String COMMAND_SEPARATOR = " ";
     private String name;
     private String arguments;
-    private PrintWriter out;
+    protected PrintWriter out;
 
     public Command(String commandLine) {
         parseCommandLine(commandLine);
@@ -40,11 +40,9 @@ public class Command {
         return this.arguments;
     }
 
+    //TODO: make it abstract
     public void execute() {
         switch (getName()) {
-            case "help":
-                help();
-                break;
             case "today":
                 today();
                 break;
@@ -53,20 +51,22 @@ public class Command {
         }
     }
 
-    private void help() {
-        out.println("Commands:");
-        out.println("  show");
-        out.println("  add project <project name>");
-        out.println("  add task <project name> <task description>");
-        out.println("  check <task ID>");
-        out.println("  uncheck <task ID>");
-        out.println();
-    }
-
     private void today() {
         out.println("katas");
         out.println("    [ ] 1: roman numbers");
         out.println();
     }
 
+    public static Command create(String commandLine, PrintWriter printWriter) {
+        switch (commandLine) {
+            case "help":
+                return new HelpCommand(commandLine, printWriter);
+            case "today":
+                return new Command(commandLine, printWriter);
+            case "deadline":
+                return new Command(commandLine, printWriter);
+            default:
+                return new Command(commandLine, printWriter);
+        }
+    }
 }
