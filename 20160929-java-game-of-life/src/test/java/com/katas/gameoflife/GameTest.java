@@ -9,7 +9,7 @@ public class GameTest {
 
     @Test
     public void calculate_next_generation_of_all_dead_cells_returns_all_dead_cells() throws Exception {
-        String initialGeneration = "3 3 " +
+        String initialGeneration = "3 3" +
                 "..." +
                 "..." +
                 "...";
@@ -18,5 +18,17 @@ public class GameTest {
 
         assertThat(nextGeneration, is(initialGeneration));
     }
+
+    @Test
+    public void calculate_next_generation_of_one_alive_cell_with_no_neighbours_returns_all_dead_cells() throws Exception {
+        String initialGeneration = "1 1" +
+                "*";
+
+        String nextGeneration = Game.calculateNextGeneration(initialGeneration);
+
+        assertThat(nextGeneration, is("1 1" +
+                "."));
+    }
+
 
 }
