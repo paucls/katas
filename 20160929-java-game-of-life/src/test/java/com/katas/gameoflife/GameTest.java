@@ -1,5 +1,6 @@
 package com.katas.gameoflife;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -9,7 +10,7 @@ public class GameTest {
 
     @Test
     public void calculate_next_generation_of_all_dead_cells_returns_all_dead_cells() throws Exception {
-        String initialGeneration = "3 3" +
+        String initialGeneration = "3 3 " +
                 "..." +
                 "..." +
                 "...";
@@ -20,15 +21,34 @@ public class GameTest {
     }
 
     @Test
-    public void calculate_next_generation_of_one_alive_cell_with_no_neighbours_returns_all_dead_cells() throws Exception {
-        String initialGeneration = "1 1" +
-                "*";
+    public void any_live_cell_with_fewer_than_two_live_neighbours_dies() {
+        String initialGeneration = "3 3 " +
+                ".**" +
+                "..." +
+                "...";
 
         String nextGeneration = Game.calculateNextGeneration(initialGeneration);
 
-        assertThat(nextGeneration, is("1 1" +
-                "."));
+        assertThat(nextGeneration, is("3 3 " +
+                "..." +
+                "..." +
+                "..."));
     }
 
+    @Test
+    @Ignore
+    public void any_live_cell_with_two_or_three_live_neighbours_lives() {
+        String initialGeneration = "3 3 " +
+                "***" +
+                "..." +
+                "...";
+
+        String nextGeneration = Game.calculateNextGeneration(initialGeneration);
+
+        assertThat(nextGeneration, is("3 3 " +
+                ".*." +
+                "..." +
+                "..."));
+    }
 
 }
