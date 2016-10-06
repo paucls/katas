@@ -14,8 +14,9 @@ public class GameTest {
                 "..." +
                 "..." +
                 "...";
+        Game game = new Game(initialGeneration);
 
-        String nextGeneration = Game.calculateNextGeneration(initialGeneration);
+        String nextGeneration = game.calculateNextGeneration();
 
         assertThat(nextGeneration, is(initialGeneration));
     }
@@ -26,8 +27,9 @@ public class GameTest {
                 ".**" +
                 "..." +
                 "...";
+        Game game = new Game(initialGeneration);
 
-        String nextGeneration = Game.calculateNextGeneration(initialGeneration);
+        String nextGeneration = game.calculateNextGeneration();
 
         assertThat(nextGeneration, is("3 3 " +
                 "..." +
@@ -42,8 +44,9 @@ public class GameTest {
                 "***" +
                 "..." +
                 "...";
+        Game game = new Game(initialGeneration);
 
-        String nextGeneration = Game.calculateNextGeneration(initialGeneration);
+        String nextGeneration = game.calculateNextGeneration();
 
         assertThat(nextGeneration, is("3 3 " +
                 ".*." +

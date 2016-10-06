@@ -1,16 +1,17 @@
 package com.katas.gameoflife;
 
-import java.util.StringTokenizer;
-
 public class Game {
 
     public static final char LIVE_CELL = '*';
     public static final char DEAD_CELL = '.';
 
-    public static String calculateNextGeneration(String boardDefinition) {
+    private Board board;
 
-        Board board = BoardParser.parse(boardDefinition);
+    public Game(String boardDefinition) {
+        this.board = BoardParser.parse(boardDefinition);
+    }
 
+    public String calculateNextGeneration() {
         for (int row = 0; row < board.getRowsCount(); row++) {
             for (int column = 0; column < board.getColumnsCount(); column++) {
                 if (board.getCell(row, column) == LIVE_CELL) {
