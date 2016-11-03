@@ -1,8 +1,12 @@
 package tddmicroexercises.textconvertor;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class HtmlTextConverterTest {
 
@@ -11,6 +15,15 @@ public class HtmlTextConverterTest {
         HtmlTextConverter converter = new HtmlTextConverter("file1.txt");
 
         assertEquals("file1.txt", converter.getFilename());
+    }
+
+    @Test
+    public void converter_adds_br_element_at_the_end_of_each_line() throws IOException {
+        HtmlTextConverter converter = new HtmlTextConverter("./file1.txt");
+
+        String htmlCode = converter.convertToHtml();
+
+        assertThat(htmlCode, is("Hello<br />"));
     }
 
 }
