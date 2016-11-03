@@ -23,7 +23,16 @@ public class HtmlTextConverterTest {
 
         String htmlCode = converter.convertToHtml();
 
-        assertThat(htmlCode, is("Hello<br />"));
+        assertThat(htmlCode, is("Hello<br />World<br />"));
+    }
+
+    @Test
+    public void converter_scapes_special_characters() throws IOException {
+        HtmlTextConverter converter = new HtmlTextConverter("./file2.txt");
+
+        String htmlCode = converter.convertToHtml();
+
+        assertThat(htmlCode, is("Hello &quot;World&quot;<br />"));
     }
 
 }
