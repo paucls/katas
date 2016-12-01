@@ -56,4 +56,71 @@ public class SecurityManagerTest {
 
         verify(outputMock).println("Re-enter your password");
     }
+
+    @Test
+    public void createUser_should_verify_password_matches() throws IOException {
+        when(bufferedReaderMock.readLine())
+                .thenReturn("John")
+                .thenReturn("John Doe")
+                .thenReturn("password1")
+                .thenReturn("password1");
+
+        securityManager.createUser();
+
+        verify(outputMock, never()).println("The passwords don't match");
+    }
+
+    @Test
+    public void createUser_should_warn_user_when_password_dont_match() throws IOException {
+        when(bufferedReaderMock.readLine())
+                .thenReturn("John")
+                .thenReturn("John Doe")
+                .thenReturn("password1")
+                .thenReturn("password2");
+
+        securityManager.createUser();
+
+        verify(outputMock).println("The passwords don't match");
+    }
+
+    @Test
+    public void createUser_should_verify_password_length() throws IOException {
+        when(bufferedReaderMock.readLine())
+                .thenReturn("John")
+                .thenReturn("John Doe")
+                .thenReturn("password1")
+                .thenReturn("password1");
+
+        securityManager.createUser();
+
+        verify(outputMock, never()).println("Password must be at least 8 characters in length");
+    }
+
+    @Test
+    public void createUser_should_warn_user_when_password_length_less_than_eight() throws IOException {
+        when(bufferedReaderMock.readLine())
+                .thenReturn("John")
+                .thenReturn("John Doe")
+                .thenReturn("pass")
+                .thenReturn("pass");
+
+        securityManager.createUser();
+
+        verify(outputMock).println("Password must be at least 8 characters in length");
+    }
+
+
+    @Test
+    public void createUser_should_show_result_when_success() throws IOException {
+        when(bufferedReaderMock.readLine())
+                .thenReturn("John")
+                .thenReturn("John Doe")
+                .thenReturn("password1")
+                .thenReturn("password1");
+
+        securityManager.createUser();
+
+        verify(outputMock).println("Saving Details for User (John, John Doe, 1drowssap)\n");
+    }
+
 }
