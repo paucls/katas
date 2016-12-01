@@ -1,11 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class SecurityManager {
-    public static void createUser() {
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 
+    private final BufferedReader buffer;
+
+    public SecurityManager(BufferedReader buffer) {
+        this.buffer = buffer;
+    }
+
+    public void createUser() {
         String username = null;
         String fullName = null;
         String password = null;
