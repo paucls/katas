@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        SecurityManager securityManager = new SecurityManager(buffer);
+        SecurityManager securityManager = new SecurityManager(buffer, System.out);
         securityManager.createUser();
     }
 

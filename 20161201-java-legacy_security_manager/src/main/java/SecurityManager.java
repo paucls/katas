@@ -1,12 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class SecurityManager {
 
-    private final BufferedReader buffer;
+    private final BufferedReader input;
+    private final PrintStream output;
 
-    public SecurityManager(BufferedReader buffer) {
-        this.buffer = buffer;
+    public SecurityManager(BufferedReader buffer, PrintStream output) {
+        this.input = buffer;
+        this.output = output;
     }
 
     public void createUser() {
@@ -15,32 +18,32 @@ public class SecurityManager {
         String password = null;
         String confirmPassword = null;
         try {
-            System.out.println("Enter a username");
-            username = buffer.readLine();
-            System.out.println("Enter your full name");
-            fullName = buffer.readLine();
-            System.out.println("Enter your password");
-            password = buffer.readLine();
-            System.out.println("Re-enter your password");
-            confirmPassword = buffer.readLine();
+            output.println("Enter a username");
+            username = input.readLine();
+            output.println("Enter your full name");
+            fullName = input.readLine();
+            output.println("Enter your password");
+            password = input.readLine();
+            output.println("Re-enter your password");
+            confirmPassword = input.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         if (!password.equals(confirmPassword)) {
-            System.out.println("The passwords don't match");
+            output.println("The passwords don't match");
             return;
         }
 
         if (password.length() < 8) {
-            System.out.println("Password must be at least 8 characters in length");
+            output.println("Password must be at least 8 characters in length");
             return;
         }
 
         // Encrypt the password (just reverse it, should be secure)
         String encryptedPassword = new StringBuilder(password).reverse().toString();
 
-        System.out.println(
+        output.println(
                 String.format(
                         "Saving Details for User (%s, %s, %s)\n",
                         username,
