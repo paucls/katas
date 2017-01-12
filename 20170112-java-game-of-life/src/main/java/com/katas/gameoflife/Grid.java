@@ -39,6 +39,24 @@ public class Grid {
                     }
                 }
 
+                if (row - 1 >= 0) {
+                    if (grid[row - 1][column]) {
+                        aliveNeighbourCount++;
+                    }
+
+                    if (column - 1 >= 0) {
+                        if (grid[row - 1][column - 1]) {
+                            aliveNeighbourCount++;
+                        }
+                    }
+                }
+
+                if (column - 1 >= 0) {
+                    if (grid[row][column - 1]) {
+                        aliveNeighbourCount++;
+                    }
+                }
+
                 if (aliveNeighbourCount >= 3) {
                     grid[row][column] = true;
                 }

@@ -42,12 +42,30 @@ public class GridTest {
     }
 
     @Test
-    public void calculateNextGeneration_when_grid2x2WithOneDeadCell_and_threeAliveNeighbours_then_allAlive() {
+    public void calculateNextGeneration_when_grid2x2WithFirstCellDead_and_threeAliveNeighbours_then_allAlive() {
         boolean[][] cells = new boolean[2][2];
         cells[0][0] = false;
         cells[0][1] = true;
         cells[1][0] = true;
         cells[1][1] = true;
+
+        Grid grid = new Grid(cells);
+
+        grid.calculateNextGeneration();
+
+        assertThat(grid.get(0, 0), is(true));
+        assertThat(grid.get(0, 1), is(true));
+        assertThat(grid.get(1, 0), is(true));
+        assertThat(grid.get(1, 1), is(true));
+    }
+
+    @Test
+    public void calculateNextGeneration_when_grid2x2WithLastCellDead_and_threeAliveNeighbours_then_allAlive() {
+        boolean[][] cells = new boolean[2][2];
+        cells[0][0] = true;
+        cells[0][1] = true;
+        cells[1][0] = true;
+        cells[1][1] = false;
 
         Grid grid = new Grid(cells);
 
