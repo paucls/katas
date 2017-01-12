@@ -21,38 +21,43 @@ public class Grid {
 
                 int aliveNeighbourCount = 0;
 
-                if (row + 1 < rows) {
-                    if (grid[row + 1][column]) {
+                int nextRow = row + 1;
+                int previousRow = row - 1;
+                int nextColumn = column + 1;
+                int previousColumn = column - 1;
+
+                if (nextRow < rows) {
+                    if (grid[nextRow][column]) {
                         aliveNeighbourCount++;
                     }
 
-                    if (column + 1 < columns) {
-                        if (grid[row + 1][column + 1]) {
+                    if (nextColumn < columns) {
+                        if (grid[nextRow][nextColumn]) {
                             aliveNeighbourCount++;
                         }
                     }
                 }
 
-                if (column + 1 < columns) {
-                    if (grid[row][column + 1]) {
+                if (nextColumn < columns) {
+                    if (grid[row][nextColumn]) {
                         aliveNeighbourCount++;
                     }
                 }
 
-                if (row - 1 >= 0) {
-                    if (grid[row - 1][column]) {
+                if (previousRow >= 0) {
+                    if (grid[previousRow][column]) {
                         aliveNeighbourCount++;
                     }
 
-                    if (column - 1 >= 0) {
-                        if (grid[row - 1][column - 1]) {
+                    if (previousColumn >= 0) {
+                        if (grid[previousRow][previousColumn]) {
                             aliveNeighbourCount++;
                         }
                     }
                 }
 
-                if (column - 1 >= 0) {
-                    if (grid[row][column - 1]) {
+                if (previousColumn >= 0) {
+                    if (grid[row][previousColumn]) {
                         aliveNeighbourCount++;
                     }
                 }
