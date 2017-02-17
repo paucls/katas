@@ -4,14 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class SnackMachineTest {
 
-    SnackMachine snackMachine;
+    private SnackMachine snackMachine;
 
     @Before
     public void setup() {
@@ -25,14 +24,14 @@ public class SnackMachineTest {
 
     @Test
     public void insertCoin_should_add_coin_to_coins_in_transaction() {
-        snackMachine.insertCoin(1);
+        snackMachine.insertCoin(1.0);
 
         assertThat(snackMachine.getAmountInTransaction(), is(1.0));
     }
 
     @Test
     public void insertCoin_should_allow_different_types_of_counts() {
-        snackMachine.insertCoin(1);
+        snackMachine.insertCoin(1.0);
         snackMachine.insertCoin(0.20);
 
         assertThat(snackMachine.getAmountInTransaction(), is(1.20));
@@ -47,8 +46,8 @@ public class SnackMachineTest {
 
     @Test
     public void returnMoneyBack_returns_coins_in_transaction() {
-        snackMachine.insertCoin(1);
-        snackMachine.insertCoin(1);
+        snackMachine.insertCoin(1.0);
+        snackMachine.insertCoin(1.0);
         snackMachine.insertCoin(0.20);
 
         HashMap<Double, Integer> returnedMoney = snackMachine.returnMoneyBack();
