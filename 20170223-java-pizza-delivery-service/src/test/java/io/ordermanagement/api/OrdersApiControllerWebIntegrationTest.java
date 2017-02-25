@@ -2,8 +2,6 @@ package io.ordermanagement.api;
 
 import io.ordermanagement.model.Order;
 import io.ordermanagement.repository.OrderRepository;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +28,16 @@ public class OrdersApiControllerWebIntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testordersPost() {
+    public void testCreateOrder() {
         Order order = new Order();
         order.setId("1");
         order.setName("John Doe");
         HttpEntity<Order> request = new HttpEntity<>(order);
-        Order createdorder = restTemplate.postForObject(URL, request, Order.class);
+        Order createdOrder = restTemplate.postForObject(URL, request, Order.class);
 
-        assertThat(createdorder, notNullValue());
-        assertThat(createdorder.getId(), notNullValue());
-//        assertThat(createdorder.getName(), is("order-name"));
+        assertThat(createdOrder, notNullValue());
+        assertThat(createdOrder.getId(), notNullValue());
+        assertThat(createdOrder.getName(), is("John Doe"));
     }
 
 }

@@ -15,8 +15,8 @@ public class OrdersApiController implements OrdersApi {
     @Autowired
     private OrderRepository orderRepository;
 
-    public ResponseEntity<Order> postOrder(
-            @ApiParam(value = "Task to add to the list", required = true) @RequestBody Order order) {
+    public ResponseEntity<Order> createOrder(
+            @ApiParam(value = "Order to create", required = true) @RequestBody Order order) {
         Order createdOrder = orderRepository.saveAndFlush(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.OK);
     }

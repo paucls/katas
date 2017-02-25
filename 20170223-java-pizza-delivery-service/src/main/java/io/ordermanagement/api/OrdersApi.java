@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface OrdersApi {
 
     @ApiOperation(value = "", notes = "Creates a new `Order` resource", response = Order.class, tags = {})
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Task created successfully", response = Order.class)})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Order created successfully", response = Order.class)})
     @RequestMapping(value = "/orders", method = RequestMethod.POST)
-    ResponseEntity<Order> postOrder(
+    ResponseEntity<Order> createOrder(
             @ApiParam(value = "Order to create", required = true) @RequestBody Order order
     );
 
