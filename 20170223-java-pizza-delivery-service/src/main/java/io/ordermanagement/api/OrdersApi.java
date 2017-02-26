@@ -12,12 +12,12 @@ import java.util.List;
 @Api(value = "orders", description = "the orders API")
 public interface OrdersApi {
 
-    @ApiOperation(value = "", notes = "Gets the list of all `Order` resources. ", response = Order.class, responseContainer = "List", tags = {})
+    @ApiOperation(value = "", notes = "Gets the list of all orders. ", response = Order.class, responseContainer = "List", tags = {})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "An array of `Order` objects", response = Order.class)})
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
     ResponseEntity<List<Order>> getAllOrders();
 
-    @ApiOperation(value = "", notes = "Creates a new `Order` resource", response = Order.class, tags = {})
+    @ApiOperation(value = "", notes = "Creates a new order", response = Order.class, tags = {})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Order created successfully", response = Order.class)})
     @RequestMapping(value = "/orders", method = RequestMethod.POST)
     ResponseEntity<Order> createOrder(

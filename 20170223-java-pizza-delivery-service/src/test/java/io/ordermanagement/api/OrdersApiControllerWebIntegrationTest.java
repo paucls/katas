@@ -38,7 +38,7 @@ public class OrdersApiControllerWebIntegrationTest {
     }
 
     @Test
-    public void getAllOrders() {
+    public void testGetAllOrders() {
         Order order = new Order();
         order.setName("Jack Sparrow");
         orderRepository.saveAndFlush(order);

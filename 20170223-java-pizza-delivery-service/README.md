@@ -8,7 +8,7 @@ So that increase pizza sales
 Story 1 - Create order
 As a customer
 I want to make a pizza order online
-So that I do not have to make expensive and time consuming phone calls
+So that I do not have to make expensive and time-consuming phone calls
 
 Story 2 - Order summary
 As a customer
