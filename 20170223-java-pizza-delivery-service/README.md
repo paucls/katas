@@ -24,3 +24,8 @@ Story 4 - Confirmed orders are communicated to delivery people
 As a delivery man
 I want new orders to be handled and printed automatically
 So that I can process them directly without wasting my time taking phone calls
+
+Story 5 - Customer sign up
+As a customer
+I want the system to remember me
+So that I won't need to introduce my personal details for every order
