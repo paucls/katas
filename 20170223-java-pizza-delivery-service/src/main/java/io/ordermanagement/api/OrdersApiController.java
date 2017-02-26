@@ -28,7 +28,7 @@ public class OrdersApiController implements OrdersApi {
     @Override
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order createdOrder = orderRepository.saveAndFlush(order);
-        return new ResponseEntity<>(createdOrder, HttpStatus.OK);
+        return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
 
 }

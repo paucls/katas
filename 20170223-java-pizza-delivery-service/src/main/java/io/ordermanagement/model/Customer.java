@@ -12,10 +12,13 @@ public class Customer {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id = null;
-    private String name = null;
+    private String fistName = null;
+    private String lastName = null;
     private String street = null;
     private String city = null;
     private String state = null;
+    private String phoneNumber = null;
+    private String email = null;
 
     public String getId() {
         return id;
@@ -25,12 +28,20 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFistName() {
+        return fistName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFistName(String fistName) {
+        this.fistName = fistName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getStreet() {
@@ -56,5 +67,20 @@ public class Customer {
     public void setState(String state) {
         this.state = state;
     }
-}
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
