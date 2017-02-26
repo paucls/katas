@@ -2,10 +2,10 @@ package io.ordermanagement.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
 @Entity
 public class Product {
@@ -15,8 +15,8 @@ public class Product {
     private String id;
     private String name;
     private String description;
-    private BigDecimal price;
-    private String currency;
+    @Embedded
+    private Money price;
 
     public String getId() {
         return id;
@@ -42,19 +42,11 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Money getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Money price) {
         this.price = price;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 }

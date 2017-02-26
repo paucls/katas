@@ -1,5 +1,6 @@
 package io.ordermanagement.api;
 
+import io.ordermanagement.model.Money;
 import io.ordermanagement.model.Product;
 import io.ordermanagement.repository.ProductRepository;
 import org.junit.After;
@@ -41,8 +42,7 @@ public class ProductsApiControllerWebIntegrationTest {
         product = new Product();
         product.setName("Pizza Margherita");
         product.setDescription("Made with tomatoes, sliced mozzarella, basil, and extra virgin olive oil.");
-        product.setPrice(new BigDecimal("7.5"));
-        product.setCurrency("EURO");
+        product.setPrice(new Money(new BigDecimal("7.5"), "EURO"));
     }
 
     @After
@@ -63,7 +63,7 @@ public class ProductsApiControllerWebIntegrationTest {
     }
 
     @Test
-    public void testCreateOrder() {
+    public void testCreateProduct() {
         HttpEntity<Product> request = new HttpEntity<>(product);
 
         Product createdProduct = restTemplate.postForObject(URL, request, Product.class);
@@ -71,7 +71,8 @@ public class ProductsApiControllerWebIntegrationTest {
         assertThat(createdProduct, notNullValue());
         assertThat(createdProduct.getId(), notNullValue());
         assertThat(createdProduct.getName(), is("Pizza Margherita"));
-        assertThat(createdProduct.getPrice(), is(new BigDecimal("7.5")));
+        assertThat(createdProduct.getPrice().getAmount(), is(new BigDecimal("7.5")));
+        assertThat(createdProduct.getPrice().getCurrency(), is("EURO"));
     }
 
 }
