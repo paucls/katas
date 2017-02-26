@@ -3,7 +3,7 @@
 FEATURE: Pizza order online
 As a pizza restaurant owner
 I want to accept online orders
-So that increase pizza sales
+In order to increase pizza sales
 
 Story 1 - Create order
 As a customer
@@ -20,12 +20,17 @@ As a customer
 I want a receipt by email for my order
 So that I can keep track of my expenses
 
-Story 4 - Confirmed orders are communicated to delivery people
-As a delivery man
+Story 4 - Confirmed orders are communicated to pizza makers
+As a pizza maker
 I want new orders to be handled and printed automatically
 So that I can process them directly without wasting my time taking phone calls
 
-Story 5 - Customer sign up
+Story 5 - Ready orders are communicated to delivery people
+As a delivery man
+I want to know when a order of pizzas is ready for delivery
+So that I can collect it and deliver efficiently to the customer
+
+Story 6 - Customer sign up
 As a customer
 I want the system to remember me
 So that I won't need to introduce my personal details for every order
