@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  * Money Value Object
  */
 @Embeddable
-public class Money {
+public class Money implements ValueObject {
 
     private BigDecimal amount;
     private String currency;
@@ -18,6 +18,11 @@ public class Money {
     public Money(BigDecimal amount, String currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+    public Money(Money money) {
+        this.amount = money.amount;
+        this.currency = money.currency;
     }
 
     public BigDecimal getAmount() {
