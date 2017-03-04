@@ -1,7 +1,7 @@
 # Pizza Delivery Kata
 
 FEATURE: Pizza order online
-As a pizza restaurant owner
+As a pizza takeaway franchise owner
 I want to accept online orders
 In order to increase pizza sales
 
@@ -34,3 +34,8 @@ Story 6 - Customer sign up
 As a customer
 I want the system to remember me
 So that I won't need to introduce my personal details for every order
+
+Other Considerations
+- Pizzas can be ordered in three different sizes: small, medium or large.
+- Customer must provide a delivery address.
+
