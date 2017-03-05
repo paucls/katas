@@ -50,4 +50,5 @@ public class Money implements ValueObject {
         result = 31 * result + (currency != null ? currency.hashCode() : 0);
         return result;
     }
+
 }

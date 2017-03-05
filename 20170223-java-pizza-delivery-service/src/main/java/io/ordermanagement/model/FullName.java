@@ -15,6 +15,10 @@ public class FullName implements ValueObject {
     }
 
     public FullName(String firstName, String lastName) {
+        if (firstName == null || lastName == null) {
+            throw new IllegalArgumentException("First and last name are required.");
+        }
+
         this.firstName = firstName;
         this.lastName = lastName;
     }
