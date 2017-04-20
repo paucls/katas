@@ -1,0 +1,26 @@
+Event Storming (DDD Draft)
+
++ Customer
+> Create Order
+Order Created
+- Order
+
++ System
+> Generate Receipt
+Receipt Created
+- Order
+
++ Pizza maker
+> Mark Order as Prepared
+Order Prepared
+- Order
+
++ Delivery man
+> Mark Order as Deliverd
+Order Delivered
+- Order
+
++ New Customer
+> Sign up
+New customer created
+- ???
