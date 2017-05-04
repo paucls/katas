@@ -6,10 +6,17 @@ namespace tire_pressure_monitoring_system
     public class AlarmTest
     {
         [Test]
-        public void Foo()
+        public void Alarm_should_be_off_when_pressure_between_thresholds()
         {
             Alarm alarm = new Alarm();
             Assert.AreEqual(false, alarm.AlarmOn);
         }
+
+        [Test]
+        public void Alarm_should_be_on_when_pressure_exceeds_higher_threshold()
+		{
+			Alarm alarm = new Alarm();
+			Assert.AreEqual(true, alarm.AlarmOn);
+		}
     }
 }
