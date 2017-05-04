@@ -29,5 +29,17 @@ namespace tire_pressure_monitoring_system
 
             Assert.AreEqual(true, alarm.AlarmOn);
         }
+
+        [Test]
+        public void Alarm_should_be_on_when_pressure_falls_under_lower_threshold()
+		{
+			var sensorStub = MockRepository.GenerateStub<ISensor>();
+			sensorStub.Expect(x => x.PopNextPressurePsiValue()).Return(16);
+
+			Alarm alarm = new Alarm(sensorStub);
+			alarm.Check();
+
+			Assert.AreEqual(true, alarm.AlarmOn);
+		}
     }
 }
