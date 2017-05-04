@@ -6,11 +6,14 @@ namespace tire_pressure_monitoring_system
 		private const double LowPressureTreshold = 17;
 		private const double HighPressureTreshold = 21;
 
-		Sensor _sensor = new Sensor();
+		ISensor _sensor;
 
 		bool _alarmOn = false;
 		private long _alarmCount = 0;
 
+        public Alarm(ISensor sensor) {
+            _sensor = sensor;
+        }
 
 		public void Check()
 		{

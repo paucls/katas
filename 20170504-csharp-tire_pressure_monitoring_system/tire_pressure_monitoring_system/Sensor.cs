@@ -1,7 +1,7 @@
 ﻿using System;
 namespace tire_pressure_monitoring_system
 {
-	public class Sensor
+	public class Sensor : ISensor
 	{
 		const double Offset = 16;
 
