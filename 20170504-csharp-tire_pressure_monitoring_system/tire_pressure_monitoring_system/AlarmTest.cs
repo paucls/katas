@@ -1,18 +1,25 @@
 ﻿using NUnit.Framework;
-using System;
 using Rhino.Mocks;
 namespace tire_pressure_monitoring_system
 {
     [TestFixture]
     public class AlarmTest
     {
+        ISensor sensorStub;
+        Alarm alarm;
+
+        [SetUp]
+        public void setUp()
+        {
+            sensorStub = MockRepository.GenerateStub<ISensor>();
+            alarm = new Alarm(sensorStub);
+        }
+
         [Test]
         public void Alarm_should_be_off_when_pressure_between_thresholds()
         {
-            ISensor sensorStub = MockRepository.GenerateStub<ISensor>();
             sensorStub.Expect(x => x.PopNextPressurePsiValue()).Return(21);
 
-            Alarm alarm = new Alarm(sensorStub);
             alarm.Check();
 
             Assert.AreEqual(false, alarm.AlarmOn);
@@ -21,10 +28,8 @@ namespace tire_pressure_monitoring_system
         [Test]
         public void Alarm_should_be_on_when_pressure_exceeds_higher_threshold()
         {
-            var sensorStub = MockRepository.GenerateStub<ISensor>();
             sensorStub.Expect(x => x.PopNextPressurePsiValue()).Return(22);
 
-            Alarm alarm = new Alarm(sensorStub);
             alarm.Check();
 
             Assert.AreEqual(true, alarm.AlarmOn);
@@ -32,14 +37,12 @@ namespace tire_pressure_monitoring_system
 
         [Test]
         public void Alarm_should_be_on_when_pressure_falls_under_lower_threshold()
-		{
-			var sensorStub = MockRepository.GenerateStub<ISensor>();
-			sensorStub.Expect(x => x.PopNextPressurePsiValue()).Return(16);
+        {
+            sensorStub.Expect(x => x.PopNextPressurePsiValue()).Return(16);
 
-			Alarm alarm = new Alarm(sensorStub);
-			alarm.Check();
+            alarm.Check();
 
-			Assert.AreEqual(true, alarm.AlarmOn);
-		}
+            Assert.AreEqual(true, alarm.AlarmOn);
+        }
     }
 }
