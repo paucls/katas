@@ -43,6 +43,7 @@
     <Compile Include="FileLoggerTest.cs" />
     <Compile Include="FileLogger.cs" />
     <Compile Include="IFileWriter.cs" />
+    <Compile Include="FileWritter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

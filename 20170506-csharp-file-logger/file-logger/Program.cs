@@ -6,7 +6,12 @@ namespace filelogger
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Logging to file...");
+
+            IFileWriter fileWriter = new FileWritter();
+            FileLogger fileLogger = new FileLogger(fileWriter);
+
+            fileLogger.Log(args[0]);
         }
     }
 }

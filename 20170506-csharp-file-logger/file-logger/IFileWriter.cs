@@ -3,7 +3,7 @@ namespace filelogger
 {
     public interface IFileWriter
     {
-        bool Exist(String path);
+        bool Exists(String path);
 
         void Write(String path, String message);
 
