@@ -9,7 +9,8 @@ namespace filelogger
             Console.WriteLine("Logging to file...");
 
             IFileWriter fileWriter = new FileWritter();
-            FileLogger fileLogger = new FileLogger(fileWriter);
+            ITimeProvider timeProvider = new TimeProvider();
+            FileLogger fileLogger = new FileLogger(fileWriter, timeProvider);
 
             fileLogger.Log(args[0]);
         }

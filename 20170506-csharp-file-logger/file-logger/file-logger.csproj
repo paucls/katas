@@ -44,6 +44,8 @@
     <Compile Include="FileLogger.cs" />
     <Compile Include="IFileWriter.cs" />
     <Compile Include="FileWritter.cs" />
+    <Compile Include="ITimeProvider.cs" />
+    <Compile Include="TimeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
