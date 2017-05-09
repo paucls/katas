@@ -1,18 +1,31 @@
 import FileSystem from "./file-system";
 
-const LOG_FILE_PATH = 'log.txt';
-
 export default class FileLogger {
 
     constructor(private fileSystem: FileSystem) {
     }
 
     log(text: string) {
-        if (this.fileSystem.exists(LOG_FILE_PATH)) {
-            this.fileSystem.append(LOG_FILE_PATH, text);
+        const fileName = this.buildFileName();
+
+        if (this.fileSystem.exists(fileName)) {
+            this.fileSystem.append(fileName, text);
             return;
         }
-        this.fileSystem.write(LOG_FILE_PATH, text);
+
+        this.fileSystem.write(fileName, text);
+    }
+
+    private buildFileName() {
+        const date = new Date();
+        const year = date.getFullYear();
+        let month = '' + (date.getMonth() + 1);
+        let day = '' + date.getDate();
+
+        if (month.length < 2) { month = '0' + month; }
+        if (day.length < 2) { day = '0' + day; }
+
+        return `log${year}${month}${day}.txt`;
     }
 
 }
