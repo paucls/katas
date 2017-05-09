@@ -1,39 +1,38 @@
 import FileLogger from '../app/file-logger';
 import FileSystem from '../app/file-system';
 
-import { expect } from 'chai';
+import {expect} from 'chai';
 import * as sinon from 'sinon';
 
 describe('FileLogger', () => {
 
-    let sandbox = sinon.sandbox.create();
+    const message = 'A message';
+    let fileSystemStub: any;
 
-    afterEach(function () {
-        sandbox.restore();
+    beforeEach(function () {
+        fileSystemStub = sinon.createStubInstance(FileSystem.prototype.constructor);
     });
 
     describe('log()', () => {
 
         it('should append message to log.txt file', () => {
-            const message = 'New message';
-            const appendSpy = sandbox.stub(FileSystem.prototype, 'append');
-            const fileLogger = new FileLogger(new FileSystem());
-            sandbox.stub(FileSystem.prototype, 'exists').returns(true);
+            fileSystemStub.exists.returns(true);
+            const fileLogger = new FileLogger(fileSystemStub);
 
             fileLogger.log(message);
 
-            expect(appendSpy.calledWith('log.txt', message)).to.be.true;
+            expect(fileSystemStub.append.calledWith('log.txt', message)).to.be.true;
+            expect(fileSystemStub.write.called).to.be.false;
         });
 
         it('should write message to a new log.txt file if it does not exist yet', () => {
-            const message = 'New message';
-            const writeSpy = sandbox.stub(FileSystem.prototype, 'write');
-            const fileLogger = new FileLogger(new FileSystem());
-            sandbox.stub(FileSystem.prototype, 'exists').returns(false);
+            fileSystemStub.exists.returns(false);
+            const fileLogger = new FileLogger(fileSystemStub);
 
             fileLogger.log(message);
 
-            expect(writeSpy.calledWith('log.txt', message)).to.be.true;
+            expect(fileSystemStub.append.called).to.be.false;
+            expect(fileSystemStub.write.calledWith('log.txt', message)).to.be.true;
         });
 
     });
