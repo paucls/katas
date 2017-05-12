@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{BBCF3C67-8E31-48E3-AD2E-8C605E2E07BE}|Unit Tests">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TelemetrySystem.Tests/TelemetryDiagnosticControlsTest.cs">
+    <Files>
+      <File FileName="TelemetrySystem.Tests/TelemetryDiagnosticControlsTest.cs" Line="15" Column="1" />
+      <File FileName="TelemetrySystem/TelemetryClient.cs" Line="1" Column="1" />
+      <File FileName="TelemetrySystem/TelemetryDiagnosticControls.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TDDMicroExercises PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

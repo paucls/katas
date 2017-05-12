@@ -1,0 +1,6 @@
+/Users/paulo/codebase/katas/20170512-csharp-telemetry-system/bin/Debug/TDDMicroExercises.dll
+/Users/paulo/codebase/katas/20170512-csharp-telemetry-system/bin/Debug/TDDMicroExercises.pdb
+/Users/paulo/codebase/katas/20170512-csharp-telemetry-system/bin/Debug/nunit.framework.dll
+/Users/paulo/codebase/katas/20170512-csharp-telemetry-system/obj/Debug/TDDMicroExercises.csproj.CoreCompileInputs.cache
+/Users/paulo/codebase/katas/20170512-csharp-telemetry-system/obj/Debug/TDDMicroExercises.dll
+/Users/paulo/codebase/katas/20170512-csharp-telemetry-system/obj/Debug/TDDMicroExercises.pdb
