@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{BBCF3C67-8E31-48E3-AD2E-8C605E2E07BE}|Unit Tests">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TelemetrySystem/ITelemetryClient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TelemetrySystem.Tests/TelemetryDiagnosticControlsTest.cs">
     <Files>
-      <File FileName="TelemetrySystem.Tests/TelemetryDiagnosticControlsTest.cs" Line="13" Column="105" />
-      <File FileName="TelemetrySystem/TelemetryDiagnosticControls.cs" Line="42" Column="34" />
-      <File FileName="TelemetrySystem/TelemetryClient.cs" Line="38" Column="37" />
-      <File FileName="TelemetrySystem/ITelemetryClient.cs" Line="6" Column="6" />
+      <File FileName="TelemetrySystem/TelemetryDiagnosticControls.cs" Line="28" Column="35" />
+      <File FileName="TelemetrySystem/TelemetryClient.cs" Line="4" Column="2" />
+      <File FileName="TelemetrySystem.Tests/TelemetryDiagnosticControlsTest.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,10 +11,10 @@
           <Node name="TDDMicroExercises" expanded="True">
             <Node name="TDDMicroExercises" expanded="True">
               <Node name="References" expanded="True" />
-              <Node name="TelemetrySystem" expanded="True">
-                <Node name="ITelemetryClient.cs" selected="True" />
+              <Node name="TelemetrySystem" expanded="True" />
+              <Node name="TelemetrySystem.Tests" expanded="True">
+                <Node name="TelemetryDiagnosticControlsTest.cs" selected="True" />
               </Node>
-              <Node name="TelemetrySystem.Tests" expanded="True" />
             </Node>
           </Node>
         </State>
