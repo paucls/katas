@@ -1,19 +1,12 @@
 ﻿<Properties StartupConfiguration="{CDC88DC1-D92E-4F60-A946-6792C113C97C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="tire_pressure_monitoring_system/Sensor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="tire_pressure_monitoring_system/AlarmTest.cs">
     <Files>
       <File FileName="README.txt" Line="13" Column="30" />
-      <File FileName="tire_pressure_monitoring_system/AlarmTest.cs" Line="15" Column="41" />
+      <File FileName="tire_pressure_monitoring_system/AlarmTest.cs" Line="44" Column="13" />
       <File FileName="tire_pressure_monitoring_system/Alarm.cs" Line="1" Column="1" />
-      <File FileName="tire_pressure_monitoring_system/Sensor.cs" Line="16" Column="64" />
+      <File FileName="tire_pressure_monitoring_system/Sensor.cs" Line="24" Column="1" />
       <File FileName="tire_pressure_monitoring_system/ISensor.cs" Line="4" Column="29" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="tire_pressure_monitoring_system" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
