@@ -1,20 +1,25 @@
 package com.katas;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class FileLoggerTest {
+
+    FileSystemAdapter fileSystemAdapterMock;
+
+    @Before
+    public void setup() {
+        fileSystemAdapterMock = mock(FileSystemAdapter.class);
+    }
 
     @Test
     public void log_should_write_message_on_new_file() throws IOException {
         // Arrange
         String message = "A message";
-        FileSystemAdapter fileSystemAdapterMock = mock(FileSystemAdapter.class);
         FileLogger fileLogger = new FileLogger(fileSystemAdapterMock);
 
         // Act
@@ -29,7 +34,6 @@ public class FileLoggerTest {
         // Arrange
         String message = "A message";
         String logFilePath = "log.txt";
-        FileSystemAdapter fileSystemAdapterMock = mock(FileSystemAdapter.class);
         FileLogger fileLogger = new FileLogger(fileSystemAdapterMock);
         when(fileSystemAdapterMock.exists(logFilePath)).thenReturn(true);
 
