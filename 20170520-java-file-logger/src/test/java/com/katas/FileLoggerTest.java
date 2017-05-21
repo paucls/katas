@@ -26,14 +26,14 @@ public class FileLoggerTest {
         fileLogger.log(message);
 
         // Assert
-        verify(fileSystemAdapterMock).write("log.txt", message);
+        verify(fileSystemAdapterMock).write("log20170521.txt", message);
     }
 
     @Test
     public void log_should_append_message_when_file_already_exists() throws IOException {
         // Arrange
         String message = "A message";
-        String logFilePath = "log.txt";
+        String logFilePath = "log20170521.txt";
         FileLogger fileLogger = new FileLogger(fileSystemAdapterMock);
         when(fileSystemAdapterMock.exists(logFilePath)).thenReturn(true);
 

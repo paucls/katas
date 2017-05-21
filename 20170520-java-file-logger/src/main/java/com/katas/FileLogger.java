@@ -1,11 +1,15 @@
 package com.katas;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
 public class FileLogger {
 
-    public static final String LOG_FILE_PATH = "log.txt";
-
+    public static final String DATE_FORMAT = "yyyyMMdd";
     FileSystemAdapter fileSystem;
 
     public FileLogger(FileSystemAdapter fileSystemAdapter) {
@@ -13,12 +17,22 @@ public class FileLogger {
     }
 
     public void log(String message) throws IOException {
-        if (fileSystem.exists(LOG_FILE_PATH)) {
-            fileSystem.append(LOG_FILE_PATH, message);
+        String fileName = buildFileName();
+
+        if (fileSystem.exists(fileName)) {
+            fileSystem.append(fileName, message);
             return;
         }
 
-        fileSystem.write(LOG_FILE_PATH, message);
+        fileSystem.write(fileName, message);
+    }
+
+    private String buildFileName() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        LocalDateTime now = LocalDateTime.now();
+        String logDate = now.format(formatter);
+
+        return "log" + logDate + ".txt";
     }
 
 }
