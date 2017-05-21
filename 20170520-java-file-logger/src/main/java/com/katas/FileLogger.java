@@ -1,19 +1,19 @@
 package com.katas;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
 
 public class FileLogger {
 
-    public static final String DATE_FORMAT = "yyyyMMdd";
-    FileSystemAdapter fileSystem;
+    private static final String DATE_FORMAT = "yyyyMMdd";
 
-    public FileLogger(FileSystemAdapter fileSystemAdapter) {
+    private FileSystemAdapter fileSystem;
+    private DateProvider dateProvider;
+
+    public FileLogger(FileSystemAdapter fileSystemAdapter, DateProvider dateProvider) {
         this.fileSystem = fileSystemAdapter;
+        this.dateProvider = dateProvider;
     }
 
     public void log(String message) throws IOException {
@@ -29,7 +29,7 @@ public class FileLogger {
 
     private String buildFileName() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = dateProvider.now();
         String logDate = now.format(formatter);
 
         return "log" + logDate + ".txt";
