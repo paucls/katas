@@ -1,11 +1,14 @@
 package com.katas;
 
+import com.sun.javafx.binding.StringFormatter;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileLogger {
 
+    private static final String FILE_NAME_TEMPLATE = "log%s.txt";
     private static final String DATE_FORMAT = "yyyyMMdd";
 
     private FileSystemAdapter fileSystem;
@@ -29,10 +32,9 @@ public class FileLogger {
 
     private String buildFileName() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        LocalDateTime now = dateProvider.now();
-        String logDate = now.format(formatter);
+        String date = dateProvider.now().format(formatter);
 
-        return "log" + logDate + ".txt";
+        return String.format(FILE_NAME_TEMPLATE, date);
     }
 
 }
