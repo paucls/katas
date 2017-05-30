@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 namespace TDDMicroExercises.TurnTicketDispenser.Tests
 {
     [TestFixture]
@@ -7,7 +6,11 @@ namespace TDDMicroExercises.TurnTicketDispenser.Tests
     {
         [Test]
         public void GetTurnTicket_should_return_a_new_ticket_using_unique_sequence_number() {
-            
+            TicketDispenser ticketDispenser = new TicketDispenser();
+
+            TurnTicket ticket = ticketDispenser.GetTurnTicket();
+
+            Assert.AreEqual(0, ticket.TurnNumber);
         }
     }
 }
