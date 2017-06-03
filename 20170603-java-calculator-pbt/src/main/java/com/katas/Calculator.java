@@ -1,9 +1,9 @@
 package com.katas;
 
-public class Calculator {
+class Calculator {
 
-    public int add(int a, int b) {
-        return -1;
+    int add(int a, int b) {
+        return a + b;
     }
 
 }
