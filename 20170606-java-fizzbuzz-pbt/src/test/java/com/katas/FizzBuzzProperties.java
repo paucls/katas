@@ -22,8 +22,9 @@ public class FizzBuzzProperties {
     }
 
     @Property
-    public void prints_number_for_numbers_not_multiple_of_three(int number) {
+    public void prints_number_for_numbers_not_multiple_of_three_or_five(int number) {
         Assume.assumeThat(number % 3, not(0));
+        Assume.assumeThat(number % 5, not(0));
 
         String result = fizzBuzz.print(number);
 
@@ -31,12 +32,33 @@ public class FizzBuzzProperties {
     }
 
     @Property
-    public void prints_fizz_for_numbers_multiple_of_three(int number) {
+    public void prints_Fizz_for_numbers_multiple_of_three(int number) {
         Assume.assumeThat(number % 3, is(0));
+        Assume.assumeThat(number % 5, not(0));
 
         String result = fizzBuzz.print(number);
 
         assertThat(result, equalTo("Fizz"));
+    }
+
+    @Property
+    public void prints_Buzz_for_numbers_multiple_of_five(int number) {
+        Assume.assumeThat(number % 3, not(0));
+        Assume.assumeThat(number % 5, is(0));
+
+        String result = fizzBuzz.print(number);
+
+        assertThat(result, equalTo("Buzz"));
+    }
+
+    @Property
+    public void prints_FizzBuzz_for_numbers_multiple_of_three_and_five(int number) {
+        Assume.assumeThat(number % 3, is(0));
+        Assume.assumeThat(number % 5, is(0));
+
+        String result = fizzBuzz.print(number);
+
+        assertThat(result, equalTo("FizzBuzz"));
     }
 
 }
