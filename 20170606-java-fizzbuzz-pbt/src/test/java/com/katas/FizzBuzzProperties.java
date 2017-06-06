@@ -22,7 +22,7 @@ public class FizzBuzzProperties {
     }
 
     @Property
-    public void prints_number_for_numbers_not_multiple_of_three_or_five(int number) {
+    public void prints_number_for_numbers_not_divisible_by_three_or_five(int number) {
         Assume.assumeThat(number % 3, not(0));
         Assume.assumeThat(number % 5, not(0));
 
@@ -32,7 +32,7 @@ public class FizzBuzzProperties {
     }
 
     @Property
-    public void prints_Fizz_for_numbers_multiple_of_three(int number) {
+    public void prints_Fizz_for_numbers_divisible_by_three(int number) {
         Assume.assumeThat(number % 3, is(0));
         Assume.assumeThat(number % 5, not(0));
 
@@ -42,7 +42,7 @@ public class FizzBuzzProperties {
     }
 
     @Property
-    public void prints_Buzz_for_numbers_multiple_of_five(int number) {
+    public void prints_Buzz_for_numbers_divisible_by_five(int number) {
         Assume.assumeThat(number % 3, not(0));
         Assume.assumeThat(number % 5, is(0));
 
@@ -52,7 +52,7 @@ public class FizzBuzzProperties {
     }
 
     @Property
-    public void prints_FizzBuzz_for_numbers_multiple_of_three_and_five(int number) {
+    public void prints_FizzBuzz_for_numbers_divisible_by_three_and_five(int number) {
         Assume.assumeThat(number % 3, is(0));
         Assume.assumeThat(number % 5, is(0));
 
