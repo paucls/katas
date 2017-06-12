@@ -1,6 +1,7 @@
 package com.jubobs.corksoftwarecrafstmanship.propertybasedtesting.workshop;
 
 import com.pholser.junit.quickcheck.Property;
+import com.pholser.junit.quickcheck.generator.InRange;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import org.junit.Assume;
 import org.junit.Ignore;
@@ -10,9 +11,7 @@ import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.fail;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assume.assumeThat;
 
 @RunWith(Enclosed.class)
@@ -23,7 +22,7 @@ public final class RecentlyUsedList_spec {
 
         @Property
         public void cannot_be_instantiated_with_a_nonpositive_capacity(int capacity) {
-            assumeThat(capacity, lessThan(0));
+            assumeThat(capacity, lessThanOrEqualTo(0));
 
             try {
                 ListBasedRecentlyUsedList.newInstance(capacity);
@@ -34,18 +33,17 @@ public final class RecentlyUsedList_spec {
         }
 
         @Property
-        public void can_be_instantiated_with_a_positive_capacity(int capacity) {
-            assumeThat(capacity, greaterThanOrEqualTo(0));
-
+        public void can_be_instantiated_with_a_positive_capacity(@InRange(minInt = 1, maxInt = 1000) int capacity) {
             RecentlyUsedList recentlyUsedList = ListBasedRecentlyUsedList.newInstance(capacity);
 
             assertThat(recentlyUsedList).isNotNull();
         }
 
-        @Ignore
         @Property
-        public void is_empty() {
+        public void is_empty(@InRange(minInt = 1, maxInt = 1000) int capacity) {
+            RecentlyUsedList recentlyUsedList = ListBasedRecentlyUsedList.newInstance(capacity);
 
+            assertThat(recentlyUsedList.isEmpty()).isTrue();
         }
 
     }

@@ -1,19 +1,26 @@
 package com.jubobs.corksoftwarecrafstmanship.propertybasedtesting.workshop;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class ListBasedRecentlyUsedList<T> implements RecentlyUsedList<T> {
 
+    private List list;
+
+    private ListBasedRecentlyUsedList(int capacity) {
+        list = new ArrayList(capacity);
+    }
+
     public static <T> ListBasedRecentlyUsedList<T> newInstance(int capacity) {
-        if (capacity < 0) {
+        if (capacity <= 0) {
             throw new IllegalArgumentException("List can not be instantiated with non positive capacity");
         }
-        return new ListBasedRecentlyUsedList<>();
+        return new ListBasedRecentlyUsedList<>(capacity);
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return list.isEmpty();
     }
 
     @Override
