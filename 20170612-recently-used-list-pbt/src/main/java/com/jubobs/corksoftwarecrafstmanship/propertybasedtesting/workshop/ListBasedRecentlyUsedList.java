@@ -40,7 +40,10 @@ public final class ListBasedRecentlyUsedList<T> implements RecentlyUsedList<T> {
 
     @Override
     public void push(T newHead) {
-
+        if (newHead == null) {
+            throw new IllegalArgumentException("Null items can not be added to the list");
+        }
+        list.add(newHead);
     }
 
     @Override

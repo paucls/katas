@@ -79,10 +79,16 @@ public final class RecentlyUsedList_spec {
     @RunWith(JUnitQuickcheck.class)
     public static final class Any_list {
 
-        @Ignore
         @Property
         public void rejects_the_addition_of_a_null_item() {
+            RecentlyUsedList recentlyUsedList = ListBasedRecentlyUsedList.newInstance(5);
 
+            try {
+                recentlyUsedList.push(null);
+                fail("Should have thrown IllegalArgumentException but did not!");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage()).isEqualTo("Null items can not be added to the list");
+            }
         }
 
         @Ignore
