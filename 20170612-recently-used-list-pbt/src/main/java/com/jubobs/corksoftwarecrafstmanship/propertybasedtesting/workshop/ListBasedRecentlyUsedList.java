@@ -5,7 +5,10 @@ import java.util.List;
 public final class ListBasedRecentlyUsedList<T> implements RecentlyUsedList<T> {
 
     public static <T> ListBasedRecentlyUsedList<T> newInstance(int capacity) {
-        return null;
+        if (capacity < 0) {
+            throw new IllegalArgumentException("List can not be instantiated with non positive capacity");
+        }
+        return new ListBasedRecentlyUsedList<>();
     }
 
     @Override

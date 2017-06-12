@@ -2,10 +2,18 @@ package com.jubobs.corksoftwarecrafstmanship.propertybasedtesting.workshop;
 
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
+import org.junit.Assume;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.fail;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.lessThan;
+import static org.junit.Assume.assumeThat;
 
 @RunWith(Enclosed.class)
 public final class RecentlyUsedList_spec {
@@ -13,16 +21,25 @@ public final class RecentlyUsedList_spec {
     @RunWith(JUnitQuickcheck.class)
     public static final class A_new_list {
 
-        @Ignore
         @Property
-        public void cannot_be_instantiated_with_a_nonpositive_capacity() {
+        public void cannot_be_instantiated_with_a_nonpositive_capacity(int capacity) {
+            assumeThat(capacity, lessThan(0));
 
+            try {
+                ListBasedRecentlyUsedList.newInstance(capacity);
+                fail("Should have thrown IllegalArgumentException but did not!");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage()).isEqualTo("List can not be instantiated with non positive capacity");
+            }
         }
 
-        @Ignore
         @Property
-        public void can_be_instantiated_with_a_positive_capacity() {
+        public void can_be_instantiated_with_a_positive_capacity(int capacity) {
+            assumeThat(capacity, greaterThanOrEqualTo(0));
 
+            RecentlyUsedList recentlyUsedList = ListBasedRecentlyUsedList.newInstance(capacity);
+
+            assertThat(recentlyUsedList).isNotNull();
         }
 
         @Ignore
