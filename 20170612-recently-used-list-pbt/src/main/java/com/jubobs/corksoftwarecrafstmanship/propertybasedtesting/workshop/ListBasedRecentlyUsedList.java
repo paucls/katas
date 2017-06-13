@@ -6,8 +6,10 @@ import java.util.List;
 public final class ListBasedRecentlyUsedList<T> implements RecentlyUsedList<T> {
 
     private List list;
+    private int capacity;
 
     private ListBasedRecentlyUsedList(int capacity) {
+        this.capacity = capacity;
         list = new ArrayList(capacity);
     }
 
@@ -25,17 +27,17 @@ public final class ListBasedRecentlyUsedList<T> implements RecentlyUsedList<T> {
 
     @Override
     public int size() {
-        return 0;
+        return list.size();
     }
 
     @Override
     public int capacity() {
-        return 0;
+        return capacity;
     }
 
     @Override
     public void clear() {
-
+        list.clear();
     }
 
     @Override
@@ -48,7 +50,7 @@ public final class ListBasedRecentlyUsedList<T> implements RecentlyUsedList<T> {
 
     @Override
     public T elementAt(int index) {
-        return null;
+        return (T) list.get(index);
     }
 
     @Override

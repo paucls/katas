@@ -17,6 +17,8 @@ import static org.junit.Assume.assumeThat;
 @RunWith(Enclosed.class)
 public final class RecentlyUsedList_spec {
 
+    private static final String ITEM = "An Item";
+
     @RunWith(JUnitQuickcheck.class)
     public static final class A_new_list {
 
@@ -51,10 +53,14 @@ public final class RecentlyUsedList_spec {
     @RunWith(JUnitQuickcheck.class)
     public static final class An_empty_list {
 
-        @Ignore
         @Property
         public void retains_a_single_addition() {
+            RecentlyUsedList recentlyUsedList = ListBasedRecentlyUsedList.newInstance(5);
 
+            recentlyUsedList.push(ITEM);
+
+            assertThat(recentlyUsedList.size()).isEqualTo(1);
+            assertThat(recentlyUsedList.elementAt(0)).isEqualTo(ITEM);
         }
 
         @Ignore
@@ -97,10 +103,16 @@ public final class RecentlyUsedList_spec {
 
         }
 
-        @Ignore
         @Property
         public void that_gets_cleared_yields_an_empty_list_of_the_same_capacity() {
+            RecentlyUsedList recentlyUsedList = ListBasedRecentlyUsedList.newInstance(5);
 
+            recentlyUsedList.push(ITEM);
+            assertThat(recentlyUsedList.isEmpty()).isFalse();
+
+            recentlyUsedList.clear();
+
+            assertThat(recentlyUsedList.isEmpty()).isTrue();
         }
 
         @Ignore
