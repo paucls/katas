@@ -6,6 +6,7 @@
   "scripts": {
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
+    "pretest": "rimraf app/**/*.js test/**/*.js",
     "test": "nyc mocha"
   },
   "author": "paucls",
