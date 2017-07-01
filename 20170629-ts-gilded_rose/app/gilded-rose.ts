@@ -19,19 +19,13 @@ export class GildedRose {
                 }
             }
         } else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-            }
+            this.increaseQuality(item);
             if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
                 if (item.sellIn < 11) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
+                    this.increaseQuality(item);
                 }
                 if (item.sellIn < 6) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
+                    this.increaseQuality(item);
                 }
             }
         }
@@ -50,11 +44,15 @@ export class GildedRose {
                     item.quality = item.quality - item.quality;
                 }
             } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
+                this.increaseQuality(item);
             }
         }
         return item;
+    }
+
+    private increaseQuality(item: Item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+        }
     }
 }
