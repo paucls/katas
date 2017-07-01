@@ -8,7 +8,7 @@ export class GildedRose {
     }
 
     updateQuality() {
-        return this.items.map(this.updateQualityOf);
+        return this.items.map(item => this.updateQualityOf(item));
     }
 
     private updateQualityOf(item: Item): Item {
