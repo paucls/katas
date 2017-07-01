@@ -12,10 +12,10 @@ export class GildedRose {
     }
 
     private updateQualityOf(item: Item): Item {
-        if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if (item.name != 'Sulfuras, Hand of Ragnaros') {
+        if (item.name != 'Aged Brie' &&
+            item.name != 'Backstage passes to a TAFKAL80ETC concert' &&
+            item.name != 'Sulfuras, Hand of Ragnaros') {
                 this.decreaseQuality(item);
-            }
         } else {
             this.increaseQuality(item);
             if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
@@ -33,14 +33,10 @@ export class GildedRose {
         if (item.sellIn < 0) {
             if (item.name == 'Aged Brie') {
                 this.increaseQuality(item);
-            } else {
-                if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-                    this.dropQuality(item);
-                } else {
-                    if (item.name != 'Sulfuras, Hand of Ragnaros') {
-                        this.decreaseQuality(item);
-                    }
-                }
+            } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
+                this.dropQuality(item);
+            } else if (item.name != 'Sulfuras, Hand of Ragnaros') {
+                this.decreaseQuality(item);
             }
         }
         return item;
