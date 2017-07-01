@@ -37,13 +37,17 @@ export class GildedRose {
                         this.decreaseQuality(item);
                     }
                 } else {
-                    item.quality = item.quality - item.quality;
+                    this.dropQuality(item);
                 }
             } else {
                 this.increaseQuality(item);
             }
         }
         return item;
+    }
+
+    private dropQuality(item: Item) {
+        item.quality = item.quality - item.quality;
     }
 
     private decreaseQuality(item: Item) {
