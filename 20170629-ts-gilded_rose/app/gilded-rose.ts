@@ -17,10 +17,10 @@ export class GildedRose {
             this.increaseQuality(item);
 
             if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-                if (item.sellIn < 11) {
+                if (item.sellIn <= 10) {
                     this.increaseQuality(item);
                 }
-                if (item.sellIn < 6) {
+                if (item.sellIn <= 5) {
                     this.increaseQuality(item);
                 }
             }
@@ -29,7 +29,7 @@ export class GildedRose {
         }
 
         if (item.name != 'Sulfuras, Hand of Ragnaros') {
-            item.sellIn = item.sellIn - 1;
+            this.decreaseSellIn(item);
         }
 
         if (item.sellIn < 0) {
@@ -43,6 +43,10 @@ export class GildedRose {
         }
 
         return item;
+    }
+
+    private decreaseSellIn(item: Item) {
+        item.sellIn = item.sellIn - 1;
     }
 
     private dropQuality(item: Item) {
