@@ -13,10 +13,8 @@ export class GildedRose {
 
     private updateQualityOf(item: Item): Item {
         if (item.name == 'Sulfuras, Hand of Ragnaros') {
-            return item;
-        }
 
-        if (item.name == 'Aged Brie') {
+        } else if (item.name == 'Aged Brie') {
             this.increaseQuality(item);
 
             this.decreaseSellIn(item);
@@ -25,7 +23,6 @@ export class GildedRose {
                 this.increaseQuality(item);
             }
         } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-
             this.increaseQuality(item);
             if (item.sellIn <= 10) {
                 this.increaseQuality(item);
@@ -57,7 +54,7 @@ export class GildedRose {
     }
 
     private dropQuality(item: Item) {
-        item.quality = item.quality - item.quality;
+        item.quality = 0;
     }
 
     private decreaseQuality(item: Item) {
