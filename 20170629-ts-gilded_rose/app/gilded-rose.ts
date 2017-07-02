@@ -12,6 +12,10 @@ export class GildedRose {
     }
 
     private updateQualityOf(item: Item): Item {
+        if (item.name == 'Sulfuras, Hand of Ragnaros') {
+            return item;
+        }
+
         if (item.name == 'Aged Brie') {
             this.increaseQuality(item);
         } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
@@ -23,22 +27,18 @@ export class GildedRose {
             if (item.sellIn <= 5) {
                 this.increaseQuality(item);
             }
-        } else if (item.name == 'Sulfuras, Hand of Ragnaros') {
-            // Do nothing
         } else {
             this.decreaseQuality(item);
         }
 
-        if (item.name != 'Sulfuras, Hand of Ragnaros') {
-            this.decreaseSellIn(item);
-        }
+        this.decreaseSellIn(item);
 
         if (item.sellIn < 0) {
             if (item.name == 'Aged Brie') {
                 this.increaseQuality(item);
             } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
                 this.dropQuality(item);
-            } else if (item.name != 'Sulfuras, Hand of Ragnaros') {
+            } else {
                 this.decreaseQuality(item);
             }
         }
