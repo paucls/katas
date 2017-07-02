@@ -18,30 +18,32 @@ export class GildedRose {
 
         if (item.name == 'Aged Brie') {
             this.increaseQuality(item);
-        } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-            this.increaseQuality(item);
 
+            this.decreaseSellIn(item);
+
+            if (item.sellIn < 0) {
+                this.increaseQuality(item);
+            }
+        } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
+
+            this.increaseQuality(item);
             if (item.sellIn <= 10) {
                 this.increaseQuality(item);
             }
             if (item.sellIn <= 5) {
                 this.increaseQuality(item);
             }
-        } else {
-            this.decreaseQuality(item);
-        }
 
-        this.decreaseSellIn(item);
+            this.decreaseSellIn(item);
 
-        if (item.name == 'Aged Brie') {
-            if (item.sellIn < 0) {
-                this.increaseQuality(item);
-            }
-        } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
             if (item.sellIn < 0) {
                 this.dropQuality(item);
             }
         } else {
+            this.decreaseQuality(item);
+
+            this.decreaseSellIn(item);
+
             if (item.sellIn < 0) {
                 this.decreaseQuality(item);
             }
