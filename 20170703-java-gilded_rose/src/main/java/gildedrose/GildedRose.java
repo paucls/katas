@@ -30,7 +30,7 @@ class GildedRose {
             }
 
             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
+                decreaseSellIn(item);
             }
 
             if (item.sellIn < 0) {
@@ -48,6 +48,10 @@ class GildedRose {
             }
 
         }
+    }
+
+    private void decreaseSellIn(Item item) {
+        item.sellIn = item.sellIn - 1;
     }
 
     private void increaseQuality(Item item) {
