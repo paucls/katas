@@ -13,28 +13,30 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-
-            ItemQualityStrategy qualityStrategy;
-
-            switch (item.name) {
-                case AGED_BRIE:
-                    qualityStrategy = new AgedBrieQualityStrategy();
-                    break;
-
-                case BACKSTAGE_PASSES:
-                    qualityStrategy = new BackstagePassesQualityStrategy();
-                    break;
-
-                case SULFURAS:
-                    qualityStrategy = new SulfurasQualityStrategy();
-                    break;
-
-                default:
-                    qualityStrategy = new ItemQualityStrategy();
-            }
+            ItemQualityStrategy qualityStrategy = createQualityStrategy(item.name);
 
             qualityStrategy.updateQuality(item);
-
         }
+    }
+
+    private ItemQualityStrategy createQualityStrategy(String itemName) {
+        ItemQualityStrategy qualityStrategy;
+        switch (itemName) {
+            case AGED_BRIE:
+                qualityStrategy = new AgedBrieQualityStrategy();
+                break;
+
+            case BACKSTAGE_PASSES:
+                qualityStrategy = new BackstagePassesQualityStrategy();
+                break;
+
+            case SULFURAS:
+                qualityStrategy = new SulfurasQualityStrategy();
+                break;
+
+            default:
+                qualityStrategy = new ItemQualityStrategy();
+        }
+        return qualityStrategy;
     }
 }
