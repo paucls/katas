@@ -1,6 +1,10 @@
 package gildedrose;
 
 class GildedRose {
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -10,7 +14,7 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
 
-            if (item.name.equals("Aged Brie")) {
+            if (item.name.equals(AGED_BRIE)) {
                 increaseQuality(item);
 
                 decreaseSellIn(item);
@@ -18,7 +22,7 @@ class GildedRose {
                 if (passedSellInDate(item)) {
                     increaseQuality(item);
                 }
-            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            } else if (item.name.equals(BACKSTAGE_PASSES)) {
                 increaseQuality(item);
 
                 if (item.sellIn <= 10) {
@@ -34,7 +38,7 @@ class GildedRose {
                 if (passedSellInDate(item)) {
                     dropQuality(item);
                 }
-            } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            } else if (item.name.equals(SULFURAS)) {
 
             } else {
                 decreaseQuality(item);
