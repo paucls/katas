@@ -5,11 +5,6 @@ class GildedRose {
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    private AgedBrieQualityStrategy agedBrieQualityStrategy = new AgedBrieQualityStrategy();
-    private BackstagePassesQualityStrategy backstagePassesQualityStrategy = new BackstagePassesQualityStrategy();
-    private ItemQualityStrategy itemQualityStrategy = new ItemQualityStrategy();
-    private SulfurasQualityStrategy sulfurasQualityStrategy = new SulfurasQualityStrategy();
-
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -19,22 +14,26 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
 
+            ItemQualityStrategy qualityStrategy;
+
             switch (item.name) {
                 case AGED_BRIE:
-                    agedBrieQualityStrategy.updateQuality(item);
+                    qualityStrategy = new AgedBrieQualityStrategy();
                     break;
 
                 case BACKSTAGE_PASSES:
-                    backstagePassesQualityStrategy.updateQuality(item);
+                    qualityStrategy = new BackstagePassesQualityStrategy();
                     break;
 
                 case SULFURAS:
-                    sulfurasQualityStrategy.updateQuality(item);
+                    qualityStrategy = new SulfurasQualityStrategy();
                     break;
 
                 default:
-                    itemQualityStrategy.updateQuality(item);
+                    qualityStrategy = new ItemQualityStrategy();
             }
+
+            qualityStrategy.updateQuality(item);
 
         }
     }
