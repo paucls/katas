@@ -5,6 +5,8 @@ class GildedRose {
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
+    private ItemQualityStrategy itemQualityStrategy = new ItemQualityStrategy();
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -28,19 +30,9 @@ class GildedRose {
                     break;
 
                 default:
-                    calculateRegularItemQuality(item);
+                    itemQualityStrategy.updateQuality(item);
             }
 
-        }
-    }
-
-    private void calculateRegularItemQuality(Item item) {
-        decreaseQuality(item);
-
-        decreaseSellIn(item);
-
-        if (passedSellInDate(item)) {
-            decreaseQuality(item);
         }
     }
 
