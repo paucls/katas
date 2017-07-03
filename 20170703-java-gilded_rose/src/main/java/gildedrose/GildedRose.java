@@ -16,47 +16,64 @@ class GildedRose {
 
             switch (item.name) {
                 case AGED_BRIE:
-                    increaseQuality(item);
-
-                    decreaseSellIn(item);
-
-                    if (passedSellInDate(item)) {
-                        increaseQuality(item);
-                    }
+                    calculateAgedBriedQuality(item);
                     break;
 
                 case BACKSTAGE_PASSES:
-                    increaseQuality(item);
-
-                    if (item.sellIn <= 10) {
-                        increaseQuality(item);
-                    }
-
-                    if (item.sellIn <= 5) {
-                        increaseQuality(item);
-                    }
-
-                    decreaseSellIn(item);
-
-                    if (passedSellInDate(item)) {
-                        dropQuality(item);
-                    }
+                    calculateBackstagePassesQuality(item);
                     break;
 
                 case SULFURAS:
+                    calculateSulfurasQuality(item);
                     break;
 
                 default:
-                    decreaseQuality(item);
-
-                    decreaseSellIn(item);
-
-                    if (passedSellInDate(item)) {
-                        decreaseQuality(item);
-                    }
+                    calculateRegularItemQuality(item);
             }
 
         }
+    }
+
+    private void calculateRegularItemQuality(Item item) {
+        decreaseQuality(item);
+
+        decreaseSellIn(item);
+
+        if (passedSellInDate(item)) {
+            decreaseQuality(item);
+        }
+    }
+
+    private void calculateBackstagePassesQuality(Item item) {
+        increaseQuality(item);
+
+        if (item.sellIn <= 10) {
+            increaseQuality(item);
+        }
+
+        if (item.sellIn <= 5) {
+            increaseQuality(item);
+        }
+
+        decreaseSellIn(item);
+
+        if (passedSellInDate(item)) {
+            dropQuality(item);
+        }
+    }
+
+    private void calculateAgedBriedQuality(Item item) {
+        increaseQuality(item);
+
+        decreaseSellIn(item);
+
+        if (passedSellInDate(item)) {
+            increaseQuality(item);
+        }
+    }
+
+    private void calculateSulfurasQuality(Item item) {
+
     }
 
     private void decreaseSellIn(Item item) {
