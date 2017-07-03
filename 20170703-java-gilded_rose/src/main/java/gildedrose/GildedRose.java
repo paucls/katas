@@ -15,23 +15,23 @@ class GildedRose {
 
                 decreaseSellIn(item);
 
-                if (item.sellIn < 0) {
+                if (passedSellInDate(item)) {
                     increaseQuality(item);
                 }
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 increaseQuality(item);
 
-                if (item.sellIn < 11) {
+                if (item.sellIn <= 10) {
                     increaseQuality(item);
                 }
 
-                if (item.sellIn < 6) {
+                if (item.sellIn <= 5) {
                     increaseQuality(item);
                 }
 
                 decreaseSellIn(item);
 
-                if (item.sellIn < 0) {
+                if (passedSellInDate(item)) {
                     dropQuality(item);
                 }
             } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -41,7 +41,7 @@ class GildedRose {
 
                 decreaseSellIn(item);
 
-                if (item.sellIn < 0) {
+                if (passedSellInDate(item)) {
                     decreaseQuality(item);
                 }
             }
@@ -67,5 +67,9 @@ class GildedRose {
 
     private void dropQuality(Item item) {
         item.quality = 0;
+    }
+
+    private boolean passedSellInDate(Item item) {
+        return item.sellIn < 0;
     }
 }
