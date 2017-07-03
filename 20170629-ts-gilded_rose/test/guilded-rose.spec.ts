@@ -13,7 +13,7 @@ describe('Gilded Rose', function () {
         expect(items[0].quality).to.equal(9);
     });
 
-    it('once the sell by date has passes quality decreases twice as fast', function () {
+    it('once the sell by date has passed quality decreases twice as fast', function () {
         const gilgedRose = new GildedRose([new Item('An Item', 0, 10)]);
 
         const items = gilgedRose.updateQuality();
