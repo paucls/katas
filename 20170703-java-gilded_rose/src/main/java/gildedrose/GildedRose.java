@@ -50,7 +50,7 @@ class GildedRose {
                             }
                         }
                     } else {
-                        item.quality = 0;
+                        dropQuality(item);
                     }
                 } else {
                     if (item.quality < 50) {
@@ -60,5 +60,9 @@ class GildedRose {
             }
 
         }
+    }
+
+    private void dropQuality(Item item) {
+        item.quality = 0;
     }
 }
