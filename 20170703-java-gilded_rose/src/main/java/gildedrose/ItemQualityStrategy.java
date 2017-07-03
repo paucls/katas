@@ -28,10 +28,6 @@ class ItemQualityStrategy {
         }
     }
 
-    void dropQuality(Item item) {
-        item.quality = 0;
-    }
-
     boolean passedSellInDate(Item item) {
         return item.sellIn < 0;
     }
