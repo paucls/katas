@@ -13,9 +13,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            ItemQualityStrategy qualityStrategy = createQualityStrategy(item.name);
-
-            qualityStrategy.updateQuality(item);
+            createQualityStrategy(item.name).updateQuality(item);
         }
     }
 
