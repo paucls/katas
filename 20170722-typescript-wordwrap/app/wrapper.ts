@@ -8,15 +8,14 @@ export default class Wrapper {
             return text;
         }
 
-        if (text.indexOf(EMPTY_SPACE) < 0) {
-            const chunks = this.chunk(text, columns);
-            return chunks.join(NEW_LINE);
+        const chunk1 = text.substring(0, columns);
+        const chunk2 = text.substring(columns);
+
+        if (chunk1.indexOf(EMPTY_SPACE) < 0) {
+            return chunk1 + NEW_LINE + this.wrap(chunk2, columns);
         }
 
         return text.replace(EMPTY_SPACE, NEW_LINE);
     }
 
-    private chunk(text: string, size: number) {
-        return text.match(new RegExp('.{1,' + size + '}', 'g'));
-    }
 }
