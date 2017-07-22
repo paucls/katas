@@ -8,18 +8,20 @@ export default class Wrapper {
             return text;
         }
 
-        const chunk1 = text.substring(0, columns);
-        const chunk2 = text.substring(columns);
+        const chunk = text.substring(0, columns);
+        const rest = text.substring(columns);
 
-        if (chunk1.indexOf(EMPTY_SPACE) < 0) {
-            return chunk1 + NEW_LINE + this.wrap(chunk2, columns);
+        if (rest[0] === EMPTY_SPACE) {
+            return chunk + NEW_LINE + this.wrap(rest.substring(1), columns);
         }
 
-        if (chunk2[0] === EMPTY_SPACE) {
-            return chunk1 + NEW_LINE + this.wrap(chunk2.substring(1), columns);
+        if (chunk.indexOf(EMPTY_SPACE) < 0) {
+            return chunk + NEW_LINE + this.wrap(rest, columns);
         }
 
-        return chunk1.replace(EMPTY_SPACE, NEW_LINE) + this.wrap(chunk2, columns);
+        const lastSpaceIdx = chunk.lastIndexOf(EMPTY_SPACE);
+
+        return chunk.substring(0, lastSpaceIdx) + NEW_LINE + this.wrap(chunk.substring(lastSpaceIdx + 1) + rest, columns);
     }
 
 }
