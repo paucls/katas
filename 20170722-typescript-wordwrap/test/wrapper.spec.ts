@@ -11,8 +11,15 @@ describe('Wrapper', () => {
     describe('wrap()', () => {
 
         it('should do nothing for empty strings', () => {
-            const result = wrapper.wrap('', 10);
-            expect(result).to.equal('');
+            expect(wrapper.wrap('', 10)).to.equal('');
+        });
+
+        it('should not wrap when string is smaller than columns', () => {
+            expect(wrapper.wrap('hello', 5)).to.equal('hello');
+        });
+
+        it('should wrap two words after space', () => {
+            expect(wrapper.wrap('hello world', 7)).to.equal('hello\nworld');
         });
 
     });
