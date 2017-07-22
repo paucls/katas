@@ -27,4 +27,17 @@ describe('Wrapper', () => {
     it('should wrap a single word string longer than columns', () => {
         expect(wrapper.wrap('hello', 3)).to.equal('hel\nlo');
     });
+
+    it('should wrap twice a single word string longer than columns', () => {
+        expect(wrapper.wrap('hello', 2)).to.equal('he\nll\no');
+    });
+
+    it('should wrap after word boundary', () => {
+        expect(wrapper.wrap('hello hello', 6)).to.equal('hello\nhello');
+    });
+
+    it('should wrap three words after second space', () => {
+        expect(wrapper.wrap('hello new world', 9)).to.equal('hello new\nworld');
+    });
+
 });

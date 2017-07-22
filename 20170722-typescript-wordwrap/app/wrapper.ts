@@ -15,7 +15,11 @@ export default class Wrapper {
             return chunk1 + NEW_LINE + this.wrap(chunk2, columns);
         }
 
-        return text.replace(EMPTY_SPACE, NEW_LINE);
+        if (chunk2[0] === EMPTY_SPACE) {
+            return chunk1 + NEW_LINE + this.wrap(chunk2.substring(1), columns);
+        }
+
+        return chunk1.replace(EMPTY_SPACE, NEW_LINE) + this.wrap(chunk2, columns);
     }
 
 }
