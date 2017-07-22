@@ -8,19 +8,19 @@ describe('Wrapper', () => {
         wrapper = new Wrapper();
     });
 
-    describe('wrap()', () => {
+    it('should not wrap an empty string', () => {
+        expect(wrapper.wrap('', 10)).to.equal('');
+    });
 
-        it('should do nothing for empty strings', () => {
-            expect(wrapper.wrap('', 10)).to.equal('');
-        });
+    it('should not wrap a single word string shorter than columns', () => {
+        expect(wrapper.wrap('hello', 10)).to.equal('hello');
+    });
 
-        it('should not wrap when string is smaller than columns', () => {
-            expect(wrapper.wrap('hello', 5)).to.equal('hello');
-        });
+    it('should not wrap a multiple word string shorter than columns', () => {
+        expect(wrapper.wrap('hi all!', 8)).to.equal('hi all!');
+    });
 
-        it('should wrap two words after space', () => {
-            expect(wrapper.wrap('hello world', 7)).to.equal('hello\nworld');
-        });
-
+    it('should wrap two words after space', () => {
+        expect(wrapper.wrap('hello world', 8)).to.equal('hello\nworld');
     });
 });
