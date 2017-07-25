@@ -1,8 +1,8 @@
 const EMPTY_SPACE = ' ';
 const NEW_LINE = '\n';
 
-const replace = searchValue => replaceValue => s => s.replace(searchValue, replaceValue);
-const replaceSpacesByNewLines = replace(EMPTY_SPACE)(NEW_LINE);
+const lastIndexOfSpace = s => s.lastIndexOf(EMPTY_SPACE);
+const replaceLastSpaceByNewLine = s => s.substring(0, lastIndexOfSpace(s)) + NEW_LINE + s.substring(lastIndexOfSpace(s) + 1);
 
 const length = s => s.length;
 
@@ -32,7 +32,7 @@ export default class Wrapper {
             return head(splitAtColumn(text)) + NEW_LINE + wrap(rest(splitAtColumn(text)));
         }
 
-        return replaceSpacesByNewLines(text);
+        return replaceLastSpaceByNewLine(head(splitAtColumn(text))) + wrap(rest(splitAtColumn(text)));
     }
 
 }
