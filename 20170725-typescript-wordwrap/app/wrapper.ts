@@ -10,20 +10,26 @@ const not = x => !x;
 const contains = searchValue => s => s.indexOf(searchValue) > -1;
 const containsSpaces = contains(EMPTY_SPACE);
 
-const chunk = chunkSize => s => s.substring(0, chunkSize);
 const splitAt = position => s => [s.substring(0, position), s.substring(position)];
+const head = x => x[0];
+const rest = x => x[1];
 
 export default class Wrapper {
 
     wrap(text: string, columns: number): string {
+        const wrap = t => this.wrap(t, columns);
         const splitAtColumn = splitAt(columns);
 
         if (length(text) < columns) {
             return text;
         }
 
+        if (EMPTY_SPACE === head(rest(splitAtColumn(text)))) {
+            return head(splitAtColumn(text)) + NEW_LINE + wrap(rest(splitAt(columns + 1)(text)));
+        }
+
         if (not(containsSpaces(text))) {
-            return splitAtColumn(text)[0] + NEW_LINE + this.wrap(splitAtColumn(text)[1], columns);
+            return head(splitAtColumn(text)) + NEW_LINE + wrap(rest(splitAtColumn(text)));
         }
 
         return replaceSpacesByNewLines(text);

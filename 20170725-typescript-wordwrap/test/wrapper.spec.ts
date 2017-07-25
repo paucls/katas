@@ -36,10 +36,10 @@ describe('Wrapper', () => {
         expect(wrapper.wrap('hello hello', 6)).to.equal('hello\nhello');
     });
 
-    // it('should wrap three words after second space', () => {
-    //     expect(wrapper.wrap('hello new world', 9)).to.equal('hello new\nworld');
-    // });
-    //
+    it('should wrap three words after second space', () => {
+        expect(wrapper.wrap('hello new world', 9)).to.equal('hello new\nworld');
+    });
+
     // it('should wrap three words after second space', () => {
     //     expect(wrapper.wrap('hello new world', 11)).to.equal('hello new\nworld');
     // });
