@@ -23,11 +23,11 @@ describe('Wrapper', () => {
     it('should wrap two words after first space', () => {
         expect(wrapper.wrap('hello world', 8)).to.equal('hello\nworld');
     });
-    //
-    // it('should wrap a single word string longer than columns', () => {
-    //     expect(wrapper.wrap('hello', 3)).to.equal('hel\nlo');
-    // });
-    //
+
+    it('should wrap a single word string longer than columns', () => {
+        expect(wrapper.wrap('hello', 3)).to.equal('hel\nlo');
+    });
+
     // it('should wrap twice a single word string longer than columns', () => {
     //     expect(wrapper.wrap('hello', 2)).to.equal('he\nll\no');
     // });

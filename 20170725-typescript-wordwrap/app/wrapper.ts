@@ -11,6 +11,11 @@ export default class Wrapper {
         if (length(text) < columns) {
             return text;
         }
+
+        if (text.indexOf(EMPTY_SPACE) < 0) {
+            return text.substring(0, columns) + NEW_LINE + text.substring(columns);
+        }
+
         return replaceSpacesByNewLines(text);
     }
 
