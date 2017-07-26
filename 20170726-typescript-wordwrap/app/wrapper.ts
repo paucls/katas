@@ -4,6 +4,7 @@ const SPACE = ' ';
 const NEW_LINE = '\n';
 
 const containsSpaces = R.contains(SPACE);
+const replaceLastSpace = s => R.reverse(R.replace(SPACE, NEW_LINE, R.reverse(s)));
 
 export default class Wrapper {
 
@@ -19,7 +20,11 @@ export default class Wrapper {
             return R.head(splitAtColumns(text)) + NEW_LINE + wrap(R.last(splitAtColumns(text)));
         }
 
-        return R.replace(SPACE, NEW_LINE, text);
+        if (SPACE === text[columns]) {
+            return R.head(splitAtColumns(text)) + NEW_LINE + wrap(R.trim(splitAtColumns(text)[1]));
+        }
+
+        return replaceLastSpace(R.head(splitAtColumns(text))) + wrap(R.last(splitAtColumns(text)));
     }
 
 }
