@@ -16,7 +16,7 @@ export default class Wrapper {
         }
 
         if (R.not(containsSpaces(text))) {
-            return splitAtColumns(text)[0] + NEW_LINE + wrap(splitAtColumns(text)[1]);
+            return R.head(splitAtColumns(text)) + NEW_LINE + wrap(R.last(splitAtColumns(text)));
         }
 
         return R.replace(SPACE, NEW_LINE, text);
