@@ -17,6 +17,7 @@
     "@types/chai": "~3.5.2",
     "@types/mocha": "~2.2.41",
     "@types/node": "~7.0.18",
+    "@types/ramda": "github:types/npm-ramda",
     "chai": "~3.5.0",
     "mocha": "~3.2.0",
     "nyc": "~11.0.3",
@@ -39,6 +40,8 @@
       "html",
       "text"
     ]
+  },
+  "dependencies": {
+    "ramda": "^0.24.1"
   }
 }
-
