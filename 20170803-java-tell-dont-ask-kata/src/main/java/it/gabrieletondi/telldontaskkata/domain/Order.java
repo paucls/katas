@@ -1,6 +1,7 @@
 package it.gabrieletondi.telldontaskkata.domain;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -12,7 +13,8 @@ public class Order {
     private int id;
 
     public Order() {
-        this.setStatus(OrderStatus.CREATED);
+        this.status = OrderStatus.CREATED;
+        this.items = new ArrayList<>();
     }
 
     public BigDecimal getTotal() {
@@ -34,11 +36,7 @@ public class Order {
     public List<OrderItem> getItems() {
         return items;
     }
-
-    public void setItems(List<OrderItem> items) {
-        this.items = items;
-    }
-
+    
     public BigDecimal getTax() {
         return tax;
     }
@@ -51,10 +49,6 @@ public class Order {
         return status;
     }
 
-    private void setStatus(OrderStatus status) {
-        this.status = status;
-    }
-
     public int getId() {
         return id;
     }
@@ -64,14 +58,14 @@ public class Order {
     }
 
     public void ship() {
-        this.setStatus(OrderStatus.SHIPPED);
+        this.status = OrderStatus.SHIPPED;
     }
 
     public void approve() {
-        this.setStatus(OrderStatus.APPROVED);
+        this.status = OrderStatus.APPROVED;
     }
 
     public void reject() {
-        this.setStatus(OrderStatus.REJECTED);
+        this.status = OrderStatus.REJECTED;
     }
 }
