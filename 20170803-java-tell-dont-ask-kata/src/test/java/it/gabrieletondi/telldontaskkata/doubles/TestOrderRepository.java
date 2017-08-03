@@ -10,10 +10,13 @@ public class TestOrderRepository implements OrderRepository {
     private Order insertedOrder;
     private List<Order> orders = new ArrayList<>();
 
+    //    test double method
+
     public Order getSavedOrder() {
         return insertedOrder;
     }
 
+    @Override
     public void save(Order order) {
         this.insertedOrder = order;
     }
@@ -23,6 +26,7 @@ public class TestOrderRepository implements OrderRepository {
         return orders.stream().filter(o -> o.getId() == orderId).findFirst().get();
     }
 
+    //    test double method
     public void addOrder(Order order) {
         this.orders.add(order);
     }
