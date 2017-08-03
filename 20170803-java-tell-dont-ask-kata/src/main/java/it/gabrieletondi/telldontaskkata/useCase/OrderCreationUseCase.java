@@ -24,7 +24,6 @@ public class OrderCreationUseCase {
 
     public void run(SellItemsRequest request) {
         Order order = new Order();
-        order.setCurrency("EUR");
 
         for (SellItemRequest itemRequest : request.getRequests()) {
             Product product = productCatalog.getByName(itemRequest.getProductName());
@@ -45,10 +44,8 @@ public class OrderCreationUseCase {
                 orderItem.setQuantity(itemRequest.getQuantity());
                 orderItem.setTax(taxAmount);
                 orderItem.setTaxedAmount(taxedAmount);
-                order.addItem(orderItem);
 
-                order.addToTotal(taxedAmount);
-                order.addToTax(taxAmount);
+                order.addItem(orderItem);
             }
         }
 

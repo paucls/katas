@@ -17,6 +17,7 @@ public class Order {
         this.items = new ArrayList<>();
         this.tax = new BigDecimal(0);
         this.total = new BigDecimal(0);
+        this.currency = "EUR";
     }
 
     public BigDecimal getTotal() {
@@ -25,10 +26,6 @@ public class Order {
 
     public String getCurrency() {
         return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 
     public List<OrderItem> getItems() {
@@ -65,13 +62,15 @@ public class Order {
 
     public void addItem(OrderItem orderItem) {
         this.items.add(orderItem);
+        addToTotal(orderItem.getTaxedAmount());
+        addToTax(orderItem.getTax());
     }
 
-    public void addToTotal(BigDecimal amount) {
+    private void addToTotal(BigDecimal amount) {
         this.total = this.total.add(amount);
     }
 
-    public void addToTax(BigDecimal amount) {
+    private void addToTax(BigDecimal amount) {
         this.tax = this.tax.add(amount);
     }
 }
