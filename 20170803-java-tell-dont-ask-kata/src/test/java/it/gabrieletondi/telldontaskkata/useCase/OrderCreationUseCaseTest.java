@@ -7,12 +7,15 @@ import it.gabrieletondi.telldontaskkata.domain.Product;
 import it.gabrieletondi.telldontaskkata.doubles.InMemoryProductCatalog;
 import it.gabrieletondi.telldontaskkata.doubles.TestOrderRepository;
 import it.gabrieletondi.telldontaskkata.repository.ProductCatalog;
+import it.gabrieletondi.telldontaskkata.useCase.orderCreation.OrderCreationUseCase;
+import it.gabrieletondi.telldontaskkata.useCase.orderCreation.SellItemRequest;
+import it.gabrieletondi.telldontaskkata.useCase.orderCreation.SellItemsRequest;
+import it.gabrieletondi.telldontaskkata.useCase.orderCreation.UnknownProductException;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;

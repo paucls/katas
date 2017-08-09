@@ -1,4 +1,4 @@
-package it.gabrieletondi.telldontaskkata.useCase;
+package it.gabrieletondi.telldontaskkata.useCase.orderShipment;
 
 public class OrderShipmentRequest {
     private int orderId;
