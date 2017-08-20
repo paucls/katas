@@ -2,12 +2,18 @@ package com.katas;
 
 import java.util.List;
 
-public class Basket {
+class Basket {
 
-    public Basket(List<String> strings) {
+    private static final double BOOK_PRICE = 8.0;
+
+    private List<String> books;
+
+    Basket(List<String> books) {
+        this.books = books;
     }
 
-    public double calculateTotal() {
-        return 0.00;
+    double calculateTotal() {
+        return books.size() * BOOK_PRICE;
     }
+
 }
