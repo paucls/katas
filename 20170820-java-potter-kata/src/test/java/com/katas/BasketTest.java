@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 public class BasketTest {
 
     @Test
-    public void no_discount_for_single_book()  {
+    public void no_discount_for_single_book() {
         Basket basket = new Basket(Collections.singletonList("first book"));
 
         assertThat(basket.calculateTotal(), is(8.00));
@@ -29,7 +29,13 @@ public class BasketTest {
         Basket basket = new Basket(Arrays.asList("first book", "second book"));
 
         assertThat(basket.calculateTotal(), is(16 - 16 * 0.05));
+    }
 
+    @Test
+    public void apply_10p_discount_when_three_diferent_books() {
+        Basket basket = new Basket(Arrays.asList("first book", "second book", "third book"));
+
+        assertThat(basket.calculateTotal(), is(24 - 24 * 0.10));
     }
 
 }

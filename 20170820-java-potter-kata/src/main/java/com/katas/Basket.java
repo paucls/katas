@@ -1,13 +1,17 @@
 package com.katas;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 class Basket {
 
     private static final double BOOK_PRICE = 8.0;
-    private static final double DISCOUNT_2_BOOKS = 0.05;
+
+    private static final HashMap<Integer, Double> DISCOUNT_PER_DIFFERENT_BOOKS =
+            new HashMap<Integer, Double>() {{
+                put(1, 0.00);
+                put(2, 0.05);
+                put(3, 0.10);
+            }};
 
     private List<String> books;
 
@@ -16,15 +20,12 @@ class Basket {
     }
 
     double calculateTotal() {
-        Set<String> differentBooks = new HashSet<>(books);
-
         Double total = books.size() * BOOK_PRICE;
 
-        if (differentBooks.size() == 2) {
-            return applyDiscount(total, DISCOUNT_2_BOOKS);
-        }
+        int differentBooksCount = new HashSet<>(books).size();
+        Double discount = DISCOUNT_PER_DIFFERENT_BOOKS.get(differentBooksCount);
 
-        return total;
+        return applyDiscount(total, discount);
     }
 
     private double applyDiscount(Double amount, Double discount) {
