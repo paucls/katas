@@ -1,7 +1,12 @@
 package com.katas
 
-class FileLogger(val fileWriter: FileWriter) {
+class FileLogger(private val fileWriter: FileWriter) {
+    val logFileName = "log.txt"
+
     fun log(message: String) {
-        fileWriter.appendText("log.txt", message)
+        if (fileWriter.exist(logFileName))
+            fileWriter.appendText(logFileName, message)
+        else
+            fileWriter.writeText(logFileName, message)
     }
 }
