@@ -9,24 +9,28 @@ object FileLoggerSpec : Spek({
 
     describe("File Logger") {
         val message = "A message"
-        val fileWriter = mock(FileWriter::class.java)
-        val logger = FileLogger(fileWriter)
+        val fileWriterMock = mock(FileWriter::class.java)
+        val dateProviderMock = mock(DateProvider::class.java)
+        val logger = FileLogger(fileWriterMock, dateProviderMock)
 
-        it("should append message to end of file when file already exists") {
-            `when`(fileWriter.exist("log.txt")).thenReturn(true)
-
-            logger.log(message)
-
-            verify(fileWriter).appendText("log.txt", message)
-        }
-
-        it("should write message to new file when file does not exist yet") {
-            `when`(fileWriter.exist("log.txt")).thenReturn(false)
+        it("should append message to end of file when file already exists for the day") {
+            `when`(dateProviderMock.currentDate("yyyyMMdd")).thenReturn("20170129")
+            `when`(fileWriterMock.exist("log20170129.txt")).thenReturn(true)
 
             logger.log(message)
 
-            verify(fileWriter).writeText("log.txt", message)
+            verify(fileWriterMock).appendText("log20170129.txt", message)
         }
+
+        it("should write message to new file when file does not exist yet for the day") {
+            `when`(dateProviderMock.currentDate("yyyyMMdd")).thenReturn("20170129")
+            `when`(fileWriterMock.exist("log20170129.txt")).thenReturn(false)
+
+            logger.log(message)
+
+            verify(fileWriterMock).writeText("log20170129.txt", message)
+        }
+
     }
 
 })

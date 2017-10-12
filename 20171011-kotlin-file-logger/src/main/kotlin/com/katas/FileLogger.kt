@@ -1,12 +1,16 @@
 package com.katas
 
-class FileLogger(private val fileWriter: FileWriter) {
-    val logFileName = "log.txt"
+class FileLogger(
+        private val fileWriter: FileWriter,
+        private val dateProvider: DateProvider) {
 
     fun log(message: String) {
-        if (fileWriter.exist(logFileName))
-            fileWriter.appendText(logFileName, message)
+        val currentDate = dateProvider.currentDate("yyyyMMdd")
+        val fileName = "log$currentDate.txt"
+
+        if (fileWriter.exist(fileName))
+            fileWriter.appendText(fileName, message)
         else
-            fileWriter.writeText(logFileName, message)
+            fileWriter.writeText(fileName, message)
     }
 }

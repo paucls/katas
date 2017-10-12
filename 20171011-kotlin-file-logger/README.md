@@ -4,13 +4,16 @@ Source: [https://github.com/ardalis/kata-catalog](https://github.com/ardalis/kat
 
 # Background #
 
-This kata is designed to help develop skill with using mock objects appropriately. The initial steps can be completed using direct infrastructure code, but later steps become increasingly difficult to test without the ability to mock out certain dependencies.
+This kata is designed to help develop skill with using mock objects appropriately. The initial steps can be 
+completed using direct infrastructure code, but later steps become increasingly difficult to test without the 
+ability to mock out certain dependencies.
 
 # Instructions #
 
 - Write a class 'FileLogger' with one method, ``Log(string message)``.
 
-- When this method is called, it should append the message to the end of a file, "log.txt", located in the same folder as the running application (or tests).
+- When this method is called, it should append the message to the end of a file, "log.txt", 
+located in the same folder as the running application (or tests).
 
 - If the file doesn't exist, create it. If it does exist, use it and append to it.
 
@@ -18,9 +21,11 @@ This kata is designed to help develop skill with using mock objects appropriatel
 
 - Verify that a new file is created if it doesn't exist on each new day.
 
-- The IT manager doesn't want to have to open multiple files on Mondays. Any time logging is occurring on a Saturday or Sunday, have it log to a file called "weekend.txt". If it already exists, it can just append to it.
+- The IT manager doesn't want to have to open multiple files on Mondays. Any time logging is occurring on a Saturday or 
+Sunday, have it log to a file called "weekend.txt". If it already exists, it can just append to it.
 
-- Actually, the manager just gave us new requirements. The first time you log to a file on a new weekend, make sure you start with a fresh "weekend.txt" file.
+- Actually, the manager just gave us new requirements. The first time you log to a file on a new weekend, make sure 
+you start with a fresh "weekend.txt" file.
 
 # Resources #
 
