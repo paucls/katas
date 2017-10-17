@@ -32,6 +32,13 @@ object BottlesSpec : Spek({
             """.trimIndent())
         }
 
+        it("verse 1") {
+            assertThat(bottles.verse(1)).isEqualTo("""
+                1 bottle of beer on the wall, 1 bottle of beer.
+                Take it down and pass it around, no more bottles of beer on the wall.
+            """.trimIndent())
+        }
+
     }
 
 })
