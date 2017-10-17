@@ -2,8 +2,14 @@ package com.katas
 
 class Bottles {
 
-    fun verses(from: Int, to: Int): String {
-        return verse(from) + "\n\n" + verse(to)
+    fun verses(from: Int, last: Int): String {
+        var verses = ""
+
+        for (i in from downTo last) {
+            verses += verse(i) + "\n\n"
+        }
+
+        return verses.trim()
     }
 
     fun verse(number: Int): String {
