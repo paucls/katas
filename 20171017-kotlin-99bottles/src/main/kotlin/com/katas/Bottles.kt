@@ -2,6 +2,10 @@ package com.katas
 
 class Bottles {
 
+    fun verses(from: Int, to: Int): String {
+        return verse(from) + "\n\n" + verse(to)
+    }
+
     fun verse(number: Int): String {
 
         val numberBottles = "$number ${bottles(number)}"
@@ -26,6 +30,6 @@ class Bottles {
         }
     }
 
-    fun bottles(number: Int): String = if (number > 1) "bottles" else "bottle"
+    private fun bottles(number: Int): String = if (number > 1) "bottles" else "bottle"
 
 }
