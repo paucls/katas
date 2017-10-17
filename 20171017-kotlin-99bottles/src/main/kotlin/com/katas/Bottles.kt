@@ -2,6 +2,8 @@ package com.katas
 
 class Bottles {
 
+    fun song(): String = verses(99, 0)
+
     fun verses(from: Int, last: Int): String {
         var verses = ""
 
