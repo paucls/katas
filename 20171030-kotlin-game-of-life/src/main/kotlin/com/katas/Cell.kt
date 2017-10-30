@@ -2,7 +2,7 @@ package com.katas
 
 class Cell(
         val alive: Boolean = false,
-        private val neighbours: List<Cell> = emptyList()
+        var neighbours: List<Cell> = mutableListOf<Cell>()
 ) {
     fun nextGeneration(): Cell {
         if (!alive && aliveNeighboursCount() != 3) return this

@@ -31,12 +31,16 @@ object GameSpec : Spek({
                 assertThat(game.next().isGameOver()).isTrue()
             }
 
-//            it("4x1 Grid") {
-//                val game = Game(listOf(Cell(false), Cell(true), Cell(true), Cell(true)))
-//
-//                assertThat(game.next().isGameOver()).isFalse()
-//                assertThat(game.next().cells).isEqualTo(listOf(Cell(false), Cell(false), Cell(true), Cell(false)))
-//            }
+            it("4x1 Grid where one survives") {
+                val game = Game(listOf(Cell(false), Cell(true), Cell(true), Cell(true)))
+
+                val nextGame = game.next()
+                assertThat(nextGame.isGameOver()).isFalse()
+                assertThat(nextGame.cells[0].alive).isFalse()
+                assertThat(nextGame.cells[1].alive).isFalse()
+                assertThat(nextGame.cells[2].alive).isTrue()
+                assertThat(nextGame.cells[3].alive).isFalse()
+            }
         }
 
     }
