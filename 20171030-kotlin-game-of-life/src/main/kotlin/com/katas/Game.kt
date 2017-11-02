@@ -13,6 +13,9 @@ class Game(
             if (index % colsCount + 1 < colsCount)
                 cell.neighbours += cells[index + 1]
 
+            if (index - colsCount >= 0)
+                cell.neighbours += cells[index - colsCount]
+
             if (index + colsCount < cells.size)
                 cell.neighbours += cells[index + colsCount]
         }

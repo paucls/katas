@@ -51,7 +51,18 @@ object GameSpec : Spek({
                 assertThat(game.cells[2].neighbours).isEqualTo(listOf(cell1))
             }
 
-            it("must link each cell with all their left, right and below neighbours") {
+            it("must link each cell with all their above and below neighbours") {
+                val cell0 = Cell();
+                val cell1 = Cell();
+                val cell2 = Cell();
+                val game = Game(1, 3, listOf(cell0, cell1, cell2))
+
+                assertThat(game.cells[0].neighbours).isEqualTo(listOf(cell1))
+                assertThat(game.cells[1].neighbours).isEqualTo(listOf(cell0, cell2))
+                assertThat(game.cells[2].neighbours).isEqualTo(listOf(cell1))
+            }
+
+            it("must link each cell with all their left, right, above and below neighbours") {
                 val cell00 = Cell();
                 val cell01 = Cell();
                 val cell10 = Cell();
@@ -61,8 +72,8 @@ object GameSpec : Spek({
 
                 assertThat(game.cells[0].neighbours).isEqualTo(listOf(cell01, cell10))
                 assertThat(game.cells[1].neighbours).isEqualTo(listOf(cell00, cell11))
-                assertThat(game.cells[2].neighbours).isEqualTo(listOf(cell11))
-                assertThat(game.cells[3].neighbours).isEqualTo(listOf(cell10))
+                assertThat(game.cells[2].neighbours).isEqualTo(listOf(cell11, cell00))
+                assertThat(game.cells[3].neighbours).isEqualTo(listOf(cell10, cell01))
             }
 
         }
