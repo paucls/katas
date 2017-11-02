@@ -1,19 +1,26 @@
 package com.katas
 
-class Game(val cells: List<Cell>) {
+class Game(
+        val colsCount: Int,
+        val rowsCount: Int,
+        val cells: List<Cell>
+) {
     init {
         cells.forEachIndexed { index, cell ->
-            if (index - 1 >= 0)
+            if (index % colsCount > 0)
                 cell.neighbours += cells[index - 1]
 
-            if (index + 1 < cells.size)
+            if (index % colsCount + 1 < colsCount)
                 cell.neighbours += cells[index + 1]
+
+            if (index + colsCount < cells.size)
+                cell.neighbours += cells[index + colsCount]
         }
     }
 
     fun isGameOver(): Boolean = cells.all { !it.alive }
 
     fun next(): Game {
-        return Game(cells.map { it.nextGeneration() })
+        return Game(colsCount, rowsCount, cells.map { it.nextGeneration() })
     }
 }
