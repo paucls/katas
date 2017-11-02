@@ -38,6 +38,21 @@ object GameSpec : Spek({
 
         }
 
+        describe("initialization") {
+
+            it("must link each cell with all their left and right neighbours") {
+                val cell0 = Cell();
+                val cell1 = Cell();
+                val cell2 = Cell();
+                val game = Game(listOf(cell0, cell1, cell2))
+
+                assertThat(game.cells[0].neighbours).isEqualTo(listOf(cell1))
+                assertThat(game.cells[1].neighbours).isEqualTo(listOf(cell0, cell2))
+                assertThat(game.cells[2].neighbours).isEqualTo(listOf(cell1))
+            }
+
+        }
+
     }
 
 })
