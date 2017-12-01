@@ -10,11 +10,24 @@ object AccountSpec : Spek({
 
     describe("printStatement") {
 
-        given("client didn't make any operation") {
+        given("client didn't make any transaction") {
             it("prints a empty statement") {
                 val account = Account()
 
-                assertThat(account.printStatement()).isEqualTo("Date    Amount  Balance")
+                assertThat(account.printStatement()).isEqualTo("Date  Amount  Balance")
+            }
+        }
+
+        given("client made a deposit") {
+            it("prints a statement containing the deposit") {
+                val account = Account()
+
+                account.deposit(500)
+
+                assertThat(account.printStatement()).isEqualTo("""
+                    Date  Amount  Balance
+                    24/12/2015  +500  500
+                    """.trimIndent())
             }
         }
 
