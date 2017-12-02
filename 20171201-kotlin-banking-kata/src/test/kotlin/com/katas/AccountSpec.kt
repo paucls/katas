@@ -14,10 +14,11 @@ object AccountSpec : Spek({
     describe("printStatement") {
 
         val dateProviderMock = mock(DateProvider::class.java)
+        val statementPresenter = PrintStatementPresenter()
 
         given("client didn't make any transaction") {
             it("prints a empty statement") {
-                val account = Account(dateProviderMock)
+                val account = Account(dateProviderMock, statementPresenter)
 
                 assertThat(account.printStatement()).isEqualTo("Date  Amount  Balance")
             }
@@ -25,7 +26,7 @@ object AccountSpec : Spek({
 
         given("client made a deposit") {
             it("prints a statement containing the deposit") {
-                val account = Account(dateProviderMock)
+                val account = Account(dateProviderMock, statementPresenter)
                 `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2017, 10, 5))
 
                 account.deposit(500)
@@ -39,7 +40,7 @@ object AccountSpec : Spek({
 
         given("client made multiple deposits") {
             it("prints a statement containing deposits and calculates balance") {
-                val account = Account(dateProviderMock)
+                val account = Account(dateProviderMock, statementPresenter)
                 `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2015, 12, 24))
 
                 account.deposit(500)
