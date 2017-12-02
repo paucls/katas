@@ -1,24 +1,36 @@
 package com.katas
 
-class Account {
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
+class Account(val dateProvider: DateProvider) {
 
     private val header = "Date  Amount  Balance"
+    private val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
     private var transactions = mutableListOf<Transaction>()
 
+    fun deposit(amount: Int) {
+        transactions.add(Transaction(dateProvider.currentDate(), amount))
+    }
+
     fun printStatement(): String {
-        val rows = transactions.map {
-            "\n24/12/2015  +${it.amount}  ${it.amount}"
-        }.joinToString()
+        val rows = transactions.map(this::printTransaction).joinToString()
 
         return header + rows
     }
 
-    fun deposit(amount: Int) {
-        transactions.add(Transaction(amount))
+    private fun printTransaction(transaction: Transaction): String {
+        val date = transaction.date.format(formatter)
+
+        return "\n${date}  +${transaction.amount}  ${transaction.amount}"
     }
 
 }
 
-data class Transaction(val amount: Int)
+class DateProvider {
+    fun currentDate(): LocalDate {
+        return LocalDate.now()
+    }
+}
 
-
+data class Transaction(val date: LocalDate, val amount: Int)
