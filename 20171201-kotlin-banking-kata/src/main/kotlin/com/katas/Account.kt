@@ -14,15 +14,21 @@ class Account(val dateProvider: DateProvider) {
     }
 
     fun printStatement(): String {
-        val rows = transactions.map(this::printTransaction).joinToString()
+        var balance = 0
+        var rows = ""
+
+        transactions.forEach {
+            balance += it.amount
+            rows += printTransaction(it, balance)
+        }
 
         return header + rows
     }
 
-    private fun printTransaction(transaction: Transaction): String {
+    private fun printTransaction(transaction: Transaction, balance: Int): String {
         val date = transaction.date.format(formatter)
 
-        return "\n${date}  +${transaction.amount}  ${transaction.amount}"
+        return "\n${date}  +${transaction.amount}  ${balance}"
     }
 
 }

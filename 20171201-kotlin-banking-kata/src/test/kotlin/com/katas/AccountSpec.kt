@@ -26,13 +26,31 @@ object AccountSpec : Spek({
         given("client made a deposit") {
             it("prints a statement containing the deposit") {
                 val account = Account(dateProviderMock)
-                `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2015, 12, 24))
+                `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2017, 10, 5))
 
                 account.deposit(500)
 
                 assertThat(account.printStatement()).isEqualTo("""
                     Date  Amount  Balance
+                    05/10/2017  +500  500
+                    """.trimIndent())
+            }
+        }
+
+        given("client made multiple deposits") {
+            it("prints a statement containing deposits and calculates balance") {
+                val account = Account(dateProviderMock)
+                `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2015, 12, 24))
+
+                account.deposit(500)
+                account.deposit(300)
+                account.deposit(50)
+
+                assertThat(account.printStatement()).isEqualTo("""
+                    Date  Amount  Balance
                     24/12/2015  +500  500
+                    24/12/2015  +300  800
+                    24/12/2015  +50  850
                     """.trimIndent())
             }
         }
