@@ -13,6 +13,11 @@ class Account(private val dateProvider: DateProvider,
         transactions.add(Transaction(dateProvider.currentDate(), amount, newBalance))
     }
 
+    fun withdraw(amount: Int) {
+        val newBalance = balance() - amount
+        transactions.add(Transaction(dateProvider.currentDate(), -amount, newBalance))
+    }
+
     private fun balance(): Int {
         return if (transactions.isEmpty()) 0
         else transactions.last().balance
@@ -39,8 +44,9 @@ class PrintStatementPresenter : StatementPresenter {
 
     private fun printTransaction(transaction: Transaction): String {
         val date = transaction.date.format(formatter)
+        val amount = if (transaction.amount > 0) "+${transaction.amount}" else transaction.amount
 
-        return "\n${date}  +${transaction.amount}  ${transaction.balance}"
+        return "\n$date  $amount  ${transaction.balance}"
     }
 }
 

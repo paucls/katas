@@ -59,6 +59,22 @@ object AccountSpec : Spek({
             }
         }
 
+        given("client made a deposit and a withdraw") {
+            it("prints a statement containing the deposit and withdraw") {
+                `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2017, 10, 5))
+                account.deposit(500)
+
+                `when`(dateProviderMock.currentDate()).thenReturn(LocalDate.of(2017, 10, 6))
+                account.withdraw(100)
+
+                assertThat(account.printStatement()).isEqualTo("""
+                    Date  Amount  Balance
+                    05/10/2017  +500  500
+                    06/10/2017  -100  400
+                    """.trimIndent())
+            }
+        }
+
     }
 
 })
