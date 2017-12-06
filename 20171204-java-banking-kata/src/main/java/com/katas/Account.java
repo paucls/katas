@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Account {
 
-    private static final String STATEMENT_HEADER = "Date  Amount  Balance";
-
     private DateProvider dateProvider;
     private StatementPresenter statementPresenter;
     private List<Transaction> transactions;
@@ -34,26 +32,7 @@ public class Account {
             statementLines.add(new StatementLine(date, amount, balance));
         }
 
-        statementPresenter.printStatement(statementLines);
-
-        //
-
-        StringBuilder allStatementLines = new StringBuilder();
-        balance = 0;
-
-        for (Transaction transaction : transactions) {
-            String date = transaction.getDate().toString();
-            Integer amount = transaction.getAmount();
-            balance += amount;
-
-            allStatementLines.append(buildStatementLine(balance, date, amount));
-        }
-
-        return STATEMENT_HEADER + allStatementLines;
-    }
-
-    private String buildStatementLine(Integer balance, String date, Integer amount) {
-        return "\n" + date + "  +" + amount + "  " + balance;
+        return statementPresenter.printStatement(statementLines);
     }
 
 }
