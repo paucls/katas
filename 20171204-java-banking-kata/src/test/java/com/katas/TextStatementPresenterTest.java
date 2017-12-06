@@ -47,7 +47,8 @@ public class TextStatementPresenterTest {
     public void printStatement_when_multiple_lines_prints_multiple_lines() {
         List<StatementLine> statementLines = Arrays.asList(
                 new StatementLine(LocalDate.of(2017, 10, 25), 500, 500),
-                new StatementLine(LocalDate.of(2017, 10, 25), 400, 900)
+                new StatementLine(LocalDate.of(2017, 10, 25), 400, 900),
+                new StatementLine(LocalDate.of(2017, 10, 25), -300, 600)
         );
 
         // When
@@ -56,7 +57,8 @@ public class TextStatementPresenterTest {
         // Then
         assertThat(statement).isEqualTo("Date  Amount  Balance" +
                 "\n2017-10-25  +500  500" +
-                "\n2017-10-25  +400  900");
+                "\n2017-10-25  +400  900" +
+                "\n2017-10-25  -300  600");
     }
 
 }

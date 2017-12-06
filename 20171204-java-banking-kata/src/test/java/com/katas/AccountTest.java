@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Matchers.any;
@@ -38,11 +37,28 @@ public class AccountTest {
         account.printStatement();
 
         // Then
-        List<StatementLine> statementLines = Arrays.asList(
+        verify(statementPresenterMock).printStatement(Arrays.asList(
                 new StatementLine(date, 500, 500),
                 new StatementLine(date, 400, 900)
-        );
-        verify(statementPresenterMock).printStatement(statementLines);
+        ));
+    }
+
+    @Test
+    public void calculates_balance_for_deposits_and_withdrawals() {
+        // Given
+        LocalDate date = LocalDate.of(2016, 1, 25);
+        when(dateProviderMock.currentDate()).thenReturn(date);
+        account.deposit(500);
+        account.withdraw(300);
+
+        // When
+        account.printStatement();
+
+        // Then
+        verify(statementPresenterMock).printStatement(Arrays.asList(
+                new StatementLine(date, 500, 500),
+                new StatementLine(date, -300, 200)
+        ));
     }
 
     @Test

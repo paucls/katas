@@ -24,6 +24,8 @@ public class AccountIntegrationTest {
         // Given
         account.deposit(500);
         account.deposit(400);
+        account.withdraw(300);
+        account.deposit(50);
 
         // When
         String statement = account.printStatement();
@@ -31,7 +33,9 @@ public class AccountIntegrationTest {
         // Then
         assertThat(statement).isEqualTo("Date  Amount  Balance" +
                 "\n" + testDate + "  +500  500" +
-                "\n" + testDate + "  +400  900");
+                "\n" + testDate + "  +400  900" +
+                "\n" + testDate + "  -300  600" +
+                "\n" + testDate + "  +50  650");
     }
 
 }

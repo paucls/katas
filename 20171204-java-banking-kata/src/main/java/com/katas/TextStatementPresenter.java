@@ -19,6 +19,8 @@ public class TextStatementPresenter implements StatementPresenter {
     }
 
     private String buildStatementLine(LocalDate date, Integer amount, Integer balance) {
-        return "\n" + date + "  +" + amount + "  " + balance;
+        String prefix = amount > 0 ? "+" : "";
+
+        return "\n" + date + "  " + prefix + amount + "  " + balance;
     }
 }

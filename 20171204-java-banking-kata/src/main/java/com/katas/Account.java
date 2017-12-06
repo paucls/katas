@@ -20,6 +20,10 @@ public class Account {
         transactions.add(new Transaction(dateProvider.currentDate(), amount));
     }
 
+    public void withdraw(int amount) {
+        transactions.add(new Transaction(dateProvider.currentDate(), -amount));
+    }
+
     public String printStatement() {
         Integer balance = 0;
 
@@ -34,5 +38,4 @@ public class Account {
 
         return statementPresenter.printStatement(statementLines);
     }
-
 }
