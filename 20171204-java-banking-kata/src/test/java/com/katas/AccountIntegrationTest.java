@@ -3,15 +3,20 @@ package com.katas;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class AccountTest {
+public class AccountIntegrationTest {
 
     private Account account;
+    private LocalDate testDate;
 
     @Before
     public void setUp() {
-        account = new Account(new DateProvider());
+        DateProvider dateProvider = new DateProvider();
+        account = new Account(dateProvider);
+        testDate = dateProvider.currentDate();
     }
 
     @Test
@@ -33,7 +38,7 @@ public class AccountTest {
 
         // Assert
         assertThat(statement).isEqualTo("Date  Amount  Balance" +
-                "\n2017-12-06  +500  500");
+                "\n" + testDate + "  +500  500");
     }
 
     @Test
@@ -47,8 +52,8 @@ public class AccountTest {
 
         // Assert
         assertThat(statement).isEqualTo("Date  Amount  Balance" +
-                "\n2017-12-06  +500  500" +
-                "\n2017-12-06  +400  900");
+                "\n" + testDate + "  +500  500" +
+                "\n" + testDate + "  +400  900");
     }
 
 }
