@@ -4,20 +4,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class AccountTest {
 
     private DateProvider dateProviderMock;
+    private StatementPresenter statementPresenterMock;
     private Account account;
 
     @Before
     public void setUp() {
         dateProviderMock = mock(DateProvider.class);
-        account = new Account(dateProviderMock);
+        statementPresenterMock = mock(StatementPresenter.class);
+        account = new Account(dateProviderMock, statementPresenterMock);
     }
 
     @Test
@@ -57,6 +62,25 @@ public class AccountTest {
         assertThat(statement).isEqualTo("Date  Amount  Balance" +
                 "\n2017-10-25  +500  500" +
                 "\n2017-10-25  +400  900");
+    }
+
+    @Test
+    public void calculates_balance_for_multiple_deposits() {
+        // Given
+        LocalDate date = LocalDate.of(2017, 10, 25);
+        when(dateProviderMock.currentDate()).thenReturn(date);
+        account.deposit(500);
+        account.deposit(400);
+
+        // When
+        account.printStatement();
+
+        // Then
+        List<StatementLine> statementLines = Arrays.asList(
+                new StatementLine(date, 500, 500),
+                new StatementLine(date, 400, 900)
+        );
+        verify(statementPresenterMock).printStatement(statementLines);
     }
 
 }

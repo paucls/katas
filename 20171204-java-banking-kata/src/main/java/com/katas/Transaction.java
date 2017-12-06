@@ -7,7 +7,7 @@ public class Transaction {
     private LocalDate date;
     private Integer amount;
 
-    public Transaction(LocalDate date, Integer amount) {
+    Transaction(LocalDate date, Integer amount) {
         this.date = date;
         this.amount = amount;
     }

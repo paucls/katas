@@ -15,7 +15,7 @@ public class AccountIntegrationTest {
     @Before
     public void setUp() {
         DateProvider dateProvider = new DateProvider();
-        account = new Account(dateProvider);
+        account = new Account(dateProvider, new TextStatementPresenter());
         testDate = dateProvider.currentDate();
     }
 
