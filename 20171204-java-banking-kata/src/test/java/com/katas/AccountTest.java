@@ -11,7 +11,7 @@ public class AccountTest {
 
     @Before
     public void setUp() {
-        account = new Account();
+        account = new Account(new DateProvider());
     }
 
     @Test
