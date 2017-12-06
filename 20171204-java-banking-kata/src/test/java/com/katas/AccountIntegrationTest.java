@@ -20,37 +20,15 @@ public class AccountIntegrationTest {
     }
 
     @Test
-    public void printStatement_when_no_transactions_prints_only_the_header() {
-        // Act
-        String statement = account.printStatement();
-
-        // Assert
-        assertThat(statement).isEqualTo("Date  Amount  Balance");
-    }
-
-    @Test
-    public void printStatement_when_one_deposit_prints_a_statement_line() {
-        // Arrange
-        account.deposit(500);
-
-        // Act
-        String statement = account.printStatement();
-
-        // Assert
-        assertThat(statement).isEqualTo("Date  Amount  Balance" +
-                "\n" + testDate + "  +500  500");
-    }
-
-    @Test
     public void printStatement_when_multiple_deposits_prints_multiple_statement_lines() {
-        // Arrange
+        // Given
         account.deposit(500);
         account.deposit(400);
 
-        // Act
+        // When
         String statement = account.printStatement();
 
-        // Assert
+        // Then
         assertThat(statement).isEqualTo("Date  Amount  Balance" +
                 "\n" + testDate + "  +500  500" +
                 "\n" + testDate + "  +400  900");
