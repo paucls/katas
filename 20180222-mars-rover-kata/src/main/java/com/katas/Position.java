@@ -7,17 +7,17 @@ public class Position {
     private final int x;
     private final int y;
 
-    public Position(int x, int y) {
+    Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
-        return x;
+    public Position plusY(int amount) {
+        return new Position(x, y + amount);
     }
 
-    public int getY() {
-        return y;
+    public Position minusY(int amount) {
+        return new Position(x, y - amount);
     }
 
     @Override

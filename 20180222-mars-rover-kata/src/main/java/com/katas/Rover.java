@@ -11,11 +11,11 @@ public class Rover {
     }
 
     public void moveForward() {
-        position = new Position(position.getX(), position.getY() + STEP);
+        position = position.plusY(STEP);
     }
 
     public void moveBackward() {
-        position = new Position(position.getX(), position.getY() - STEP);
+        position = position.minusY(STEP);
     }
 
     public Position getPosition() {
