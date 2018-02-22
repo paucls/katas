@@ -2,14 +2,24 @@ package com.katas;
 
 public class RoverAPI {
 
-	private Rover rover;
+    private static final char FORWARD_COMMAND = 'f';
+    private static final char BACKWARD_COMMAND = 'b';
 
-	public RoverAPI(Rover rover) {
-		this.rover = rover;
-	}
+    private Rover rover;
 
-	public boolean handle(char[] commands) {
-		rover.moveForward();
-		return true;
-	}
+    RoverAPI(Rover rover) {
+        this.rover = rover;
+    }
+
+    public void handle(char[] commands) {
+        switch (commands[0]) {
+            case FORWARD_COMMAND:
+                rover.moveForward();
+                break;
+            case BACKWARD_COMMAND:
+                rover.moveBackward();
+                break;
+                
+        }
+    }
 }

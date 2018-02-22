@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 public class RoverAPITest {
@@ -20,16 +21,23 @@ public class RoverAPITest {
     }
 
     @Test
-    public void should_accept_character_commands() {
-        boolean result = roverAPI.handle(new char[]{'a'});
-
-        assertThat(result, is(true));
-    }
-
-    @Test
     public void can_handle_forward_command() {
         roverAPI.handle(new char[]{'f'});
 
         verify(roverMock).moveForward();
+    }
+
+    @Test
+    public void should_do_nothing_for_unknown_commands() {
+        roverAPI.handle(new char[]{'x'});
+
+        verify(roverMock, never()).moveForward();
+    }
+
+    @Test
+    public void can_handle_backward_command() {
+        roverAPI.handle(new char[]{'b'});
+
+        verify(roverMock).moveBackward();
     }
 }
