@@ -51,4 +51,11 @@ public class MarsRoverTest {
 
         assertThat(rover.currentDirection()).isEqualTo(Direction.WEST);
     }
+
+    @Test
+    public void should_turn_right() {
+        rover.handleCommand(new char[]{'r'});
+
+        assertThat(rover.currentDirection()).isEqualTo(Direction.EAST);
+    }
 }

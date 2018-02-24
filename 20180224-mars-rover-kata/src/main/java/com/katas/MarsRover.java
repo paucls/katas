@@ -5,6 +5,7 @@ public class MarsRover {
     private static final char BACKWARD_COMMAND = 'b';
     private static final char FORWARD_COMMAND = 'f';
     private static final char TURN_LEFT_COMMAND = 'l';
+    private static final char TURN_RIGHT_COMMAND = 'r';
 
     private GridPosition position;
     private Direction direction;
@@ -32,10 +33,21 @@ public class MarsRover {
                     moveForward();
                     break;
                 case TURN_LEFT_COMMAND:
-                    direction = Direction.WEST;
+                    turnLeft();
+                    break;
+                case TURN_RIGHT_COMMAND:
+                    turnRight();
                     break;
             }
         }
+    }
+
+    private void turnRight() {
+        direction = Direction.EAST;
+    }
+
+    private void turnLeft() {
+        direction = Direction.WEST;
     }
 
     private void moveBackward() {
