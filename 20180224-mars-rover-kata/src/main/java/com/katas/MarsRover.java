@@ -9,6 +9,12 @@ public class MarsRover {
     }
 
     public void handleCommand(char[] commands) {
-        this.position = new int[]{0, 1};
+        for (char command : commands) {
+            moveForward();
+        }
+    }
+
+    private void moveForward() {
+        this.position = new int[]{this.position[0], this.position[1] + 1};
     }
 }

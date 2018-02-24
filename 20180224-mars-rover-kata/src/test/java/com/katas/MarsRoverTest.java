@@ -28,4 +28,10 @@ public class MarsRoverTest {
         assertThat(rover.currentPosition()).isEqualTo(new int[]{0, 1});
     }
 
+    @Test
+    public void should_move_forward_multiple_steps() {
+        rover.handleCommand(new char[]{'f', 'f', 'f'});
+
+        assertThat(rover.currentPosition()).isEqualTo(new int[]{0, 3});
+    }
 }
