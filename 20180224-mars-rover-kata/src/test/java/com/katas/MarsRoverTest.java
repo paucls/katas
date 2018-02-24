@@ -22,6 +22,13 @@ public class MarsRoverTest {
     }
 
     @Test
+    public void should_indicate_current_facing_direction() {
+        String direction = rover.currentDirection();
+
+        assertThat(direction).isEqualTo("N");
+    }
+
+    @Test
     public void should_move_forward() {
         rover.handleCommand(new char[]{'f'});
 
@@ -41,4 +48,5 @@ public class MarsRoverTest {
 
         assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, -1));
     }
+
 }
