@@ -16,22 +16,22 @@ public class MarsRoverTest {
 
     @Test
     public void should_indicate_current_position() {
-        int[] position = rover.currentPosition();
+        GridPosition position = rover.currentPosition();
 
-        assertThat(position).isEqualTo(new int[]{0, 0});
+        assertThat(position).isEqualTo(new GridPosition(0, 0));
     }
 
     @Test
     public void should_move_forward() {
         rover.handleCommand(new char[]{'f'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new int[]{0, 1});
+        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 1));
     }
 
     @Test
     public void should_move_forward_multiple_steps() {
         rover.handleCommand(new char[]{'f', 'f', 'f'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new int[]{0, 3});
+        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 3));
     }
 }

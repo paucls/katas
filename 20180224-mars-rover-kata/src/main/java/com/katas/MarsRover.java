@@ -2,10 +2,10 @@ package com.katas;
 
 public class MarsRover {
 
-    private int[] position = new int[]{0, 0};
+    private GridPosition position = new GridPosition(0, 0);
 
-    public int[] currentPosition() {
-        return this.position;
+    public GridPosition currentPosition() {
+        return position;
     }
 
     public void handleCommand(char[] commands) {
@@ -15,6 +15,6 @@ public class MarsRover {
     }
 
     private void moveForward() {
-        this.position = new int[]{this.position[0], this.position[1] + 1};
+        position = new GridPosition(0, position.y + 1);
     }
 }
