@@ -16,16 +16,12 @@ public class MarsRoverTest {
 
     @Test
     public void should_indicate_current_position() {
-        GridPosition position = rover.currentPosition();
-
-        assertThat(position).isEqualTo(new GridPosition(0, 0));
+        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 0));
     }
 
     @Test
     public void should_indicate_current_facing_direction() {
-        String direction = rover.currentDirection();
-
-        assertThat(direction).isEqualTo("N");
+        assertThat(rover.currentDirection()).isEqualTo(Direction.NORTH);
     }
 
     @Test
@@ -49,4 +45,10 @@ public class MarsRoverTest {
         assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, -1));
     }
 
+    @Test
+    public void should_turn_left() {
+        rover.handleCommand(new char[]{'l'});
+
+        assertThat(rover.currentDirection()).isEqualTo(Direction.WEST);
+    }
 }

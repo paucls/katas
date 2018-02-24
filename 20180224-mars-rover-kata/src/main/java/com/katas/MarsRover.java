@@ -2,16 +2,24 @@ package com.katas;
 
 public class MarsRover {
 
-    public static final char BACKWARD_COMMAND = 'b';
-    public static final char FORWARD_COMMAND = 'f';
-    private GridPosition position = new GridPosition(0, 0);
+    private static final char BACKWARD_COMMAND = 'b';
+    private static final char FORWARD_COMMAND = 'f';
+    private static final char TURN_LEFT_COMMAND = 'l';
+
+    private GridPosition position;
+    private Direction direction;
+
+    MarsRover() {
+        position = new GridPosition(0, 0);
+        direction = Direction.NORTH;
+    }
 
     public GridPosition currentPosition() {
         return position;
     }
 
-    public String currentDirection() {
-        return "N";
+    public Direction currentDirection() {
+        return direction;
     }
 
     public void handleCommand(char[] commands) {
@@ -22,6 +30,9 @@ public class MarsRover {
                     break;
                 case FORWARD_COMMAND:
                     moveForward();
+                    break;
+                case TURN_LEFT_COMMAND:
+                    direction = Direction.WEST;
                     break;
             }
         }
