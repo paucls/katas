@@ -43,37 +43,11 @@ public class MarsRover {
     }
 
     private void turnRight() {
-        switch (direction) {
-            case NORTH:
-                direction = Direction.EAST;
-                break;
-            case EAST:
-                direction = Direction.SOUTH;
-                break;
-            case SOUTH:
-                direction = Direction.WEST;
-                break;
-            case WEST:
-                direction = Direction.NORTH;
-                break;
-        }
+        direction = direction.right();
     }
 
     private void turnLeft() {
-        switch (direction) {
-            case NORTH:
-                direction = Direction.WEST;
-                break;
-            case WEST:
-                direction = Direction.SOUTH;
-                break;
-            case SOUTH:
-                direction = Direction.EAST;
-                break;
-            case EAST:
-                direction = Direction.NORTH;
-                break;
-        }
+        direction = direction.left();
     }
 
     private void moveBackward() {
