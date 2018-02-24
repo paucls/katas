@@ -34,4 +34,11 @@ public class MarsRoverTest {
 
         assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 3));
     }
+
+    @Test
+    public void should_move_backward() {
+        rover.handleCommand(new char[]{'b'});
+
+        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, -1));
+    }
 }

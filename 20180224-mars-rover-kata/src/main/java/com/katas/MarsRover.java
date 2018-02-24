@@ -10,8 +10,19 @@ public class MarsRover {
 
     public void handleCommand(char[] commands) {
         for (char command : commands) {
-            moveForward();
+            switch (command) {
+                case 'b':
+                    moveBackward();
+                    break;
+                case 'f':
+                    moveForward();
+                    break;
+            }
         }
+    }
+
+    private void moveBackward() {
+        position = new GridPosition(0, position.y - 1);
     }
 
     private void moveForward() {
