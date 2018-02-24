@@ -50,16 +50,11 @@ public class MarsRoverTest {
         rover.handleCommand(new char[]{'l'});
 
         assertThat(rover.currentDirection()).isEqualTo(Direction.WEST);
+    }
 
-        rover.handleCommand(new char[]{'l'});
-
-        assertThat(rover.currentDirection()).isEqualTo(Direction.SOUTH);
-
-        rover.handleCommand(new char[]{'l'});
-
-        assertThat(rover.currentDirection()).isEqualTo(Direction.EAST);
-
-        rover.handleCommand(new char[]{'l'});
+    @Test
+    public void should_rotate_360_degrees_to_left() {
+        rover.handleCommand(new char[]{'l', 'l', 'l', 'l'});
 
         assertThat(rover.currentDirection()).isEqualTo(Direction.NORTH);
     }
@@ -69,16 +64,11 @@ public class MarsRoverTest {
         rover.handleCommand(new char[]{'r'});
 
         assertThat(rover.currentDirection()).isEqualTo(Direction.EAST);
+    }
 
-        rover.handleCommand(new char[]{'r'});
-
-        assertThat(rover.currentDirection()).isEqualTo(Direction.SOUTH);
-
-        rover.handleCommand(new char[]{'r'});
-
-        assertThat(rover.currentDirection()).isEqualTo(Direction.WEST);
-
-        rover.handleCommand(new char[]{'r'});
+    @Test
+    public void should_rotate_360_degrees_to_right() {
+        rover.handleCommand(new char[]{'r', 'r', 'r', 'r'});
 
         assertThat(rover.currentDirection()).isEqualTo(Direction.NORTH);
     }
