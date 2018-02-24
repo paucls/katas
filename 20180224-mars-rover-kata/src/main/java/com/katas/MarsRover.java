@@ -6,6 +6,7 @@ public class MarsRover {
     private static final char FORWARD_COMMAND = 'f';
     private static final char TURN_LEFT_COMMAND = 'l';
     private static final char TURN_RIGHT_COMMAND = 'r';
+    private static final int ONE_STEP = 1;
 
     private GridPosition position;
     private Direction direction;
@@ -51,22 +52,34 @@ public class MarsRover {
     }
 
     private void moveBackward() {
-        position = new GridPosition(position.x, position.y - 1);
+        switch (direction) {
+            case NORTH:
+                position = new GridPosition(position.x, position.y - ONE_STEP);
+                break;
+            case EAST:
+                position = new GridPosition(position.x - ONE_STEP, position.y);
+                break;
+            case SOUTH:
+                position = new GridPosition(position.x, position.y + ONE_STEP);
+                break;
+            case WEST:
+                position = new GridPosition(position.x + ONE_STEP, position.y);
+        }
     }
 
     private void moveForward() {
         switch (direction) {
             case NORTH:
-                position = new GridPosition(position.x, position.y + 1);
+                position = new GridPosition(position.x, position.y + ONE_STEP);
                 break;
             case EAST:
-                position = new GridPosition(position.x + 1, position.y);
+                position = new GridPosition(position.x + ONE_STEP, position.y);
                 break;
             case SOUTH:
-                position = new GridPosition(position.x, position.y - 1);
+                position = new GridPosition(position.x, position.y - ONE_STEP);
                 break;
             case WEST:
-                position = new GridPosition(position.x - 1, position.y);
+                position = new GridPosition(position.x - ONE_STEP, position.y);
         }
     }
 }
