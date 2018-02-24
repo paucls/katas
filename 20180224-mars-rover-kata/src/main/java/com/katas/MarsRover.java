@@ -51,10 +51,22 @@ public class MarsRover {
     }
 
     private void moveBackward() {
-        position = new GridPosition(0, position.y - 1);
+        position = new GridPosition(position.x, position.y - 1);
     }
 
     private void moveForward() {
-        position = new GridPosition(0, position.y + 1);
+        switch (direction) {
+            case NORTH:
+                position = new GridPosition(position.x, position.y + 1);
+                break;
+            case EAST:
+                position = new GridPosition(position.x + 1, position.y);
+                break;
+            case SOUTH:
+                position = new GridPosition(position.x, position.y - 1);
+                break;
+            case WEST:
+                position = new GridPosition(position.x - 1, position.y);
+        }
     }
 }

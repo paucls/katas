@@ -72,4 +72,15 @@ public class MarsRoverTest {
 
         assertThat(rover.currentDirection()).isEqualTo(Direction.NORTH);
     }
+
+    @Test
+    public void should_move_forward_in_different_directions() {
+        rover.handleCommand(new char[]{'f', 'r', 'f'});
+
+        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(1, 1));
+
+        rover.handleCommand(new char[]{'l', 'l', 'f', 'l', 'f'});
+
+        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 0));
+    }
 }
