@@ -1,34 +1,29 @@
 package com.katas;
 
 enum Direction {
-    NORTH,
-    SOUTH,
-    EAST,
-    WEST;
+    NORTH(0),
+    EAST(1),
+    SOUTH(2),
+    WEST(3);
+
+    private static final int left = -1;
+    private static final int right = 1;
+
+    private int index;
+
+    Direction(int index) {
+        this.index = index;
+    }
 
     public Direction left() {
-        switch (this) {
-            case NORTH:
-                return WEST;
-            case WEST:
-                return SOUTH;
-            case SOUTH:
-                return EAST;
-            default:
-                return NORTH;
-        }
+        int leftIndex = Math.floorMod(index + left, values().length);
+
+        return values()[leftIndex];
     }
 
     public Direction right() {
-        switch (this) {
-            case NORTH:
-                return EAST;
-            case EAST:
-                return SOUTH;
-            case SOUTH:
-                return WEST;
-            default:
-                return NORTH;
-        }
+        int rightIndex = Math.floorMod(index + right, values().length);
+
+        return values()[rightIndex];
     }
 }
