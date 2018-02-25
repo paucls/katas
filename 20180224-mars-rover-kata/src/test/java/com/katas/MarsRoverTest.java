@@ -16,7 +16,7 @@ public class MarsRoverTest {
 
     @Test
     public void should_indicate_current_position() {
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 0));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(0, 0));
     }
 
     @Test
@@ -28,21 +28,21 @@ public class MarsRoverTest {
     public void should_move_forwards() {
         rover.handleCommand(new char[]{'f'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 1));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(0, 1));
     }
 
     @Test
     public void should_move_forwards_multiple_steps() {
         rover.handleCommand(new char[]{'f', 'f', 'f'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 3));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(0, 3));
     }
 
     @Test
     public void should_move_backwards() {
         rover.handleCommand(new char[]{'b'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, -1));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(0, -1));
     }
 
     @Test
@@ -77,21 +77,21 @@ public class MarsRoverTest {
     public void should_move_forwards_in_different_directions() {
         rover.handleCommand(new char[]{'f', 'r', 'f'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(1, 1));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(1, 1));
 
         rover.handleCommand(new char[]{'l', 'l', 'f', 'l', 'f'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 0));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(0, 0));
     }
 
     @Test
     public void should_move_backwards_in_different_directions() {
         rover.handleCommand(new char[]{'b', 'l', 'b'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(1, -1));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(1, -1));
 
         rover.handleCommand(new char[]{'r', 'r', 'b', 'r', 'b'});
 
-        assertThat(rover.currentPosition()).isEqualTo(new GridPosition(0, 0));
+        assertThat(rover.currentPosition()).isEqualTo(new Position(0, 0));
     }
 }

@@ -8,15 +8,15 @@ public class MarsRover {
     private static final char TURN_RIGHT_COMMAND = 'r';
     private static final int ONE_STEP = 1;
 
-    private GridPosition position;
+    private Position position;
     private Direction direction;
 
     MarsRover() {
-        position = new GridPosition(0, 0);
+        position = new Position(0, 0);
         direction = Direction.NORTH;
     }
 
-    public GridPosition currentPosition() {
+    public Position currentPosition() {
         return position;
     }
 

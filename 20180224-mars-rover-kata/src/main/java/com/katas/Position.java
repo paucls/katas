@@ -2,29 +2,29 @@ package com.katas;
 
 import java.util.Objects;
 
-public class GridPosition {
+public class Position {
 
     final int x;
     final int y;
 
-    GridPosition(int x, int y) {
+    Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public GridPosition withX(int x) {
-        return new GridPosition(x, this.y);
+    public Position withX(int x) {
+        return new Position(x, this.y);
     }
 
-    public GridPosition withY(int i) {
-        return new GridPosition(this.x, i);
+    public Position withY(int i) {
+        return new Position(this.x, i);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GridPosition that = (GridPosition) o;
+        Position that = (Position) o;
         return x == that.x && y == that.y;
     }
 
@@ -35,7 +35,7 @@ public class GridPosition {
 
     @Override
     public String toString() {
-        return "GridPosition{" +
+        return "Position{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
