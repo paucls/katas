@@ -54,32 +54,32 @@ public class MarsRover {
     private void moveBackward() {
         switch (direction) {
             case NORTH:
-                position = new GridPosition(position.x, position.y - ONE_STEP);
+                position = position.withY(position.y - ONE_STEP);
                 break;
             case EAST:
-                position = new GridPosition(position.x - ONE_STEP, position.y);
+                position = position.withX(position.x - ONE_STEP);
                 break;
             case SOUTH:
-                position = new GridPosition(position.x, position.y + ONE_STEP);
+                position = position.withY(position.y + ONE_STEP);
                 break;
             case WEST:
-                position = new GridPosition(position.x + ONE_STEP, position.y);
+                position = position.withX(position.x + ONE_STEP);
         }
     }
 
     private void moveForward() {
         switch (direction) {
             case NORTH:
-                position = new GridPosition(position.x, position.y + ONE_STEP);
+                position = position.withY(position.y + ONE_STEP);
                 break;
             case EAST:
-                position = new GridPosition(position.x + ONE_STEP, position.y);
+                position = position.withX(position.x + ONE_STEP);
                 break;
             case SOUTH:
-                position = new GridPosition(position.x, position.y - ONE_STEP);
+                position = position.withY(position.y - ONE_STEP);
                 break;
             case WEST:
-                position = new GridPosition(position.x - ONE_STEP, position.y);
+                position = position.withX(position.x - ONE_STEP);
         }
     }
 }

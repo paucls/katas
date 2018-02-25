@@ -12,6 +12,14 @@ public class GridPosition {
         this.y = y;
     }
 
+    public GridPosition withX(int x) {
+        return new GridPosition(x, this.y);
+    }
+
+    public GridPosition withY(int i) {
+        return new GridPosition(this.x, i);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
