@@ -3,7 +3,10 @@ export class Fraction {
     }
 
     plus(that: Fraction): Fraction {
-        return this;
+        if (this.integerValue === 0)
+            return that;
+        else
+            return this;
     }
 
     intValue(): number {

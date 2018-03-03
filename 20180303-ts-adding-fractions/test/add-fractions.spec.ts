@@ -15,4 +15,10 @@ describe('Add Fractions', () => {
         expect(sum.intValue()).to.equal(1);
     });
 
+    it('zero plus non zero', () => {
+        const sum = new Fraction(0).plus(new Fraction(4));
+
+        expect(sum.intValue()).to.equal(4);
+    });
+
 });
