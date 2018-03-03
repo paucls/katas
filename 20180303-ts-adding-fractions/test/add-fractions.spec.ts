@@ -21,4 +21,9 @@ describe('Add Fractions', () => {
         expect(sum.intValue()).to.equal(4);
     });
 
+    it('non negative non zero operands', () => {
+        const sum = new Fraction(2).plus(new Fraction(3));
+
+        expect(sum.intValue()).to.equal(5);
+    });
 });

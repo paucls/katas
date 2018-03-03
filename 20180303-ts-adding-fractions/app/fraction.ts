@@ -6,7 +6,7 @@ export class Fraction {
         if (this.integerValue === 0)
             return that;
         else
-            return this;
+            return new Fraction(this.integerValue + that.integerValue);
     }
 
     intValue(): number {
