@@ -22,4 +22,10 @@ describe('Add Fractions', () => {
     it('negative plus non zero', () => {
         expect(new Fraction(-3).plus(new Fraction(2)).intValue()).to.equal(-1);
     });
+
+    it('two fractions with same denominator', () => {
+        let sum = new Fraction(1, 5).plus(new Fraction(2, 5));
+        expect(sum.getNumerator()).to.equal(3);
+        expect(sum.getDenominator()).to.equal(5);
+    });
 });
