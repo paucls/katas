@@ -4,28 +4,26 @@ import { Fraction } from '../app/fraction';
 describe('Add Fractions', () => {
 
     it('zero plus zero', () => {
-        expect(new Fraction(0).plus(new Fraction(0)).intValue()).to.equal(0);
+        expect(new Fraction(0).plus(new Fraction(0)).equals(new Fraction(0))).to.be.true;
     });
 
     it('non zero plus zero', () => {
-        expect(new Fraction(1).plus(new Fraction(0)).intValue()).to.equal(1);
+        expect(new Fraction(1).plus(new Fraction(0)).equals(new Fraction(1))).to.be.true;
     });
 
     it('zero plus non zero', () => {
-        expect(new Fraction(0).plus(new Fraction(4)).intValue()).to.equal(4);
+        expect(new Fraction(0).plus(new Fraction(4)).equals(new Fraction(4))).to.be.true;
     });
 
     it('non negative non zero operands', () => {
-        expect(new Fraction(2).plus(new Fraction(3)).intValue()).to.equal(5);
+        expect(new Fraction(2).plus(new Fraction(3)).equals(new Fraction(5))).to.be.true;
     });
 
     it('negative plus non zero', () => {
-        expect(new Fraction(-3).plus(new Fraction(2)).intValue()).to.equal(-1);
+        expect(new Fraction(-3).plus(new Fraction(2)).equals(new Fraction(-1))).to.be.true;
     });
 
     it('two fractions with same denominator', () => {
-        let sum = new Fraction(1, 5).plus(new Fraction(2, 5));
-        expect(sum.getNumerator()).to.equal(3);
-        expect(sum.getDenominator()).to.equal(5);
+        expect(new Fraction(1, 5).plus(new Fraction(2, 5)).equals(new Fraction(3, 5))).to.be.true;
     });
 });
