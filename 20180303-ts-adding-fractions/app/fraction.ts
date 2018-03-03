@@ -1,6 +1,6 @@
 export class Fraction {
     constructor(private numerator: number,
-                private denominator?: number) {
+                private denominator: number = 1) {
     }
 
     plus(that: Fraction): Fraction {
