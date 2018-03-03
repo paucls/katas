@@ -1,5 +1,5 @@
 export class Fraction {
-    constructor(intValue: number) {
+    constructor(private integerValue: number) {
     }
 
     plus(that: Fraction): Fraction {
@@ -7,6 +7,6 @@ export class Fraction {
     }
 
     intValue(): number {
-        return 0;
+        return this.integerValue;
     }
 }
