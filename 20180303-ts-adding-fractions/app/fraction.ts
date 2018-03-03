@@ -20,6 +20,7 @@ export class Fraction {
     }
 
     equals(that: Fraction): boolean {
-        return true;
+        return this.numerator === that.numerator &&
+            this.denominator === that.denominator;
     }
 }
