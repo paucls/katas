@@ -11,4 +11,8 @@ describe('Simplify Fraction', () => {
         expect(new Fraction(2, 4)).to.deep.equal(new Fraction(1, 2));
     });
 
+    xit('should simplify fraction to whole number', () => {
+        expect(new Fraction(6, 2)).to.deep.equal(new Fraction(3));
+    });
+
 });
