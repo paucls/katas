@@ -5,13 +5,13 @@ describe('Greatest Common Divisor', () => {
     it('a number with itself', () => {
         expect(gcd(1, 1)).to.be.equal(1);
         expect(gcd(2, 2)).to.be.equal(2);
-        expect(gcd(-1, -1)).to.be.equal(-1);
+        expect(gcd(-1, -1)).to.be.equal(1);
     });
 
     it('relatively prime', () => {
         expect(gcd(7, 20)).to.be.equal(1);
         expect(gcd(12, 13)).to.be.equal(1);
-        expect(gcd(-2, -3)).to.be.equal(-1);
+        expect(gcd(-2, -3)).to.be.equal(1);
     });
 
     it('a number multiple of the other', () => {
@@ -25,6 +25,11 @@ describe('Greatest Common Divisor', () => {
         expect(gcd(42, 56)).to.be.equal(14);
     });
 
+    it('negatives', () => {
+        expect(gcd(-5, -7)).to.be.equal(1);
+        expect(gcd(-12, -14)).to.be.equal(2);
+    });
+
 });
 
 function gcd(a: number, b: number): number {
@@ -33,5 +38,5 @@ function gcd(a: number, b: number): number {
         b = a % b;
         a = t;
     }
-    return a;
+    return Math.abs(a);
 }
