@@ -26,4 +26,8 @@ describe('Add Fractions', () => {
     it('two fractions with same denominator', () => {
         expect(new Fraction(1, 5).plus(new Fraction(2, 5)).equals(new Fraction(3, 5))).to.be.true;
     });
+
+    it('two fractions with different denominators without simplifying', () => {
+        expect(new Fraction(1, 3).plus(new Fraction(1, 5)).equals(new Fraction(8, 15))).to.be.true;
+    });
 });
