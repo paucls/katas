@@ -1,6 +1,10 @@
 export class Fraction {
     constructor(private numerator: number,
                 private denominator: number = 1) {
+        if(denominator % numerator == 0) {
+            this.denominator = this.denominator / numerator;
+            this.numerator = 1;
+        }
     }
 
     plus(that: Fraction): Fraction {
