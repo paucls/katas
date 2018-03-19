@@ -1,0 +1,12 @@
+export class NumberTheory {
+
+    static gcd(a: number, b: number): number {
+        while (b !== 0) {
+            const t = b;
+            b = a % b;
+            a = t;
+        }
+        return Math.abs(a);
+    }
+
+}

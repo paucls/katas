@@ -1,12 +1,12 @@
-import { gcd } from './gcd';
+import { NumberTheory } from './number-theory';
 
 export class Fraction {
     constructor(private numerator: number,
                 private denominator: number = 1) {
-        const divisor = gcd(numerator, denominator);
-        if (divisor > 1) {
-            this.numerator = numerator / divisor;
-            this.denominator = denominator / divisor;
+        const gcd = NumberTheory.gcd(numerator, denominator);
+        if (gcd > 1) {
+            this.numerator = numerator / gcd;
+            this.denominator = denominator / gcd;
         }
     }
 
