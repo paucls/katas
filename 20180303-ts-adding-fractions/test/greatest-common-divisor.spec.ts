@@ -31,4 +31,10 @@ describe('Greatest Common Divisor', () => {
         expect(NumberTheory.gcd(-12, -14)).to.be.equal(2);
     });
 
+    it('zero', () => {
+        expect(NumberTheory.gcd(1, 0)).to.be.equal(1);
+        expect(NumberTheory.gcd(0, 5)).to.be.equal(5);
+        expect(NumberTheory.gcd(0, 0)).to.be.equal(0);
+    });
+
 });
