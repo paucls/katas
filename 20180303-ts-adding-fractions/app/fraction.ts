@@ -11,12 +11,9 @@ export class Fraction {
     }
 
     plus(that: Fraction): Fraction {
-        if (this.denominator !== that.denominator) {
-            return new Fraction(
-                this.numerator * that.denominator + that.numerator * this.denominator,
-                this.denominator * that.denominator);
-        }
-        return new Fraction(this.numerator + that.numerator, this.denominator);
+        return new Fraction(
+            this.numerator * that.denominator + that.numerator * this.denominator,
+            this.denominator * that.denominator);
     }
 
     equals(that: Fraction): boolean {
