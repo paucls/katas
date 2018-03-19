@@ -30,4 +30,16 @@ describe('Add Fractions', () => {
     it('two fractions with different denominators without simplifying', () => {
         expect(new Fraction(1, 3).plus(new Fraction(1, 5)).equals(new Fraction(8, 15))).to.be.true;
     });
+
+    it('two fractions with same denominator simplifying', () => {
+        expect(new Fraction(1, 4).plus(new Fraction(1, 4)).equals(new Fraction(1, 2))).to.be.true;
+    });
+
+    it('two fractions with same denominator simplifying to whole number', () => {
+        expect(new Fraction(1, 3).plus(new Fraction(2, 3)).equals(new Fraction(1))).to.be.true;
+    });
+
+    it('two fractions with different denominator simplifying', () => {
+        expect(new Fraction(1, 3).plus(new Fraction(1, 6)).equals(new Fraction(1, 2))).to.be.true;
+    });
 });
