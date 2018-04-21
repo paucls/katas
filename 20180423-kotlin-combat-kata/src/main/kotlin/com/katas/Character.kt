@@ -1,7 +1,11 @@
 package com.katas
 
 class Character {
-    val health: Number = 1000
-    val level: Number = 1
-    val isAlive: Boolean = true
+    var health: Int = 1000
+    var level: Int = 1
+    var isAlive: Boolean = true
+
+    fun receiveDamage(damage: Int) {
+        this.health -= damage
+    }
 }

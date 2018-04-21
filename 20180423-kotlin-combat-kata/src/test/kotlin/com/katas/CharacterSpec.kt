@@ -27,6 +27,12 @@ object CharacterSpec : Spek({
 
         }
 
+        it("can receive damage from another Character") {
+            character.receiveDamage(400)
+
+            assertThat(character.health).isEqualTo(600)
+        }
+
     }
 
 })
