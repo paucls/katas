@@ -13,4 +13,12 @@ class Character {
             health -= damage
         }
     }
+
+    fun receiveHeal(amount: Int) {
+        if (health + amount > 1000) {
+            health = 1000
+        } else {
+            health += amount
+        }
+    }
 }

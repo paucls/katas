@@ -9,7 +9,11 @@ object CharacterSpec : Spek({
 
     describe("Character") {
 
-        val character = Character()
+        lateinit var character: Character
+
+        beforeEachTest {
+            character = Character()
+        }
 
         describe("on creation") {
 
@@ -40,6 +44,18 @@ object CharacterSpec : Spek({
             assertThat(character.isAlive).isFalse()
         }
 
+        it("can be healed") {
+            character.receiveDamage(400)
+            character.receiveHeal(200)
+
+            assertThat(character.health).isEqualTo(800)
+        }
+
+        it("cannot be healed above 1000 of Health") {
+            character.receiveHeal(200)
+
+            assertThat(character.health).isEqualTo(1000)
+        }
     }
 
 })
