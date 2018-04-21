@@ -6,6 +6,11 @@ class Character {
     var isAlive: Boolean = true
 
     fun receiveDamage(damage: Int) {
-        this.health -= damage
+        if (damage > health) {
+            health = 0
+            isAlive = false
+        } else {
+            health -= damage
+        }
     }
 }

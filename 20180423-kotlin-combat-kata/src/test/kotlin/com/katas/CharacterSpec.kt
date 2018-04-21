@@ -33,6 +33,13 @@ object CharacterSpec : Spek({
             assertThat(character.health).isEqualTo(600)
         }
 
+        it("dies when damage received exceeds current Health") {
+            character.receiveDamage(1100)
+
+            assertThat(character.health).isEqualTo(0)
+            assertThat(character.isAlive).isFalse()
+        }
+
     }
 
 })
