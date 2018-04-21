@@ -15,6 +15,8 @@ class Character {
     }
 
     fun receiveHeal(amount: Int) {
+        if (!isAlive) throw CannotHealDeadWhenDead()
+
         if (health + amount > 1000) {
             health = 1000
         } else {

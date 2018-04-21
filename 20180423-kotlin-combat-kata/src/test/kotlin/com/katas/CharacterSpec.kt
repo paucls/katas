@@ -1,6 +1,7 @@
 package com.katas
 
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
@@ -55,6 +56,14 @@ object CharacterSpec : Spek({
             character.receiveHeal(200)
 
             assertThat(character.health).isEqualTo(1000)
+        }
+
+        it("cannot be healed when is dead") {
+            character.receiveDamage(1100)
+
+            assertThatThrownBy {
+                character.receiveHeal(200)
+            }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
         }
     }
 
