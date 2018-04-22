@@ -11,6 +11,7 @@ object CharacterSpec : Spek({
     describe("Character") {
 
         lateinit var character: Character
+        val anotherCharacter = Character()
 
         beforeEachTest {
             character = Character()
@@ -33,8 +34,6 @@ object CharacterSpec : Spek({
         }
 
         describe("dealing damage") {
-
-            val anotherCharacter = Character()
 
             it("can receive damage from another Character") {
                 anotherCharacter.damage(character, 400)
@@ -78,6 +77,12 @@ object CharacterSpec : Spek({
                 assertThatThrownBy {
                     character.receiveHeal(200)
                 }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
+            }
+
+            it("cannot heal other Characters") {
+                assertThatThrownBy {
+                    character.heal(anotherCharacter, 100)
+                }.isExactlyInstanceOf(CannotHealOthers::class.java)
             }
 
         }

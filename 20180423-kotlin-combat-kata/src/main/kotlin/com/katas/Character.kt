@@ -26,6 +26,10 @@ class Character(
         }
     }
 
+    fun heal(anotherCharacter: Character, i: Int) {
+        throw CannotHealOthers()
+    }
+
     fun receiveHeal(amount: Int) {
         if (!isAlive) throw CannotHealDeadWhenDead()
 
