@@ -12,7 +12,6 @@ object CharacterSpec : Spek({
     describe("Character") {
 
         lateinit var character: Character
-        val anotherCharacter = Character()
 
         beforeEachTest {
             character = Character()
@@ -36,14 +35,16 @@ object CharacterSpec : Spek({
 
         context("when dealing damage") {
 
+            val attacker = Character()
+
             it("can receive damage from another Character") {
-                anotherCharacter.damage(character, 400)
+                attacker.damage(character, 400)
 
                 assertThat(character.health).isEqualTo(600)
             }
 
             it("dies when damage received exceeds current Health") {
-                anotherCharacter.damage(character, 1100)
+                attacker.damage(character, 1100)
 
                 assertThat(character.health).isEqualTo(0)
                 assertThat(character.isAlive).isFalse()
@@ -58,7 +59,7 @@ object CharacterSpec : Spek({
             it("damage reduced by 50% when receiver level is 5 or more above the attacker") {
                 val character = Character(level = 6)
 
-                anotherCharacter.damage(character, 200)
+                attacker.damage(character, 200)
 
                 assertThat(character.health).isEqualTo(900)
             }
@@ -89,6 +90,8 @@ object CharacterSpec : Spek({
             }
 
             it("cannot heal other Characters") {
+                val anotherCharacter = Character()
+
                 assertThatThrownBy {
                     character.heal(anotherCharacter, 100)
                 }.isExactlyInstanceOf(CannotHealOthers::class.java)
