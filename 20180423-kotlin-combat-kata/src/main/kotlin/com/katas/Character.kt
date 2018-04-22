@@ -12,7 +12,11 @@ class Character(
     fun damage(receiver: Character, amount: Int) {
         if (this === receiver) throw CannotDamageItself()
 
-        receiver.receiveDamage(amount)
+        if (receiver.level - level >= 5) {
+            receiver.receiveDamage(amount / 2)
+        } else {
+            receiver.receiveDamage(amount)
+        }
     }
 
     private fun receiveDamage(damage: Int) {

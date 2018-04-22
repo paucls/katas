@@ -55,6 +55,14 @@ object CharacterSpec : Spek({
                 }.isExactlyInstanceOf(CannotDamageItself::class.java)
             }
 
+            it("damage reduced by 50% when receiver level is 5 or more above the attacker") {
+                val character = Character(level = 6)
+
+                anotherCharacter.damage(character, 200)
+
+                assertThat(character.health).isEqualTo(900)
+            }
+
         }
 
         context("when healing") {
