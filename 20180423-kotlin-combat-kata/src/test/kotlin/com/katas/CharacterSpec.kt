@@ -3,6 +3,7 @@ package com.katas
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.dsl.context
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
 
@@ -33,7 +34,7 @@ object CharacterSpec : Spek({
 
         }
 
-        describe("dealing damage") {
+        context("when dealing damage") {
 
             it("can receive damage from another Character") {
                 anotherCharacter.damage(character, 400)
@@ -56,7 +57,7 @@ object CharacterSpec : Spek({
 
         }
 
-        describe("healing") {
+        context("when healing") {
 
             it("can be healed") {
                 val character = Character(health = 600)
