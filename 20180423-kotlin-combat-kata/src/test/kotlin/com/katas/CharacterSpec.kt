@@ -34,14 +34,16 @@ object CharacterSpec : Spek({
 
         describe("dealing damage") {
 
+            val anotherCharacter = Character()
+
             it("can receive damage from another Character") {
-                character.receiveDamage(400)
+                anotherCharacter.damage(character, 400)
 
                 assertThat(character.health).isEqualTo(600)
             }
 
             it("dies when damage received exceeds current Health") {
-                character.receiveDamage(1100)
+                anotherCharacter.damage(character, 1100)
 
                 assertThat(character.health).isEqualTo(0)
                 assertThat(character.isAlive).isFalse()
@@ -49,10 +51,8 @@ object CharacterSpec : Spek({
 
             it("cannot damage itself") {
                 assertThatThrownBy {
-                    character.damage(character)
-                }.isExactlyInstanceOf(
-                    CannotDamageItself::class.java
-                )
+                    character.damage(character, 400)
+                }.isExactlyInstanceOf(CannotDamageItself::class.java)
             }
 
         }
@@ -77,9 +77,7 @@ object CharacterSpec : Spek({
 
                 assertThatThrownBy {
                     character.receiveHeal(200)
-                }.isExactlyInstanceOf(
-                    CannotHealDeadWhenDead::class.java
-                )
+                }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
             }
 
         }

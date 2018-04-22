@@ -5,8 +5,12 @@ class Character {
     var level: Int = 1
     var isAlive: Boolean = true
 
-    fun damage(other: Character) {
-        throw CannotDamageItself()
+    fun damage(other: Character, amount: Int) {
+        if (this === other) {
+            throw CannotDamageItself()
+        }
+
+        other.receiveDamage(amount)
     }
 
     fun receiveDamage(damage: Int) {
