@@ -1,10 +1,10 @@
 package com.katas
 
-class Character {
-    var health: Int = 1000
-    var level: Int = 1
-    var isAlive: Boolean = true
-
+class Character(
+        var health: Int = 1000,
+        var level: Int = 1,
+        var isAlive: Boolean = true
+) {
     fun damage(other: Character, amount: Int) {
         if (this === other) {
             throw CannotDamageItself()
@@ -13,7 +13,7 @@ class Character {
         other.receiveDamage(amount)
     }
 
-    fun receiveDamage(damage: Int) {
+    private fun receiveDamage(damage: Int) {
         if (damage > health) {
             health = 0
             isAlive = false

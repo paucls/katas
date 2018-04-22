@@ -60,7 +60,7 @@ object CharacterSpec : Spek({
         describe("healing") {
 
             it("can be healed") {
-                character.receiveDamage(400)
+                val character = Character(health = 600)
                 character.receiveHeal(200)
 
                 assertThat(character.health).isEqualTo(800)
@@ -73,7 +73,7 @@ object CharacterSpec : Spek({
             }
 
             it("cannot be healed when is dead") {
-                character.receiveDamage(1100)
+                val character = Character(isAlive = false)
 
                 assertThatThrownBy {
                     character.receiveHeal(200)
