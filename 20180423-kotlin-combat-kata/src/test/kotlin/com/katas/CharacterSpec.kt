@@ -95,7 +95,7 @@ object CharacterSpec : Spek({
 
                 assertThatThrownBy {
                     character.heal(character, 200)
-                }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
+                }.isExactlyInstanceOf(CannotHealWhenDead::class.java)
             }
 
             it("cannot heal other Characters") {

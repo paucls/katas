@@ -1,5 +1,5 @@
 package com.katas
 
-class CannotHealDeadWhenDead : Throwable()
+class CannotHealWhenDead : Throwable()
 class CannotDamageItself : Throwable()
 class CannotHealOthers : Throwable()

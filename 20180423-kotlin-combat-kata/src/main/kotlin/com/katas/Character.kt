@@ -37,7 +37,7 @@ class Character(
     }
 
     private fun receiveHeal(amount: Int) {
-        if (!isAlive) throw CannotHealDeadWhenDead()
+        if (!isAlive) throw CannotHealWhenDead()
 
         if (health + amount > maxCharacterHealth) {
             health = maxCharacterHealth
