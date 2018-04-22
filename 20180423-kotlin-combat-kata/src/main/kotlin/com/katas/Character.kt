@@ -14,6 +14,8 @@ class Character(
 
         if (receiver.level - level >= 5) {
             receiver.receiveDamage(amount / 2)
+        } else if (level - receiver.level >= 5) {
+            receiver.receiveDamage(amount * 2)
         } else {
             receiver.receiveDamage(amount)
         }
