@@ -9,12 +9,10 @@ class Character(
         var isAlive: Boolean = true
 ) {
 
-    fun damage(other: Character, amount: Int) {
-        if (this === other) {
-            throw CannotDamageItself()
-        }
+    fun damage(receiver: Character, amount: Int) {
+        if (this === receiver) throw CannotDamageItself()
 
-        other.receiveDamage(amount)
+        receiver.receiveDamage(amount)
     }
 
     private fun receiveDamage(damage: Int) {
@@ -26,11 +24,13 @@ class Character(
         }
     }
 
-    fun heal(anotherCharacter: Character, i: Int) {
-        throw CannotHealOthers()
+    fun heal(receiver: Character, amount: Int) {
+        if (this !== receiver) throw CannotHealOthers()
+
+        receiver.receiveHeal(amount)
     }
 
-    fun receiveHeal(amount: Int) {
+    private fun receiveHeal(amount: Int) {
         if (!isAlive) throw CannotHealDeadWhenDead()
 
         if (health + amount > maxCharacterHealth) {

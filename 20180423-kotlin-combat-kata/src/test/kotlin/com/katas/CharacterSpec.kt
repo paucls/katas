@@ -60,13 +60,13 @@ object CharacterSpec : Spek({
 
             it("can be healed") {
                 val character = Character(health = 600)
-                character.receiveHeal(200)
+                character.heal(character, 200)
 
                 assertThat(character.health).isEqualTo(800)
             }
 
             it("cannot be healed above 1000 of Health") {
-                character.receiveHeal(200)
+                character.heal(character, 200)
 
                 assertThat(character.health).isEqualTo(1000)
             }
@@ -75,7 +75,7 @@ object CharacterSpec : Spek({
                 val character = Character(isAlive = false)
 
                 assertThatThrownBy {
-                    character.receiveHeal(200)
+                    character.heal(character, 200)
                 }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
             }
 
