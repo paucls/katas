@@ -32,39 +32,48 @@ object CharacterSpec : Spek({
 
         }
 
-        it("can receive damage from another Character") {
-            character.receiveDamage(400)
+        describe("dealing damage") {
 
-            assertThat(character.health).isEqualTo(600)
+            it("can receive damage from another Character") {
+                character.receiveDamage(400)
+
+                assertThat(character.health).isEqualTo(600)
+            }
+
+            it("dies when damage received exceeds current Health") {
+                character.receiveDamage(1100)
+
+                assertThat(character.health).isEqualTo(0)
+                assertThat(character.isAlive).isFalse()
+            }
+
         }
 
-        it("dies when damage received exceeds current Health") {
-            character.receiveDamage(1100)
+        describe("healing") {
 
-            assertThat(character.health).isEqualTo(0)
-            assertThat(character.isAlive).isFalse()
-        }
-
-        it("can be healed") {
-            character.receiveDamage(400)
-            character.receiveHeal(200)
-
-            assertThat(character.health).isEqualTo(800)
-        }
-
-        it("cannot be healed above 1000 of Health") {
-            character.receiveHeal(200)
-
-            assertThat(character.health).isEqualTo(1000)
-        }
-
-        it("cannot be healed when is dead") {
-            character.receiveDamage(1100)
-
-            assertThatThrownBy {
+            it("can be healed") {
+                character.receiveDamage(400)
                 character.receiveHeal(200)
-            }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
+
+                assertThat(character.health).isEqualTo(800)
+            }
+
+            it("cannot be healed above 1000 of Health") {
+                character.receiveHeal(200)
+
+                assertThat(character.health).isEqualTo(1000)
+            }
+
+            it("cannot be healed when is dead") {
+                character.receiveDamage(1100)
+
+                assertThatThrownBy {
+                    character.receiveHeal(200)
+                }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
+            }
+
         }
+
     }
 
 })
