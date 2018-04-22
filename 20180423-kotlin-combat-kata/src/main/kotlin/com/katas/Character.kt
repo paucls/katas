@@ -5,6 +5,10 @@ class Character {
     var level: Int = 1
     var isAlive: Boolean = true
 
+    fun damage(other: Character) {
+        throw CannotDamageItself()
+    }
+
     fun receiveDamage(damage: Int) {
         if (damage > health) {
             health = 0
@@ -23,4 +27,5 @@ class Character {
             health += amount
         }
     }
+
 }

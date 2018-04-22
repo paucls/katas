@@ -47,6 +47,14 @@ object CharacterSpec : Spek({
                 assertThat(character.isAlive).isFalse()
             }
 
+            it("cannot damage itself") {
+                assertThatThrownBy {
+                    character.damage(character)
+                }.isExactlyInstanceOf(
+                    CannotDamageItself::class.java
+                )
+            }
+
         }
 
         describe("healing") {
@@ -69,7 +77,9 @@ object CharacterSpec : Spek({
 
                 assertThatThrownBy {
                     character.receiveHeal(200)
-                }.isExactlyInstanceOf(CannotHealDeadWhenDead::class.java)
+                }.isExactlyInstanceOf(
+                    CannotHealDeadWhenDead::class.java
+                )
             }
 
         }
