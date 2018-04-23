@@ -20,7 +20,7 @@ object CharacterSpec : Spek({
         describe("on creation") {
 
             it("starts with Health 1000") {
-                assertThat(character.health).isEqualTo(1000)
+                assertThat(character.health).isEqualTo(Health(1000))
             }
 
             it("starts with Level 1") {
@@ -40,13 +40,13 @@ object CharacterSpec : Spek({
             it("can receive damage from another Character") {
                 attacker.damage(character, 400)
 
-                assertThat(character.health).isEqualTo(600)
+                assertThat(character.health).isEqualTo(Health(600))
             }
 
             it("dies when damage received exceeds current Health") {
                 attacker.damage(character, 1100)
 
-                assertThat(character.health).isEqualTo(0)
+                assertThat(character.health).isEqualTo(Health(0))
                 assertThat(character.isAlive).isFalse()
             }
 
@@ -61,7 +61,7 @@ object CharacterSpec : Spek({
 
                 attacker.damage(character, 200)
 
-                assertThat(character.health).isEqualTo(900)
+                assertThat(character.health).isEqualTo(Health(900))
             }
 
             it("damage increased by 50% when receiver is 5 or more levels below the attacker") {
@@ -70,7 +70,7 @@ object CharacterSpec : Spek({
 
                 attacker.damage(character, 200)
 
-                assertThat(character.health).isEqualTo(600)
+                assertThat(character.health).isEqualTo(Health(600))
             }
 
         }
@@ -78,16 +78,16 @@ object CharacterSpec : Spek({
         context("when healing") {
 
             it("can be healed") {
-                val character = Character(health = 600)
+                val character = Character(health = Health(600))
                 character.heal(character, 200)
 
-                assertThat(character.health).isEqualTo(800)
+                assertThat(character.health).isEqualTo(Health(800))
             }
 
             it("cannot be healed above 1000 of Health") {
                 character.heal(character, 200)
 
-                assertThat(character.health).isEqualTo(1000)
+                assertThat(character.health).isEqualTo(Health(1000))
             }
 
             it("cannot be healed when is dead") {
