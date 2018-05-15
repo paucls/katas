@@ -2,6 +2,7 @@ package com.katas;
 
 class Rover {
 
+    private static final char FORWARD_COMMAND = 'F';
     private static final char RIGHT_COMMAND = 'R';
     private static final String NORTH = "N";
     private static final String EAST = "E";
@@ -9,14 +10,17 @@ class Rover {
     private static final String WEST = "W";
 
     private String direction = NORTH;
+    private int positionY = 0;
 
     String reportPosition() {
-        return "0:0:" + direction;
+        return "0:" + positionY + ":" + direction;
     }
 
     void execute(String commands) {
         for (char command : commands.toCharArray()) {
-            if (command == RIGHT_COMMAND) {
+            if (command == FORWARD_COMMAND) {
+                this.positionY++;
+            } else if (command == RIGHT_COMMAND) {
                 turnRight();
             } else {
                 turnLeft();

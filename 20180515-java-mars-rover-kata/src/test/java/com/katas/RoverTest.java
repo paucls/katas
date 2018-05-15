@@ -68,4 +68,13 @@ public class RoverTest {
         rover.execute("RRRR");
         assertThat(rover.reportPosition()).isEqualTo("0:0:N");
     }
+
+    @Test
+    public void should_move_forward_1_position() {
+        Rover rover = new Rover();
+
+        rover.execute("F");
+
+        assertThat(rover.reportPosition()).isEqualTo("0:1:N");
+    }
 }
