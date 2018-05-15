@@ -13,4 +13,12 @@ public class RoverTest {
         assertThat(rover.reportPosition()).isEqualTo("0:0:N");
     }
 
+    @Test
+    public void should_turn_left() {
+        Rover rover = new Rover();
+
+        rover.execute("L");
+
+        assertThat(rover.reportPosition()).isEqualTo("0:0:W");
+    }
 }
