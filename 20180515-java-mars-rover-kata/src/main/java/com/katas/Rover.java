@@ -10,21 +10,34 @@ class Rover {
     private static final String WEST = "W";
 
     private String direction = NORTH;
+    private int positionX = 0;
     private int positionY = 0;
 
     String reportPosition() {
-        return "0:" + positionY + ":" + direction;
+        return positionX + ":" + positionY + ":" + direction;
     }
 
     void execute(String commands) {
         for (char command : commands.toCharArray()) {
             if (command == FORWARD_COMMAND) {
-                this.positionY++;
+                moveFordward();
             } else if (command == RIGHT_COMMAND) {
                 turnRight();
             } else {
                 turnLeft();
             }
+        }
+    }
+
+    private void moveFordward() {
+        if (direction.equals(NORTH)) {
+            positionY++;
+        } else if (direction.equals(SOUTH)) {
+            positionY--;
+        } else if (direction.equals(EAST)) {
+            positionX++;
+        } else {
+            positionX--;
         }
     }
 
