@@ -9,6 +9,9 @@ class Rover {
     }
 
     void execute(String commands) {
-        this.direction = "W";
+        if (this.direction.equals("N")) this.direction = "W";
+        else if (this.direction.equals("W")) this.direction = "S";
+        else if (this.direction.equals("S")) this.direction = "E";
+        else this.direction = "N";
     }
 }
