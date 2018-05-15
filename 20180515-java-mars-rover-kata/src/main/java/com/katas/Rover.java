@@ -3,8 +3,12 @@ package com.katas;
 class Rover {
 
     private static final char RIGHT_COMMAND = 'R';
+    private static final String NORTH = "N";
+    private static final String EAST = "E";
+    private static final String SOUTH = "S";
+    private static final String WEST = "W";
 
-    private String direction = "N";
+    private String direction = NORTH;
 
     String reportPosition() {
         return "0:0:" + direction;
@@ -21,16 +25,16 @@ class Rover {
     }
 
     private void turnRight() {
-        if (this.direction.equals("N")) this.direction = "E";
-        else if (this.direction.equals("E")) this.direction = "S";
-        else if (this.direction.equals("S")) this.direction = "W";
-        else this.direction = "N";
+        if (this.direction.equals(NORTH)) this.direction = EAST;
+        else if (this.direction.equals(EAST)) this.direction = SOUTH;
+        else if (this.direction.equals(SOUTH)) this.direction = WEST;
+        else this.direction = NORTH;
     }
 
     private void turnLeft() {
-        if (this.direction.equals("N")) this.direction = "W";
-        else if (this.direction.equals("W")) this.direction = "S";
-        else if (this.direction.equals("S")) this.direction = "E";
-        else this.direction = "N";
+        if (this.direction.equals(NORTH)) this.direction = WEST;
+        else if (this.direction.equals(WEST)) this.direction = SOUTH;
+        else if (this.direction.equals(SOUTH)) this.direction = EAST;
+        else this.direction = NORTH;
     }
 }
