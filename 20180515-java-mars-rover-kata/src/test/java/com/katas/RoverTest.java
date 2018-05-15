@@ -25,14 +25,19 @@ public class RoverTest {
     @Test
     public void should_turn_left_multiple_times() {
         Rover rover = new Rover();
-
         rover.execute("L");
         assertThat(rover.reportPosition()).isEqualTo("0:0:W");
-        rover.execute("L");
+
+        rover = new Rover();
+        rover.execute("LL");
         assertThat(rover.reportPosition()).isEqualTo("0:0:S");
-        rover.execute("L");
+
+        rover = new Rover();
+        rover.execute("LLL");
         assertThat(rover.reportPosition()).isEqualTo("0:0:E");
-        rover.execute("L");
+
+        rover = new Rover();
+        rover.execute("LLLL");
         assertThat(rover.reportPosition()).isEqualTo("0:0:N");
     }
 
@@ -48,14 +53,19 @@ public class RoverTest {
     @Test
     public void should_turn_right_multiple_times() {
         Rover rover = new Rover();
-
         rover.execute("R");
         assertThat(rover.reportPosition()).isEqualTo("0:0:E");
-        rover.execute("R");
+
+        rover = new Rover();
+        rover.execute("RR");
         assertThat(rover.reportPosition()).isEqualTo("0:0:S");
-        rover.execute("R");
+
+        rover = new Rover();
+        rover.execute("RRR");
         assertThat(rover.reportPosition()).isEqualTo("0:0:W");
-        rover.execute("R");
+
+        rover = new Rover();
+        rover.execute("RRRR");
         assertThat(rover.reportPosition()).isEqualTo("0:0:N");
     }
 }
