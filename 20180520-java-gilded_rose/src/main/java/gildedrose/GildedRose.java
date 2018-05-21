@@ -60,11 +60,11 @@ class GildedRose {
         }
     }
 
-    private void increaseQuality(int amount) {
-        items[amount].quality = items[amount].quality + 1;
+    private void increaseQuality(int i) {
+        items[i].quality = items[i].quality + 1;
     }
 
-    private void decreaseQuality(int amount) {
-        items[amount].quality = items[amount].quality - 1;
+    private void decreaseQuality(int i) {
+        items[i].quality = items[i].quality - 1;
     }
 }
