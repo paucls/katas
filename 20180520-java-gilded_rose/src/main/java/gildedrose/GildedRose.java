@@ -13,45 +13,55 @@ class GildedRose {
 
     void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (items[i].name.equals(AGED_BRIE)) {
-                increaseQuality(i);
-            } else if (items[i].name.equals(SULFURAS)) {
-                increaseQuality(i);
-            } else if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                increaseQuality(i);
-
-                if (items[i].sellIn < 11) {
+            switch (items[i].name) {
+                case AGED_BRIE:
                     increaseQuality(i);
-                }
-
-                if (items[i].sellIn < 6) {
+                    break;
+                case SULFURAS:
                     increaseQuality(i);
-                }
+                    break;
+                case BACKSTAGE_PASSES:
+                    increaseQuality(i);
 
-            } else {
-                decreaseQuality(i);
+                    if (items[i].sellIn < 11) {
+                        increaseQuality(i);
+                    }
+
+                    if (items[i].sellIn < 6) {
+                        increaseQuality(i);
+                    }
+
+                    break;
+                default:
+                    decreaseQuality(i);
+                    break;
             }
 
-            if (items[i].name.equals(AGED_BRIE)) {
-                decreaseSellIn(i);
+            switch (items[i].name) {
+                case AGED_BRIE:
+                    decreaseSellIn(i);
 
-                if (items[i].sellIn < 0) {
-                    increaseQuality(i);
-                }
-            } else if (items[i].name.equals(SULFURAS)) {
-                // not affected
-            } else if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                decreaseSellIn(i);
+                    if (items[i].sellIn < 0) {
+                        increaseQuality(i);
+                    }
+                    break;
+                case SULFURAS:
+                    // not affected
+                    break;
+                case BACKSTAGE_PASSES:
+                    decreaseSellIn(i);
 
-                if (items[i].sellIn < 0) {
-                    dropQuality(i);
-                }
-            } else {
-                decreaseSellIn(i);
+                    if (items[i].sellIn < 0) {
+                        dropQuality(i);
+                    }
+                    break;
+                default:
+                    decreaseSellIn(i);
 
-                if (items[i].sellIn < 0) {
-                    decreaseQuality(i);
-                }
+                    if (items[i].sellIn < 0) {
+                        decreaseQuality(i);
+                    }
+                    break;
             }
         }
     }
