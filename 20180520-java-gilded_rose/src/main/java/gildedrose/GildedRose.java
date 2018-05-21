@@ -19,50 +19,16 @@ class GildedRose {
                     new AgedBrieQualityStrategy().updateQuality(item);
                     break;
                 case SULFURAS:
-                    increaseQuality(item);
+                    new SulfurasQualityStrategy().updateQuality(item);
                     break;
                 case BACKSTAGE_PASSES:
-                    increaseQuality(item);
-
-                    if (item.sellIn < 11) {
-                        increaseQuality(item);
-                    }
-
-                    if (item.sellIn < 6) {
-                        increaseQuality(item);
-                    }
-
-                    decreaseSellIn(item);
-
-                    if (item.sellIn < 0) {
-                        dropQuality(item);
-                    }
+                    new BackstageQualityStrategy().updateQuality(item);
                     break;
                 default:
                     new DefaultQualityStrategy().updateQuality(item);
                     break;
             }
         }
-    }
-
-    private void decreaseSellIn(Item item) {
-        item.sellIn--;
-    }
-
-    private void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality++;
-        }
-    }
-
-    private void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality--;
-        }
-    }
-
-    private void dropQuality(Item item) {
-        item.quality = 0;
     }
 }
 
@@ -107,5 +73,37 @@ class AgedBrieQualityStrategy extends QualityStrategy {
         if (item.sellIn < 0) {
             increaseQuality(item);
         }
+    }
+}
+
+class SulfurasQualityStrategy extends QualityStrategy {
+    @Override
+    void updateQuality(Item item) {
+        increaseQuality(item);
+    }
+}
+
+class BackstageQualityStrategy extends QualityStrategy {
+    @Override
+    void updateQuality(Item item) {
+        increaseQuality(item);
+
+        if (item.sellIn < 11) {
+            increaseQuality(item);
+        }
+
+        if (item.sellIn < 6) {
+            increaseQuality(item);
+        }
+
+        decreaseSellIn(item);
+
+        if (item.sellIn < 0) {
+            dropQuality(item);
+        }
+    }
+
+    private void dropQuality(Item item) {
+        item.quality = 0;
     }
 }
