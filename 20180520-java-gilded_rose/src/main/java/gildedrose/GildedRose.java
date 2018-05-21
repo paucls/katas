@@ -17,7 +17,7 @@ class GildedRose {
             switch (item.name) {
                 case AGED_BRIE:
                     increaseQuality(item);
-                    decreaseSellIn(i);
+                    decreaseSellIn(item);
 
                     if (item.sellIn < 0) {
                         increaseQuality(item);
@@ -37,37 +37,37 @@ class GildedRose {
                         increaseQuality(item);
                     }
 
-                    decreaseSellIn(i);
+                    decreaseSellIn(item);
 
                     if (item.sellIn < 0) {
                         dropQuality(i);
                     }
                     break;
                 default:
-                    decreaseQuality(i);
-                    decreaseSellIn(i);
+                    decreaseQuality(item);
+                    decreaseSellIn(item);
 
                     if (item.sellIn < 0) {
-                        decreaseQuality(i);
+                        decreaseQuality(item);
                     }
                     break;
             }
         }
     }
 
-    private void decreaseSellIn(int i) {
-        items[i].sellIn = items[i].sellIn - 1;
+    private void decreaseSellIn(Item item) {
+        item.sellIn--;
     }
 
     private void increaseQuality(Item item) {
         if (item.quality < 50) {
-            item.quality = item.quality + 1;
+            item.quality++;
         }
     }
 
-    private void decreaseQuality(int i) {
-        if (items[i].quality > 0) {
-            items[i].quality = items[i].quality - 1;
+    private void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality--;
         }
     }
 
