@@ -15,17 +15,6 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             switch (items[i].name) {
                 case AGED_BRIE:
-                    break;
-                case SULFURAS:
-                    break;
-                case BACKSTAGE_PASSES:
-                    break;
-                default:
-                    break;
-            }
-
-            switch (items[i].name) {
-                case AGED_BRIE:
                     increaseQuality(i);
                     decreaseSellIn(i);
 
