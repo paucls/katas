@@ -12,8 +12,7 @@ class GildedRose {
     }
 
     void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            final Item item = items[i];
+        for (final Item item : items) {
             switch (item.name) {
                 case AGED_BRIE:
                     new AgedBrieQualityStrategy().updateQuality(item);
