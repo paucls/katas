@@ -5,7 +5,7 @@ class GildedRose {
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    Item[] items;
+    private Item[] items;
 
     GildedRose(Item[] items) {
         this.items = items;
@@ -13,12 +13,13 @@ class GildedRose {
 
     void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            switch (items[i].name) {
+            final Item item = items[i];
+            switch (item.name) {
                 case AGED_BRIE:
                     increaseQuality(i);
                     decreaseSellIn(i);
 
-                    if (items[i].sellIn < 0) {
+                    if (item.sellIn < 0) {
                         increaseQuality(i);
                     }
                     break;
@@ -28,17 +29,17 @@ class GildedRose {
                 case BACKSTAGE_PASSES:
                     increaseQuality(i);
 
-                    if (items[i].sellIn < 11) {
+                    if (item.sellIn < 11) {
                         increaseQuality(i);
                     }
 
-                    if (items[i].sellIn < 6) {
+                    if (item.sellIn < 6) {
                         increaseQuality(i);
                     }
 
                     decreaseSellIn(i);
 
-                    if (items[i].sellIn < 0) {
+                    if (item.sellIn < 0) {
                         dropQuality(i);
                     }
                     break;
@@ -46,7 +47,7 @@ class GildedRose {
                     decreaseQuality(i);
                     decreaseSellIn(i);
 
-                    if (items[i].sellIn < 0) {
+                    if (item.sellIn < 0) {
                         decreaseQuality(i);
                     }
                     break;
