@@ -44,12 +44,7 @@ class GildedRose {
                     }
                     break;
                 default:
-                    decreaseQuality(item);
-                    decreaseSellIn(item);
-
-                    if (item.sellIn < 0) {
-                        decreaseQuality(item);
-                    }
+                    new DefaultQualityStrategy().updateQuality(item);
                     break;
             }
         }
@@ -73,5 +68,31 @@ class GildedRose {
 
     private void dropQuality(Item item) {
         item.quality = 0;
+    }
+}
+
+abstract class QualityStrategy {
+    abstract void updateQuality(Item item);
+
+    void decreaseSellIn(Item item) {
+        item.sellIn--;
+    }
+
+    void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality--;
+        }
+    }
+}
+
+class DefaultQualityStrategy extends QualityStrategy {
+    @Override
+    void updateQuality(Item item) {
+        decreaseQuality(item);
+        decreaseSellIn(item);
+
+        if (item.sellIn < 0) {
+            decreaseQuality(item);
+        }
     }
 }
