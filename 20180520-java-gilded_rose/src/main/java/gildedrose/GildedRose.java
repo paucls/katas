@@ -14,10 +14,9 @@ class GildedRose {
     void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (!items[i].name.equals(AGED_BRIE)
-                    && !items[i].name.equals(BACKSTAGE_PASSES)) {
-                if (!items[i].name.equals(SULFURAS)) {
-                    decreaseQuality(i);
-                }
+                    && !items[i].name.equals(BACKSTAGE_PASSES)
+                    && !items[i].name.equals(SULFURAS)) {
+                decreaseQuality(i);
             } else {
                 increaseQuality(i);
 
