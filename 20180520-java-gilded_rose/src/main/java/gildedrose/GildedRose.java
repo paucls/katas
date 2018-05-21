@@ -39,7 +39,7 @@ class GildedRose {
                             decreaseQuality(i);
                         }
                     } else {
-                        items[i].quality = 0;
+                        dropQuality(i);
                     }
                 } else {
                     increaseQuality(i);
@@ -58,5 +58,9 @@ class GildedRose {
         if (items[i].quality > 0) {
             items[i].quality = items[i].quality - 1;
         }
+    }
+
+    private void dropQuality(int i) {
+        items[i].quality = 0;
     }
 }
