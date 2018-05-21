@@ -31,7 +31,8 @@ class GildedRose {
                 decreaseQuality(i);
             }
 
-            if (!items[i].name.equals(SULFURAS)) {
+            if (items[i].name.equals(SULFURAS)) {
+            } else {
                 decreaseSellIn(i);
             }
 
