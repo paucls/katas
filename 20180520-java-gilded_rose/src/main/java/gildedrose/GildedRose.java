@@ -16,12 +16,7 @@ class GildedRose {
             final Item item = items[i];
             switch (item.name) {
                 case AGED_BRIE:
-                    increaseQuality(item);
-                    decreaseSellIn(item);
-
-                    if (item.sellIn < 0) {
-                        increaseQuality(item);
-                    }
+                    new AgedBrieQualityStrategy().updateQuality(item);
                     break;
                 case SULFURAS:
                     increaseQuality(item);
@@ -74,6 +69,12 @@ class GildedRose {
 abstract class QualityStrategy {
     abstract void updateQuality(Item item);
 
+    void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality++;
+        }
+    }
+
     void decreaseSellIn(Item item) {
         item.sellIn--;
     }
@@ -93,6 +94,18 @@ class DefaultQualityStrategy extends QualityStrategy {
 
         if (item.sellIn < 0) {
             decreaseQuality(item);
+        }
+    }
+}
+
+class AgedBrieQualityStrategy extends QualityStrategy {
+    @Override
+    void updateQuality(Item item) {
+        increaseQuality(item);
+        decreaseSellIn(item);
+
+        if (item.sellIn < 0) {
+            increaseQuality(item);
         }
     }
 }
