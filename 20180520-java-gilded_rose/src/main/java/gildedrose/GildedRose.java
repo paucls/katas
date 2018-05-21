@@ -19,15 +19,14 @@ class GildedRose {
             } else if (items[i].name.equals(BACKSTAGE_PASSES)) {
                 increaseQuality(i);
 
-                if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                    if (items[i].sellIn < 11) {
-                        increaseQuality(i);
-                    }
-
-                    if (items[i].sellIn < 6) {
-                        increaseQuality(i);
-                    }
+                if (items[i].sellIn < 11) {
+                    increaseQuality(i);
                 }
+
+                if (items[i].sellIn < 6) {
+                    increaseQuality(i);
+                }
+
             } else {
                 decreaseQuality(i);
             }
