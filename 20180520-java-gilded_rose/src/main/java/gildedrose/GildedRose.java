@@ -40,7 +40,7 @@ class GildedRose {
                     decreaseSellIn(item);
 
                     if (item.sellIn < 0) {
-                        dropQuality(i);
+                        dropQuality(item);
                     }
                     break;
                 default:
@@ -71,7 +71,7 @@ class GildedRose {
         }
     }
 
-    private void dropQuality(int i) {
-        items[i].quality = 0;
+    private void dropQuality(Item item) {
+        item.quality = 0;
     }
 }
