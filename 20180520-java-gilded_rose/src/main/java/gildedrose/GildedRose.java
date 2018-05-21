@@ -15,7 +15,23 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             switch (items[i].name) {
                 case AGED_BRIE:
+                    break;
+                case SULFURAS:
+                    break;
+                case BACKSTAGE_PASSES:
+                    break;
+                default:
+                    break;
+            }
+
+            switch (items[i].name) {
+                case AGED_BRIE:
                     increaseQuality(i);
+                    decreaseSellIn(i);
+
+                    if (items[i].sellIn < 0) {
+                        increaseQuality(i);
+                    }
                     break;
                 case SULFURAS:
                     increaseQuality(i);
@@ -31,24 +47,6 @@ class GildedRose {
                         increaseQuality(i);
                     }
 
-                    break;
-                default:
-                    decreaseQuality(i);
-                    break;
-            }
-
-            switch (items[i].name) {
-                case AGED_BRIE:
-                    decreaseSellIn(i);
-
-                    if (items[i].sellIn < 0) {
-                        increaseQuality(i);
-                    }
-                    break;
-                case SULFURAS:
-                    // not affected
-                    break;
-                case BACKSTAGE_PASSES:
                     decreaseSellIn(i);
 
                     if (items[i].sellIn < 0) {
@@ -56,6 +54,7 @@ class GildedRose {
                     }
                     break;
                 default:
+                    decreaseQuality(i);
                     decreaseSellIn(i);
 
                     if (items[i].sellIn < 0) {
