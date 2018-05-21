@@ -32,7 +32,7 @@ class GildedRose {
             }
 
             if (!items[i].name.equals(SULFURAS)) {
-                items[i].sellIn = items[i].sellIn - 1;
+                decreaseSellIn(i);
             }
 
             if (items[i].sellIn < 0) {
@@ -47,6 +47,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void decreaseSellIn(int i) {
+        items[i].sellIn = items[i].sellIn - 1;
     }
 
     private void increaseQuality(int i) {
