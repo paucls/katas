@@ -1,10 +1,6 @@
 package gildedrose;
 
 class GildedRose {
-    private static final String AGED_BRIE = "Aged Brie";
-    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-
     private Item[] items;
 
     GildedRose(Item[] items) {
@@ -13,25 +9,34 @@ class GildedRose {
 
     void updateQuality() {
         for (final Item item : items) {
-            switch (item.name) {
-                case AGED_BRIE:
-                    new AgedBrieQualityStrategy().updateQuality(item);
-                    break;
-                case SULFURAS:
-                    new SulfurasQualityStrategy().updateQuality(item);
-                    break;
-                case BACKSTAGE_PASSES:
-                    new BackstageQualityStrategy().updateQuality(item);
-                    break;
-                default:
-                    new DefaultQualityStrategy().updateQuality(item);
-                    break;
-            }
+            QualityStrategyFactory
+                    .strategyFor(item.name)
+                    .updateQuality(item);
+        }
+    }
+}
+
+class QualityStrategyFactory {
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
+    static QualityStrategy strategyFor(String itemName) {
+        switch (itemName) {
+            case AGED_BRIE:
+                return new AgedBrieQualityStrategy();
+            case SULFURAS:
+                return new SulfurasQualityStrategy();
+            case BACKSTAGE_PASSES:
+                return new BackstageQualityStrategy();
+            default:
+                return new DefaultQualityStrategy();
         }
     }
 }
 
 abstract class QualityStrategy {
+
     abstract void updateQuality(Item item);
 
     void increaseQuality(Item item) {
