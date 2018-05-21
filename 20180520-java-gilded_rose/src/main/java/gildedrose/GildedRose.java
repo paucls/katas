@@ -16,25 +16,25 @@ class GildedRose {
             final Item item = items[i];
             switch (item.name) {
                 case AGED_BRIE:
-                    increaseQuality(i);
+                    increaseQuality(item);
                     decreaseSellIn(i);
 
                     if (item.sellIn < 0) {
-                        increaseQuality(i);
+                        increaseQuality(item);
                     }
                     break;
                 case SULFURAS:
-                    increaseQuality(i);
+                    increaseQuality(item);
                     break;
                 case BACKSTAGE_PASSES:
-                    increaseQuality(i);
+                    increaseQuality(item);
 
                     if (item.sellIn < 11) {
-                        increaseQuality(i);
+                        increaseQuality(item);
                     }
 
                     if (item.sellIn < 6) {
-                        increaseQuality(i);
+                        increaseQuality(item);
                     }
 
                     decreaseSellIn(i);
@@ -59,9 +59,9 @@ class GildedRose {
         items[i].sellIn = items[i].sellIn - 1;
     }
 
-    private void increaseQuality(int i) {
-        if (items[i].quality < 50) {
-            items[i].quality = items[i].quality + 1;
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 
