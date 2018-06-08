@@ -51,9 +51,7 @@ class Bartender {
 }
 
 sealed class Glass(val amount: Number = 0) {
-    fun isEmpty(): Boolean {
-        return (amount == 0)
-    }
+    fun isEmpty(): Boolean = (amount == 0)
 
     fun howFull(): Number {
         return amount
