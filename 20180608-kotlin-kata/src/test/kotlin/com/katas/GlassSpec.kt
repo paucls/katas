@@ -26,27 +26,32 @@ object GlassSpec : Spek({
             assertThat(fullGlass.howFull()).isEqualTo(20)
             assertThat(fullGlass.isEmpty()).isFalse()
         }
-    }
 
-//    describe("A half-pint glass"){
-//
-//        it("should contain 10 fl.oz when is filled up"){
-//            val fullGlass = HalfPintGlass().fill()
-//
-//            assertThat(fullGlass.howFull()).isEqualTo(10)
-//        }
-//    }
+        it("can fill a half-pint glass") {
+            val bartender = Bartender()
+
+            val freshGlass = HalfGlass()
+            val fullGlass = bartender.fill(freshGlass)
+
+            assertThat(fullGlass.howFull()).isEqualTo(10)
+            assertThat(fullGlass.isEmpty()).isFalse()
+        }
+    }
 
 })
 
 class Bartender {
     fun fill(glass: Glass): Glass {
+        when (glass) {
+            is HalfGlass -> return HalfGlass(10)
+        }
+
         return Glass(20)
     }
 
 }
 
-class Glass(val amount: Number = 0) {
+open class Glass(val amount: Number = 0) {
 
     fun isEmpty(): Boolean {
         return (amount == 0)
@@ -56,4 +61,6 @@ class Glass(val amount: Number = 0) {
         return amount
     }
 }
+
+class HalfGlass(amount: Number = 0) : Glass(amount)
 
