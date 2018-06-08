@@ -15,7 +15,7 @@ object GlassSpec : Spek({
             assertThat(freshGlass.isEmpty).isTrue()
         }
 
-        it("should contain 20 fl.oz when is served") {
+        it("should contain 20 fl.oz when is filled up") {
             val freshGlass = Glass()
             val fullGlass = freshGlass.fill()
             assertThat(fullGlass.howFull()).isEqualTo(20)
