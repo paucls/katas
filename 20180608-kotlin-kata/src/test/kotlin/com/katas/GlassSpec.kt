@@ -19,6 +19,7 @@ object GlassSpec : Spek({
             val freshGlass = Glass()
             val fullGlass = freshGlass.fill()
             assertThat(fullGlass.howFull()).isEqualTo(20)
+            assertThat(fullGlass.isEmpty).isFalse()
         }
     }
 
@@ -26,7 +27,7 @@ object GlassSpec : Spek({
 
 class Glass(val isEmpty: Boolean = true) {
     fun fill(): Glass {
-        return Glass()
+        return Glass(false)
     }
 
     fun howFull(): Number {
