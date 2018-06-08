@@ -27,8 +27,6 @@ object GlassSpec : Spek({
 
 class Glass(val amount: Number = 0) {
 
-
-
     fun isEmpty(): Boolean {
         return (amount == 0)
     }
@@ -38,6 +36,6 @@ class Glass(val amount: Number = 0) {
     }
 
     fun howFull(): Number {
-        return 20
+        return amount
     }
 }
