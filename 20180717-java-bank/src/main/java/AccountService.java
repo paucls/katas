@@ -1,6 +1,10 @@
 public class AccountService {
-    public AccountService(Console console, Calendar clock) {
+    private final Console console;
+    private final Calendar calendar;
 
+    public AccountService(Console console, Calendar calendar) {
+        this.console = console;
+        this.calendar = calendar;
     }
 
     public void deposit(int amount) {
@@ -10,5 +14,6 @@ public class AccountService {
     }
 
     public void printStatement() {
+        console.printLine("DATE | AMOUNT | BALANCE");
     }
 }
