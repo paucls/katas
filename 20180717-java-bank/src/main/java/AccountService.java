@@ -1,5 +1,8 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AccountService {
     private final Console console;
@@ -13,7 +16,8 @@ public class AccountService {
     }
 
     public void deposit(int amount) {
-        this.transactions.add("20/10/2017 | " + amount + " | " + amount);
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        this.transactions.add(format.format(calendar.currentDate()) + " | " + amount + " | " + amount);
     }
 
     public void withdraw(int amount) {
