@@ -15,7 +15,7 @@ object AccountServiceTest : Spek({
             val console: Console = mock()
             val calendar: Calendar = mock()
             val transactions: Transactions = mock()
-            val account = AccountService(console, calendar)
+            val account = AccountService(console, calendar, transactions)
 
             whenever(calendar.currentDate()).thenReturn(now)
 
