@@ -4,11 +4,12 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
+import org.jetbrains.spek.api.dsl.xdescribe
 import java.time.LocalDate
 
 object AcceptanceTest : Spek({
 
-    describe("Account Service") {
+    xdescribe("Account Service") {
 
         it("should print statement containing all transactions") {
             val console: Console = mock()
