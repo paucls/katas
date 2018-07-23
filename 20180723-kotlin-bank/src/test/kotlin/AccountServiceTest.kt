@@ -38,7 +38,7 @@ object AccountServiceTest : Spek({
             verify(transactions).register(Transaction(date = now, amount = -500, balance = -500))
         }
 
-        it("should calculate new balance applying operation to last balance") {
+        it("should calculate new balance applying withdraw operation to last balance") {
             val now = LocalDate.now()
             val console: Console = mock()
             val calendar: Calendar = mock()

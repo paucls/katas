@@ -17,7 +17,10 @@ class AccountService(
 
     fun withdraw(amount: Int) {
         transactions.register(
-                Transaction(date = calendar.currentDate(), amount = -amount, balance = -amount)
+                Transaction(
+                        date = calendar.currentDate(),
+                        amount = -amount,
+                        balance = transactions.lastBalance() - amount)
         )
     }
 
