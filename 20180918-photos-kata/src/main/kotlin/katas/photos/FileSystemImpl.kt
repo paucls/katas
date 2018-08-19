@@ -11,6 +11,6 @@ class FileSystemImpl : FileSystem {
     }
 
     override fun delete(file: katas.photos.File) {
-
+        File(file.path).delete()
     }
 }
