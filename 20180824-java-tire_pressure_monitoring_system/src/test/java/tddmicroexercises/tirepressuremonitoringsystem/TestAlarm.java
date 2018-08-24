@@ -1,6 +1,7 @@
 package tddmicroexercises.tirepressuremonitoringsystem;
 
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -11,8 +12,14 @@ import static org.mockito.Mockito.when;
 
 public class TestAlarm {
 
-    private Sensor sensorStub = mock(Sensor.class);
-    private Alarm alarm = new Alarm(sensorStub);
+    private Sensor sensorStub;
+    private Alarm alarm;
+
+    @Before
+    public void setUp() {
+        sensorStub = mock(Sensor.class);
+        alarm = new Alarm(sensorStub);
+    }
 
     @Test
     public void should_be_off_on_initialization() {
@@ -36,5 +43,20 @@ public class TestAlarm {
         alarm.check();
 
         assertThat(alarm.isAlarmOn(), is(true));
+    }
+
+    @Test
+    public void should_be_off_when_pressure_is_in_range() {
+        when(sensorStub.popNextPressurePsiValue()).thenReturn(17.0);
+
+        alarm.check();
+
+        assertThat(alarm.isAlarmOn(), is(false));
+
+        when(sensorStub.popNextPressurePsiValue()).thenReturn(21.0);
+
+        alarm.check();
+
+        assertThat(alarm.isAlarmOn(), is(false));
     }
 }
