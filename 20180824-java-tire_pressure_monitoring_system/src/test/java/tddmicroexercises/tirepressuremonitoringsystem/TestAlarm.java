@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -28,7 +27,7 @@ public class TestAlarm {
     @Test
     public void should_be_off_on_initialization() {
         Alarm alarm = new Alarm();
-        assertEquals(false, alarm.isAlarmOn());
+        assertThat(alarm.isAlarmOn(), is(false));
     }
 
     @Test
