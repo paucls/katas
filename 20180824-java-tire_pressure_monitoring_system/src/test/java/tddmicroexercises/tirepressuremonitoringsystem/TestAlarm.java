@@ -1,8 +1,11 @@
 package tddmicroexercises.tirepressuremonitoringsystem;
 
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -10,6 +13,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@RunWith(JUnitParamsRunner.class)
 public class TestAlarm {
 
     private Sensor sensorStub;
@@ -46,14 +50,11 @@ public class TestAlarm {
     }
 
     @Test
-    public void should_be_off_when_pressure_is_in_range() {
-        when(sensorStub.popNextPressurePsiValue()).thenReturn(17.0);
-
-        alarm.check();
-
-        assertThat(alarm.isAlarmOn(), is(false));
-
-        when(sensorStub.popNextPressurePsiValue()).thenReturn(21.0);
+    @Parameters({"17.0",
+            "19.5",
+            "21.0"})
+    public void should_be_off_when_pressure_is_in_range(double psiValue) {
+        when(sensorStub.popNextPressurePsiValue()).thenReturn(psiValue);
 
         alarm.check();
 
