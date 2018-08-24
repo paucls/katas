@@ -8,6 +8,13 @@ public class Alarm {
 
     boolean alarmOn = false;
 
+    public Alarm() {
+    }
+
+    public Alarm(Sensor sensor) {
+        this.sensor = sensor;
+    }
+
     public void check() {
         double psiPressureValue = sensor.popNextPressurePsiValue();
 
