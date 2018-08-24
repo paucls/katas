@@ -15,12 +15,12 @@ import static org.mockito.Mockito.when;
 @RunWith(JUnitParamsRunner.class)
 public class TestAlarm {
 
-    private Sensor sensorStub;
+    private ISensor sensorStub;
     private Alarm alarm;
 
     @Before
     public void setUp() {
-        sensorStub = mock(Sensor.class);
+        sensorStub = mock(ISensor.class);
         alarm = new Alarm(sensorStub);
     }
 
