@@ -12,6 +12,7 @@ import static org.mockito.Mockito.when;
 public class TestAlarm {
 
     private Sensor sensorStub = mock(Sensor.class);
+    private Alarm alarm = new Alarm(sensorStub);
 
     @Test
     public void should_be_off_on_initialization() {
@@ -21,8 +22,6 @@ public class TestAlarm {
 
     @Test
     public void should_be_active_when_pressure_is_below_range() {
-        Alarm alarm = new Alarm(sensorStub);
-
         when(sensorStub.popNextPressurePsiValue()).thenReturn(16.0);
 
         alarm.check();
@@ -32,8 +31,6 @@ public class TestAlarm {
 
     @Test
     public void should_be_active_when_pressure_is_above_range() {
-        Alarm alarm = new Alarm(sensorStub);
-
         when(sensorStub.popNextPressurePsiValue()).thenReturn(22.0);
 
         alarm.check();
