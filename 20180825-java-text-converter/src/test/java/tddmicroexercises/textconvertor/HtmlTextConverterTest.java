@@ -8,6 +8,7 @@ import java.io.IOException;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class HtmlTextConverterTest {
     @Test
@@ -23,6 +24,30 @@ public class HtmlTextConverterTest {
         HtmlTextConverter converter = new TestingHtmlTextConverter("filepath", bufferedReaderStub);
 
         assertThat(converter.convertToHtml(), is(""));
+    }
+
+    @Test
+    public void should_insert_a_html_br_after_each_line() throws IOException {
+        BufferedReader bufferedReaderStub = mock(BufferedReader.class);
+        HtmlTextConverter converter = new TestingHtmlTextConverter("/a-file", bufferedReaderStub);
+
+        when(bufferedReaderStub.readLine())
+                .thenReturn("some text")
+                .thenReturn(null);
+
+        assertThat(converter.convertToHtml(), is("some text<br />"));
+    }
+
+    @Test
+    public void should_escape_html_characters() throws IOException {
+        BufferedReader bufferedReaderStub = mock(BufferedReader.class);
+        HtmlTextConverter converter = new TestingHtmlTextConverter("/a-file", bufferedReaderStub);
+
+        when(bufferedReaderStub.readLine())
+                .thenReturn("text & text")
+                .thenReturn(null);
+
+        assertThat(converter.convertToHtml(), is("text &amp; text<br />"));
     }
 }
 
