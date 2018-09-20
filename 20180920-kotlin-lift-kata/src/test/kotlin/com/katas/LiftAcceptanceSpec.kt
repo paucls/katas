@@ -6,7 +6,7 @@ import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
 
-object GreeterSpec : Spek({
+object LiftAcceptanceSpec : Spek({
 
     describe("Lift") {
         it("should respond to calls containing a source floor and direction") {
@@ -15,8 +15,7 @@ object GreeterSpec : Spek({
             val lift = Lift(display, currentFloor)
 
             val floor = 3
-            val direction = "up"
-            lift.request(floor, direction)
+            lift.request(floor, Direction.UP)
 
             val inOrder = inOrder(display)
             inOrder.verify(display).show("Floor: 1")
@@ -26,4 +25,3 @@ object GreeterSpec : Spek({
     }
 
 })
-
