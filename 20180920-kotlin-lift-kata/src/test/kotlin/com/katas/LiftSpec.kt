@@ -1,6 +1,7 @@
 package com.katas
 
 import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.inOrder
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify
@@ -42,6 +43,28 @@ object LiftSpec : Spek({
 
             verify(display).show("Floor: 1")
             assertThat(lift.floor).isEqualTo(1)
+        }
+
+        it("should indicate current floor moving up") {
+            val lift = Lift(display, 0)
+
+            lift.request(2, Direction.UP)
+
+            val inOrder = inOrder(display)
+            inOrder.verify(display).show("Floor: 1")
+            inOrder.verify(display).show("Floor: 2")
+            assertThat(lift.floor).isEqualTo(2)
+        }
+
+        it("should indicate current floor moving down") {
+            val lift = Lift(display, 2)
+
+            lift.request(0, Direction.DOWN)
+
+            val inOrder = inOrder(display)
+            inOrder.verify(display).show("Floor: 1")
+            inOrder.verify(display).show("Floor: 0")
+            assertThat(lift.floor).isEqualTo(0)
         }
     }
 

@@ -7,9 +7,21 @@ class Lift(
     fun request(floor: Int, direction: Direction) {
         if (this.floor == floor) return
 
-        this.floor = floor
+        if (direction == Direction.UP) {
+            for (i in (this.floor + 1)..floor) {
+                this.floor = i
+                displayCurrentFloor()
+            }
+        } else {
+            for (i in (this.floor - 1) downTo floor) {
+                this.floor = i
+                displayCurrentFloor()
+            }
+        }
+    }
 
-        display.show("Floor: $floor")
+    private fun displayCurrentFloor() {
+        display.show("Floor: ${this.floor}")
     }
 }
 
