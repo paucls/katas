@@ -1,5 +1,6 @@
 package com.katas
 
+import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify
@@ -14,21 +15,17 @@ object LiftSpec : Spek({
 
     describe("Lift") {
         it("should not move if already in requested floor") {
-            val currentFloor = 0
-            val lift = Lift(display, currentFloor)
+            val lift = Lift(display, 0)
 
-            val floor = 0
-            lift.request(floor, Direction.UP)
+            lift.request(0, Direction.UP)
 
-            verify(display, never()).show("Floor: 1")
+            verify(display, never()).show(any())
         }
 
         it("should move up") {
-            val currentFloor = 0
-            val lift = Lift(display, currentFloor)
+            val lift = Lift(display, 0)
 
-            val floor = 1
-            lift.request(floor, Direction.UP)
+            lift.request(1, Direction.UP)
 
             verify(display).show("Floor: 1")
             assertThat(lift.floor).isEqualTo(1)
@@ -36,4 +33,3 @@ object LiftSpec : Spek({
     }
 
 })
-
