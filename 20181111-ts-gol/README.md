@@ -1,0 +1,3 @@
+TypeScript Jasmine Kata Seed
+============================
+
