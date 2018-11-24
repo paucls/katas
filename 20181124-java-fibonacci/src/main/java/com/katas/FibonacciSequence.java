@@ -2,6 +2,8 @@ package com.katas;
 
 class FibonacciSequence {
     int getNumber(int index) {
-        return index;
+        if (index < 2)
+            return index;
+        return 1;
     }
 }

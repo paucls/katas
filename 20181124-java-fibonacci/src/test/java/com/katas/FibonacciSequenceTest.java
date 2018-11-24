@@ -11,10 +11,18 @@ public class FibonacciSequenceTest {
 
         assertThat(fibonacci.getNumber(0)).isEqualTo(0);
     }
+
     @Test
     public void second_number_is_one() {
         FibonacciSequence fibonacci = new FibonacciSequence();
 
         assertThat(fibonacci.getNumber(1)).isEqualTo(1);
+    }
+
+    @Test
+    public void third_number_is_one() {
+        FibonacciSequence fibonacci = new FibonacciSequence();
+
+        assertThat(fibonacci.getNumber(2)).isEqualTo(1);
     }
 }
