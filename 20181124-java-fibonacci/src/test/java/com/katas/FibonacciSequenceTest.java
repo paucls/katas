@@ -27,4 +27,9 @@ public class FibonacciSequenceTest {
     public void third_number_is_one() {
         assertThat(fibonacci.getNumber(2)).isEqualTo(1);
     }
+
+    @Test
+    public void fourth_number_is_two() {
+        assertThat(fibonacci.getNumber(3)).isEqualTo(2);
+    }
 }

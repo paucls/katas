@@ -4,6 +4,6 @@ class FibonacciSequence {
     int getNumber(int index) {
         if (index < 2)
             return index;
-        return 1;
+        return index - 1;
     }
 }
