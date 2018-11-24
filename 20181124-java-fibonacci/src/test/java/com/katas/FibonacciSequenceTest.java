@@ -14,12 +14,8 @@ public class FibonacciSequenceTest {
     }
 
     @Test
-    public void first_number_is_zero() {
+    public void first_two_number_are_the_same_than_index() {
         assertThat(fibonacci.getNumber(0)).isEqualTo(0);
-    }
-
-    @Test
-    public void second_number_is_one() {
         assertThat(fibonacci.getNumber(1)).isEqualTo(1);
     }
 
