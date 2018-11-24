@@ -14,23 +14,15 @@ public class FibonacciSequenceTest {
     }
 
     @Test
-    public void first_two_number_are_the_same_than_index() {
+    public void first_two_numbers_are_the_same_than_index() {
         assertThat(fibonacci.getNumber(0)).isEqualTo(0);
         assertThat(fibonacci.getNumber(1)).isEqualTo(1);
     }
 
     @Test
-    public void third_number_is_one() {
+    public void other_numbers_are_the_sum_of_the_two_preceding_ones() {
         assertThat(fibonacci.getNumber(2)).isEqualTo(1);
-    }
-
-    @Test
-    public void fourth_number_is_two() {
         assertThat(fibonacci.getNumber(3)).isEqualTo(2);
-    }
-
-    @Test
-    public void sixth_number_is_five() {
         assertThat(fibonacci.getNumber(5)).isEqualTo(5);
     }
 }
