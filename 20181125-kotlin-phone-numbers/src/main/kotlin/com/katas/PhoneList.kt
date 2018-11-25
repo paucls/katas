@@ -1,7 +1,11 @@
 package com.katas
 
-class PhoneList(listOf: List<String> = emptyList()) {
+class PhoneList(private val phoneNumbers: List<String> = emptyList()) {
     fun isConsistent(): Boolean {
-        return true
+        return !phoneNumbers.any { phoneX ->
+            phoneNumbers
+                    .filter { it != phoneX }
+                    .any { phoneY -> phoneY.contains(phoneX) }
+        }
     }
 }

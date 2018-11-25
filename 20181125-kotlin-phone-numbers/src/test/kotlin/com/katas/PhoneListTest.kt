@@ -22,4 +22,13 @@ class PhoneListTest {
 
         assertThat(isConsistent).isTrue()
     }
+
+    @Test
+    fun `should not be consistent when a number if prefix of another one`() {
+        val phoneList = PhoneList(listOf("91125426", "911"))
+
+        val isConsistent = phoneList.isConsistent()
+
+        assertThat(isConsistent).isFalse()
+    }
 }
