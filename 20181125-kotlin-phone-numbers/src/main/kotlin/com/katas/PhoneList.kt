@@ -2,10 +2,12 @@ package com.katas
 
 class PhoneList(private val phoneNumbers: List<String> = emptyList()) {
     fun isConsistent(): Boolean {
-        return !phoneNumbers.any { phoneX ->
-            phoneNumbers
-                    .filter { it != phoneX }
-                    .any { phoneY -> phoneY.contains(phoneX) }
-        }
+        return phoneNumbers.none(::isPrefixOfAnother)
+    }
+
+    private fun isPrefixOfAnother(phone: String): Boolean {
+        return phoneNumbers
+                .filter { it != phone }
+                .any { it.contains(phone) }
     }
 }
