@@ -7,7 +7,7 @@ class PhoneList(private val phoneNumbers: List<String> = emptyList()) {
 
     private fun isPrefixOfAnother(phone: String): Boolean {
         return phoneNumbers
-                .filter { it != phone }
+                .minus(phone)
                 .any { it.contains(phone) }
     }
 
