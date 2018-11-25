@@ -1,6 +1,6 @@
 package com.katas
 
-class PhoneList {
+class PhoneList(listOf: List<String> = emptyList()) {
     fun isConsistent(): Boolean {
         return true
     }

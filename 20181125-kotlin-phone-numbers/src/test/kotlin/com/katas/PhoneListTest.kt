@@ -13,4 +13,13 @@ class PhoneListTest {
 
         assertThat(isConsistent).isTrue()
     }
+
+    @Test
+    fun `should be consistent when has a single phone number`() {
+        val phoneList = PhoneList(listOf("91125426"))
+
+        val isConsistent = phoneList.isConsistent()
+
+        assertThat(isConsistent).isTrue()
+    }
 }
