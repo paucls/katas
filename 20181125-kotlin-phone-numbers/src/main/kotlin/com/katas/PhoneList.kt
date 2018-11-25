@@ -10,4 +10,8 @@ class PhoneList(private val phoneNumbers: List<String> = emptyList()) {
                 .filter { it != phone }
                 .any { it.contains(phone) }
     }
+
+    companion object {
+        fun of(vararg phones: String) = PhoneList(phones.toList())
+    }
 }

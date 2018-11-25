@@ -16,7 +16,7 @@ class PhoneListTest {
 
     @Test
     fun `should be consistent when has a single phone number`() {
-        val phoneList = PhoneList(listOf("91125426"))
+        val phoneList = PhoneList.of("91125426")
 
         val isConsistent = phoneList.isConsistent()
 
@@ -25,7 +25,7 @@ class PhoneListTest {
 
     @Test
     fun `should not be consistent when a number if prefix of another one`() {
-        val phoneList = PhoneList(listOf("91125426", "911"))
+        val phoneList = PhoneList.of("91125426", "911")
 
         val isConsistent = phoneList.isConsistent()
 
