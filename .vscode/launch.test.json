@@ -1,0 +1,372 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "20171011-kotlin-file-logger",
+                "projectName": "20171011-kotlin-file-logger",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171011-kotlin-file-logger",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20181110-kotlin-junit-gol",
+                "projectName": "20181110-kotlin-junit-gol",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181110-kotlin-junit-gol",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "Java",
+                "projectName": "Java",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180520-java-gilded_rose",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "pbt-workshop",
+                "projectName": "pbt-workshop",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20170612-recently-used-list-pbt",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "com.karumi.maxibonskata",
+                "projectName": "com.karumi.maxibonskata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20170610-java-maxibonkata-pbt",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171030-kotlin-game-of-life",
+                "projectName": "20171030-kotlin-game-of-life",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171030-kotlin-game-of-life",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "java-gradle-kata-seed",
+                "projectName": "java-gradle-kata-seed",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181124-java-fibonacci",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "java-kata",
+                "projectName": "java-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180224-mars-rover-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "photos",
+                "projectName": "photos",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180918-photos-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180608-kotlin-pub-kata",
+                "projectName": "20180608-kotlin-pub-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180608-kotlin-pub-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "java-pizza-delivery-service-kata",
+                "projectName": "java-pizza-delivery-service-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20170420-java-pizza-delivery-service",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171201-kotlin-banking-kata",
+                "projectName": "20171201-kotlin-banking-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171201-kotlin-banking-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180723-kotlin-bank",
+                "projectName": "20180723-kotlin-bank",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180723-kotlin-bank",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171019-kotlin-99bottles",
+                "projectName": "20171019-kotlin-99bottles",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171019-kotlin-99bottles",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171017-kotlin-99bottles",
+                "projectName": "20171017-kotlin-99bottles",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171017-kotlin-99bottles",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180423-kotlin-combat-kata",
+                "projectName": "20180423-kotlin-combat-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180423-kotlin-combat-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20181110-kotlin-gol",
+                "projectName": "20181110-kotlin-gol",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181110-kotlin-gol",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20181125-kotlin-phone-numbers",
+                "projectName": "20181125-kotlin-phone-numbers",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181125-kotlin-phone-numbers",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180608-kotlin-kata",
+                "projectName": "20180608-kotlin-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180608-kotlin-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180920-kotlin-lift-kata",
+                "projectName": "20180920-kotlin-lift-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180920-kotlin-lift-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "20171011-kotlin-file-logger",
+                "projectName": "20171011-kotlin-file-logger",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171011-kotlin-file-logger",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20181110-kotlin-junit-gol",
+                "projectName": "20181110-kotlin-junit-gol",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181110-kotlin-junit-gol",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "Java",
+                "projectName": "Java",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180520-java-gilded_rose",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "pbt-workshop",
+                "projectName": "pbt-workshop",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20170612-recently-used-list-pbt",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "com.karumi.maxibonskata",
+                "projectName": "com.karumi.maxibonskata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20170610-java-maxibonkata-pbt",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171030-kotlin-game-of-life",
+                "projectName": "20171030-kotlin-game-of-life",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171030-kotlin-game-of-life",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "java-gradle-kata-seed",
+                "projectName": "java-gradle-kata-seed",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181124-java-fibonacci",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "java-kata",
+                "projectName": "java-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180224-mars-rover-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "photos",
+                "projectName": "photos",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180918-photos-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180608-kotlin-pub-kata",
+                "projectName": "20180608-kotlin-pub-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180608-kotlin-pub-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "java-pizza-delivery-service-kata",
+                "projectName": "java-pizza-delivery-service-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20170420-java-pizza-delivery-service",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171201-kotlin-banking-kata",
+                "projectName": "20171201-kotlin-banking-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171201-kotlin-banking-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180723-kotlin-bank",
+                "projectName": "20180723-kotlin-bank",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180723-kotlin-bank",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171019-kotlin-99bottles",
+                "projectName": "20171019-kotlin-99bottles",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171019-kotlin-99bottles",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20171017-kotlin-99bottles",
+                "projectName": "20171017-kotlin-99bottles",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20171017-kotlin-99bottles",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180423-kotlin-combat-kata",
+                "projectName": "20180423-kotlin-combat-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180423-kotlin-combat-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20181110-kotlin-gol",
+                "projectName": "20181110-kotlin-gol",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181110-kotlin-gol",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20181125-kotlin-phone-numbers",
+                "projectName": "20181125-kotlin-phone-numbers",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20181125-kotlin-phone-numbers",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180608-kotlin-kata",
+                "projectName": "20180608-kotlin-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180608-kotlin-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "20180920-kotlin-lift-kata",
+                "projectName": "20180920-kotlin-lift-kata",
+                "workingDirectory": "/home/estebp/codebase/github/katas/20180920-kotlin-lift-kata",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
