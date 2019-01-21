@@ -1,5 +1,6 @@
 package com.katas
 
-class File {
-
-}
+data class File(
+        val name: String,
+        val size: Int = 0
+)

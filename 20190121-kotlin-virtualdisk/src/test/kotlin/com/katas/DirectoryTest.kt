@@ -4,10 +4,12 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
 class DirectoryTest {
+
+    private val file = File("file1.ext")
+
     @Test
     fun `should allow adding a file`() {
         val directory = Directory("dir1")
-        val file = File()
 
         directory.add(file)
 
@@ -17,7 +19,6 @@ class DirectoryTest {
     @Test
     fun `should allow deleting an existing file`() {
         val directory = Directory("dir1")
-        val file = File()
         directory.add(file)
 
         directory.delete(file)
