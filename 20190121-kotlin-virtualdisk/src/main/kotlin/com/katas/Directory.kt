@@ -1,13 +1,13 @@
 package com.katas
 
-data class Directory(val name: String) {
-    val files: MutableList<File> = mutableListOf()
+data class Directory(val name: String): Resource() {
+    val resources: MutableList<Resource> = mutableListOf()
 
-    fun add(file: File) {
-        files.add(file)
+    fun add(resource: Resource) {
+        resources.add(resource)
     }
 
-    fun delete(file: File) {
-        files.remove(file)
+    fun delete(resource: Resource) {
+        resources.remove(resource)
     }
 }

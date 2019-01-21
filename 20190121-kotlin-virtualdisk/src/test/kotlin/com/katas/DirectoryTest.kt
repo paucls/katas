@@ -13,7 +13,17 @@ class DirectoryTest {
 
         directory.add(file)
 
-        assertThat(directory.files).contains(file)
+        assertThat(directory.resources).contains(file)
+    }
+
+    @Test
+    fun `should allow adding a directory`() {
+        val directory1 = Directory("dir1")
+        val directory2 = Directory("dir1")
+
+        directory1.add(directory2)
+
+        assertThat(directory1.resources).contains(directory2)
     }
 
     @Test
@@ -23,6 +33,17 @@ class DirectoryTest {
 
         directory.delete(file)
 
-        assertThat(directory.files).doesNotContain(file)
+        assertThat(directory.resources).doesNotContain(file)
+    }
+
+    @Test
+    fun `should allow deleting a directory`() {
+        val directory1 = Directory("dir1")
+        val directory2 = Directory("dir1")
+        directory1.add(directory2)
+
+        directory1.delete(directory2)
+
+        assertThat(directory1.resources).doesNotContain(directory2)
     }
 }
