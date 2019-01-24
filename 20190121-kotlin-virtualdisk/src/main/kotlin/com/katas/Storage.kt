@@ -4,5 +4,4 @@ class Storage {
     fun rootDirectory(): Directory {
         return Directory("/")
     }
-
 }
