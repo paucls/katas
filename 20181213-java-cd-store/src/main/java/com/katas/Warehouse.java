@@ -1,18 +1,13 @@
 package com.katas;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class Warehouse {
+    private PaymentGateway paymentGateway;
 
-    Map<String, Integer> stock = new HashMap();
-
-    String receiveBatch(Batch batch) {
-        stock.put(batch.title(), batch.count());
-        return "SUCCESS";
+    public Warehouse(PaymentGateway paymentGateway) {
+        this.paymentGateway = paymentGateway;
     }
 
-    int stockCountOf(String title) {
-        return stock.get(title);
+    public String orderTitle(String title, String cardNumber) {
+        return null;
     }
 }
