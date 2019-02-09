@@ -14,44 +14,19 @@ namespace Tdd
             fibonacciSequence = new FibonacciSequence();
         }
 
-        [Test]
-        public void first_number_is_zero()
+        [TestCase(0, 0)]
+        [TestCase(1, 1)]
+        public void first_two_numbers_are_same_as_index(int index, int expected)
         {
-            var number = fibonacciSequence.getNumberAt(0);
-
-            Assert.That(number, Is.EqualTo(0));
+            Assert.That(fibonacciSequence.getNumberAt(index), Is.EqualTo(expected));
         }
 
-        [Test]
-        public void second_number_is_one()
+        [TestCase(2, 1)]
+        [TestCase(3, 2)]
+        [TestCase(5, 5)]
+        public void other_numbers_are_sum_of_the_two_preceding_ones(int index, int expected)
         {
-            var number = fibonacciSequence.getNumberAt(1);
-
-            Assert.That(number, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void third_number_is_one()
-        {
-            var number = fibonacciSequence.getNumberAt(2);
-
-            Assert.That(number, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void fourth_number_is_two()
-        {
-            var number = fibonacciSequence.getNumberAt(3);
-
-            Assert.That(number, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void sixth_number_is_five()
-        {
-            var number = fibonacciSequence.getNumberAt(5);
-
-            Assert.That(number, Is.EqualTo(5));
+            Assert.That(fibonacciSequence.getNumberAt(index), Is.EqualTo(expected));
         }
 
         [Test]
