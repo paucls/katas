@@ -1,6 +1,7 @@
 package com.katas
 
 class Game {
+    private val numFrames = 10
     private var rolls: MutableList<Int> = mutableListOf()
 
     fun roll(pins: Int) {
@@ -8,6 +9,12 @@ class Game {
     }
 
     fun score(): Int {
-        return rolls.sum()
+        var score = 0
+
+        repeat(numFrames) {
+            score += rolls[it] + rolls[it + 1]
+        }
+
+        return score
     }
 }
