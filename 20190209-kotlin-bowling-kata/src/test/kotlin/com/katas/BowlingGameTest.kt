@@ -16,7 +16,7 @@ class BowlingGameTest {
     }
 
     @Test
-    fun `should have score 1 when knocking down a single pin`() {
+    fun `should calculate the score of a game with a single pin kocked down`() {
         game.roll(1)
         repeat(19) {
             game.roll(0)
@@ -26,7 +26,7 @@ class BowlingGameTest {
     }
 
     @Test
-    fun `should have score 20 after knocking down a single pin per roll`() {
+    fun `should calculate the score of a game with a single pin knocked down per roll`() {
         repeat(20) {
             game.roll(1)
         }
@@ -35,18 +35,7 @@ class BowlingGameTest {
     }
 
     @Test
-    fun `the score for a spare frame is pins in the frame plus pins on next roll`() {
-        game.roll(5)
-        game.roll(5)
-        repeat(18) {
-            game.roll(1)
-        }
-
-        assertThat(game.score()).isEqualTo(29)
-    }
-
-    @Test
-    fun `the score for a spare in each frame`() {
+    fun `should calculate the score of a game with a spare in each frame`() {
         repeat(21) {
             game.roll(5)
         }
@@ -55,7 +44,7 @@ class BowlingGameTest {
     }
 
     @Test
-    fun `the score for a few strikes followed by no pins`() {
+    fun `should calculate the score of a game with a few strikes followed by no pins`() {
         game.roll(10)
         game.roll(10)
         repeat(18) {
@@ -63,5 +52,14 @@ class BowlingGameTest {
         }
 
         assertThat(game.score()).isEqualTo(30)
+    }
+
+    @Test
+    fun `should calculate the score of a perfect game`() {
+        repeat(12) {
+            game.roll(10)
+        }
+
+        assertThat(game.score()).isEqualTo(300)
     }
 }
