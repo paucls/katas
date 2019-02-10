@@ -1,6 +1,7 @@
 package com.katas
 
 class Game {
+    private val numFrames = 10
     private var rolls: MutableList<Int> = mutableListOf()
 
     fun roll(pins: Int) {
@@ -11,9 +12,10 @@ class Game {
         var score = 0
         var rollIndex = 0
 
-        for (frameIndex in 0..9) {
-            if (rolls[rollIndex] == 10) {
+        repeat(numFrames) {
+            if (isStrike(rollIndex)) {
                 score += rolls[rollIndex] + rolls[rollIndex + 1] + rolls[rollIndex + 2]
+
                 rollIndex += 1
             } else {
                 score += rolls[rollIndex] + rolls[rollIndex + 1]
@@ -29,5 +31,7 @@ class Game {
         return score
     }
 
-    private fun isSpare(i: Int) = rolls[i] + rolls[i + 1] == 10
+    private fun isStrike(rollIndex: Int) = rolls[rollIndex] == 10
+
+    private fun isSpare(rollIndex: Int) = rolls[rollIndex] + rolls[rollIndex + 1] == 10
 }
