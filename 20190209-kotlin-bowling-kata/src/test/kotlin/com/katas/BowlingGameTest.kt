@@ -16,7 +16,7 @@ class BowlingGameTest {
     }
 
     @Test
-    fun `should calculate the score of a game with a single pin kocked down`() {
+    fun `should calculate the score of a game with a single pin knocked down`() {
         game.roll(1)
         repeat(19) {
             game.roll(0)
