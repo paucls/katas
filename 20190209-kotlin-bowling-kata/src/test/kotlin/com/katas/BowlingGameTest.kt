@@ -1,6 +1,7 @@
 package com.katas
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Ignore
 import org.junit.Test
 
 class BowlingGameTest {
@@ -43,5 +44,26 @@ class BowlingGameTest {
         }
 
         assertThat(game.score()).isEqualTo(29)
+    }
+
+    @Test
+    fun `the score for a spare in each frame`() {
+        repeat(21) {
+            game.roll(5)
+        }
+
+        assertThat(game.score()).isEqualTo(150)
+    }
+
+    @Ignore
+    @Test
+    fun `the score for a few strikes followed by no pins`() {
+        game.roll(10)
+        game.roll(10)
+        repeat(18) {
+            game.roll(0)
+        }
+
+        assertThat(game.score()).isEqualTo(30)
     }
 }

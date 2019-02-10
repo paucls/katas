@@ -9,12 +9,15 @@ class Game {
 
     fun score(): Int {
         var score = 0
+        var rollIndex = 0
 
-        for (i in 0..19 step 2) {
-            if (isSpare(i)) {
-                score += rolls[i + 2]
+        for (frameIndex in 0..9) {
+            if (isSpare(rollIndex)) {
+                score += rolls[rollIndex + 2]
             }
-            score += rolls[i] + rolls[i + 1]
+            score += rolls[rollIndex] + rolls[rollIndex + 1]
+
+            rollIndex += 2
         }
 
         return score
