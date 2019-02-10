@@ -28,7 +28,6 @@ class BowlingGameTest {
         assertThat(game.score()).isEqualTo(20)
     }
 
-    @Ignore
     @Test
     fun `the score for a spare frame is pins in the frame plus pins on next roll`() {
         game.roll(5)
