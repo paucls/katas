@@ -1,0 +1,32 @@
+
+> ts-jasmine-kata-seed@0.0.0 pretest /home/estebp/codebase/trash/20190221-ts-roman
+> npm run build
+
+
+> ts-jasmine-kata-seed@0.0.0 prebuild /home/estebp/codebase/trash/20190221-ts-roman
+> rimraf dist/**/*.js
+
+
+> ts-jasmine-kata-seed@0.0.0 build /home/estebp/codebase/trash/20190221-ts-roman
+> tsc
+
+
+> ts-jasmine-kata-seed@0.0.0 test /home/estebp/codebase/trash/20190221-ts-roman
+> jasmine-ts "spec/**/*.spec.ts"
+
+Jasmine started
+
+  Roman Numerals
+    [32m✓ can be parsed from arabic (1,I) [0][39m
+    [32m✓ can be parsed from arabic (2,II) [1][39m
+    [32m✓ can be parsed from arabic (3,III) [2][39m
+    [32m✓ can be parsed from arabic (4,IV) [3][39m
+    [32m✓ can be parsed from arabic (5,V) [4][39m
+    [32m✓ can be parsed from arabic (6,VI) [5][39m
+    [32m✓ can be parsed from arabic (9,IX) [6][39m
+    [32m✓ can be parsed from arabic (10,X) [7][39m
+    [32m✓ can be parsed from arabic (12,XII) [8][39m
+    [32m✓ can be parsed from arabic (16,XVI) [9][39m
+    [32m✓ can be parsed from arabic (50,L) [10][39m
+
+Executed 11 of 11 specs[32m SUCCESS[39m in 0.01 sec.
