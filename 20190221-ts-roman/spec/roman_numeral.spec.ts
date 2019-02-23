@@ -15,8 +15,8 @@ describe('Roman Numerals', () => {
         [12, 'XII'],
         [16, 'XVI'],
         [20, 'XX'],
+        [38, 'XXXVIII'],
         [50, 'L']
-        // [38, 'XXXVIII']
     ]).it('can be parsed from arabic', ([arabic, roman]) => {
         expect(toRoman(arabic)).toEqual(roman);
     });
