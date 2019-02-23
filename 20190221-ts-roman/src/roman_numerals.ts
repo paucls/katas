@@ -16,11 +16,13 @@ export class Arabic {
             if (remainder === translation[t] - 1) {
                 roman += 'I';
                 remainder += 1;
+                return roman + new Arabic(remainder).toRoman();
             }
 
             if (remainder >= translation[t]) {
                 roman += t;
                 remainder -= translation[t];
+                return roman + new Arabic(remainder).toRoman();
             }
         }
 

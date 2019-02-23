@@ -14,6 +14,7 @@ describe('Roman Numerals', () => {
         [10, 'X'],
         [12, 'XII'],
         [16, 'XVI'],
+        [20, 'XX'],
         [50, 'L']
         // [38, 'XXXVIII']
     ]).it('can be parsed from arabic', ([arabic, roman]) => {
