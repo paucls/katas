@@ -1,9 +1,7 @@
 export class BowlingGame {
-    constructor(rolls: any[]) {
-
-    }
+    constructor(private rolls: number[]) {}
 
     get score() {
-        return 0;
+        return this.rolls.reduce((a, b) => a + b, 0);
     }
 }
