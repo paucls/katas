@@ -9,6 +9,12 @@ export class BowlingGame {
 
         let rollIdx = 0;
         for (let i = 0; i < NUM_FRAMES; i++) {
+            if (this.rolls[rollIdx] === ALL_PINS) {
+                result += ALL_PINS + this.rolls[rollIdx + 1] + this.rolls[rollIdx + 2];
+                rollIdx++;
+                continue;
+            }
+
             if (this.isSpare(rollIdx)) {
                 result += this.rolls[rollIdx + 2];
             }

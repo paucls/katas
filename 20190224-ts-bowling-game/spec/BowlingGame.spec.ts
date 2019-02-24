@@ -19,4 +19,10 @@ describe('Bowling Game', () => {
 
         expect(game.score).toEqual(150);
     });
+
+    it('should calculate score of a perfect game where all rolls are strikes', () => {
+        const game = new BowlingGame([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+
+        expect(game.score).toEqual(300);
+    });
 });
