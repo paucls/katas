@@ -14,13 +14,13 @@ describe('Bowling Game', () => {
         expect(game.score).toEqual(60);
     });
 
-    it('should calculate score when getting spares', () => {
+    it('should calculate score when getting spares in every frame', () => {
         const game = new BowlingGame([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
 
         expect(game.score).toEqual(150);
     });
 
-    it('should calculate score of a perfect game where all rolls are strikes', () => {
+    it('should calculate score when getting all strikes', () => {
         const game = new BowlingGame([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
 
         expect(game.score).toEqual(300);
