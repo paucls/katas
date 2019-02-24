@@ -14,8 +14,8 @@ describe('Bowling Game', () => {
         expect(game.score).toEqual(60);
     });
 
-    xit('should calculate score when getting spares', () => {
-        const game = new BowlingGame([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
+    it('should calculate score when getting spares', () => {
+        const game = new BowlingGame([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
 
         expect(game.score).toEqual(150);
     });

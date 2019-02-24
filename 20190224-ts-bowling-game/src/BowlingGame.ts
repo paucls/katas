@@ -8,6 +8,9 @@ export class BowlingGame {
         let rollIdx = 0;
 
         for (let i = 0; i < NUM_FRAMES; i++) {
+            if (this.rolls[rollIdx] + this.rolls[rollIdx + 1] === 10)
+                result += this.rolls[rollIdx + 2];
+
             result += this.rolls[rollIdx] + this.rolls[rollIdx + 1];
             rollIdx += 2;
         }
