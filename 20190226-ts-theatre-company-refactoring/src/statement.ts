@@ -5,21 +5,29 @@ export function statement(invoice, plays) {
     let result = `Statement for ${invoice.customer}\n`;
 
     for (let perf of invoice.performances) {
-        const play = plays[perf.playID];
+        let perfAmount = calculatePerformanceAmount(perf, playOf(perf));
 
-        let perfAmount = calculatePerformanceAmount(perf, play);
-
-        volumeCredits += calculateVolumeCredits(perf, play);
+        volumeCredits += calculateVolumeCredits(perf, playOf(perf));
 
         // print line for this order
-        result += `  ${play.name}: ${formatUSD(perfAmount)} (${perf.audience} seats)\n`;
+        result += `  ${playOf(perf).name}: ${formatUSD(perfAmount)} (${perf.audience} seats)\n`;
         totalAmount += perfAmount;
     }
 
     result += `Amount owed is ${formatUSD(totalAmount)}\n`;
 
     result += `You earned ${volumeCredits} credits\n`;
+
     return result;
+    function calculateVolumeCredits(performance, play) {
+        let credits = Math.max(performance.audience - 30, 0);
+        if ('comedy' === play.type) credits += Math.floor(performance.audience / 5);
+        return credits;
+    }
+
+    function playOf(performance) {
+        return plays[performance.playID];
+    }
 }
 
 function calculatePerformanceAmount(performance, play) {
@@ -43,12 +51,6 @@ function calculatePerformanceAmount(performance, play) {
             throw new Error(`unknown type: ${play.type}`);
     }
     return perfAmount;
-}
-
-function calculateVolumeCredits(performance, play) {
-    let credits = Math.max(performance.audience - 30, 0);
-    if ('comedy' === play.type) credits += Math.floor(performance.audience / 5);
-    return credits;
 }
 
 function formatUSD(amount: number): string {
