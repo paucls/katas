@@ -7,7 +7,7 @@ export function statement(invoice, plays) {
     for (let perf of invoice.performances) {
         let perfAmount = calculatePerformanceAmount(perf, playOf(perf));
 
-        volumeCredits += calculateVolumeCredits(perf, playOf(perf));
+        volumeCredits += calculateVolumeCredits(perf);
 
         // print line for this order
         result += `  ${playOf(perf).name}: ${formatUSD(perfAmount)} (${perf.audience} seats)\n`;
@@ -19,9 +19,10 @@ export function statement(invoice, plays) {
     result += `You earned ${volumeCredits} credits\n`;
 
     return result;
-    function calculateVolumeCredits(performance, play) {
+
+    function calculateVolumeCredits(performance) {
         let credits = Math.max(performance.audience - 30, 0);
-        if ('comedy' === play.type) credits += Math.floor(performance.audience / 5);
+        if ('comedy' === playOf(performance).type) credits += Math.floor(performance.audience / 5);
         return credits;
     }
 
