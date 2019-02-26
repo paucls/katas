@@ -12,7 +12,7 @@ export function statement(invoice, plays) {
 
     let volumeCredits = 0;
     for (let performance of invoice.performances) {
-        volumeCredits += calculateVolumeCredits(performance);
+        volumeCredits += calculateVolumeCreditsForPerformance(performance);
     }
 
     result += `Amount owed is ${formatUSD(totalAmount)}\n`;
@@ -44,7 +44,7 @@ export function statement(invoice, plays) {
         return perfAmount;
     }
 
-    function calculateVolumeCredits(performance) {
+    function calculateVolumeCreditsForPerformance(performance) {
         let credits = Math.max(performance.audience - 30, 0);
         if ('comedy' === playOf(performance).type) credits += Math.floor(performance.audience / 5);
         return credits;
