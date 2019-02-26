@@ -8,6 +8,10 @@ export function statement(invoice, plays) {
             minimumFractionDigits: 2
         }).format;
 
+    function formatUSD(amount: number): string {
+        return format(amount / 100);
+    }
+
     for (let perf of invoice.performances) {
         const play = plays[perf.playID];
         let thisAmount = 0;
@@ -36,10 +40,10 @@ export function statement(invoice, plays) {
         if ('comedy' === play.type) volumeCredits += Math.floor(perf.audience / 5);
 
         // print line for this order
-        result += `  ${play.name}: ${format(thisAmount / 100)} (${perf.audience} seats)\n`;
+        result += `  ${play.name}: ${formatUSD(thisAmount)} (${perf.audience} seats)\n`;
         totalAmount += thisAmount;
     }
-    result += `Amount owed is ${format(totalAmount / 100)}\n`;
+    result += `Amount owed is ${formatUSD(totalAmount)}\n`;
     result += `You earned ${volumeCredits} credits\n`;
     return result;
 }
