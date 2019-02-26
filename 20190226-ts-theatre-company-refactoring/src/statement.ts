@@ -5,7 +5,7 @@ export function statement(invoice, plays) {
     let result = `Statement for ${invoice.customer}\n`;
 
     for (let perf of invoice.performances) {
-        let perfAmount = calculatePerformanceAmount(perf, playOf(perf));
+        let perfAmount = calculatePerformanceAmount(perf);
 
         volumeCredits += calculateVolumeCredits(perf);
 
@@ -20,6 +20,29 @@ export function statement(invoice, plays) {
 
     return result;
 
+    function calculatePerformanceAmount(performance) {
+        let perfAmount = 0;
+
+        switch (playOf(performance).type) {
+            case 'tragedy':
+                perfAmount = 40000;
+                if (performance.audience > 30) {
+                    perfAmount += 1000 * (performance.audience - 30);
+                }
+                break;
+            case 'comedy':
+                perfAmount = 30000;
+                if (performance.audience > 20) {
+                    perfAmount += 10000 + 500 * (performance.audience - 20);
+                }
+                perfAmount += 300 * performance.audience;
+                break;
+            default:
+                throw new Error(`unknown type: ${playOf(performance).type}`);
+        }
+        return perfAmount;
+    }
+
     function calculateVolumeCredits(performance) {
         let credits = Math.max(performance.audience - 30, 0);
         if ('comedy' === playOf(performance).type) credits += Math.floor(performance.audience / 5);
@@ -29,29 +52,6 @@ export function statement(invoice, plays) {
     function playOf(performance) {
         return plays[performance.playID];
     }
-}
-
-function calculatePerformanceAmount(performance, play) {
-    let perfAmount = 0;
-
-    switch (play.type) {
-        case 'tragedy':
-            perfAmount = 40000;
-            if (performance.audience > 30) {
-                perfAmount += 1000 * (performance.audience - 30);
-            }
-            break;
-        case 'comedy':
-            perfAmount = 30000;
-            if (performance.audience > 20) {
-                perfAmount += 10000 + 500 * (performance.audience - 20);
-            }
-            perfAmount += 300 * performance.audience;
-            break;
-        default:
-            throw new Error(`unknown type: ${play.type}`);
-    }
-    return perfAmount;
 }
 
 function formatUSD(amount: number): string {
