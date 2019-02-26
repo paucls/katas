@@ -6,25 +6,8 @@ export function statement(invoice, plays) {
 
     for (let perf of invoice.performances) {
         const play = plays[perf.playID];
-        let perfAmount = 0;
 
-        switch (play.type) {
-            case 'tragedy':
-                perfAmount = 40000;
-                if (perf.audience > 30) {
-                    perfAmount += 1000 * (perf.audience - 30);
-                }
-                break;
-            case 'comedy':
-                perfAmount = 30000;
-                if (perf.audience > 20) {
-                    perfAmount += 10000 + 500 * (perf.audience - 20);
-                }
-                perfAmount += 300 * perf.audience;
-                break;
-            default:
-                throw new Error(`unknown type: ${play.type}`);
-        }
+        let perfAmount = calculatePerformanceAmount(perf, play);
 
         volumeCredits += calculateVolumeCredits(perf, play);
 
@@ -34,8 +17,38 @@ export function statement(invoice, plays) {
     }
 
     result += `Amount owed is ${formatUSD(totalAmount)}\n`;
+
     result += `You earned ${volumeCredits} credits\n`;
     return result;
+}
+
+function calculatePerformanceAmount(performance, play) {
+    let perfAmount = 0;
+
+    switch (play.type) {
+        case 'tragedy':
+            perfAmount = 40000;
+            if (performance.audience > 30) {
+                perfAmount += 1000 * (performance.audience - 30);
+            }
+            break;
+        case 'comedy':
+            perfAmount = 30000;
+            if (performance.audience > 20) {
+                perfAmount += 10000 + 500 * (performance.audience - 20);
+            }
+            perfAmount += 300 * performance.audience;
+            break;
+        default:
+            throw new Error(`unknown type: ${play.type}`);
+    }
+    return perfAmount;
+}
+
+function calculateVolumeCredits(performance, play) {
+    let credits = Math.max(performance.audience - 30, 0);
+    if ('comedy' === play.type) credits += Math.floor(performance.audience / 5);
+    return credits;
 }
 
 function formatUSD(amount: number): string {
@@ -45,10 +58,4 @@ function formatUSD(amount: number): string {
             minimumFractionDigits: 2
         }).format;
     return format(amount / 100);
-}
-
-function calculateVolumeCredits(performance, play) {
-    let credits = Math.max(performance.audience - 30, 0);
-    if ('comedy' === play.type) credits += Math.floor(performance.audience / 5);
-    return credits;
 }
