@@ -26,15 +26,13 @@ export function statement(invoice, plays) {
                 throw new Error(`unknown type: ${play.type}`);
         }
 
-        // add volume credits
-        volumeCredits += Math.max(perf.audience - 30, 0);
-        // add extra credit for every ten comedy attendees
-        if ('comedy' === play.type) volumeCredits += Math.floor(perf.audience / 5);
+        volumeCredits += calculateVolumeCredits(perf, play);
 
         // print line for this order
         result += `  ${play.name}: ${formatUSD(perfAmount)} (${perf.audience} seats)\n`;
         totalAmount += perfAmount;
     }
+
     result += `Amount owed is ${formatUSD(totalAmount)}\n`;
     result += `You earned ${volumeCredits} credits\n`;
     return result;
@@ -47,4 +45,10 @@ function formatUSD(amount: number): string {
             minimumFractionDigits: 2
         }).format;
     return format(amount / 100);
+}
+
+function calculateVolumeCredits(performance, play) {
+    let credits = Math.max(performance.audience - 30, 0);
+    if ('comedy' === play.type) credits += Math.floor(performance.audience / 5);
+    return credits;
 }
