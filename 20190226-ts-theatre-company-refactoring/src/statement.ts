@@ -10,10 +10,7 @@ export function statement(invoice, plays) {
         totalAmount += amount;
     }
 
-    let volumeCredits = 0;
-    for (let performance of invoice.performances) {
-        volumeCredits += calculateVolumeCreditsForPerformance(performance);
-    }
+    let volumeCredits = calculateVolumeCredits();
 
     result += `Amount owed is ${formatUSD(totalAmount)}\n`;
 
@@ -42,6 +39,14 @@ export function statement(invoice, plays) {
                 throw new Error(`unknown type: ${playOf(performance).type}`);
         }
         return perfAmount;
+    }
+
+    function calculateVolumeCredits() {
+        let volumeCredits = 0;
+        for (let performance of invoice.performances) {
+            volumeCredits += calculateVolumeCreditsForPerformance(performance);
+        }
+        return volumeCredits;
     }
 
     function calculateVolumeCreditsForPerformance(performance) {
