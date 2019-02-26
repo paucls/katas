@@ -42,11 +42,9 @@ export function statement(invoice, plays) {
     }
 
     function calculateVolumeCredits() {
-        let volumeCredits = 0;
-        for (let performance of invoice.performances) {
-            volumeCredits += calculateVolumeCreditsForPerformance(performance);
-        }
-        return volumeCredits;
+        return invoice.performances
+            .map(calculateVolumeCreditsForPerformance)
+            .reduce((a, b) => a + b, 0);
     }
 
     function calculateVolumeCreditsForPerformance(performance) {
