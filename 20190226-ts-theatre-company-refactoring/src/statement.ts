@@ -4,13 +4,13 @@ export function statement(invoice, plays) {
 
     let result = `Statement for ${invoice.customer}\n`;
 
-    for (let perf of invoice.performances) {
-        let perfAmount = calculatePerformanceAmount(perf);
+    for (let performance of invoice.performances) {
+        let perfAmount = calculatePerformanceAmount(performance);
 
-        volumeCredits += calculateVolumeCredits(perf);
+        volumeCredits += calculateVolumeCredits(performance);
 
         // print line for this order
-        result += `  ${playOf(perf).name}: ${formatUSD(perfAmount)} (${perf.audience} seats)\n`;
+        result += `  ${playOf(performance).name}: ${formatUSD(perfAmount)} (${performance.audience} seats)\n`;
         totalAmount += perfAmount;
     }
 
