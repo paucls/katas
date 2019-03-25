@@ -2,9 +2,6 @@ package parrot;
 
 public abstract class Parrot {
 
-    public Parrot() {
-    }
-
     public static Parrot createParrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, boolean isNailed) {
         if (type == ParrotTypeEnum.EUROPEAN)
             return new EuropeanParrot();
