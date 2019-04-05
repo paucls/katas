@@ -8,18 +8,24 @@ class AccountService(
 ) {
 
     fun deposit(amount: Int) {
-        val date = LocalDate.now()
-        val transaction = Transaction(date, amount)
-        transactionsRepository.save(transaction)
+        transactionsRepository.save(depositTransaction(amount))
     }
 
     fun withdraw(amount: Int) {
-        val date = LocalDate.now()
-        val transaction = Transaction(date, -amount)
-        transactionsRepository.save(transaction)
+        transactionsRepository.save(withdrawalTransaction(amount))
     }
 
     fun printStatement() {
         statementPrinter.print(transactionsRepository.getAccountTransactions())
     }
+
+    private fun depositTransaction(amount: Int): Transaction {
+        return Transaction(today(), amount)
+    }
+
+    private fun withdrawalTransaction(amount: Int): Transaction {
+        return Transaction(today(), -amount)
+    }
+
+    private fun today() = LocalDate.now()
 }

@@ -8,6 +8,8 @@ import java.time.LocalDate
 
 class AccountServiceTest {
 
+    private val today = LocalDate.now()
+
     private val transactionsRepository: TransactionRepository = mock()
     private val statementPrinter: StatementPrinter = mock()
     private val accountService = AccountService(transactionsRepository, statementPrinter)
@@ -19,9 +21,8 @@ class AccountServiceTest {
         accountService.deposit(amount)
 
         verify(transactionsRepository).save(Transaction(
-                date = LocalDate.now(),
-                amount = amount
-        ))
+                date = today,
+                amount = amount))
     }
 
     @Test
@@ -31,17 +32,15 @@ class AccountServiceTest {
         accountService.withdraw(amount)
 
         verify(transactionsRepository).save(Transaction(
-                date = LocalDate.now(),
-                amount = -amount
-        ))
+                date = today,
+                amount = -amount))
     }
 
     @Test
     fun `should print a statement for transactions`() {
         val transactions = listOf(Transaction(
-                date = LocalDate.now(),
-                amount = 500
-        ))
+                date = today,
+                amount = 500))
         given(transactionsRepository.getAccountTransactions()).willReturn(transactions)
 
         accountService.printStatement()
