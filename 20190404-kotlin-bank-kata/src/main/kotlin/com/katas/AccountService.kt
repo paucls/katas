@@ -1,6 +1,6 @@
 package com.katas
 
-class AccountService(console: Console) {
+class AccountService(private val console: Console) {
     fun deposit(amount: Int) {
     }
 
@@ -8,5 +8,6 @@ class AccountService(console: Console) {
     }
 
     fun printStatement() {
+        console.printLine("DATE | AMOUNT | BALANCE")
     }
 }
