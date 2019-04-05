@@ -1,12 +1,13 @@
 package com.katas
 
 class TransactionRepository {
+    private val transactions: MutableList<Transaction> = mutableListOf()
+
     fun save(transaction: Transaction) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        transactions.add(transaction)
     }
 
     fun getAccountTransactions(): List<Transaction> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return transactions.toList()
     }
-
 }
