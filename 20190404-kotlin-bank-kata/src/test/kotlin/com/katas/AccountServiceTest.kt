@@ -24,6 +24,18 @@ class AccountServiceTest {
     }
 
     @Test
+    fun `should store a withdrawal transaction`() {
+        val amount = 500
+
+        accountService.withdraw(amount)
+
+        verify(transactionsRepository).save(Transaction(
+                date = LocalDate.now(),
+                amount = -amount
+        ))
+    }
+
+    @Test
     fun `should print an empty statement when there are no transactions`() {
         accountService.printStatement()
 

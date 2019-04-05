@@ -13,6 +13,9 @@ class AccountService(
     }
 
     fun withdraw(amount: Int) {
+        val date = LocalDate.now()
+        val transaction = Transaction(date, -amount)
+        transactionsRepository.save(transaction)
     }
 
     fun printStatement() {
