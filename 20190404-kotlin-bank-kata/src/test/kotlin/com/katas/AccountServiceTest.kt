@@ -1,5 +1,6 @@
 package com.katas
 
+import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
@@ -7,9 +8,9 @@ import java.time.LocalDate
 
 class AccountServiceTest {
 
-    private val console: Console = mock()
     private val transactionsRepository: TransactionRepository = mock()
-    private val accountService = AccountService(console, transactionsRepository)
+    private val statementPrinter: StatementPrinter = mock()
+    private val accountService = AccountService(transactionsRepository, statementPrinter)
 
     @Test
     fun `should store a deposit transaction`() {
@@ -36,9 +37,15 @@ class AccountServiceTest {
     }
 
     @Test
-    fun `should print an empty statement when there are no transactions`() {
+    fun `should print a statement for transactions`() {
+        val transactions = listOf(Transaction(
+                date = LocalDate.now(),
+                amount = 500
+        ))
+        given(transactionsRepository.getAccountTransactions()).willReturn(transactions)
+
         accountService.printStatement()
 
-        verify(console).printLine("DATE | AMOUNT | BALANCE")
+        verify(statementPrinter).print(transactions)
     }
 }

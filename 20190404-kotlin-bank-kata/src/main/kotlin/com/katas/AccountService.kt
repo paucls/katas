@@ -3,9 +3,10 @@ package com.katas
 import java.time.LocalDate
 
 class AccountService(
-        private val console: Console,
-        private val transactionsRepository: TransactionRepository
+        private val transactionsRepository: TransactionRepository,
+        private val statementPrinter: StatementPrinter
 ) {
+
     fun deposit(amount: Int) {
         val date = LocalDate.now()
         val transaction = Transaction(date, amount)
@@ -19,6 +20,6 @@ class AccountService(
     }
 
     fun printStatement() {
-        console.printLine("DATE | AMOUNT | BALANCE")
+        statementPrinter.print(transactionsRepository.getAccountTransactions())
     }
 }
