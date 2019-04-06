@@ -4,10 +4,11 @@ import java.time.format.DateTimeFormatter
 
 class StatementPrinter(private val console: Console) {
 
+    private val statementHeader = "DATE | AMOUNT | BALANCE"
     private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
     fun print(transactions: List<Transaction>) {
-        console.printLine("DATE | AMOUNT | BALANCE")
+        console.printLine(statementHeader)
 
         val lines = calculateLines(transactions)
         lines.forEach { console.printLine(it) }
