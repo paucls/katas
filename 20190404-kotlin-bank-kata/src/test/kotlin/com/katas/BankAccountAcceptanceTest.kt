@@ -6,8 +6,9 @@ import org.junit.Test
 
 class BankAccountAcceptanceTest {
 
+    private val transactionsRepository = TransactionRepository()
     private val console: Console = mock()
-    private val account = AccountService(mock(), StatementPrinter(console))
+    private val account = AccountService(transactionsRepository, StatementPrinter(console))
 
     @Test
     fun `should print statement containing all transactions`() {
