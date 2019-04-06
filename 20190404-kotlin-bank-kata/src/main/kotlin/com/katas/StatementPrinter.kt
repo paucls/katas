@@ -8,10 +8,14 @@ class StatementPrinter(private val console: Console) {
     private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
     fun print(transactions: List<Transaction>) {
-        console.printLine(statementHeader)
+        printHeader()
 
         val lines = calculateLines(transactions)
-        lines.forEach { console.printLine(it) }
+        printLines(lines)
+    }
+
+    private fun printHeader() {
+        console.printLine(statementHeader)
     }
 
     private fun calculateLines(transactions: List<Transaction>): MutableList<String> {
@@ -21,11 +25,18 @@ class StatementPrinter(private val console: Console) {
         transactions.forEach {
             runningBalance += it.amount
 
-            lines += "${dateFormatter.format(it.date)} | ${it.amount} | $runningBalance"
+            lines += toLine(it, runningBalance)
         }
 
         lines.reverse()
         return lines
+    }
+
+    private fun toLine(it: Transaction, runningBalance: Int) =
+            "${dateFormatter.format(it.date)} | ${it.amount} | $runningBalance"
+
+    private fun printLines(lines: MutableList<String>) {
+        lines.forEach { console.printLine(it) }
     }
 
 }
