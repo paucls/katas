@@ -9,12 +9,13 @@ import java.time.LocalDate
 class StatementPrinterTest {
 
     private val console = mock<Console>()
+    private val statementPrinter = StatementPrinter(console)
 
     @Test
     fun `should print only the header when there are no transactions`() {
         val noTransactions = emptyList<Transaction>()
 
-        StatementPrinter(console).print(noTransactions)
+        statementPrinter.print(noTransactions)
 
         verify(console).printLine("DATE | AMOUNT | BALANCE")
     }
@@ -25,7 +26,7 @@ class StatementPrinterTest {
                 Transaction(LocalDate.of(2014, 4, 1), 1000)
         )
 
-        StatementPrinter(console).print(transactions)
+        statementPrinter.print(transactions)
 
         inOrder(console) {
             verify(console).printLine("DATE | AMOUNT | BALANCE")
@@ -40,7 +41,7 @@ class StatementPrinterTest {
                 Transaction(LocalDate.of(2014, 4, 2), -100)
         )
 
-        StatementPrinter(console).print(transactions)
+        statementPrinter.print(transactions)
 
         inOrder(console) {
             verify(console).printLine("DATE | AMOUNT | BALANCE")
