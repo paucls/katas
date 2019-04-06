@@ -11,10 +11,10 @@ class StatementPrinterTest {
     private val console = mock<Console>()
 
     @Test
-    fun `should just print the header when no transactions`() {
-        val transactions = emptyList<Transaction>()
+    fun `should print only the header when there are no transactions`() {
+        val noTransactions = emptyList<Transaction>()
 
-        StatementPrinter(console).print(transactions)
+        StatementPrinter(console).print(noTransactions)
 
         verify(console).printLine("DATE | AMOUNT | BALANCE")
     }
