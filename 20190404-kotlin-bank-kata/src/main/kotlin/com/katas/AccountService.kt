@@ -1,10 +1,9 @@
 package com.katas
 
-import java.time.LocalDate
-
 class AccountService(
         private val transactionsRepository: TransactionRepository,
-        private val statementPrinter: StatementPrinter
+        private val statementPrinter: StatementPrinter,
+        private val clock: Clock
 ) {
 
     fun deposit(amount: Int) {
@@ -20,12 +19,10 @@ class AccountService(
     }
 
     private fun depositTransaction(amount: Int): Transaction {
-        return Transaction(today(), amount)
+        return Transaction(clock.today(), amount)
     }
 
     private fun withdrawalTransaction(amount: Int): Transaction {
-        return Transaction(today(), -amount)
+        return Transaction(clock.today(), -amount)
     }
-
-    private fun today() = LocalDate.now()
 }

@@ -1,5 +1,9 @@
 package com.katas
 
-class Clock {
+import java.time.LocalDate
 
+class Clock {
+    fun today(): LocalDate {
+        return LocalDate.now()
+    }
 }

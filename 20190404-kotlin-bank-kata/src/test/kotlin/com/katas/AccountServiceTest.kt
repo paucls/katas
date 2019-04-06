@@ -3,16 +3,23 @@ package com.katas
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
+import org.junit.Before
 import org.junit.Test
 import java.time.LocalDate
 
 class AccountServiceTest {
 
-    private val today = LocalDate.now()
+    private val today = LocalDate.of(2019, 1, 20)
 
     private val transactionsRepository: TransactionRepository = mock()
     private val statementPrinter: StatementPrinter = mock()
-    private val accountService = AccountService(transactionsRepository, statementPrinter)
+    private val clock: Clock = mock()
+    private val accountService = AccountService(transactionsRepository, statementPrinter, clock)
+
+    @Before
+    fun setUp() {
+        given(clock.today()).willReturn(today)
+    }
 
     @Test
     fun `should store a deposit transaction`() {

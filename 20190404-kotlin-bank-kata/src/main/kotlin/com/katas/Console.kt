@@ -1,5 +1,7 @@
 package com.katas
 
-interface Console {
-    fun printLine(text: String)
+class Console {
+    fun printLine(text: String) {
+        println(text)
+    }
 }

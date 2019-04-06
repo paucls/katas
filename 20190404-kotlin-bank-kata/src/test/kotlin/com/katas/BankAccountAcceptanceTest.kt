@@ -1,17 +1,26 @@
 package com.katas
 
+import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
+import java.time.LocalDate
 
 class BankAccountAcceptanceTest {
 
     private val transactionsRepository = TransactionRepository()
     private val console: Console = mock()
-    private val account = AccountService(transactionsRepository, StatementPrinter(console))
+    private val statementPrinter = StatementPrinter(console)
+    private val clock: Clock = mock()
+    private val account = AccountService(transactionsRepository, statementPrinter, clock)
 
     @Test
     fun `should print statement containing all transactions`() {
+        given(clock.today())
+                .willReturn(LocalDate.of(2014, 4, 1))
+                .willReturn(LocalDate.of(2014, 4, 2))
+                .willReturn(LocalDate.of(2014, 4, 10))
+
         account.deposit(1000)
         account.withdraw(100)
         account.deposit(500)
