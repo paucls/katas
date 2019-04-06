@@ -1,9 +1,9 @@
 package com.katas
 
-class StatementPrinter(console: Console) {
+class StatementPrinter(private val console: Console) {
 
     fun print(transactions: List<Transaction>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        console.printLine("DATE | AMOUNT | BALANCE")
     }
 
 }
