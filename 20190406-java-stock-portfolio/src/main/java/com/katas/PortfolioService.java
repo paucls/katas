@@ -13,7 +13,8 @@ public class PortfolioService {
     }
 
     public void sellShares(String company, int amount) {
-
+        Operation operation = new Operation(company, -amount);
+        operationsRepository.save(operation);
     }
 
     public void print() {
