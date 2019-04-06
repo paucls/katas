@@ -10,32 +10,26 @@ class StatementPrinter(private val console: Console) {
     fun print(transactions: List<Transaction>) {
         printHeader()
 
-        val lines = calculateLines(transactions)
-        printLines(lines)
+        printLines(calculateLines(transactions))
     }
 
     private fun printHeader() {
         console.printLine(statementHeader)
     }
 
-    private fun calculateLines(transactions: List<Transaction>): MutableList<String> {
-        val lines = mutableListOf<String>()
+    private fun calculateLines(transactions: List<Transaction>): List<String> {
         var runningBalance = 0
 
-        transactions.forEach {
-            runningBalance += it.amount
-
-            lines += toLine(it, runningBalance)
-        }
-
-        lines.reverse()
-        return lines
+        return transactions.map { transaction ->
+            runningBalance += transaction.amount
+            toLine(transaction, runningBalance)
+        }.reversed()
     }
 
     private fun toLine(it: Transaction, runningBalance: Int) =
             "${dateFormatter.format(it.date)} | ${it.amount} | $runningBalance"
 
-    private fun printLines(lines: MutableList<String>) {
+    private fun printLines(lines: List<String>) {
         lines.forEach { console.printLine(it) }
     }
 
