@@ -10,12 +10,14 @@ import static org.mockito.Mockito.mock;
 public class StockPortfolioAcceptanceTest {
 
     private Console console;
+    private OperationsRepository operationsRepository;
     private PortfolioService portfolio;
 
     @Before
     public void setUp() {
         console = mock(Console.class);
-        portfolio = new PortfolioService();
+        operationsRepository = new OperationsRepository();
+        portfolio = new PortfolioService(operationsRepository);
     }
 
     @Test
