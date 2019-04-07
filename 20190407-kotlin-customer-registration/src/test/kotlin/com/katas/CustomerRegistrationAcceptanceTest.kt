@@ -7,7 +7,8 @@ import org.junit.Test
 class CustomerRegistrationAcceptanceTest {
 
     private val emailSender: EmailSender = mock()
-    private val customerRegistrationController = CustomerRegistrationController()
+    private val registrationService: CustomerRegistrationService = CustomerRegistrationService()
+    private val customerRegistrationController = CustomerRegistrationController(registrationService)
 
     @Test
     fun `should send welcome email to newly registered customer`() {

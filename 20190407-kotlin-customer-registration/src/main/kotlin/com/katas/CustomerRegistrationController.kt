@@ -1,6 +1,10 @@
 package com.katas
 
-class CustomerRegistrationController {
-    fun post(registrationRequest: RegistrationRequest) {
+class CustomerRegistrationController(
+        private val registrationService: CustomerRegistrationService
+) {
+    fun post(registrationRequest: RegistrationRequest): Int {
+        registrationService.register(registrationRequest)
+        return 204
     }
 }
