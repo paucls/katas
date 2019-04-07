@@ -1,7 +1,13 @@
 package com.katas
 
 class CustomerRepository {
+    private val customers = mutableListOf<Customer>()
+
     fun create(customer: Customer) {
-        TODO("not implemented")
+        customers.add(customer)
+    }
+
+    fun getAll(): List<Customer> {
+        return customers
     }
 }
