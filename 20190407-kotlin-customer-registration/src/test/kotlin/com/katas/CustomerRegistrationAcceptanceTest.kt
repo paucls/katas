@@ -8,7 +8,7 @@ class CustomerRegistrationAcceptanceTest {
 
     private val emailSender: EmailSender = mock()
     private val customersRepository = CustomerRepository()
-    private val registrationService: CustomerRegistrationService = CustomerRegistrationService(customersRepository)
+    private val registrationService: CustomerRegistrationService = CustomerRegistrationService(customersRepository, emailSender)
     private val customerRegistrationController = CustomerRegistrationController(registrationService)
 
     @Test
