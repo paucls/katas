@@ -12,4 +12,8 @@ public class Board {
     public boolean doYouHaveADiagonalWithAllEquals() {
         throw new UnsupportedOperationException("not implemented");
     }
+
+    public boolean doYouHaveAColumnWithAllEquals() {
+        throw new UnsupportedOperationException("not implemented");
+    }
 }

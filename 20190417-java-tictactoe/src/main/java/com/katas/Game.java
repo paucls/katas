@@ -10,6 +10,7 @@ public class Game {
     public boolean isOver() {
         return board.allFieldsTaken() ||
                 board.doYouHaveARowWithAllEquals() ||
-                board.doYouHaveADiagonalWithAllEquals();
+                board.doYouHaveADiagonalWithAllEquals() ||
+                board.doYouHaveAColumnWithAllEquals();
     }
 }
