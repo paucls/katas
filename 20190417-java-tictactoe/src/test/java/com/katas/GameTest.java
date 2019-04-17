@@ -29,4 +29,11 @@ public class GameTest {
 
         assertThat(game.isOver()).isTrue();
     }
+
+    @Test
+    public void is_over_when_all_fields_in_a_diagonal_are_taken_by_a_player() {
+        when(board.doYouHaveADiagonalWithAllEquals()).thenReturn(true);
+
+        assertThat(game.isOver()).isTrue();
+    }
 }
