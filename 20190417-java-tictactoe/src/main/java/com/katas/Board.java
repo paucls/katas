@@ -16,4 +16,8 @@ public class Board {
     public boolean doYouHaveAColumnWithAllEquals() {
         throw new UnsupportedOperationException("not implemented");
     }
+
+    public void takeField(String player, Position position) {
+        throw new UnsupportedOperationException("not implemented");
+    }
 }

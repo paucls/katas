@@ -13,4 +13,8 @@ public class Game {
                 board.doYouHaveADiagonalWithAllEquals() ||
                 board.doYouHaveAColumnWithAllEquals();
     }
+
+    public void play(Player player, Position position) {
+        board.takeField(player.name(), position);
+    }
 }
