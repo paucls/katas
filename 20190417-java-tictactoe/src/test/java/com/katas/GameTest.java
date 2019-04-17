@@ -1,15 +1,16 @@
 package com.katas;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
-
-import java.util.Random;
-import java.util.UUID;
+import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@RunWith(JUnitParamsRunner.class)
 public class GameTest {
 
     private final Board board = mock(Board.class);
@@ -48,23 +49,14 @@ public class GameTest {
         assertThat(game.isOver()).isTrue();
     }
 
+    @Parameters({"X", "O"})
     @Test
-    public void player_can_take_a_position() {
-        Player player = new Player("X");
+    public void player_can_take_a_position(String playerName) {
+        Player player = new Player(playerName);
         Position position = new Position();
 
         game.play(player, position);
 
-        verify(board).takeField("X", position);
-    }
-
-    @Test
-    public void player_O_can_take_a_position() {
-        Player player = new Player("O");
-        Position position = new Position();
-
-        game.play(player, position);
-
-        verify(board).takeField("O", position);
+        verify(board).takeField(playerName, position);
     }
 }
