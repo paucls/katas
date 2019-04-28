@@ -11,9 +11,11 @@ public class BowlingGame {
 
     public int score() {
         int result = 0;
+        int rollIndex = 0;
 
-        for (int i = 0; i < rolls.size(); i++) {
-            result += rolls.get(i);
+        for (int i = 0; i < 10; i++) {
+            result += rolls.get(rollIndex) + rolls.get(rollIndex + 1);
+            rollIndex += 2;
         }
 
         return result;
