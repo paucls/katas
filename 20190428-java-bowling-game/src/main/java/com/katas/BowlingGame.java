@@ -19,7 +19,7 @@ public class BowlingGame {
         for (int i = 0; i < NUM_FRAMES; i++) {
             if (isStrike(firstInFrame)) {
                 result += calculateStrike(firstInFrame);
-                firstInFrame++;
+                firstInFrame += 1;
             } else if (isSpare(firstInFrame)) {
                 result += calculateSpare(firstInFrame);
                 firstInFrame += 2;
