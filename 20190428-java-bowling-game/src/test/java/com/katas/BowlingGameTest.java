@@ -13,8 +13,6 @@ public class BowlingGameTest {
         var rolls = List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         BowlingGame game = new BowlingGame(rolls);
 
-        int score = game.score();
-
-        assertThat(score).isZero();
+        assertThat(game.score()).isZero();
     }
 }
