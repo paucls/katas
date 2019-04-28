@@ -10,6 +10,12 @@ public class BowlingGame {
     }
 
     public int score() {
-        return rolls.stream().reduce(0, Integer::sum);
+        int result = 0;
+
+        for (int i = 0; i < rolls.size(); i++) {
+            result += rolls.get(i);
+        }
+
+        return result;
     }
 }

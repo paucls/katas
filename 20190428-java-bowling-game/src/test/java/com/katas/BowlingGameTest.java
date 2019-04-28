@@ -1,5 +1,6 @@
 package com.katas;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -22,5 +23,14 @@ public class BowlingGameTest {
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
 
         assertThat(game.score()).isEqualTo(20);
+    }
+
+    @Ignore
+    @Test
+    public void gives_score_when_spares_in_every_round() {
+        BowlingGame game = new BowlingGame(List.of(
+                5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5));
+
+        assertThat(game.score()).isEqualTo(150);
     }
 }
