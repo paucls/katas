@@ -20,11 +20,11 @@ public class BowlingGame {
             if (isStrike(firstInFrame)) {
                 result += calculateStrike(firstInFrame);
                 firstInFrame++;
-            } else if (rolls.get(firstInFrame) + rolls.get(firstInFrame + 1) == ALL_PINS) {
-                result += ALL_PINS + rolls.get(firstInFrame + 2);
+            } else if (isSpare(firstInFrame)) {
+                result += calculateSpare(firstInFrame);
                 firstInFrame += 2;
             } else {
-                result += rolls.get(firstInFrame) + rolls.get(firstInFrame + 1);
+                result += calculateSimple(firstInFrame);
                 firstInFrame += 2;
             }
         }
@@ -38,5 +38,17 @@ public class BowlingGame {
 
     private int calculateStrike(int firstInFrame) {
         return ALL_PINS + rolls.get(firstInFrame + 1) + rolls.get(firstInFrame + 2);
+    }
+
+    private boolean isSpare(int firstInFrame) {
+        return rolls.get(firstInFrame) + rolls.get(firstInFrame + 1) == ALL_PINS;
+    }
+
+    private int calculateSpare(int firstInFrame) {
+        return ALL_PINS + rolls.get(firstInFrame + 2);
+    }
+
+    private int calculateSimple(int firstInFrame) {
+        return rolls.get(firstInFrame) + rolls.get(firstInFrame + 1);
     }
 }
