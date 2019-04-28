@@ -17,8 +17,8 @@ public class BowlingGame {
         int firstInFrame = 0;
 
         for (int i = 0; i < NUM_FRAMES; i++) {
-            if (rolls.get(firstInFrame) == ALL_PINS) {
-                result += ALL_PINS + rolls.get(firstInFrame + 1) + rolls.get(firstInFrame + 2);
+            if (isStrike(firstInFrame)) {
+                result += calculateStrike(firstInFrame);
                 firstInFrame++;
             } else if (rolls.get(firstInFrame) + rolls.get(firstInFrame + 1) == ALL_PINS) {
                 result += ALL_PINS + rolls.get(firstInFrame + 2);
@@ -30,5 +30,13 @@ public class BowlingGame {
         }
 
         return result;
+    }
+
+    private boolean isStrike(int firstInFrame) {
+        return rolls.get(firstInFrame) == ALL_PINS;
+    }
+
+    private int calculateStrike(int firstInFrame) {
+        return ALL_PINS + rolls.get(firstInFrame + 1) + rolls.get(firstInFrame + 2);
     }
 }
