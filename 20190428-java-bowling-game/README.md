@@ -1,42 +1,37 @@
-Java Kata Seed
-==============
+# Bowling Game Kata
+Create a program, which, given a valid sequence of rolls for one line of American Ten-Pin Bowling, produces the total score for the game. This is a summary of the rules of the game:
 
-This is a seed project to quickly start practicing TDD in Java.
+- Each game, or “line” of bowling, includes ten turns, or “frames” for the bowler.
+- In each frame, the bowler gets up to two tries to knock down all the pins.
+- If in two tries, he fails to knock them all down, his score for that frame is the total number of pins knocked down in his two tries.
+- If in two tries he knocks them all down, this is called a “spare” and his score for the frame is ten plus the number of pins knocked down on his next throw (in his next turn).
+- If on his first try in the frame he knocks down all the pins, this is called a “strike”. His turn is over, and his score for the frame is ten plus the simple total of the pins knocked down in his next two rolls.
+- If he gets a spare or strike in the last (tenth) frame, the bowler gets to roll one or two more bonus balls, respectively. These bonus throws are taken as part of the same turn. If the bonus throws knock down all the pins, the process does not repeat: the bonus throws are only used to calculate the score of the final frame.
+- The game score is the total of all frame scores.
 
-It includes dependencies for:
-- [AssertJ](http://joel-costigliola.github.io/assertj/)
-- [JUnitParams](https://github.com/Pragmatists/JUnitParams)
-- [Mockito](https://site.mockito.org/)
+Here are some things that the program will not do:
+- We will not check for valid rolls.
+- We will not check for correct number of rolls and
+frames.
+- We will not provide scores for intermediate frames.
 
+The input is a sequence of rolls (number of pins knocked down each time player rolls the ball).
 
-## Dowloading the project
-You can clone this project using Git
-```
-git clone https://github.com/paucls/java-gradle-kata-seed.git
-```
-or just download it directly from https://github.com/paucls/java-gradle-kata-seed/archive/master.zip and unzip it.
+Sample games:
 
-## Import Project
+- [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+A gutter-game, 0 pins for all rolls, giving a score of 0.
 
-### IntelliJ IDEA
-To import this project in [IntelliJ](https://www.jetbrains.com/idea/download/) follow these steps:
-- Go to `File -> Open File or Project` and select the project folder `java-gradle-kata-seed`
-- On the Import Project from Gradle dialog select `Use auto-import` and `Use default gradle wrapper` options. Then click OK.
+- [1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5]
+Always hitting pins without getting spares or strikes, a total score of 60.
 
-![Running unit tests in IntelliJ](docs/run_tests_idea.png)
+- [9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0]
+Heartbreak, 9 pins down each round, giving a score of 90.
 
-### Eclipse
-To import this project in [Eclipse](https://www.eclipse.org/downloads/) follow these steps:
-- Go to `File -> Import -> Gradle -> Existing Gradle Project`
-- Select the project folder `java-gradle-kata-seed`
-- Default Import Options, this will use the Gradle wrapper.
+- [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,**5**]
+A spare every round, giving a score of 150.
 
-![Running unit tests in Eclipse](docs/run_tests_eclipse.gif)
+- [10,10,10,10,10,10,10,10,10,10,**10**,**10**]
+A perfect game, 12 strikes, giving a score of 300.
 
-## Run unit tests
-The most convenient way of running the unit tests is directly from your IDE. They can also be run from the console using Gradle.
-
-```
-gradlew.bat test  // on Windows
-./gradlew test    // on Linux
-```
+Source: The Coding Dojo Handbook, Emily Bache
