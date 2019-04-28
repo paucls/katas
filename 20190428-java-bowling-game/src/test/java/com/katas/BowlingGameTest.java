@@ -15,4 +15,12 @@ public class BowlingGameTest {
 
         assertThat(game.score()).isZero();
     }
+
+    @Test
+    public void gives_score_when_one_pin_knocked_down_per_roll() {
+        BowlingGame game = new BowlingGame(List.of(
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
+
+        assertThat(game.score()).isEqualTo(20);
+    }
 }
