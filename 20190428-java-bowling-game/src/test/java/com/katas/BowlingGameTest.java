@@ -27,8 +27,18 @@ public class BowlingGameTest {
     @Test
     public void gives_score_when_spares_in_every_round() {
         BowlingGame game = new BowlingGame(List.of(
-                5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5));
+                5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+                5));
 
         assertThat(game.score()).isEqualTo(150);
+    }
+
+    @Test
+    public void gives_score_of_perfect_game_when_all_strikes() {
+        BowlingGame game = new BowlingGame(List.of(
+                10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+                10, 10));
+
+        assertThat(game.score()).isEqualTo(300);
     }
 }
