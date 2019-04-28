@@ -10,8 +10,8 @@ public class BowlingGameTest {
 
     @Test
     public void gives_score_of_gutter_game() {
-        var rolls = List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        BowlingGame game = new BowlingGame(rolls);
+        BowlingGame game = new BowlingGame(List.of(
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 
         assertThat(game.score()).isZero();
     }
