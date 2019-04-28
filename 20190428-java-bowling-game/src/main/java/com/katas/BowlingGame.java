@@ -3,6 +3,7 @@ package com.katas;
 import java.util.List;
 
 public class BowlingGame {
+    private static final int ALL_PINS = 10;
     private static final int NUM_FRAMES = 10;
 
     private final List<Integer> rolls;
@@ -13,19 +14,19 @@ public class BowlingGame {
 
     public int score() {
         int result = 0;
-        int rollIndex = 0;
+        int firstInFrame = 0;
 
         for (int i = 0; i < NUM_FRAMES; i++) {
-            if (rolls.get(rollIndex) == 10) {
-                result += 10 + rolls.get(rollIndex + 1) + rolls.get(rollIndex + 2);
-                rollIndex++;
-                continue;
+            if (rolls.get(firstInFrame) == ALL_PINS) {
+                result += ALL_PINS + rolls.get(firstInFrame + 1) + rolls.get(firstInFrame + 2);
+                firstInFrame++;
+            } else if (rolls.get(firstInFrame) + rolls.get(firstInFrame + 1) == ALL_PINS) {
+                result += ALL_PINS + rolls.get(firstInFrame + 2);
+                firstInFrame += 2;
+            } else {
+                result += rolls.get(firstInFrame) + rolls.get(firstInFrame + 1);
+                firstInFrame += 2;
             }
-
-            int frameScore = rolls.get(rollIndex) + rolls.get(rollIndex + 1);
-            result += frameScore;
-            if (frameScore == 10) result += rolls.get(rollIndex + 2);
-            rollIndex += 2;
         }
 
         return result;
