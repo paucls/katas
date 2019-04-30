@@ -46,4 +46,17 @@ describe('Bowling Game', () => {
         expect(game.score).toEqual(300)
     });
 
+    it('has as score number of pins knocked down per frame plus frames and strikes bonuses', () => {
+        for (let i = 0; i < 8; i++) {
+            game.roll(4);
+            game.roll(5);
+        }
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
+        expect(game.score).toEqual(132)
+    });
+
 });
