@@ -26,11 +26,12 @@ describe('Bowling Game', () => {
         expect(game.score).toEqual(90)
     });
 
-    xit('has as score number of pinks knocked down per frame plus spares', () => {
+    it('has as score number of pinks knocked down per frame plus spares', () => {
         for (let i = 0; i < 10; i++) {
             game.roll(5);
             game.roll(5);
         }
+        game.roll(5);
 
         expect(game.score).toEqual(150)
     });

@@ -6,7 +6,11 @@ export class Game {
         let rollIdx = 0;
 
         for (let i = 0; i < 10; i++) {
-            score += this.rolls[i] + this.rolls[i + 1];
+            if (this.rolls[i] + this.rolls[i + 1] == 10) {
+                score += 10 + this.rolls[i + 2];
+            } else {
+                score += this.rolls[i] + this.rolls[i + 1];
+            }
             rollIdx += 2;
         }
 
