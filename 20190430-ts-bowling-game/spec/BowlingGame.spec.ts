@@ -2,9 +2,18 @@ import { Game } from '../src/BowlingGame';
 
 describe('Bowling Game', () => {
 
-    const game = new Game();
+    let game;
+
+    beforeEach(() => {
+        game = new Game();
+    });
 
     it('has score 0 when no pin knocked down', () => {
+        for (let i = 0; i < 10; i++) {
+            game.roll(0);
+            game.roll(0);
+        }
+
         expect(game.score).toEqual(0)
     });
 
