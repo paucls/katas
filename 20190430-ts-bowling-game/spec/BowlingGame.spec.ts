@@ -17,7 +17,7 @@ describe('Bowling Game', () => {
         expect(game.score).toEqual(0)
     });
 
-    it('has as score number of pinks knocked down per frame when no spares or strikes', () => {
+    it('has as score number of pins knocked down per frame when no spares or strikes', () => {
         for (let i = 0; i < 10; i++) {
             game.roll(9);
             game.roll(0);
@@ -26,7 +26,7 @@ describe('Bowling Game', () => {
         expect(game.score).toEqual(90)
     });
 
-    it('has as score number of pinks knocked down per frame plus spares', () => {
+    it('has as score number of pins knocked down per frame plus spares bonuses', () => {
         for (let i = 0; i < 10; i++) {
             game.roll(5);
             game.roll(5);
@@ -34,6 +34,16 @@ describe('Bowling Game', () => {
         game.roll(5);
 
         expect(game.score).toEqual(150)
+    });
+
+    it('has as score number of pins knocked down per frame plus strikes bonuses', () => {
+        for (let i = 0; i < 10; i++) {
+            game.roll(10);
+        }
+        game.roll(10);
+        game.roll(10);
+
+        expect(game.score).toEqual(300)
     });
 
 });
