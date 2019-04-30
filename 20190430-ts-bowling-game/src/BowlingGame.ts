@@ -1,11 +1,17 @@
 export class Game {
-    private _score: number = 0;
+    private rolls: number[] = [];
 
     get score(): number {
-        return this._score;
+        let score = 0;
+
+        for (let i = 0; i < this.rolls.length; i++) {
+            score += this.rolls[i];
+        }
+
+        return score;
     }
 
-    roll(number: number) {
-        this._score += number;
+    roll(pins: number) {
+        this.rolls.push(pins);
     }
 }
