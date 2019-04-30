@@ -4,4 +4,8 @@ export class Game {
     get score(): number {
         return this._score;
     }
+
+    roll(number: number) {
+        this._score += number;
+    }
 }
