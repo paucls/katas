@@ -18,5 +18,11 @@ namespace Tdd
         {
             Assert.That(_fibonacciSequence.numberAt(1), Is.EqualTo(1));
         }
+
+        [Test]
+        public void third_number_in_sequence_is_1()
+        {
+            Assert.That(_fibonacciSequence.numberAt(2), Is.EqualTo(1));
+        }
     }
 }
