@@ -24,5 +24,11 @@ namespace Tdd
         {
             Assert.That(_fibonacciSequence.numberAt(2), Is.EqualTo(1));
         }
+
+        [Test]
+        public void fourth_number_in_sequence_is_2()
+        {
+            Assert.That(_fibonacciSequence.numberAt(3), Is.EqualTo(2));
+        }
     }
 }
