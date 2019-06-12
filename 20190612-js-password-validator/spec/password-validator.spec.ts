@@ -27,4 +27,8 @@ describe('Password Validator', () => {
     it('should tell password is invalid when it does not contain a lowercase letter', () => {
         expect(passwordValidator.validate('ABCD_123')).toBe(false);
     });
+
+    it('should tell password is invalid when it does not contain an underscore', () => {
+        expect(passwordValidator.validate('Abcd1234')).toBe(false);
+    });
 });
