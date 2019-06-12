@@ -19,4 +19,8 @@ describe('Password Validator', () => {
     it('should tell password is invalid when it does not contain a capital letter', () => {
         expect(passwordValidator.validate('abcd_123')).toBe(false);
     });
+
+    it('should tell password is valid when it contains one or more capital letters', () => {
+        expect(passwordValidator.validate('aBcD_123')).toBe(true);
+    });
 });
