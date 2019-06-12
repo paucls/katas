@@ -8,9 +8,9 @@ namespace Tdd
         [Test]
         public void first_number_in_sequence_is_0()
         {
-            FibonacciSequence fibonacciSequence = new FibonacciSequence();
+            var fibonacciSequence = new FibonacciSequence();
             
-            int fibonacciNumber = fibonacciSequence.numberAt(0);
+            var fibonacciNumber = fibonacciSequence.numberAt(0);
 
             Assert.That(fibonacciNumber, Is.EqualTo(0));
         }
