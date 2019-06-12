@@ -4,7 +4,7 @@ namespace Tdd
     {
         public int numberAt(int i)
         {
-            return 123;
+            return 0;
         }
     }
 }
