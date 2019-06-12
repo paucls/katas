@@ -6,7 +6,7 @@ namespace Tdd
         {
             if (position < 2)
                 return position;
-            return 1;
+            return position - 1;
         }
     }
 }
