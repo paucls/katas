@@ -9,10 +9,14 @@ describe('Password Validator', () => {
     });
 
     it('should tell when a password is valid', () => {
-        expect(passwordValidator.validate('Abcd_123')).toBe(true)
+        expect(passwordValidator.validate('Abcd_123')).toBe(true);
     });
 
     it('should tell password is invalid when it has less than 8 characters', () => {
-        expect(passwordValidator.validate('Abcd_12')).toBe(false)
+        expect(passwordValidator.validate('Abcd_12')).toBe(false);
+    });
+
+    it('should tell password is invalid when it does not contain a capital letter', () => {
+        expect(passwordValidator.validate('abcd_123')).toBe(false);
     });
 });
