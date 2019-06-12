@@ -3,7 +3,8 @@ export class PasswordValidator {
         return this.hasMinLength(password) &&
             this.containsCapital(password) &&
             this.containsLowercase(password) &&
-            this.containsUnderscore(password);
+            this.containsUnderscore(password) &&
+            /[0-9]/.test(password);
     }
 
     private containsUnderscore(password) {
