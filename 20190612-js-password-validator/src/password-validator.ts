@@ -2,7 +2,8 @@ export class PasswordValidator {
     validate(password) {
         return password.length >= 8 &&
             this.containsCapital(password) &&
-            this.containsLowercase(password);
+            this.containsLowercase(password) &&
+            password.includes('_');
     }
 
     private containsCapital(password) {
