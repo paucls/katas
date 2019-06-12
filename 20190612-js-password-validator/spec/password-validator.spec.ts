@@ -1,8 +1,4 @@
-class PasswordValidator {
-    validate(password) {
-        return password.length >= 8;
-    }
-}
+import { PasswordValidator } from '../src/password-validator';
 
 describe('Password Validator', () => {
 
