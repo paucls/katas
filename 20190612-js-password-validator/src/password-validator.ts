@@ -4,11 +4,7 @@ export class PasswordValidator {
             this.containsCapital(password) &&
             this.containsLowercase(password) &&
             this.containsUnderscore(password) &&
-            /[0-9]/.test(password);
-    }
-
-    private containsUnderscore(password) {
-        return password.includes('_');
+            this.containsNumber(password);
     }
 
     private hasMinLength(password) {
@@ -21,5 +17,13 @@ export class PasswordValidator {
 
     private containsLowercase(password) {
         return /[a-z]/.test(password);
+    }
+
+    private containsUnderscore(password) {
+        return password.includes('_');
+    }
+
+    private containsNumber(password) {
+        return /[0-9]/.test(password);
     }
 }
