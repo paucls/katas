@@ -48,8 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Greeter.cs" />
-    <Compile Include="GreeterTest.cs" />
+    <Compile Include="FibonacciSequence.cs" />
+    <Compile Include="FibonacciSequenceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
