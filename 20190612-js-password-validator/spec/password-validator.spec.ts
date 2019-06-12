@@ -1,7 +1,6 @@
 class PasswordValidator {
-    validate(password: string) {
-        if (password.length < 8) return false;
-        return true;
+    validate(password) {
+        return password.length >= 8;
     }
 }
 
