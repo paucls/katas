@@ -4,7 +4,10 @@ namespace Tdd
     {
         public int numberAt(int position)
         {
-            return position;
+            if (position < 2)
+                return position;
+            else
+                return 1;
         }
     }
 }
