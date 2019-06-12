@@ -12,4 +12,12 @@ describe('Password Validator', () => {
 
         expect(isValid).toBe(true)
     });
+
+    it('should tell password is invalid when it has less than 8 characters', () => {
+        const passwordValidator = new PasswordValidator();
+
+        const isValid = passwordValidator.validate('Abcd_12');
+
+        expect(isValid).toBe(false)
+    });
 });
