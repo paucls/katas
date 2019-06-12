@@ -30,5 +30,11 @@ namespace Tdd
         {
             Assert.That(_fibonacciSequence.numberAt(3), Is.EqualTo(2));
         }
+
+        [Test]
+        public void sixth_number_in_sequence_is_5()
+        {
+            Assert.That(_fibonacciSequence.numberAt(5), Is.EqualTo(5));
+        }
     }
 }
