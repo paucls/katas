@@ -31,4 +31,8 @@ describe('Password Validator', () => {
     it('should tell password is invalid when it does not contain an underscore', () => {
         expect(passwordValidator.validate('Abcd1234')).toBe(false);
     });
+
+    it('should tell password is invalid when it does not contain a number', () => {
+        expect(passwordValidator.validate('Abcd_efg')).toBe(false);
+    });
 });
