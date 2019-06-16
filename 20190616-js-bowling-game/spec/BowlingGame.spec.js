@@ -14,4 +14,10 @@ describe('Bowling Game', () => {
         expect(game.score()).toBe(60);
     });
 
+    it('should calculate score with one spare', () => {
+        const game = new Game([5, 5, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]);
+
+        expect(game.score()).toBe(70);
+    });
+
 });
