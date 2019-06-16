@@ -1,12 +1,4 @@
-class Game {
-    constructor(rolls) {
-
-    }
-
-    score() {
-        return 0;
-    }
-}
+import {Game} from "../src/BowlingGame";
 
 describe('Bowling Game', () => {
 
