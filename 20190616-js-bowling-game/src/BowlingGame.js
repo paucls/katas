@@ -1,4 +1,5 @@
 const NUM_FRAMES = 10;
+const ALL_PINS = 10;
 
 export class Game {
 
@@ -11,11 +12,11 @@ export class Game {
         let rollIndex = 0;
 
         for (let i = 0; i < NUM_FRAMES; i++) {
-            if (this.rolls[rollIndex] === 10) {
-                score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+            if (this.isStrike(rollIndex)) {
+                score += ALL_PINS + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
                 rollIndex += 1;
-            } else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
-                score += 10 + this.rolls[rollIndex + 2];
+            } else if (this.isSpare(rollIndex)) {
+                score += ALL_PINS + this.rolls[rollIndex + 2];
                 rollIndex += 2;
             } else {
                 score += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
@@ -24,5 +25,13 @@ export class Game {
         }
 
         return score;
+    }
+
+    isStrike(rollIndex) {
+        return this.rolls[rollIndex] === ALL_PINS;
+    }
+
+    isSpare(rollIndex) {
+        return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === ALL_PINS;
     }
 }
