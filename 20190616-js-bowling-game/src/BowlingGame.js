@@ -1,9 +1,9 @@
 export class Game {
     constructor(rolls) {
-
+        this.rolls = rolls;
     }
 
     score() {
-        return 0;
+        return this.rolls.reduce((prev, roll) => prev + roll, 0);
     }
 }
