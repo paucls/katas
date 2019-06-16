@@ -7,21 +7,18 @@ export class Game {
     }
 
     score() {
-
-        let bonus = 0;
-        if (this.rolls[0] + this.rolls[1] === 10) {
-            bonus = this.rolls[2];
-
-        }
         let score = 0;
-
-
         let rollIndex = 0;
+
         for (let i = 0; i < NUM_FRAMES; i++) {
-            score += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+            if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
+                score = 10 + this.rolls[rollIndex + 2];
+            } else {
+                score += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+            }
             rollIndex += 2;
         }
 
-        return score + bonus;
+        return score;
     }
 }
