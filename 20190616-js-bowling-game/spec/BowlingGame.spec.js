@@ -26,4 +26,9 @@ describe('Bowling Game', () => {
         expect(game.score()).toBe(150);
     });
 
+    it('should calculate score with just one strike', () => {
+        const game = new Game([10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+        expect(game.score()).toBe(10);
+    });
 });

@@ -11,12 +11,16 @@ export class Game {
         let rollIndex = 0;
 
         for (let i = 0; i < NUM_FRAMES; i++) {
-            if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
+            if (this.rolls[rollIndex] === 10) {
+                score += 10;
+                rollIndex += 1;
+            } else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
                 score += 10 + this.rolls[rollIndex + 2];
+                rollIndex += 2;
             } else {
                 score += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+                rollIndex += 2;
             }
-            rollIndex += 2;
         }
 
         return score;
