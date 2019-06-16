@@ -3,7 +3,7 @@ import {Game} from "../src/BowlingGame";
 describe('Bowling Game', () => {
 
     it('should calculate score of gutter game', () => {
-        const game = new Game([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+        const game = new Game([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
         expect(game.score()).toBe(0);
     });
@@ -19,4 +19,11 @@ describe('Bowling Game', () => {
 
         expect(game.score()).toBe(70);
     });
+
+    xit('should calculate score with multiple spares', () => {
+        const game = new Game([5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+        expect(game.score()).toBe(35);
+    });
+
 });
