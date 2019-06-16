@@ -31,4 +31,10 @@ describe('Bowling Game', () => {
 
         expect(game.score()).toBe(10);
     });
+
+    it('should calculate score of a perfect game', () => {
+        const game = new Game([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+
+        expect(game.score()).toBe(300);
+    });
 });

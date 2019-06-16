@@ -12,7 +12,7 @@ export class Game {
 
         for (let i = 0; i < NUM_FRAMES; i++) {
             if (this.rolls[rollIndex] === 10) {
-                score += 10;
+                score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
                 rollIndex += 1;
             } else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
                 score += 10 + this.rolls[rollIndex + 2];
