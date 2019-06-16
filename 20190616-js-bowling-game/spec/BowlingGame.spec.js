@@ -1,4 +1,5 @@
 import {Game} from "../src/BowlingGame";
+import {cases} from "jasmine-parameterized";
 
 describe('Bowling Game', () => {
 
@@ -14,22 +15,19 @@ describe('Bowling Game', () => {
         expect(game.score()).toBe(60);
     });
 
-    it('should calculate score with one spare', () => {
-        const game = new Game([5, 5, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]);
+    cases([
+        [[5, 5, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5], 70],
+        [[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], 150]
+    ]).it('should calculate score with spares', ([rolls, score]) => {
+        const game = new Game(rolls);
 
-        expect(game.score()).toBe(70);
+        expect(game.score()).toBe(score);
     });
 
-    it('should calculate score with all spares', () => {
-        const game = new Game([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
+    it('should calculate score with some strikes', () => {
+        const game = new Game([10, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-        expect(game.score()).toBe(150);
-    });
-
-    it('should calculate score with just one strike', () => {
-        const game = new Game([10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-
-        expect(game.score()).toBe(10);
+        expect(game.score()).toBe(20);
     });
 
     it('should calculate score of a perfect game', () => {
