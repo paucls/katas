@@ -19,5 +19,4 @@ describe('Bowling Game', () => {
 
         expect(game.score()).toBe(70);
     });
-
 });
