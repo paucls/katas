@@ -20,10 +20,10 @@ describe('Bowling Game', () => {
         expect(game.score()).toBe(70);
     });
 
-    it('should calculate score with multiple spares', () => {
-        const game = new Game([5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    it('should calculate score with all spares', () => {
+        const game = new Game([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
 
-        expect(game.score()).toBe(35);
+        expect(game.score()).toBe(150);
     });
 
 });
