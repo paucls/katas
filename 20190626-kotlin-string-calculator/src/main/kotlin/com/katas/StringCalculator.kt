@@ -2,20 +2,13 @@ package com.katas
 
 class StringCalculator {
     fun add(rawCommand: String): Int {
-        var numbers = rawCommand
         val command = Command(rawCommand)
 
-        if (rawCommand.startsWith("//")) {
-            numbers = extractNumbers(rawCommand)
-        }
-
-        return numbers
+        return command.numbers
                 .split(command.delimiter, "\n")
                 .map(::numberToInt)
                 .reduce { acc, next -> acc + next }
     }
-
-    private fun extractNumbers(command: String) = command.substring(2)
 
     private fun numberToInt(number: String): Int {
         return if (number.isEmpty()) 0
@@ -24,11 +17,18 @@ class StringCalculator {
 }
 
 class Command(var text: String) {
+
     val delimiter: String
-        get() {
-            if (text.startsWith("//")) {
-                return text.substring(2, 3)
-            }
-            return ","
+        get() = when {
+            hasCustomDelimiter() -> text.substring(2, 3)
+            else -> ","
         }
+
+    val numbers: String
+        get() = when {
+            hasCustomDelimiter() -> text.substring(2)
+            else -> text
+        }
+
+    private fun hasCustomDelimiter() = text.startsWith("//")
 }
