@@ -64,7 +64,7 @@ class GildedRose {
         decreaseQuality(item);
 
         if (item.sellIn < 0) {
-            item.quality = 0;
+            dropQuality(item);
         }
     }
 
@@ -91,5 +91,9 @@ class GildedRose {
 
     private void decreaseQuality(Item item) {
         item.sellIn--;
+    }
+
+    private void dropQuality(Item item) {
+        item.quality = 0;
     }
 }
