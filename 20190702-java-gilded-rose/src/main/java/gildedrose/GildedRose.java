@@ -35,7 +35,7 @@ class GildedRose {
             increaseQuality(item);
         }
 
-        decreaseQuality(item);
+        decreaseSellIn(item);
 
         if (item.sellIn < 0) {
             if (item.quality < 50) {
@@ -61,7 +61,7 @@ class GildedRose {
             }
         }
 
-        decreaseQuality(item);
+        decreaseSellIn(item);
 
         if (item.sellIn < 0) {
             dropQuality(item);
@@ -73,23 +73,27 @@ class GildedRose {
 
     private void updateQualityRegularItem(Item item) {
         if (item.quality > 0) {
-            item.quality = item.quality - 1;
+            decreaseQuality(item);
         }
 
-        decreaseQuality(item);
+        decreaseSellIn(item);
 
         if (item.sellIn < 0) {
             if (item.quality > 0) {
-                item.quality = item.quality - 1;
+                decreaseQuality(item);
             }
         }
+    }
+
+    private void decreaseQuality(Item item) {
+        item.quality = item.quality - 1;
     }
 
     private void increaseQuality(Item item) {
         item.quality++;
     }
 
-    private void decreaseQuality(Item item) {
+    private void decreaseSellIn(Item item) {
         item.sellIn--;
     }
 
