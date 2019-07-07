@@ -1,12 +1,12 @@
 public class Game {
-    private Symbol _lastSymbol = Tile.EMPTY_TILE_SYMBOL;
+    private Symbol _lastSymbol = Symbol.EMPTY;
     private Board _board = new Board();
 
     public void Play(Symbol symbol, int x, int y) throws Exception {
         //if first move
-        if (_lastSymbol == Tile.EMPTY_TILE_SYMBOL) {
+        if (_lastSymbol == Symbol.EMPTY) {
             //if player is x
-            if (symbol == Tile.O_SYMBOL) {
+            if (symbol == Symbol.O) {
                 throw new Exception("Invalid first player");
             }
         }
@@ -63,6 +63,6 @@ public class Game {
             }
         }
 
-        return Tile.EMPTY_TILE_SYMBOL;
+        return Symbol.EMPTY;
     }
 }
