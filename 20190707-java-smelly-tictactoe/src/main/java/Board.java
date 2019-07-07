@@ -12,7 +12,7 @@ public class Board {
         }
     }
 
-    public Tile TileAt(int x, int y) {
+    public Tile tileAt(int x, int y) {
         for (Tile tile : _plays) {
             if (tile.x == x && tile.y == y) {
                 return tile;
@@ -21,7 +21,7 @@ public class Board {
         return null;
     }
 
-    public void AddTileAt(Symbol symbol, int x, int y) {
-        TileAt(x, y).symbol = symbol;
+    public void addTileAt(Symbol symbol, int x, int y) {
+        tileAt(x, y).symbol = symbol;
     }
 }
