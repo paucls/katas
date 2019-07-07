@@ -5,9 +5,9 @@ public class Board {
     private List<Tile> _plays = new ArrayList<>();
 
     public Board() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                Tile tile = new Tile(i, j, ' ');
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                Tile tile = new Tile(x, y, ' ');
                 _plays.add(tile);
             }
         }
