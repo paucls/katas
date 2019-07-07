@@ -1,11 +1,11 @@
 public class Tile {
-    public static final char EMPTY_TILE_SYMBOL = ' ';
-    public static final char O_SYMBOL = 'O';
-    public static final char X_SYMBOL = 'X';
+    public static final Symbol EMPTY_TILE_SYMBOL = Symbol.EMPTY;
+    public static final Symbol O_SYMBOL = Symbol.O;
+    public static final Symbol X_SYMBOL = Symbol.X;
 
     final public int x;
     final public int y;
-    public char symbol;
+    public Symbol symbol;
 
     public Tile(int x, int y) {
         this.x = x;

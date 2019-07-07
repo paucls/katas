@@ -1,8 +1,8 @@
 public class Game {
-    private char _lastSymbol = Tile.EMPTY_TILE_SYMBOL;
+    private Symbol _lastSymbol = Tile.EMPTY_TILE_SYMBOL;
     private Board _board = new Board();
 
-    public void Play(char symbol, int x, int y) throws Exception {
+    public void Play(Symbol symbol, int x, int y) throws Exception {
         //if first move
         if (_lastSymbol == Tile.EMPTY_TILE_SYMBOL) {
             //if player is x
@@ -24,7 +24,7 @@ public class Game {
         _board.AddTileAt(symbol, x, y);
     }
 
-    public char Winner() {
+    public Symbol Winner() {
         //if the positions in first row are taken
         if (_board.TileAt(0, 0).isTaken() &&
                 _board.TileAt(0, 1).isTaken() &&

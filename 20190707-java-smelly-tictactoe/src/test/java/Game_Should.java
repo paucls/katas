@@ -46,7 +46,7 @@ public class Game_Should {
         game.Play(Tile.O_SYMBOL, 1, 1);
         game.Play(Tile.X_SYMBOL, 0, 2);
 
-        char winner = game.Winner();
+        Symbol winner = game.Winner();
 
         assertEquals(Tile.X_SYMBOL, winner);
     }
@@ -60,7 +60,7 @@ public class Game_Should {
         game.Play(Tile.X_SYMBOL, 1, 1);
         game.Play(Tile.O_SYMBOL, 0, 2);
 
-        char winner = game.Winner();
+        Symbol winner = game.Winner();
 
         assertEquals(Tile.O_SYMBOL, winner);
     }
@@ -73,7 +73,7 @@ public class Game_Should {
         game.Play(Tile.O_SYMBOL, 0, 1);
         game.Play(Tile.X_SYMBOL, 1, 2);
 
-        char winner = game.Winner();
+        Symbol winner = game.Winner();
 
         assertEquals(Tile.X_SYMBOL, winner);
     }
@@ -87,7 +87,7 @@ public class Game_Should {
         game.Play(Tile.X_SYMBOL, 2, 1);
         game.Play(Tile.O_SYMBOL, 1, 2);
 
-        char winner = game.Winner();
+        Symbol winner = game.Winner();
 
         assertEquals(Tile.O_SYMBOL, winner);
     }
@@ -100,7 +100,7 @@ public class Game_Should {
         game.Play(Tile.O_SYMBOL, 0, 1);
         game.Play(Tile.X_SYMBOL, 2, 2);
 
-        char winner = game.Winner();
+        Symbol winner = game.Winner();
 
         assertEquals(Tile.X_SYMBOL, winner);
     }
@@ -114,7 +114,7 @@ public class Game_Should {
         game.Play(Tile.X_SYMBOL, 1, 1);
         game.Play(Tile.O_SYMBOL, 2, 2);
 
-        char winner = game.Winner();
+        Symbol winner = game.Winner();
 
         assertEquals(Tile.O_SYMBOL, winner);
     }
