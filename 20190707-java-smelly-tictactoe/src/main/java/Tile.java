@@ -10,4 +10,8 @@ public class Tile {
         this.Y = y;
         this.Symbol = EMPTY_TILE_SYMBOL;
     }
+
+    public boolean isTaken() {
+        return Symbol != EMPTY_TILE_SYMBOL;
+    }
 }
