@@ -1,6 +1,7 @@
 public class Tile {
     public static final char EMPTY_TILE_SYMBOL = ' ';
     public static final char O_SYMBOL = 'O';
+    public static final char X_SYMBOL = 'X';
 
     final public int x;
     final public int y;
