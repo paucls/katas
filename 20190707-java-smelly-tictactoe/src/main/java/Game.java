@@ -5,7 +5,7 @@ public class Game {
     public void Play(char symbol, int x, int y) throws Exception {
         //if first move
         if (_lastSymbol == Tile.EMPTY_TILE_SYMBOL) {
-            //if player is X
+            //if player is x
             if (symbol == 'O') {
                 throw new Exception("Invalid first player");
             }
@@ -30,10 +30,10 @@ public class Game {
                 _board.TileAt(0, 1).isTaken() &&
                 _board.TileAt(0, 2).isTaken()) {
             //if first row is full with same symbol
-            if (_board.TileAt(0, 0).Symbol ==
-                    _board.TileAt(0, 1).Symbol &&
-                    _board.TileAt(0, 2).Symbol == _board.TileAt(0, 1).Symbol) {
-                return _board.TileAt(0, 0).Symbol;
+            if (_board.TileAt(0, 0).symbol ==
+                    _board.TileAt(0, 1).symbol &&
+                    _board.TileAt(0, 2).symbol == _board.TileAt(0, 1).symbol) {
+                return _board.TileAt(0, 0).symbol;
             }
         }
 
@@ -42,11 +42,11 @@ public class Game {
                 _board.TileAt(1, 1).isTaken() &&
                 _board.TileAt(1, 2).isTaken()) {
             //if middle row is full with same symbol
-            if (_board.TileAt(1, 0).Symbol ==
-                    _board.TileAt(1, 1).Symbol &&
-                    _board.TileAt(1, 2).Symbol ==
-                            _board.TileAt(1, 1).Symbol) {
-                return _board.TileAt(1, 0).Symbol;
+            if (_board.TileAt(1, 0).symbol ==
+                    _board.TileAt(1, 1).symbol &&
+                    _board.TileAt(1, 2).symbol ==
+                            _board.TileAt(1, 1).symbol) {
+                return _board.TileAt(1, 0).symbol;
             }
         }
 
@@ -55,11 +55,11 @@ public class Game {
                 _board.TileAt(2, 1).isTaken() &&
                 _board.TileAt(2, 2).isTaken()) {
             //if middle row is full with same symbol
-            if (_board.TileAt(2, 0).Symbol ==
-                    _board.TileAt(2, 1).Symbol &&
-                    _board.TileAt(2, 2).Symbol ==
-                            _board.TileAt(2, 1).Symbol) {
-                return _board.TileAt(2, 0).Symbol;
+            if (_board.TileAt(2, 0).symbol ==
+                    _board.TileAt(2, 1).symbol &&
+                    _board.TileAt(2, 2).symbol ==
+                            _board.TileAt(2, 1).symbol) {
+                return _board.TileAt(2, 0).symbol;
             }
         }
 

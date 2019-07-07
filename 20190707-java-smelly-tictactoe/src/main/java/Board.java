@@ -14,7 +14,7 @@ public class Board {
 
     public Tile TileAt(int x, int y) {
         for (Tile tile : _plays) {
-            if (tile.X == x && tile.Y == y) {
+            if (tile.x == x && tile.y == y) {
                 return tile;
             }
         }
@@ -22,6 +22,6 @@ public class Board {
     }
 
     public void AddTileAt(char symbol, int x, int y) {
-        TileAt(x, y).Symbol = symbol;
+        TileAt(x, y).symbol = symbol;
     }
 }
