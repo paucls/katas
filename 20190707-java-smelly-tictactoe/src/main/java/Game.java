@@ -6,7 +6,7 @@ public class Game {
         //if first move
         if (_lastSymbol == Tile.EMPTY_TILE_SYMBOL) {
             //if player is x
-            if (symbol == 'O') {
+            if (symbol == Tile.O_SYMBOL) {
                 throw new Exception("Invalid first player");
             }
         }
