@@ -1,8 +1,8 @@
 public class Tile {
     public static final char EMPTY_TILE_SYMBOL = ' ';
 
-    public int x;
-    public int y;
+    final public int x;
+    final public int y;
     public char symbol;
 
     public Tile(int x, int y) {
