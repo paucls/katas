@@ -30,4 +30,9 @@ public class Board {
                 tileAt(row, 1).isTaken() &&
                 tileAt(row, 2).isTaken();
     }
+
+    boolean isRowFullWithSameSymbol(int row) {
+        return tileAt(row, 0).symbol == tileAt(row, 1).symbol &&
+                tileAt(row, 2).symbol == tileAt(row, 1).symbol;
+    }
 }
