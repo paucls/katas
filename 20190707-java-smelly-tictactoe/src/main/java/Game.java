@@ -4,18 +4,12 @@ public class Game {
 
     public void Play(Symbol symbol, int x, int y) throws Exception {
         if (isFirstMove()) {
-            //if player is x
-            if (symbol == Symbol.O) {
-                throw new Exception("Invalid first player");
-            }
+            validateFirstPlayer(symbol);
+        } else {
+            validateNextPlayer(symbol);
         }
 
-        validateNextPlayer(symbol);
-
-        //if not first move but play on an already played tile
-        if (_board.tileAt(x, y).isTaken()) {
-            throw new Exception("Invalid position");
-        }
+        validatePosition(x, y);
 
         // update game state
         _lastSymbol = symbol;
@@ -26,9 +20,21 @@ public class Game {
         return _lastSymbol == Symbol.EMPTY;
     }
 
+    private void validateFirstPlayer(Symbol symbol) throws Exception {
+        if (symbol == Symbol.O) {
+            throw new Exception("Invalid first player");
+        }
+    }
+
     private void validateNextPlayer(Symbol symbol) throws Exception {
         if (symbol == _lastSymbol) {
             throw new Exception("Invalid next player");
+        }
+    }
+
+    private void validatePosition(int x, int y) throws Exception {
+        if (_board.tileAt(x, y).isTaken()) {
+            throw new Exception("Invalid position");
         }
     }
 
