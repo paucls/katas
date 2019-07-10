@@ -2,7 +2,7 @@ public class Game {
     private Symbol _lastSymbol = Symbol.EMPTY;
     private Board _board = new Board();
 
-    public void Play(Symbol symbol, int x, int y) throws Exception {
+    public void play(Symbol symbol, int x, int y) throws Exception {
         if (isFirstMove()) {
             validateFirstPlayer(symbol);
         } else {
@@ -40,7 +40,7 @@ public class Game {
         _board.addTileAt(symbol, x, y);
     }
 
-    public Symbol Winner() {
+    public Symbol winner() {
         //if the positions in first row are taken
         if (_board.tileAt(0, 0).isTaken() &&
                 _board.tileAt(0, 1).isTaken() &&
