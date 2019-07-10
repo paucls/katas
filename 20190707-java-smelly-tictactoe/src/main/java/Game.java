@@ -8,12 +8,9 @@ public class Game {
         } else {
             validateNextPlayer(symbol);
         }
-
         validatePosition(x, y);
 
-        // update game state
-        _lastSymbol = symbol;
-        _board.addTileAt(symbol, x, y);
+        updateGameState(symbol, x, y);
     }
 
     private boolean isFirstMove() {
@@ -36,6 +33,11 @@ public class Game {
         if (_board.tileAt(x, y).isTaken()) {
             throw new Exception("Invalid position");
         }
+    }
+
+    private void updateGameState(Symbol symbol, int x, int y) {
+        _lastSymbol = symbol;
+        _board.addTileAt(symbol, x, y);
     }
 
     public Symbol Winner() {
