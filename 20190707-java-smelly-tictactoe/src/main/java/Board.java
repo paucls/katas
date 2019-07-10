@@ -25,13 +25,17 @@ public class Board {
         tileAt(position.x(), position.y()).symbol = symbol;
     }
 
-    boolean isRowTaken(int row) {
+    boolean isRowTakenWithSameSymbol(int row) {
+        return isRowTaken(row) && isRowFullWithSameSymbol(row);
+    }
+
+    private boolean isRowTaken(int row) {
         return tileAt(row, 0).isTaken() &&
                 tileAt(row, 1).isTaken() &&
                 tileAt(row, 2).isTaken();
     }
 
-    boolean isRowFullWithSameSymbol(int row) {
+    private boolean isRowFullWithSameSymbol(int row) {
         return tileAt(row, 0).symbol == tileAt(row, 1).symbol &&
                 tileAt(row, 2).symbol == tileAt(row, 1).symbol;
     }
