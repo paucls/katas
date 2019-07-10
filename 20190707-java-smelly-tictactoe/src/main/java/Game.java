@@ -45,9 +45,7 @@ public class Game {
         if (_board.tileAt(0, 0).isTaken() &&
                 _board.tileAt(0, 1).isTaken() &&
                 _board.tileAt(0, 2).isTaken()) {
-            //if first row is full with same symbol
-            if (_board.tileAt(0, 0).symbol == _board.tileAt(0, 1).symbol &&
-                    _board.tileAt(0, 2).symbol == _board.tileAt(0, 1).symbol) {
+            if (isRowFullWithSameSymbol(0)) {
                 return _board.tileAt(0, 0).symbol;
             }
         }
@@ -56,9 +54,7 @@ public class Game {
         if (_board.tileAt(1, 0).isTaken() &&
                 _board.tileAt(1, 1).isTaken() &&
                 _board.tileAt(1, 2).isTaken()) {
-            //if middle row is full with same symbol
-            if (_board.tileAt(1, 0).symbol == _board.tileAt(1, 1).symbol &&
-                    _board.tileAt(1, 2).symbol == _board.tileAt(1, 1).symbol) {
+            if (isRowFullWithSameSymbol(1)) {
                 return _board.tileAt(1, 0).symbol;
             }
         }
@@ -67,13 +63,16 @@ public class Game {
         if (_board.tileAt(2, 0).isTaken() &&
                 _board.tileAt(2, 1).isTaken() &&
                 _board.tileAt(2, 2).isTaken()) {
-            //if middle row is full with same symbol
-            if (_board.tileAt(2, 0).symbol == _board.tileAt(2, 1).symbol &&
-                    _board.tileAt(2, 2).symbol == _board.tileAt(2, 1).symbol) {
+            if (isRowFullWithSameSymbol(2)) {
                 return _board.tileAt(2, 0).symbol;
             }
         }
 
         return Symbol.EMPTY;
+    }
+
+    private boolean isRowFullWithSameSymbol(int row) {
+        return _board.tileAt(row, 0).symbol == _board.tileAt(row, 1).symbol &&
+                _board.tileAt(row, 2).symbol == _board.tileAt(row, 1).symbol;
     }
 }
