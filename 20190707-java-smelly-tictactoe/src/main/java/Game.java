@@ -8,9 +8,11 @@ public class Game {
         } else {
             validateNextPlayer(symbol);
         }
-        validatePosition(new Position(x, y));
 
-        updateGameState(symbol, x, y);
+        Position position = new Position(x, y);
+        validatePosition(position);
+
+        updateGameState(symbol, position);
     }
 
     private boolean isFirstMove() {
@@ -35,9 +37,9 @@ public class Game {
         }
     }
 
-    private void updateGameState(Symbol symbol, int x, int y) {
+    private void updateGameState(Symbol symbol, Position position) {
         _lastSymbol = symbol;
-        _board.addTileAt(symbol, x, y);
+        _board.addTileAt(symbol, position.x(), position.y());
     }
 
     public Symbol winner() {
