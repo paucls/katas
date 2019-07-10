@@ -24,4 +24,10 @@ public class Board {
     public void addTileAt(Symbol symbol, Position position) {
         tileAt(position.x(), position.y()).symbol = symbol;
     }
+
+    boolean isRowTaken(int row) {
+        return tileAt(row, 0).isTaken() &&
+                tileAt(row, 1).isTaken() &&
+                tileAt(row, 2).isTaken();
+    }
 }
