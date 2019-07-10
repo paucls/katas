@@ -3,8 +3,7 @@ public class Game {
     private Board _board = new Board();
 
     public void Play(Symbol symbol, int x, int y) throws Exception {
-        //if first move
-        if (_lastSymbol == Symbol.EMPTY) {
+        if (isFirstMove()) {
             //if player is x
             if (symbol == Symbol.O) {
                 throw new Exception("Invalid first player");
@@ -22,6 +21,10 @@ public class Game {
         // update game state
         _lastSymbol = symbol;
         _board.addTileAt(symbol, x, y);
+    }
+
+    private boolean isFirstMove() {
+        return _lastSymbol == Symbol.EMPTY;
     }
 
     public Symbol Winner() {
