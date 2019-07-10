@@ -39,7 +39,7 @@ public class Game {
 
     private void updateGameState(Symbol symbol, Position position) {
         _lastSymbol = symbol;
-        _board.addTileAt(symbol, position.x(), position.y());
+        _board.addTileAt(symbol, position);
     }
 
     public Symbol winner() {
