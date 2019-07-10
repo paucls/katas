@@ -9,12 +9,11 @@ public class Game {
                 throw new Exception("Invalid first player");
             }
         }
-        //if not first move but player repeated
-        else if (symbol == _lastSymbol) {
-            throw new Exception("Invalid next player");
-        }
+
+        validateNextPlayer(symbol);
+
         //if not first move but play on an already played tile
-        else if (_board.tileAt(x, y).isTaken()) {
+        if (_board.tileAt(x, y).isTaken()) {
             throw new Exception("Invalid position");
         }
 
@@ -25,6 +24,12 @@ public class Game {
 
     private boolean isFirstMove() {
         return _lastSymbol == Symbol.EMPTY;
+    }
+
+    private void validateNextPlayer(Symbol symbol) throws Exception {
+        if (symbol == _lastSymbol) {
+            throw new Exception("Invalid next player");
+        }
     }
 
     public Symbol Winner() {
