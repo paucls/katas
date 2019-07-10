@@ -21,8 +21,15 @@ public class Board {
         return null;
     }
 
-    public void addTileAt(Symbol symbol, Position position) {
+    public void addTileAt(Symbol symbol, Position position) throws Exception {
+        validatePosition(position);
         tileAt(position.x(), position.y()).symbol = symbol;
+    }
+
+    private void validatePosition(Position position) throws Exception {
+        if (tileAt(position.x(), position.y()).isTaken()) {
+            throw new Exception("Invalid position");
+        }
     }
 
     boolean isRowTakenWithSameSymbol(int row) {

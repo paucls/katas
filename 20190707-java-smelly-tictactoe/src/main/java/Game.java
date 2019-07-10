@@ -10,7 +10,6 @@ public class Game {
         }
 
         Position position = new Position(x, y);
-        validatePosition(position);
 
         updateGameState(symbol, position);
     }
@@ -31,15 +30,9 @@ public class Game {
         }
     }
 
-    private void validatePosition(Position position) throws Exception {
-        if (_board.tileAt(position.x(), position.y()).isTaken()) {
-            throw new Exception("Invalid position");
-        }
-    }
-
-    private void updateGameState(Symbol symbol, Position position) {
-        _lastSymbol = symbol;
+    private void updateGameState(Symbol symbol, Position position) throws Exception {
         _board.addTileAt(symbol, position);
+        _lastSymbol = symbol;
     }
 
     public Symbol winner() {
