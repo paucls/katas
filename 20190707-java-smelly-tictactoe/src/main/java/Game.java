@@ -8,7 +8,7 @@ public class Game {
         } else {
             validateNextPlayer(symbol);
         }
-        validatePosition(x, y);
+        validatePosition(new Position(x, y));
 
         updateGameState(symbol, x, y);
     }
@@ -29,8 +29,8 @@ public class Game {
         }
     }
 
-    private void validatePosition(int x, int y) throws Exception {
-        if (_board.tileAt(x, y).isTaken()) {
+    private void validatePosition(Position position) throws Exception {
+        if (_board.tileAt(position.x(), position.y()).isTaken()) {
             throw new Exception("Invalid position");
         }
     }

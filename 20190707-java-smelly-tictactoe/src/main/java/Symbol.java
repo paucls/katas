@@ -1,5 +1,5 @@
 enum Symbol {
     EMPTY,
     O,
-    X;
+    X
 }
