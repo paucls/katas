@@ -41,22 +41,16 @@ public class Game {
     }
 
     public Symbol winner() {
-        if (isRowTaken(0)) {
-            if (isRowFullWithSameSymbol(0)) {
-                return _board.tileAt(0, 0).symbol;
-            }
+        if (isRowTaken(0) && isRowFullWithSameSymbol(0)) {
+            return _board.tileAt(0, 0).symbol;
         }
 
-        if (isRowTaken(1)) {
-            if (isRowFullWithSameSymbol(1)) {
-                return _board.tileAt(1, 0).symbol;
-            }
+        if (isRowTaken(1) && isRowFullWithSameSymbol(1)) {
+            return _board.tileAt(1, 0).symbol;
         }
 
-        if (isRowTaken(2)) {
-            if (isRowFullWithSameSymbol(2)) {
-                return _board.tileAt(2, 0).symbol;
-            }
+        if (isRowTaken(2) && isRowFullWithSameSymbol(2)) {
+            return _board.tileAt(2, 0).symbol;
         }
 
         return Symbol.EMPTY;
