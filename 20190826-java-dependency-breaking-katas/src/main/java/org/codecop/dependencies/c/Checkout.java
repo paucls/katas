@@ -10,8 +10,12 @@ public class Checkout {
         receipt.setTax(vat);
         receipt.setTotal(amount.add(vat));
 
-        ReceiptRepository.store(receipt);
+        storeReceipt(receipt);
 
         return receipt;
+    }
+
+    protected void storeReceipt(Receipt receipt) {
+        ReceiptRepository.store(receipt);
     }
 }
