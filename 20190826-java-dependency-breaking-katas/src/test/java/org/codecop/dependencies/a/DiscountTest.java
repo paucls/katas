@@ -48,4 +48,14 @@ public class DiscountTest {
 
         assertEquals(new Money(new BigDecimal("95.95")), total);
     }
+
+    @Test
+    public void no_discount() {
+        when(campaignMock.isCrazySalesDay()).thenReturn(false);
+
+        Money net = new Money(99);
+        Money total = discount.discountFor(net);
+
+        assertEquals(new Money(new BigDecimal("99")), total);
+    }
 }
