@@ -10,9 +10,17 @@ import static org.mockito.Mockito.when;
 
 public class DiscountTest {
 
+    private final MarketingCampaign campaignMock;
+    private final Discount discount;
+
+    public DiscountTest() {
+        campaignMock = mock(MarketingCampaign.class);
+        discount = new Discount(campaignMock);
+    }
+
     @Test
     public void discount_when_net_price_is_more_than_1000() {
-        Discount discount = new Discount();
+        when(campaignMock.isCrazySalesDay()).thenReturn(false);
 
         Money net = new Money(1002);
         Money total = discount.discountFor(net);
@@ -22,9 +30,7 @@ public class DiscountTest {
 
     @Test
     public void discount_when_is_crazy_sale_day() {
-        MarketingCampaign marketingCampaignMock = mock(MarketingCampaign.class);
-        when(marketingCampaignMock.isCrazySalesDay()).thenReturn(true);
-        Discount discount = new Discount(marketingCampaignMock);
+        when(campaignMock.isCrazySalesDay()).thenReturn(true);
 
         Money net = new Money(1000);
         Money total = discount.discountFor(net);
