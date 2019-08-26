@@ -1,14 +1,15 @@
 package org.codecop.dependencies.a;
 
-import java.math.BigDecimal;
 import org.junit.Test;
+
+import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
 public class DiscountTest {
 
     @Test
-    public void test1() {
+    public void discount_when_net_price_is_more_than_1000() {
         Discount discount = new Discount();
 
         Money net = new Money(1002);
