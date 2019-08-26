@@ -9,7 +9,7 @@ public class MarketingCampaign {
         return milliSeconds() % 2 == 0;
     }
 
-    private long milliSeconds() {
+    protected long milliSeconds() {
         return System.currentTimeMillis();
     }
 
