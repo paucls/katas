@@ -2,7 +2,10 @@ package org.codecop.dependencies.b;
 
 import org.junit.Test;
 
+import java.time.DayOfWeek;
+
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MarketingCampaignTest {
 
@@ -13,5 +16,19 @@ public class MarketingCampaignTest {
         boolean isCrazySalesDay = campaign.isCrazySalesDay();
 
         assertFalse(isCrazySalesDay);
+    }
+
+    @Test
+    public void is_crazy_sale_day_on_fridays() {
+        MarketingCampaign campaign = new MarketingCampaign() {
+            @Override
+            protected DayOfWeek dayOfWeek() {
+                return DayOfWeek.FRIDAY;
+            }
+        };
+
+        boolean isCrazySalesDay = campaign.isCrazySalesDay();
+
+        assertTrue(isCrazySalesDay);
     }
 }
