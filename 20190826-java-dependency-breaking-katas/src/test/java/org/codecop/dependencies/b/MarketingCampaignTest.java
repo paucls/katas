@@ -11,7 +11,12 @@ public class MarketingCampaignTest {
 
     @Test
     public void is_not_crazy_sale_day_when_not_a_friday() {
-        MarketingCampaign campaign = new MarketingCampaign();
+        MarketingCampaign campaign = new MarketingCampaign() {
+            @Override
+            protected DayOfWeek dayOfWeek() {
+                return DayOfWeek.THURSDAY;
+            }
+        };
 
         boolean isCrazySalesDay = campaign.isCrazySalesDay();
 
