@@ -54,4 +54,15 @@ public class ShippingCostTest {
 
         assertThat(cost, equalTo(new Money(40)));
     }
+
+    @Test
+    public void calculate_cost_when_other_country() {
+        when(restCountriesAPI.isInCommonMarket(any())).thenReturn(false);
+        when(restCountriesAPI.isInAmericas(any())).thenReturn(false);
+        when(restCountriesAPI.distanceTo(any())).thenReturn(1000);
+
+        Money cost = shippingCost.calculate(new Country("China"), DeliveryOptions.EXPRESS);
+
+        assertThat(cost, equalTo(new Money(100)));
+    }
 }
