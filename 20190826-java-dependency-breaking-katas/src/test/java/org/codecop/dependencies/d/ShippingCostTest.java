@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -27,17 +28,17 @@ public class ShippingCostTest {
 
     @Test
     public void calculate_cost_when_EU_country() {
-        Country country = new Country("Spain");
-        when(restCountriesAPI.isInCommonMarket(country)).thenReturn(true);
+        when(restCountriesAPI.isInCommonMarket(any())).thenReturn(true);
 
-        Money cost = shippingCost.calculate(country, DeliveryOptions.STANDARD);
+        Money cost = shippingCost.calculate(new Country("Spain"), DeliveryOptions.STANDARD);
 
         assertThat(cost, equalTo(new Money(5)));
     }
 
     @Test
     public void calculate_cost_when_country_US_and_standard_delivery() {
-        ShippingCost shippingCost = new ShippingCost();
+        when(restCountriesAPI.isInCommonMarket(any())).thenReturn(false);
+        when(restCountriesAPI.isInAmericas(any())).thenReturn(true);
 
         Money cost = shippingCost.calculate(new Country("US"), DeliveryOptions.STANDARD);
 
@@ -46,7 +47,8 @@ public class ShippingCostTest {
 
     @Test
     public void calculate_cost_when_country_US_and_express_delivery() {
-        ShippingCost shippingCost = new ShippingCost();
+        when(restCountriesAPI.isInCommonMarket(any())).thenReturn(false);
+        when(restCountriesAPI.isInAmericas(any())).thenReturn(true);
 
         Money cost = shippingCost.calculate(new Country("US"), DeliveryOptions.EXPRESS);
 
