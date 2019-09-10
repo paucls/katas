@@ -15,4 +15,13 @@ public class ShippingCostTest {
 
         assertThat(cost, equalTo(new Money(15)));
     }
+
+    @Test
+    public void calculate_cost_when_country_US_and_express_delivery() {
+        ShippingCost shippingCost = new ShippingCost();
+
+        Money cost = shippingCost.calculate(new Country("US"), DeliveryOptions.EXPRESS);
+
+        assertThat(cost, equalTo(new Money(40)));
+    }
 }
