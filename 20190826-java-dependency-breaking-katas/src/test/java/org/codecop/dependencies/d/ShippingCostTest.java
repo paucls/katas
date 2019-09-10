@@ -1,11 +1,39 @@
 package org.codecop.dependencies.d;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ShippingCostTest {
+
+    private RestCountriesAPI restCountriesAPI;
+    private ShippingCost shippingCost;
+
+    @Before
+    public void setUp() {
+        restCountriesAPI = mock(RestCountriesAPI.class);
+
+        shippingCost = new ShippingCost() {
+            @Override
+            protected RestCountriesAPI restCountriesAPI() {
+                return restCountriesAPI;
+            }
+        };
+    }
+
+    @Test
+    public void calculate_cost_when_EU_country() {
+        Country country = new Country("Spain");
+        when(restCountriesAPI.isInCommonMarket(country)).thenReturn(true);
+
+        Money cost = shippingCost.calculate(country, DeliveryOptions.STANDARD);
+
+        assertThat(cost, equalTo(new Money(5)));
+    }
 
     @Test
     public void calculate_cost_when_country_US_and_standard_delivery() {
