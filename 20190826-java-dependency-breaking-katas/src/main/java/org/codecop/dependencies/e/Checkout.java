@@ -10,9 +10,8 @@ public class Checkout {
     public Checkout(Product product, EmailService emailService) {
         this.product = product;
         this.emailService = emailService;
-        this.newsLetterSubscribed = new UserConfirmation("Subscribe to our product " + product.name() + " newsletter?");
-        this.termsAndConditionsAccepted = new UserConfirmation("Accept our terms and conditions?\n" +
-                "(Mandatory to place order for " + product.name() + ")");
+        this.newsLetterSubscribed = makeSubscribeToNewsLetterConfirmation(product);
+        this.termsAndConditionsAccepted = makeTermsAndConditionsConfirmation(product);
     }
 
     public void confirmOrder() {
@@ -23,5 +22,14 @@ public class Checkout {
         if (newsLetterSubscribed.isAccepted()) {
             emailService.subscribeUserFor(product);
         }
+    }
+
+    protected UserConfirmation makeSubscribeToNewsLetterConfirmation(Product product) {
+        return new UserConfirmation("Subscribe to our product " + product.name() + " newsletter?");
+    }
+
+    protected UserConfirmation makeTermsAndConditionsConfirmation(Product product) {
+        return new UserConfirmation("Accept our terms and conditions?\n" +
+                "(Mandatory to place order for " + product.name() + ")");
     }
 }
