@@ -37,6 +37,42 @@ public class CheckoutTest {
         verify(emailServiceMock, never()).subscribeUserFor(any());
     }
 
+    @Test
+    public void should_subscribe_user_that_want_to_subscribe_and_accept_terms() {
+        Product polkaDotSocks = new Product("Polka-dot Socks");
+        Checkout checkout = new TestableCheckout(polkaDotSocks, emailServiceMock);
+        when(subscribeToNewsLetterConfirmationMock.isAccepted()).thenReturn(true);
+        when(termsAndConditionsConfirmationMock.isAccepted()).thenReturn(true);
+
+        checkout.confirmOrder();
+
+        verify(emailServiceMock).subscribeUserFor(any());
+    }
+
+    @Test
+    public void should_not_subscribe_user_that_do_not_want_to_subscribe_and_accept_terms() {
+        Product polkaDotSocks = new Product("Polka-dot Socks");
+        Checkout checkout = new TestableCheckout(polkaDotSocks, emailServiceMock);
+        when(subscribeToNewsLetterConfirmationMock.isAccepted()).thenReturn(false);
+        when(termsAndConditionsConfirmationMock.isAccepted()).thenReturn(true);
+
+        checkout.confirmOrder();
+
+        verify(emailServiceMock, never()).subscribeUserFor(any());
+    }
+
+    @Test(expected = OrderCancelledException.class)
+    public void should_not_subscribe_user_that_do_not_want_to_subscribe_and_do_not_accept_terms() {
+        Product polkaDotSocks = new Product("Polka-dot Socks");
+        Checkout checkout = new TestableCheckout(polkaDotSocks, emailServiceMock);
+        when(subscribeToNewsLetterConfirmationMock.isAccepted()).thenReturn(false);
+        when(termsAndConditionsConfirmationMock.isAccepted()).thenReturn(false);
+
+        checkout.confirmOrder();
+
+        verify(emailServiceMock, never()).subscribeUserFor(any());
+    }
+
     private class TestableCheckout extends Checkout {
         public TestableCheckout(Product product, EmailService emailService) {
             super(product, emailService);
