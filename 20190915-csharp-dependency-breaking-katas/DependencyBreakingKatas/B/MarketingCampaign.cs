@@ -19,7 +19,7 @@ namespace Dependencies.B
             return DayOfTheWeek().Equals(DayOfWeek.Friday);
         }
 
-        private DayOfWeek DayOfTheWeek()
+        protected virtual DayOfWeek DayOfTheWeek()
         {
             return DateTime.Now.DayOfWeek;
         }
