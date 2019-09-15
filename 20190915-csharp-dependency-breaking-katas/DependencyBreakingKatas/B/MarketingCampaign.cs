@@ -9,7 +9,7 @@ namespace Dependencies.B
             return MilliSeconds() % 2 == 0;
         }
 
-        private long MilliSeconds()
+        protected virtual long MilliSeconds()
         {
             return (long) DateTime.Now.TimeOfDay.TotalMilliseconds;
         }

@@ -24,11 +24,37 @@ namespace Dependencies.B
 
             Assert.True(isCrazySalesDay);
         }
+
+        [Fact]
+        public void should_be_active_on_odd_milliseconds()
+        {
+            var campaign = new TestableMarketingCampaign {TestMilliSeconds = 0};
+
+            var isActive = campaign.IsActive();
+
+            Assert.True(isActive);
+        }
+
+        [Fact]
+        public void should_not_be_active_on_even_milliseconds()
+        {
+            var campaign = new TestableMarketingCampaign {TestMilliSeconds = 1};
+
+            var isActive = campaign.IsActive();
+
+            Assert.False(isActive);
+        }
     }
 
     class TestableMarketingCampaign : MarketingCampaign
     {
         public DayOfWeek TestDayOfWeek;
+        public long TestMilliSeconds;
+
+        protected override long MilliSeconds()
+        {
+            return TestMilliSeconds;
+        }
 
         protected override DayOfWeek DayOfTheWeek()
         {
