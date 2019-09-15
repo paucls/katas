@@ -5,7 +5,7 @@ namespace Dependencies.B
     public class MarketingCampaignTest
     {
         [Fact]
-        public void Test2()
+        public void should_not_be_crazy_sale_when_not_on_friday()
         {
             var campaign = new MarketingCampaign();
 
