@@ -8,13 +8,13 @@ import static org.junit.Assert.assertEquals;
 public class DiscountTest {
 
     @Test
-    public void test1() {
+    public void calculates_discount_on_crazy_sales_day() {
         Discount discount = new Discount();
 
         Money net = new Money(1002);
         Money total = discount.discountFor(net);
 
-        assertEquals(new Money(new BigDecimal("901.8")), total);
+        assertEquals(new Money(new BigDecimal("851.7")), total);
     }
 
 }
