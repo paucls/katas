@@ -17,7 +17,7 @@ public class MarketingCampaign {
         return dayOfWeek().compareTo(DayOfWeek.TUESDAY) == 0;
     }
 
-    private DayOfWeek dayOfWeek() {
+    protected DayOfWeek dayOfWeek() {
         return LocalDateTime.now().getDayOfWeek();
     }
 }
