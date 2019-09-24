@@ -36,4 +36,32 @@ public class MarketingCampaignTest {
 
         assertFalse(isCrazySalesDay);
     }
+
+    @Test
+    public void should_be_active_on_odd_seconds() {
+        MarketingCampaign campaign = new MarketingCampaign() {
+            @Override
+            protected long milliSeconds() {
+                return 0;
+            }
+        };
+
+        boolean isActive = campaign.isActive();
+
+        assertTrue(isActive);
+    }
+
+    @Test
+    public void should_not_be_active_on_even_seconds() {
+        MarketingCampaign campaign = new MarketingCampaign() {
+            @Override
+            protected long milliSeconds() {
+                return 1;
+            }
+        };
+
+        boolean isActive = campaign.isActive();
+
+        assertFalse(isActive);
+    }
 }
