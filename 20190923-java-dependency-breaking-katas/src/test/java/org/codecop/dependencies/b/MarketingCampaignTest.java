@@ -2,16 +2,16 @@ package org.codecop.dependencies.b;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 public class MarketingCampaignTest {
 
     @Test
-    public void test2() {
+    public void should_be_crazy_sales_day_on_tuesdays() {
         MarketingCampaign campaign = new MarketingCampaign();
 
         boolean isCrazySalesDay = campaign.isCrazySalesDay();
 
-        assertFalse(isCrazySalesDay);
+        assertTrue(isCrazySalesDay);
     }
 }
