@@ -8,10 +8,14 @@ public class CheckoutTest {
 
     @Test
     public void test3() {
-        Checkout checkout = new Checkout();
-        
+        Checkout checkout = new Checkout() {
+            @Override
+            protected void storeReceipt(Receipt receipt) {
+            }
+        };
+
         checkout.createReceipt(new Money(12));
-        
+
         assertNotNull(checkout);
     }
 }
