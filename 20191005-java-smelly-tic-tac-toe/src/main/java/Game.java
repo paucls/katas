@@ -27,9 +27,7 @@ public class Game {
 
     public char Winner() {
         //if the positions in first row are taken
-        if (isPositionTakenAt(0, 0) &&
-                isPositionTakenAt(0, 1) &&
-                isPositionTakenAt(0, 2)) {
+        if (arePositionsTakenAtRow(0)) {
             //if first row is full with same symbol
             if (_board.TileAt(0, 0).Symbol ==
                     _board.TileAt(0, 1).Symbol &&
@@ -39,9 +37,7 @@ public class Game {
         }
 
         //if the positions in first row are taken
-        if (isPositionTakenAt(1, 0) &&
-                isPositionTakenAt(1, 1) &&
-                isPositionTakenAt(1, 2)) {
+        if (arePositionsTakenAtRow(1)) {
             //if middle row is full with same symbol
             if (_board.TileAt(1, 0).Symbol ==
                     _board.TileAt(1, 1).Symbol &&
@@ -52,9 +48,7 @@ public class Game {
         }
 
         //if the positions in first row are taken
-        if (isPositionTakenAt(2, 0) &&
-                isPositionTakenAt(2, 1) &&
-                isPositionTakenAt(2, 2)) {
+        if (arePositionsTakenAtRow(2)) {
             //if middle row is full with same symbol
             if (_board.TileAt(2, 0).Symbol ==
                     _board.TileAt(2, 1).Symbol &&
@@ -65,6 +59,12 @@ public class Game {
         }
 
         return EMPTY_SYMBOL;
+    }
+
+    private boolean arePositionsTakenAtRow(int index) {
+        return isPositionTakenAt(index, 0) &&
+                isPositionTakenAt(index, 1) &&
+                isPositionTakenAt(index, 2);
     }
 
     private boolean isPositionTakenAt(int x, int y) {
