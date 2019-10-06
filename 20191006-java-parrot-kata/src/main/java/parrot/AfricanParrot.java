@@ -10,6 +10,6 @@ public class AfricanParrot extends Parrot {
 
     @Override
     public double getSpeed() {
-        return Math.max(0, getBaseSpeed() - LOAD_FACTOR * numberOfCoconuts);
+        return Math.max(0, BASE_SPEED - LOAD_FACTOR * numberOfCoconuts);
     }
 }
