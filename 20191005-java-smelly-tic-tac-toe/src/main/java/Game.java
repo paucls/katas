@@ -26,7 +26,6 @@ public class Game {
     }
 
     public char Winner() {
-        //if the positions in first row are taken
         if (arePositionsTakenAtRow(0)) {
             //if first row is full with same symbol
             if (_board.TileAt(0, 0).Symbol ==
@@ -36,7 +35,6 @@ public class Game {
             }
         }
 
-        //if the positions in first row are taken
         if (arePositionsTakenAtRow(1)) {
             //if middle row is full with same symbol
             if (_board.TileAt(1, 0).Symbol ==
@@ -47,7 +45,6 @@ public class Game {
             }
         }
 
-        //if the positions in first row are taken
         if (arePositionsTakenAtRow(2)) {
             //if middle row is full with same symbol
             if (_board.TileAt(2, 0).Symbol ==
