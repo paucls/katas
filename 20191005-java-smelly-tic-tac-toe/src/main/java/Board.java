@@ -13,7 +13,7 @@ public class Board {
         }
     }
 
-    public Tile TileAt(int x, int y) {
+    private Tile TileAt(int x, int y) {
         for (Tile tile : _plays) {
             if (tile.X == x && tile.Y == y) {
                 return tile;

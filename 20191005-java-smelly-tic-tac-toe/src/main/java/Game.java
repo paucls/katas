@@ -23,19 +23,19 @@ public class Game {
     public char Winner() {
         if (_board.arePositionsTakenAtRow(0)) {
             if (_board.isRowFullWithSameSymbol(0)) {
-                return _board.TileAt(0, 0).Symbol;
+                return _lastSymbol;
             }
         }
 
         if (_board.arePositionsTakenAtRow(1)) {
             if (_board.isRowFullWithSameSymbol(1)) {
-                return _board.TileAt(1, 0).Symbol;
+                return _lastSymbol;
             }
         }
 
         if (_board.arePositionsTakenAtRow(2)) {
             if (_board.isRowFullWithSameSymbol(2)) {
-                return _board.TileAt(2, 0).Symbol;
+                return _lastSymbol;
             }
         }
 
