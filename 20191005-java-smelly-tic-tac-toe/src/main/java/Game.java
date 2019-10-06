@@ -15,14 +15,10 @@ public class Game {
         else if (symbol == _lastSymbol) {
             throw new Exception("Invalid next player");
         }
-        //if not first move but play on an already played tile
-        else if (_board.isPositionTakenAt(x, y)) {
-            throw new Exception("Invalid position");
-        }
 
         // update game state
-        _lastSymbol = symbol;
         _board.AddTileAt(symbol, x, y);
+        _lastSymbol = symbol;
     }
 
     public char Winner() {

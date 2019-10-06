@@ -22,7 +22,11 @@ public class Board {
         return null;
     }
 
-    public void AddTileAt(char symbol, int x, int y) {
+    public void AddTileAt(char symbol, int x, int y) throws Exception {
+        if (isPositionTakenAt(x, y)) {
+            throw new Exception("Invalid position");
+        }
+
         TileAt(x, y).Symbol = symbol;
     }
 
