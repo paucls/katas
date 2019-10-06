@@ -16,7 +16,7 @@ public class Game {
             throw new Exception("Invalid next player");
         }
         //if not first move but play on an already played tile
-        else if (_board.TileAt(x, y).Symbol != EMPTY_SYMBOL) {
+        else if (isPositionTakenAt(x, y)) {
             throw new Exception("Invalid position");
         }
 
@@ -27,9 +27,9 @@ public class Game {
 
     public char Winner() {
         //if the positions in first row are taken
-        if (_board.TileAt(0, 0).Symbol != EMPTY_SYMBOL &&
-                _board.TileAt(0, 1).Symbol != EMPTY_SYMBOL &&
-                _board.TileAt(0, 2).Symbol != EMPTY_SYMBOL) {
+        if (isPositionTakenAt(0, 0) &&
+                isPositionTakenAt(0, 1) &&
+                isPositionTakenAt(0, 2)) {
             //if first row is full with same symbol
             if (_board.TileAt(0, 0).Symbol ==
                     _board.TileAt(0, 1).Symbol &&
@@ -39,9 +39,9 @@ public class Game {
         }
 
         //if the positions in first row are taken
-        if (_board.TileAt(1, 0).Symbol != EMPTY_SYMBOL &&
-                _board.TileAt(1, 1).Symbol != EMPTY_SYMBOL &&
-                _board.TileAt(1, 2).Symbol != EMPTY_SYMBOL) {
+        if (isPositionTakenAt(1, 0) &&
+                isPositionTakenAt(1, 1) &&
+                isPositionTakenAt(1, 2)) {
             //if middle row is full with same symbol
             if (_board.TileAt(1, 0).Symbol ==
                     _board.TileAt(1, 1).Symbol &&
@@ -52,9 +52,9 @@ public class Game {
         }
 
         //if the positions in first row are taken
-        if (_board.TileAt(2, 0).Symbol != EMPTY_SYMBOL &&
-                _board.TileAt(2, 1).Symbol != EMPTY_SYMBOL &&
-                _board.TileAt(2, 2).Symbol != EMPTY_SYMBOL) {
+        if (isPositionTakenAt(2, 0) &&
+                isPositionTakenAt(2, 1) &&
+                isPositionTakenAt(2, 2)) {
             //if middle row is full with same symbol
             if (_board.TileAt(2, 0).Symbol ==
                     _board.TileAt(2, 1).Symbol &&
@@ -65,6 +65,10 @@ public class Game {
         }
 
         return EMPTY_SYMBOL;
+    }
+
+    private boolean isPositionTakenAt(int x, int y) {
+        return _board.TileAt(x, y).Symbol != EMPTY_SYMBOL;
     }
 }
 
