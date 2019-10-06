@@ -1,6 +1,6 @@
 package parrot;
 
-public class Parrot {
+public abstract class Parrot {
 
     protected int numberOfCoconuts;
     protected double voltage;
@@ -23,9 +23,7 @@ public class Parrot {
         throw new RuntimeException("Should be unreachable");
     }
 
-    public double getSpeed() {
-        throw new RuntimeException("Should be unreachable");
-    }
+    public abstract double getSpeed();
 
     protected double getBaseSpeed(double voltage) {
         return Math.min(24.0, voltage * getBaseSpeed());
