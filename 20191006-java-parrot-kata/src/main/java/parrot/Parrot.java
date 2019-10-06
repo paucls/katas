@@ -6,7 +6,7 @@ public class Parrot {
     protected double voltage;
     protected boolean isNailed;
 
-    protected Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, boolean isNailed) {
+    protected Parrot(int numberOfCoconuts, double voltage, boolean isNailed) {
         this.numberOfCoconuts = numberOfCoconuts;
         this.voltage = voltage;
         this.isNailed = isNailed;
@@ -14,11 +14,11 @@ public class Parrot {
 
     public static Parrot createParrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, boolean isNailed) {
         if (type == ParrotTypeEnum.EUROPEAN) {
-            return new EuropeanParrot(type, numberOfCoconuts, voltage, isNailed);
+            return new EuropeanParrot(numberOfCoconuts, voltage, isNailed);
         } else if (type == ParrotTypeEnum.AFRICAN) {
-            return new AfricanParrot(type, numberOfCoconuts, voltage, isNailed);
+            return new AfricanParrot(numberOfCoconuts, voltage, isNailed);
         } else if (type == ParrotTypeEnum.NORWEGIAN_BLUE) {
-            return new NorwegianBlueParrot(type, numberOfCoconuts, voltage, isNailed);
+            return new NorwegianBlueParrot(numberOfCoconuts, voltage, isNailed);
         }
         throw new RuntimeException("Should be unreachable");
     }
