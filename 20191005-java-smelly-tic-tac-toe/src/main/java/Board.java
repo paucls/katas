@@ -22,12 +22,12 @@ public class Board {
         return null;
     }
 
-    public void AddTileAt(char symbol, int x, int y) throws Exception {
-        if (TileAt(x, y).isTaken()) {
+    public void AddTileAt(char symbol, Position position) throws Exception {
+        if (TileAt(position.x(), position.y()).isTaken()) {
             throw new Exception("Invalid position");
         }
 
-        TileAt(x, y).Symbol = symbol;
+        TileAt(position.x(), position.y()).Symbol = symbol;
     }
 
     boolean arePositionsTakenAtRow(int row) {
