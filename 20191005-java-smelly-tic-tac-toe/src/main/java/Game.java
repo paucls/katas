@@ -16,7 +16,7 @@ public class Game {
             throw new Exception("Invalid next player");
         }
         //if not first move but play on an already played tile
-        else if (isPositionTakenAt(x, y)) {
+        else if (_board.isPositionTakenAt(x, y)) {
             throw new Exception("Invalid position");
         }
 
@@ -26,35 +26,25 @@ public class Game {
     }
 
     public char Winner() {
-        if (arePositionsTakenAtRow(0)) {
+        if (_board.arePositionsTakenAtRow(0)) {
             if (isRowFullWithSameSymbol(0)) {
                 return _board.TileAt(0, 0).Symbol;
             }
         }
 
-        if (arePositionsTakenAtRow(1)) {
+        if (_board.arePositionsTakenAtRow(1)) {
             if (isRowFullWithSameSymbol(1)) {
                 return _board.TileAt(1, 0).Symbol;
             }
         }
 
-        if (arePositionsTakenAtRow(2)) {
+        if (_board.arePositionsTakenAtRow(2)) {
             if (isRowFullWithSameSymbol(2)) {
                 return _board.TileAt(2, 0).Symbol;
             }
         }
 
         return EMPTY_SYMBOL;
-    }
-
-    private boolean arePositionsTakenAtRow(int index) {
-        return isPositionTakenAt(index, 0) &&
-                isPositionTakenAt(index, 1) &&
-                isPositionTakenAt(index, 2);
-    }
-
-    private boolean isPositionTakenAt(int x, int y) {
-        return _board.TileAt(x, y).Symbol != EMPTY_SYMBOL;
     }
 
     private boolean isRowFullWithSameSymbol(int row) {

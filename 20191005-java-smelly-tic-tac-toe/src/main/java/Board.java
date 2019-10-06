@@ -33,4 +33,14 @@ public class Board {
 
         TileAt(x, y).Symbol = symbol;
     }
+
+    boolean arePositionsTakenAtRow(int index) {
+        return isPositionTakenAt(index, 0) &&
+                isPositionTakenAt(index, 1) &&
+                isPositionTakenAt(index, 2);
+    }
+
+    boolean isPositionTakenAt(int x, int y) {
+        return TileAt(x, y).Symbol != Game.EMPTY_SYMBOL;
+    }
 }
