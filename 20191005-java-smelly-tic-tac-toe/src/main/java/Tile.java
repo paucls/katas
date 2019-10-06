@@ -5,9 +5,6 @@ public class Tile {
     public int Y;
     public char Symbol;
 
-    public Tile() {
-    }
-
     public Tile(Position position) {
         this.X = position.x();
         this.Y = position.y();
