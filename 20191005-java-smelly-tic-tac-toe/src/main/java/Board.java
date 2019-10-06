@@ -23,7 +23,7 @@ public class Board {
     }
 
     public void AddTileAt(char symbol, int x, int y) throws Exception {
-        if (isPositionTakenAt(x, y)) {
+        if (TileAt(x, y).isTaken()) {
             throw new Exception("Invalid position");
         }
 
@@ -31,13 +31,9 @@ public class Board {
     }
 
     boolean arePositionsTakenAtRow(int row) {
-        return isPositionTakenAt(row, 0) &&
-                isPositionTakenAt(row, 1) &&
-                isPositionTakenAt(row, 2);
-    }
-
-    boolean isPositionTakenAt(int x, int y) {
-        return TileAt(x, y).Symbol != Tile.EMPTY_SYMBOL;
+        return TileAt(row, 0).isTaken() &&
+                TileAt(row, 1).isTaken() &&
+                TileAt(row, 2).isTaken();
     }
 
     boolean isRowFullWithSameSymbol(int row) {
