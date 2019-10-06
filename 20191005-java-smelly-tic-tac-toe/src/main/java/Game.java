@@ -28,29 +28,21 @@ public class Game {
     public char Winner() {
         if (arePositionsTakenAtRow(0)) {
             //if first row is full with same symbol
-            if (_board.TileAt(0, 0).Symbol ==
-                    _board.TileAt(0, 1).Symbol &&
-                    _board.TileAt(0, 2).Symbol == _board.TileAt(0, 1).Symbol) {
+            if (isRowFullWithSameSymbol(0)) {
                 return _board.TileAt(0, 0).Symbol;
             }
         }
 
         if (arePositionsTakenAtRow(1)) {
             //if middle row is full with same symbol
-            if (_board.TileAt(1, 0).Symbol ==
-                    _board.TileAt(1, 1).Symbol &&
-                    _board.TileAt(1, 2).Symbol ==
-                            _board.TileAt(1, 1).Symbol) {
+            if (isRowFullWithSameSymbol(1)) {
                 return _board.TileAt(1, 0).Symbol;
             }
         }
 
         if (arePositionsTakenAtRow(2)) {
             //if middle row is full with same symbol
-            if (_board.TileAt(2, 0).Symbol ==
-                    _board.TileAt(2, 1).Symbol &&
-                    _board.TileAt(2, 2).Symbol ==
-                            _board.TileAt(2, 1).Symbol) {
+            if (isRowFullWithSameSymbol(2)) {
                 return _board.TileAt(2, 0).Symbol;
             }
         }
@@ -66,6 +58,12 @@ public class Game {
 
     private boolean isPositionTakenAt(int x, int y) {
         return _board.TileAt(x, y).Symbol != EMPTY_SYMBOL;
+    }
+
+    private boolean isRowFullWithSameSymbol(int row) {
+        return _board.TileAt(row, 0).Symbol ==
+                _board.TileAt(row, 1).Symbol &&
+                _board.TileAt(row, 2).Symbol == _board.TileAt(row, 1).Symbol;
     }
 }
 
