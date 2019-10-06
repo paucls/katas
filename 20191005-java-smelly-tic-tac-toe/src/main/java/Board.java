@@ -37,7 +37,7 @@ public class Board {
     }
 
     boolean isPositionTakenAt(int x, int y) {
-        return TileAt(x, y).Symbol != Game.EMPTY_SYMBOL;
+        return TileAt(x, y).Symbol != Tile.EMPTY_SYMBOL;
     }
 
     boolean isRowFullWithSameSymbol(int row) {
