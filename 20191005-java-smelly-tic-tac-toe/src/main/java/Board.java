@@ -5,9 +5,9 @@ public class Board {
     private List<Tile> _plays = new ArrayList<>();
 
     public Board() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                Tile tile = new Tile(new Position(i, j));
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
+                Tile tile = new Tile(new Position(row, column));
                 _plays.add(tile);
             }
         }
@@ -26,10 +26,10 @@ public class Board {
         TileAt(x, y).Symbol = symbol;
     }
 
-    boolean arePositionsTakenAtRow(int index) {
-        return isPositionTakenAt(index, 0) &&
-                isPositionTakenAt(index, 1) &&
-                isPositionTakenAt(index, 2);
+    boolean arePositionsTakenAtRow(int row) {
+        return isPositionTakenAt(row, 0) &&
+                isPositionTakenAt(row, 1) &&
+                isPositionTakenAt(row, 2);
     }
 
     boolean isPositionTakenAt(int x, int y) {
