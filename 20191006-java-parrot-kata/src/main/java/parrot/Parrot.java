@@ -15,7 +15,14 @@ public class Parrot {
     }
 
     public static Parrot createParrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, boolean isNailed) {
-        return new Parrot(type, numberOfCoconuts, voltage, isNailed);
+        if (type == ParrotTypeEnum.EUROPEAN) {
+            return new EuropeanParrot(type, numberOfCoconuts, voltage, isNailed);
+        } else if (type == ParrotTypeEnum.AFRICAN) {
+            return new AfricanParrot(type, numberOfCoconuts, voltage, isNailed);
+        } else if (type == ParrotTypeEnum.NORWEGIAN_BLUE) {
+            return new NorwegianBlueParrot(type, numberOfCoconuts, voltage, isNailed);
+        }
+        throw new RuntimeException("Should be unreachable");
     }
 
     public double getSpeed() {
