@@ -46,7 +46,7 @@ class GildedRose(private val items: Array<Item>) {
                         }
                     }
                 } else {
-                    item.quality = item.quality - item.quality
+                    dropQuality(item)
                 }
             } else {
                 if (item.quality < 50) {
@@ -64,5 +64,8 @@ class GildedRose(private val items: Array<Item>) {
         item.quality = item.quality - 1
     }
 
-}
+    private fun dropQuality(item: Item) {
+        item.quality = 0
+    }
 
+}
