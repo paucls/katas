@@ -43,13 +43,9 @@ class GildedRose(private val items: Array<Item>) {
                     }
                 }
             }
+        } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
         } else {
-            if (item.quality > 0) {
-                if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                } else {
-                    decreaseQuality(item)
-                }
-            }
+            decreaseQuality(item)
         }
 
         if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -66,10 +62,14 @@ class GildedRose(private val items: Array<Item>) {
                 dropQuality(item)
             } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
             } else {
-                if (item.quality > 0) {
-                    decreaseQuality(item)
-                }
+                decreaseQuality(item)
             }
+        }
+    }
+
+    private fun decreaseQuality(item: Item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1
         }
     }
 
@@ -79,10 +79,6 @@ class GildedRose(private val items: Array<Item>) {
 
     private fun increaseQuality(item: Item) {
         item.quality = item.quality + 1
-    }
-
-    private fun decreaseQuality(item: Item) {
-        item.quality = item.quality - 1
     }
 
     private fun dropQuality(item: Item) {
