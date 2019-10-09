@@ -9,7 +9,8 @@ class GildedRose(private val items: Array<Item>) {
     private fun updateItemQuality(item: Item) {
         if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality > 0) {
-                if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                } else {
                     decreaseQuality(item)
                 }
             }
