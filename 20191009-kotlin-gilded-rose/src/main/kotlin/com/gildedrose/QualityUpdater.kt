@@ -30,45 +30,45 @@ open class QualityUpdater {
     fun dropQuality(item: Item) {
         item.quality = 0
     }
+}
 
-    class AgedBrieQualityUpdater : QualityUpdater() {
-        override fun updateQuality(item: Item) {
+class AgedBrieQualityUpdater : QualityUpdater() {
+    override fun updateQuality(item: Item) {
+        increaseQuality(item)
+
+        decreaseSellIn(item)
+
+        if (item.sellIn < 0) {
+            increaseQuality(item)
+        }
+    }
+
+}
+
+class BackstagePassQualityUpdater : QualityUpdater() {
+
+    override fun updateQuality(item: Item) {
+        if (item.quality < 50) {
             increaseQuality(item)
 
-            decreaseSellIn(item)
+            if (item.sellIn <= 10) {
+                increaseQuality(item)
+            }
 
-            if (item.sellIn < 0) {
+            if (item.sellIn <= 5) {
                 increaseQuality(item)
             }
         }
 
-    }
+        decreaseSellIn(item)
 
-    class BackstagePassQualityUpdater : QualityUpdater() {
-
-        override fun updateQuality(item: Item) {
-            if (item.quality < 50) {
-                increaseQuality(item)
-
-                if (item.sellIn <= 10) {
-                    increaseQuality(item)
-                }
-
-                if (item.sellIn <= 5) {
-                    increaseQuality(item)
-                }
-            }
-
-            decreaseSellIn(item)
-
-            if (item.sellIn < 0) {
-                dropQuality(item)
-            }
+        if (item.sellIn < 0) {
+            dropQuality(item)
         }
     }
+}
 
-    class SulfurasQualityUpdater : QualityUpdater() {
-        override fun updateQuality(item: Item) {
-        }
+class SulfurasQualityUpdater : QualityUpdater() {
+    override fun updateQuality(item: Item) {
     }
 }

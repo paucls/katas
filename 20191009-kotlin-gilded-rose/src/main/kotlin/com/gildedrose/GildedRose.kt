@@ -8,9 +8,9 @@ class GildedRose(private val items: Array<Item>) {
 
     private fun updateItemQuality(item: Item) {
         when {
-            item.name == "Aged Brie" -> QualityUpdater.AgedBrieQualityUpdater().updateQuality(item)
-            item.name == "Backstage passes to a TAFKAL80ETC concert" -> QualityUpdater.BackstagePassQualityUpdater().updateQuality(item)
-            item.name == "Sulfuras, Hand of Ragnaros" -> QualityUpdater.SulfurasQualityUpdater().updateQuality(item)
+            item.name == "Aged Brie" -> AgedBrieQualityUpdater().updateQuality(item)
+            item.name == "Backstage passes to a TAFKAL80ETC concert" -> BackstagePassQualityUpdater().updateQuality(item)
+            item.name == "Sulfuras, Hand of Ragnaros" -> SulfurasQualityUpdater().updateQuality(item)
             else -> QualityUpdater().updateQuality(item)
         }
     }
