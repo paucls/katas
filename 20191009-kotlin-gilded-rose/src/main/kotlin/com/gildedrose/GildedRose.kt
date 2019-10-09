@@ -8,13 +8,7 @@ class GildedRose(private val items: Array<Item>) {
 
     private fun updateItemQuality(item: Item) {
         if (item.name == "Aged Brie") {
-            increaseQuality(item)
-
-            decreaseSellIn(item)
-
-            if (item.sellIn < 0) {
-                increaseQuality(item)
-            }
+            AgedBrieQualityUpdater().updateQuality(item)
         } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
             if (item.quality < 50) {
                 increaseQuality(item)
@@ -45,24 +39,38 @@ class GildedRose(private val items: Array<Item>) {
         }
     }
 
-    private fun increaseQuality(item: Item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1
+    companion object {
+        fun increaseQuality(item: Item) {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1
+            }
+        }
+
+        fun decreaseQuality(item: Item) {
+            if (item.quality > 0) {
+                item.quality = item.quality - 1
+            }
+        }
+
+        fun decreaseSellIn(item: Item) {
+            item.sellIn = item.sellIn - 1
+        }
+
+        fun dropQuality(item: Item) {
+            item.quality = 0
         }
     }
 
-    private fun decreaseQuality(item: Item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1
+    class AgedBrieQualityUpdater {
+        fun updateQuality(item: Item) {
+            increaseQuality(item)
+
+            decreaseSellIn(item)
+
+            if (item.sellIn < 0) {
+                increaseQuality(item)
+            }
         }
     }
-
-    private fun decreaseSellIn(item: Item) {
-        item.sellIn = item.sellIn - 1
-    }
-
-    private fun dropQuality(item: Item) {
-        item.quality = 0
-    }
-
 }
+
