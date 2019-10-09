@@ -25,31 +25,29 @@ class GildedRose(private val items: Array<Item>) {
                     }
                 }
             }
-        } else {
-            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality < 50) {
-                    increaseQuality(item)
+        } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (item.quality < 50) {
+                increaseQuality(item)
 
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                increaseQuality(item)
-                            }
+                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.sellIn < 11) {
+                        if (item.quality < 50) {
+                            increaseQuality(item)
                         }
+                    }
 
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                increaseQuality(item)
-                            }
+                    if (item.sellIn < 6) {
+                        if (item.quality < 50) {
+                            increaseQuality(item)
                         }
                     }
                 }
-            } else {
-                if (item.quality > 0) {
-                    if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    } else {
-                        decreaseQuality(item)
-                    }
+            }
+        } else {
+            if (item.quality > 0) {
+                if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                } else {
+                    decreaseQuality(item)
                 }
             }
         }
