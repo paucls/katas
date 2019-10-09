@@ -56,7 +56,7 @@ class GildedRose(private val items: Array<Item>) {
 
         if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
         } else {
-            item.sellIn = item.sellIn - 1
+            decreaseSellIn(item)
         }
 
         if (item.sellIn < 0) {
@@ -77,6 +77,10 @@ class GildedRose(private val items: Array<Item>) {
                 }
             }
         }
+    }
+
+    private fun decreaseSellIn(item: Item) {
+        item.sellIn = item.sellIn - 1
     }
 
     private fun increaseQuality(item: Item) {
