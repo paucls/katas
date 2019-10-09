@@ -10,7 +10,7 @@ class GildedRose(private val items: Array<Item>) {
         if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality > 0) {
                 if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    item.quality = item.quality - 1
+                    decreaseQuality(item)
                 }
             }
         } else {
@@ -42,7 +42,7 @@ class GildedRose(private val items: Array<Item>) {
                 if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (item.quality > 0) {
                         if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            item.quality = item.quality - 1
+                            decreaseQuality(item)
                         }
                     }
                 } else {
@@ -54,6 +54,10 @@ class GildedRose(private val items: Array<Item>) {
                 }
             }
         }
+    }
+
+    private fun decreaseQuality(item: Item) {
+        item.quality = item.quality - 1
     }
 
 }
