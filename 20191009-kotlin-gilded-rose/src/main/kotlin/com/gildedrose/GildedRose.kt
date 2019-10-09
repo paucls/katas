@@ -7,14 +7,11 @@ class GildedRose(private val items: Array<Item>) {
     }
 
     private fun updateItemQuality(item: Item) {
-        if (item.name == "Aged Brie") {
-            AgedBrieQualityUpdater().updateQuality(item)
-        } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-            BackstagePassQualityUpdater().updateQuality(item)
-        } else if (item.name == "Sulfuras, Hand of Ragnaros") {
-            SulfurasQualityUpdater().updateQuality(item)
-        } else {
-            QualityUpdater().updateQuality(item)
+        when {
+            item.name == "Aged Brie" -> AgedBrieQualityUpdater().updateQuality(item)
+            item.name == "Backstage passes to a TAFKAL80ETC concert" -> BackstagePassQualityUpdater().updateQuality(item)
+            item.name == "Sulfuras, Hand of Ragnaros" -> SulfurasQualityUpdater().updateQuality(item)
+            else -> QualityUpdater().updateQuality(item)
         }
     }
 
@@ -42,8 +39,8 @@ class GildedRose(private val items: Array<Item>) {
 
     }
 
-    class QualityUpdater {
-        fun updateQuality(item: Item) {
+    open class QualityUpdater {
+        open fun updateQuality(item: Item) {
             decreaseQuality(item)
 
             decreaseSellIn(item)
@@ -54,9 +51,8 @@ class GildedRose(private val items: Array<Item>) {
         }
     }
 
-    class AgedBrieQualityUpdater {
-
-        fun updateQuality(item: Item) {
+    class AgedBrieQualityUpdater : QualityUpdater() {
+        override fun updateQuality(item: Item) {
             increaseQuality(item)
 
             decreaseSellIn(item)
@@ -68,9 +64,9 @@ class GildedRose(private val items: Array<Item>) {
 
     }
 
-    class BackstagePassQualityUpdater {
+    class BackstagePassQualityUpdater : QualityUpdater() {
 
-        fun updateQuality(item: Item) {
+        override fun updateQuality(item: Item) {
             if (item.quality < 50) {
                 increaseQuality(item)
 
@@ -91,8 +87,8 @@ class GildedRose(private val items: Array<Item>) {
         }
     }
 
-    class SulfurasQualityUpdater {
-        fun updateQuality(item: Item) {
+    class SulfurasQualityUpdater : QualityUpdater() {
+        override fun updateQuality(item: Item) {
         }
     }
 }
