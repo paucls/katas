@@ -12,14 +12,9 @@ class GildedRose(private val items: Array<Item>) {
         } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
             BackstagePassQualityUpdater().updateQuality(item)
         } else if (item.name == "Sulfuras, Hand of Ragnaros") {
+            SulfurasQualityUpdater().updateQuality(item)
         } else {
-            decreaseQuality(item)
-
-            decreaseSellIn(item)
-
-            if (item.sellIn < 0) {
-                decreaseQuality(item)
-            }
+            QualityUpdater().updateQuality(item)
         }
     }
 
@@ -47,6 +42,18 @@ class GildedRose(private val items: Array<Item>) {
 
     }
 
+    class QualityUpdater {
+        fun updateQuality(item: Item) {
+            decreaseQuality(item)
+
+            decreaseSellIn(item)
+
+            if (item.sellIn < 0) {
+                decreaseQuality(item)
+            }
+        }
+    }
+
     class AgedBrieQualityUpdater {
 
         fun updateQuality(item: Item) {
@@ -58,9 +65,11 @@ class GildedRose(private val items: Array<Item>) {
                 increaseQuality(item)
             }
         }
+
     }
 
     class BackstagePassQualityUpdater {
+
         fun updateQuality(item: Item) {
             if (item.quality < 50) {
                 increaseQuality(item)
@@ -79,6 +88,11 @@ class GildedRose(private val items: Array<Item>) {
             if (item.sellIn < 0) {
                 dropQuality(item)
             }
+        }
+    }
+
+    class SulfurasQualityUpdater {
+        fun updateQuality(item: Item) {
         }
     }
 }
