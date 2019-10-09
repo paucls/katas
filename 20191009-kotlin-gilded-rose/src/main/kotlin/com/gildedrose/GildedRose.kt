@@ -3,7 +3,7 @@ package com.gildedrose
 class GildedRose(private val items: Array<Item>) {
 
     fun updateQuality() {
-        items.indices.forEach { updateItemQuality(items[it]) }
+        items.forEach { updateItemQuality(it) }
     }
 
     private fun updateItemQuality(item: Item) {
