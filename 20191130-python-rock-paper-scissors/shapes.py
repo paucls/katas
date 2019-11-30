@@ -1,12 +1,22 @@
-class Paper:
+import abc
+
+
+class Shape:
+    @abc.abstractmethod
     def beats(self, shape):
+        pass
+
+
+class Paper(Shape):
+    def beats(self, shape: Shape):
         return isinstance(shape, Rock)
 
 
-class Rock:
-    def beats(self, shape):
+class Rock(Shape):
+    def beats(self, shape: Shape):
         return isinstance(shape, Scissors)
 
 
-class Scissors:
-    pass
+class Scissors(Shape):
+    def beats(self, shape: Shape):
+        pass
