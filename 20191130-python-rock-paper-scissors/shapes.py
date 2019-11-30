@@ -5,7 +5,7 @@ class Paper:
 
 class Rock:
     def beats(self, shape):
-        return True
+        return isinstance(shape, Scissors)
 
 
 class Scissors:
