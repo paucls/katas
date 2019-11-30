@@ -4,7 +4,8 @@ class Paper:
 
 
 class Rock:
-    pass
+    def beats(self, shape):
+        return True
 
 
 class Scissors:
