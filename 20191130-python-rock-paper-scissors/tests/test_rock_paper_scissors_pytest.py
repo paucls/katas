@@ -15,3 +15,7 @@ def test_a_rock_beats_scissors():
 
 def test_a_rock_does_not_beat_paper():
     assert not Rock().beats(Paper())
+
+
+def test_scissors_beat_paper():
+    assert Scissors().beats(Paper())
