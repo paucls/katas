@@ -19,4 +19,4 @@ class Rock(Shape):
 
 class Scissors(Shape):
     def beats(self, shape: Shape):
-        return True
+        return isinstance(shape, Paper)
