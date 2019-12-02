@@ -20,3 +20,8 @@ class Rock(Shape):
 class Scissors(Shape):
     def beats(self, shape: Shape):
         return isinstance(shape, Paper)
+
+
+class Spock(Shape):
+    def beats(self, shape: Shape):
+        return isinstance(shape, Scissors) or isinstance(shape, Rock)

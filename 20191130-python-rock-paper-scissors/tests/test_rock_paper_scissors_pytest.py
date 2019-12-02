@@ -1,4 +1,4 @@
-from shapes import Paper, Rock, Scissors
+from shapes import Paper, Rock, Scissors, Spock
 
 
 def test_a_paper_beats_a_rock():
@@ -23,3 +23,11 @@ def test_scissors_beat_paper():
 
 def test_scissors_do_not_beat_rock():
     assert not Scissors().beats(Rock())
+
+
+def test_spock_beats_scissors():
+    assert Spock().beats(Scissors())
+
+
+def test_spock_beats_rock():
+    assert Spock().beats(Rock())
