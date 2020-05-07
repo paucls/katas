@@ -1,5 +1,5 @@
 class FibonacciSequence(object):
-    def at_index(self, index):
+    def number_at(self, index):
         if index <= 1:
             return index
         else:
