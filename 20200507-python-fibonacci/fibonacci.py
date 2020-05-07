@@ -3,4 +3,4 @@ class FibonacciSequence(object):
         if index <= 1:
             return index
         else:
-            return index - 1
+            return self.number_at(index - 1) + self.number_at(index - 2)

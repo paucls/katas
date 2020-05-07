@@ -18,3 +18,7 @@ class FibonacciTest(unittest.TestCase):
     def test_fourth_number_in_sequence_is_2(self):
         number = self.fibonacci_sequence.number_at(3)
         self.assertEqual(2, number)
+
+    def test_sixth_number_in_sequence_is_5(self):
+        number = self.fibonacci_sequence.number_at(5)
+        self.assertEqual(5, number)
