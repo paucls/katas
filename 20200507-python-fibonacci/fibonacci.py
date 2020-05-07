@@ -1,6 +1,6 @@
 class FibonacciSequence(object):
     def at_index(self, index):
-        if index < 1:
-            return 0
+        if index <= 1:
+            return index
         else:
-            return 1
+            return index - 1

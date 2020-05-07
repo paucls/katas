@@ -9,6 +9,10 @@ class FibonacciTest(unittest.TestCase):
         number = FibonacciSequence().at_index(0)
         self.assertEqual(0, number)
 
-    def test_second_number_in_sequnce_is_1(self):
+    def test_second_number_in_sequence_is_1(self):
         number = FibonacciSequence().at_index(1)
         self.assertEqual(1, number)
+
+    def test_fourth_number_in_sequence_is_2(self):
+        number = FibonacciSequence().at_index(3)
+        self.assertEqual(2, number)
