@@ -1,6 +1,6 @@
 import pytest
 
-from fibonacci import FibonacciSequence
+from fibonacci_sequence import FibonacciSequence
 
 
 @pytest.mark.parametrize("index, expected_number",
