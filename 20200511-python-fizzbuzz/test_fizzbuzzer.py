@@ -15,3 +15,11 @@ def test_should_return_fizz_for_number_3():
 
 def test_should_return_fizz_for_number_multiple_of_3():
     assert FizzBuzzer().fizz_buzz(6) == "Fizz"
+
+
+def test_should_return_buzz_for_number_5():
+    assert FizzBuzzer().fizz_buzz(5) == "Buzz"
+
+
+def test_should_return_buzz_for_number_multiple_of_5():
+    assert FizzBuzzer().fizz_buzz(10) == "Buzz"
