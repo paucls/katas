@@ -1,9 +1,15 @@
 class FizzBuzzer(object):
     def fizz_buzz(self, number):
-        if number % 3 == 0 and number % 5 == 0:
+        if self.multiple_of_3(number) and self.multiple_of_5(number):
             return "FizzBuzz"
-        if number % 3 == 0:
+        if self.multiple_of_3(number):
             return "Fizz"
-        if number % 5 == 0:
+        if self.multiple_of_5(number):
             return "Buzz"
         return str(number)
+
+    def multiple_of_3(self, number):
+        return number % 3 == 0
+
+    def multiple_of_5(self, number):
+        return number % 5 == 0
