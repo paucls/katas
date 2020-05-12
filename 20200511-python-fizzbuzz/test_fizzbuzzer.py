@@ -11,6 +11,11 @@ def test_should_return_string_2_for_number_2():
     assert result == "2"
 
 
-def test_should_return_Fizz_for_number_3():
+def test_should_return_fizz_for_number_3():
     result = FizzBuzzer().fizz_buzz(3)
+    assert result == "Fizz"
+
+
+def test_should_return_fizz_for_number_multiple_of_3():
+    result = FizzBuzzer().fizz_buzz(6)
     assert result == "Fizz"
