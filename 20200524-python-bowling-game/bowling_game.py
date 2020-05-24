@@ -16,9 +16,12 @@ class BowlingGame:
 
         for _ in range(NUM_FRAMES):
             if self._rolls[roll_index] + self._rolls[roll_index + 1] == ALL_PINS_IN_FRAME:
-                score += ALL_PINS_IN_FRAME + self._rolls[roll_index + 2]
+                score += self.calculate_score_for_spare(roll_index)
             else:
                 score += self._rolls[roll_index] + self._rolls[roll_index + 1]
             roll_index += 2
 
         return score
+
+    def calculate_score_for_spare(self, roll_index):
+        return ALL_PINS_IN_FRAME + self._rolls[roll_index + 2]
