@@ -7,4 +7,11 @@ class BowlingGame:
         self._rolls = rolls
 
     def score(self):
-        return functools.reduce(lambda a, b: a + b, self._rolls)
+        score = 0
+        roll_index = 0
+
+        for _ in range(20):
+            score += self._rolls[roll_index]
+            roll_index += 1
+
+        return score
