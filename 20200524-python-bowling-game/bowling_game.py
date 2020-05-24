@@ -1,5 +1,9 @@
 import functools
 
+NUM_FRAMES = 10
+
+ALL_PINS_IN_FRAME = 10
+
 
 class BowlingGame:
 
@@ -10,9 +14,9 @@ class BowlingGame:
         score = 0
         roll_index = 0
 
-        for _ in range(10):
-            if self._rolls[roll_index] + self._rolls[roll_index + 1] == 10:
-                score += 10 + self._rolls[roll_index + 2]
+        for _ in range(NUM_FRAMES):
+            if self._rolls[roll_index] + self._rolls[roll_index + 1] == ALL_PINS_IN_FRAME:
+                score += ALL_PINS_IN_FRAME + self._rolls[roll_index + 2]
             else:
                 score += self._rolls[roll_index] + self._rolls[roll_index + 1]
             roll_index += 2
