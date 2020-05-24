@@ -13,7 +13,7 @@ def test_should_have_score_20_for_game_with_1_pin_knocked_in_each_roll():
     assert bowling_game.score() == 20
 
 
-def xtest_should_have_score_155_for_game_with_spare_in_each_frame():
+def test_should_have_score_155_for_game_with_spare_in_each_frame():
     bowling_game = BowlingGame([5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
                                 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
                                 10])
