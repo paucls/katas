@@ -25,4 +25,9 @@ class FizzBuzzerShould {
     fun `output Fizz for multiples of 3`(number: Int, output: String) {
         assertThat(fizzBuzzer.fizzBuzz(number)).isEqualTo(output)
     }
+
+    @Test
+    internal fun `output Buzz for multiples of 5`() {
+        assertThat(fizzBuzzer.fizzBuzz(5)).isEqualTo("Buzz")
+    }
 }
