@@ -4,12 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class FizzBuzzerShould {
+    private val fizzBuzzer = FizzBuzzer()
+
     @Test
     internal fun `output number as string`() {
-        val fizzBuzzer = FizzBuzzer()
-
-        val result = fizzBuzzer.fizzBuzz(1)
-
-        assertThat(result).isEqualTo("1")
+        assertThat(fizzBuzzer.fizzBuzz(1)).isEqualTo("1")
     }
 }

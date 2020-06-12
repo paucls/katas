@@ -1,7 +1,7 @@
 package com.katas
 
 class FizzBuzzer {
-    fun fizzBuzz(i: Int): String {
+    fun fizzBuzz(number: Int): String {
         return "1"
     }
 }
