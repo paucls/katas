@@ -27,7 +27,7 @@ class FizzBuzzerShould {
     }
 
     @Test
-    internal fun `output Buzz for multiples of 5`() {
+    fun `output Buzz for multiples of 5`() {
         assertThat(fizzBuzzer.fizzBuzz(5)).isEqualTo("Buzz")
     }
 }
