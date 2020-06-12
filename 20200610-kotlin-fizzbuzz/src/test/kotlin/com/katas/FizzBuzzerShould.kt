@@ -17,7 +17,6 @@ class FizzBuzzerShould {
         assertThat(fizzBuzzer.fizzBuzz(2)).isEqualTo("2")
     }
 
-    @Disabled
     @Test
     internal fun `output Fizz for multiples of 3`() {
         assertThat(fizzBuzzer.fizzBuzz(3)).isEqualTo("Fizz")
