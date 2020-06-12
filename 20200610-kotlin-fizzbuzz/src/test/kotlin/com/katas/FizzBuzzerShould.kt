@@ -17,8 +17,11 @@ class FizzBuzzerShould {
         assertThat(fizzBuzzer.fizzBuzz(number)).isEqualTo(output)
     }
 
-    @Test
-    fun `output Fizz for multiples of 3`() {
-        assertThat(fizzBuzzer.fizzBuzz(3)).isEqualTo("Fizz")
+    @ParameterizedTest
+    @CsvSource(
+            "3,  Fizz"
+    )
+    fun `output Fizz for multiples of 3`(number: Int, output: String) {
+        assertThat(fizzBuzzer.fizzBuzz(number)).isEqualTo(output)
     }
 }
