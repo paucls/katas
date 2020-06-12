@@ -19,7 +19,8 @@ class FizzBuzzerShould {
 
     @ParameterizedTest
     @CsvSource(
-            "3,  Fizz"
+            "3,  Fizz",
+            "6,  Fizz"
     )
     fun `output Fizz for multiples of 3`(number: Int, output: String) {
         assertThat(fizzBuzzer.fizzBuzz(number)).isEqualTo(output)
