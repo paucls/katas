@@ -32,4 +32,9 @@ public class ShapesTest {
     public void paper_beats_rock() {
         assertThat(paper.beats(rock)).isTrue();
     }
+
+    @Test
+    public void paper_does_not_beat_scissors() {
+        assertThat(paper.beats(scissors)).isFalse();
+    }
 }
