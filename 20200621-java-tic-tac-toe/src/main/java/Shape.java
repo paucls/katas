@@ -1,5 +1,3 @@
-public class Shape {
-    public boolean beats(Shape scissor) {
-        return true;
-    }
+interface Shape {
+    boolean beats(Shape scissor);
 }
