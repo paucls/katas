@@ -1,6 +1,6 @@
 public class Scissors implements Shape {
     @Override
-    public boolean beats(Shape scissor) {
-        return scissor instanceof Paper;
+    public boolean beats(Shape shape) {
+        return shape instanceof Paper;
     }
 }
