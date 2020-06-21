@@ -6,6 +6,7 @@ public class ShapesTest {
 
     private final Shape rock = new Rock();
     private final Shape scissors = new Scissors();
+    private Shape paper = new Paper();
 
     @Test
     public void rock_beats_scissor() {
@@ -15,5 +16,10 @@ public class ShapesTest {
     @Test
     public void scissors_does_not_beat_rock() {
         assertThat(scissors.beats(rock)).isFalse();
+    }
+
+    @Test
+    public void scissors_beats_paper() {
+        assertThat(scissors.beats(paper)).isTrue();
     }
 }
