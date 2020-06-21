@@ -27,4 +27,9 @@ public class ShapesTest {
     public void scissors_beats_paper() {
         assertThat(scissors.beats(paper)).isTrue();
     }
+
+    @Test
+    public void paper_beats_rock() {
+        assertThat(paper.beats(rock)).isTrue();
+    }
 }
