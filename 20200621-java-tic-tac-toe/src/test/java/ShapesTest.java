@@ -10,4 +10,11 @@ public class ShapesTest {
         Shape scissor = new Scissor();
         assertThat(rock.beats(scissor)).isTrue();
     }
+
+    @Test
+    public void scissors_does_not_beat_rock() {
+        Shape rock = new Rock();
+        Shape scissors = new Scissor();
+        assertThat(scissors.beats(rock)).isFalse();
+    }
 }
