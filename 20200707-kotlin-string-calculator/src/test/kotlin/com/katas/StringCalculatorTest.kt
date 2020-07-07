@@ -22,7 +22,7 @@ class StringCalculatorTest {
         assertThat(calculator.add("1,2,3")).isEqualTo(6)
     }
 
-    @Test
+//    @Test
     internal fun `should add numbers separated by new lines`() {
         assertThat(calculator.add("1\n2,3")).isEqualTo(6)
     }
