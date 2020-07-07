@@ -1,7 +1,7 @@
 package com.katas
 
 class Calculator {
-    private val delimiter = arrayOf(",")
+    private val delimiter = arrayOf(",", "\n")
 
     fun add(numbers: String): Int {
         if (numbers.isEmpty()) return 0
