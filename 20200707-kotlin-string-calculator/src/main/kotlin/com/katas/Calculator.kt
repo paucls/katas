@@ -2,6 +2,8 @@ package com.katas
 
 class Calculator {
     fun add(s: String): Number {
-        return 0
+        if (s.isEmpty())
+            return 0
+        return s.toInt()
     }
 }
