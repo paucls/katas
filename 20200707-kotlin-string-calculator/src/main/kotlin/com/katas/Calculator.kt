@@ -1,20 +1,19 @@
 package com.katas
 
 class Calculator {
-    private val delimiter = arrayOf(",", "\n")
+    private val newLine = "\n"
+    private val defaultDelimiter = ","
+    private val changeDelimiterPrefix = "//"
 
-    fun add(numbers: String): Int {
-        if (numbers.isEmpty()) return 0
+    fun add(command: String): Int {
+        if (command.isEmpty()) return 0
 
-        var delimiters = delimiter.clone()
-        if (numbers.startsWith("//")) {
-            val customDelimiter = numbers.substring(2).split("\n")[0]
-            delimiters = arrayOf(customDelimiter, "\n")
+        var numbers = command
+        var delimiters = arrayOf(newLine, defaultDelimiter)
 
-            return numbers.split("\n")[1]
-                    .split(*delimiters)
-                    .map(String::toInt)
-                    .sum()
+        if (definesCustomDelimiter(command)) {
+            delimiters = arrayOf(getCustomDelimiter(command), newLine)
+            numbers = command.split(newLine)[1]
         }
 
         return numbers
@@ -22,4 +21,10 @@ class Calculator {
                 .map(String::toInt)
                 .sum()
     }
+
+    private fun definesCustomDelimiter(numbers: String) =
+            numbers.startsWith(changeDelimiterPrefix)
+
+    private fun getCustomDelimiter(numbers: String) =
+            numbers.substring(2).split(newLine)[0]
 }
