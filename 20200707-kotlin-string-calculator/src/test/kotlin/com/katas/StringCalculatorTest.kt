@@ -16,4 +16,9 @@ class StringCalculatorTest {
     internal fun `should return number when string has a single number`() {
         assertThat(calculator.add("1")).isEqualTo(1)
     }
+
+    @Test
+    internal fun `should return sum of the number when string has a two numbers`() {
+        assertThat(calculator.add("1,2")).isEqualTo(3)
+    }
 }
