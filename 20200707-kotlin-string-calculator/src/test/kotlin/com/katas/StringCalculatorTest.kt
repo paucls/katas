@@ -11,4 +11,9 @@ class StringCalculatorTest {
     internal fun `should return 0 when empty string is passed`() {
         assertThat(calculator.add("")).isEqualTo(0)
     }
+
+    @Test
+    internal fun `should return number when string has a single number`() {
+        assertThat(calculator.add("1")).isEqualTo(1)
+    }
 }
