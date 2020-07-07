@@ -18,7 +18,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    internal fun `should return sum of the number when string has a two numbers`() {
-        assertThat(calculator.add("1,2")).isEqualTo(3)
+    internal fun `should add numbers when string has multiple numbers`() {
+        assertThat(calculator.add("1,2,3")).isEqualTo(6)
     }
 }
