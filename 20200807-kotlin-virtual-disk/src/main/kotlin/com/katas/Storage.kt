@@ -13,12 +13,17 @@ class Storage {
     }
 
     fun totalMP3(): Int {
-        var total = 0
+        return totalMP3sInDirectory(rootDirectory)
+    }
 
-        rootDirectory.list().forEach { resource ->
-            if (resource is File && resource.name.endsWith("mp3")) total++
-        }
-
-        return total
+    private fun totalMP3sInDirectory(directory: Directory): Int {
+        return directory.list()
+                .map { resource ->
+                    when {
+                        resource is File && resource.name.endsWith("mp3") -> 1
+                        resource is Directory -> totalMP3sInDirectory(resource)
+                        else -> 0
+                    }
+                }.sum()
     }
 }

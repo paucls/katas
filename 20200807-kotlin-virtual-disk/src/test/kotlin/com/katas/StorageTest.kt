@@ -34,4 +34,15 @@ internal class StorageTest {
 
         assertThat(storage.totalMP3()).isOne()
     }
+
+    @Test
+    fun `should count the total number of mp3 files including subdirectories`() {
+        storage.rootDirectory().add(File(name = "file1.mp3", size = 1))
+        storage.rootDirectory().add(File(name = "file2.txt", size = 2))
+        val directory = Directory("dir1")
+        directory.add(File(name = "file3.mp3", size = 3))
+        storage.rootDirectory().add(directory)
+
+        assertThat(storage.totalMP3()).isEqualTo(2)
+    }
 }
