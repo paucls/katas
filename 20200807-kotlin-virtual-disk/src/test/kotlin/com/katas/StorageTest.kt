@@ -13,15 +13,17 @@ internal class StorageTest {
     }
 
     @Test
-    fun `should indicate the total size used by its contents`() {
+    fun `should calculate the total size used by its contents`() {
         storage.rootDirectory().add(File(name = "file1", size = 100))
-        storage.rootDirectory().add(File(name = "file2", size = 50))
+        val directory = Directory("dir1")
+        directory.add(File(name = "file2", size = 50))
+        storage.rootDirectory().add(directory)
 
         assertThat(storage.totalSize()).isEqualTo(150)
     }
 
     @Test
-    fun `should indicate the total size used when is empty`() {
+    fun `should calculate the total size used when is empty`() {
         assertThat(storage.totalSize()).isZero()
     }
 }

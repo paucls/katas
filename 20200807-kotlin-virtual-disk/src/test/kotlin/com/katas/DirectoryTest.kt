@@ -25,4 +25,13 @@ class DirectoryTest {
 
         assertThat(directory.list()).contains(subdirectory)
     }
+
+    @Test
+    fun `should calculate its size`() {
+        val directory = Directory("dir1")
+        directory.add(File(name = "file1", size = 10))
+        directory.add(File(name = "file1", size = 20))
+
+        assertThat(directory.size()).isEqualTo(30)
+    }
 }
