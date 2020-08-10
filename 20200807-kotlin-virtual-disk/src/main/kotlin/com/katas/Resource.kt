@@ -1,3 +1,5 @@
 package com.katas
 
-interface Resource
+interface Resource {
+    fun size(): Int
+}

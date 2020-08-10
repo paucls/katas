@@ -19,4 +19,9 @@ internal class StorageTest {
 
         assertThat(storage.totalSize()).isEqualTo(150)
     }
+
+    @Test
+    fun `should indicate the total size used when is empty`() {
+        assertThat(storage.totalSize()).isZero()
+    }
 }
