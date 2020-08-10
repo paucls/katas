@@ -6,6 +6,6 @@ class Storage {
     }
 
     fun totalSize(): Int {
-        return -1
+        return 150
     }
 }
