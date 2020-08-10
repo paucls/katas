@@ -26,4 +26,12 @@ internal class StorageTest {
     fun `should calculate the total size used when is empty`() {
         assertThat(storage.totalSize()).isZero()
     }
+
+    @Test
+    fun `should count the total number of mp3 files`() {
+        storage.rootDirectory().add(File(name = "file1.mp3", size = 1))
+        storage.rootDirectory().add(File(name = "file2.txt", size = 2))
+
+        assertThat(storage.totalMP3()).isOne()
+    }
 }
