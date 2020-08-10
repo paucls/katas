@@ -9,10 +9,6 @@ class Storage {
     }
 
     fun totalSize(): Int {
-        var total = 0
-        rootDirectory()
-                .list()
-                .forEach { total += it.size() }
-        return total
+        return rootDirectory.size()
     }
 }

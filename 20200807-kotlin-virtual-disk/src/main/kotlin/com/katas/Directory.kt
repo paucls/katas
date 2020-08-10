@@ -5,11 +5,7 @@ data class Directory(val name: String): Resource {
     private val contents: MutableList<Resource> = mutableListOf()
 
     override fun size(): Int {
-        var total = 0
-
-        contents.forEach { total += it.size() }
-
-        return total
+        return contents.map(Resource::size).sum()
     }
 
     fun list(): List<Resource> {
