@@ -31,6 +31,7 @@ public class LiftSystem {
     }
 
     public void tick() {
-//        this.lifts.get(0).sendRequest(1);
+        if (!calls.isEmpty())
+            this.lifts.get(0).sendRequest(1);
     }
 }
