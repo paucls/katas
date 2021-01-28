@@ -17,10 +17,12 @@ public class LiftSystemTest {
         verify(new LiftSystemPrinter().print(lifts));
     }
 
-//    @Test
+    @Test
     public void a_lift_should_move_to_requested_floor_and_open_doors_in_order_to_fulfill_request() {
         Lift liftA = new Lift("A", 0);
-        LiftSystem lifts = new LiftSystem(Arrays.asList(0, 1), Collections.singletonList(liftA), Collections.emptyList());
+        LiftSystem lifts = new LiftSystem(Arrays.asList(0, 1),
+                Collections.singletonList(liftA),
+                Collections.singletonList(new Call(1, Direction.DOWN)));
         lifts.tick();
         verify(new LiftSystemPrinter().print(lifts));
     }
