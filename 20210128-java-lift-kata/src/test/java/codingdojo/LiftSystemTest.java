@@ -9,9 +9,8 @@ import static org.approvaltests.Approvals.verify;
 
 public class LiftSystemTest {
 
-    // TODO: enable this test and finish writing it
-    // @Test
-    public void doSomething() {
+    @Test
+    public void a_lift_should_move_to_requested_floor_and_open_doors_in_order_to_fulfill_request() {
         Lift liftA = new Lift("A", 0);
         LiftSystem lifts = new LiftSystem(Arrays.asList(0, 1), Collections.singletonList(liftA), Collections.emptyList());
         lifts.tick();
