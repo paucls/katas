@@ -31,6 +31,14 @@ public class LiftSystemTest {
         verifyLifts(lifts);
     }
 
+    @Test
+    void should_not_send_request_to_lift_when_its_doors_are_open() {
+        Lift liftA = new Lift("A", 0, true);
+        LiftSystem lifts = new LiftSystem(of(0, 1), of(liftA), of(new Call(1, Direction.DOWN)));
+        lifts.tick();
+        verifyLifts(lifts);
+    }
+
     private void verifyLifts(LiftSystem lifts) {
         verify(new LiftSystemPrinter().print(lifts));
     }
