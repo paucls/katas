@@ -12,7 +12,7 @@ public class LiftSystemTest {
         Lift liftA = new Lift("A", 0);
         LiftSystem lifts = new LiftSystem(of(0, 1), of(liftA), of());
         lifts.tick();
-        verify(new LiftSystemPrinter().print(lifts));
+        verifyLifts(lifts);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class LiftSystemTest {
         Lift liftA = new Lift("A", 0);
         LiftSystem lifts = new LiftSystem(of(0, 1), of(liftA), of(new Call(1, Direction.DOWN)));
         lifts.tick();
-        verify(new LiftSystemPrinter().print(lifts));
+        verifyLifts(lifts);
     }
 
     @Test
@@ -28,6 +28,10 @@ public class LiftSystemTest {
         Lift liftA = new Lift("A", 1);
         LiftSystem lifts = new LiftSystem(of(0, 1), of(liftA), of(new Call(0, Direction.UP)));
         lifts.tick();
+        verifyLifts(lifts);
+    }
+
+    private void verifyLifts(LiftSystem lifts) {
         verify(new LiftSystemPrinter().print(lifts));
     }
 }
