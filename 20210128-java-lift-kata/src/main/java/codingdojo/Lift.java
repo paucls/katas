@@ -47,7 +47,7 @@ public class Lift {
     }
 
     public void sendRequest(int floor) {
-        this.floor = 1;
+        this.floor = floor;
         this.doorsOpen = true;
     }
 }

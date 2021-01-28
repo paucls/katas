@@ -31,7 +31,8 @@ public class LiftSystem {
     }
 
     public void tick() {
-        if (!calls.isEmpty())
-            this.lifts.get(0).sendRequest(1);
+        if (calls.isEmpty()) return;
+
+        this.lifts.get(0).sendRequest(calls.get(0).getFloor());
     }
 }
