@@ -31,6 +31,6 @@ public class LiftSystem {
     }
 
     public void tick() {
-        // TODO: implement this method
+        this.lifts.get(0).sendRequest(1);
     }
 }

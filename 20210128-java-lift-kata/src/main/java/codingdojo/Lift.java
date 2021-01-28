@@ -45,4 +45,9 @@ public class Lift {
     public boolean areDoorsOpen() {
         return doorsOpen;
     }
+
+    public void sendRequest(int floor) {
+        this.floor = 1;
+        this.doorsOpen = true;
+    }
 }
