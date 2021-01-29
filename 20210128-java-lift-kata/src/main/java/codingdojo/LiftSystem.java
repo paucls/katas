@@ -33,6 +33,8 @@ public class LiftSystem {
     public void tick() {
         if (calls.isEmpty()) return;
 
+        if (this.lifts.get(0).areDoorsOpen()) return;
+
         this.lifts.get(0).sendRequest(calls.get(0).getFloor());
     }
 }
