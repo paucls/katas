@@ -2,9 +2,6 @@ package codingdojo;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -43,7 +40,20 @@ public class LiftSystemTest {
         assertThat(lift.areDoorsOpen()).isTrue();
     }
 
+    @Test
+    public void lift_should_move_to_the_multiple_requested_floors() {
+        Lift liftA = new Lift("A", 2, asList(1, 0));
+        LiftSystem liftSystem = aLiftSystem(liftA);
+
+        liftSystem.tick();
+        Lift lift = liftSystem.getLifts().get(0);
+        assertThat(lift.getFloor()).isOne();
+
+        liftSystem.tick();
+        assertThat(lift.getFloor()).isZero();
+    }
+
     private LiftSystem aLiftSystem(Lift liftA) {
-        return new LiftSystem(asList(0, 1), asList(liftA), asList());
+        return new LiftSystem(asList(0, 1, 2), asList(liftA), asList());
     }
 }

@@ -12,7 +12,7 @@ public class Lift {
     public Lift(String id, int floor, List<Integer> requests, boolean doorsOpen) {
         this.id = id;
         this.floor = floor;
-        this.requests = requests;
+        this.requests = new ArrayList<>(requests);
         this.doorsOpen = doorsOpen;
     }
 
@@ -45,7 +45,8 @@ public class Lift {
     }
 
     public void tick() {
-        floor = this.requests.get(0);
+        floor = requests.get(0);
         doorsOpen = true;
+        requests.remove(0);
     }
 }
