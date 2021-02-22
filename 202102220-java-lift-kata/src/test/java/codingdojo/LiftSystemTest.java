@@ -32,4 +32,14 @@ public class LiftSystemTest {
         assertThat(lift.getFloor()).isZero();
     }
 
+    @Test
+    public void lift_should_open_door_when_arrives_to_requested_floor() {
+        Lift liftA = new Lift("A", 0, asList(0));
+        LiftSystem lifts = new LiftSystem(asList(0, 1), asList(liftA), asList());
+
+        lifts.tick();
+
+        Lift lift = lifts.getLifts().get(0);
+        assertThat(lift.areDoorsOpen()).isTrue();
+    }
 }

@@ -46,5 +46,6 @@ public class Lift {
 
     public void tick() {
         floor = this.requests.get(0);
+        doorsOpen = true;
     }
 }
