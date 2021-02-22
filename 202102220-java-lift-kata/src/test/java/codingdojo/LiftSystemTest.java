@@ -13,33 +13,37 @@ public class LiftSystemTest {
     @Test
     public void lift_should_move_up_to_requested_floor() {
         Lift liftA = new Lift("A", 0, asList(1));
-        LiftSystem lifts = new LiftSystem(asList(0, 1), asList(liftA), asList());
+        LiftSystem liftSystem = aLiftSystem(liftA);
 
-        lifts.tick();
+        liftSystem.tick();
 
-        Lift lift = lifts.getLifts().get(0);
+        Lift lift = liftSystem.getLifts().get(0);
         assertThat(lift.getFloor()).isOne();
     }
 
     @Test
     public void lift_should_move_down_to_requested_floor() {
         Lift liftA = new Lift("A", 1, asList(0));
-        LiftSystem lifts = new LiftSystem(asList(0, 1), asList(liftA), asList());
+        LiftSystem liftSystem = aLiftSystem(liftA);
 
-        lifts.tick();
+        liftSystem.tick();
 
-        Lift lift = lifts.getLifts().get(0);
+        Lift lift = liftSystem.getLifts().get(0);
         assertThat(lift.getFloor()).isZero();
     }
 
     @Test
     public void lift_should_open_door_when_arrives_to_requested_floor() {
         Lift liftA = new Lift("A", 0, asList(0));
-        LiftSystem lifts = new LiftSystem(asList(0, 1), asList(liftA), asList());
+        LiftSystem liftSystem = aLiftSystem(liftA);
 
-        lifts.tick();
+        liftSystem.tick();
 
-        Lift lift = lifts.getLifts().get(0);
+        Lift lift = liftSystem.getLifts().get(0);
         assertThat(lift.areDoorsOpen()).isTrue();
+    }
+
+    private LiftSystem aLiftSystem(Lift liftA) {
+        return new LiftSystem(asList(0, 1), asList(liftA), asList());
     }
 }
