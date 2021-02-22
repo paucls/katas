@@ -45,6 +45,6 @@ public class Lift {
     }
 
     public void tick() {
-        floor = 1;
+        floor = this.requests.get(0);
     }
 }
