@@ -1,7 +1,6 @@
 package codingdojo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Lift {
@@ -11,7 +10,6 @@ public class Lift {
     private boolean doorsOpen;
 
     public Lift(String id, int floor, List<Integer> requests, boolean doorsOpen) {
-
         this.id = id;
         this.floor = floor;
         this.requests = requests;
@@ -44,5 +42,9 @@ public class Lift {
 
     public boolean areDoorsOpen() {
         return doorsOpen;
+    }
+
+    public void tick() {
+        floor = 1;
     }
 }
