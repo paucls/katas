@@ -45,8 +45,20 @@ public class Lift {
     }
 
     public void tick() {
-        floor = requests.get(0);
+        if (doorsOpen) {
+            closeDoors();
+            return;
+        }
+
+        this.floor = requests.remove(0);
+        openDoors();
+    }
+
+    private void openDoors() {
         doorsOpen = true;
-        requests.remove(0);
+    }
+
+    private void closeDoors() {
+        doorsOpen = false;
     }
 }
