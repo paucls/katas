@@ -17,6 +17,7 @@ class Lift(
     }
 
     fun tick() {
+        if (doorsOpen) return
         if (floor != requests.first())
             floor = requests.first()
     }
