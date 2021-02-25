@@ -34,4 +34,14 @@ internal class LiftSystemTest {
 
         assertThat(liftA.getFloor()).isEqualTo(0)
     }
+
+    @Test
+    fun `a lift should close the doors before moving`() {
+        val liftA = Lift(id = "A", floor = 0, doorsOpen = true, requests = listOf(1))
+        val liftSystem = LiftSystem(floors = listOf(0, 1), lifts = listOf(liftA), calls = emptyList())
+
+        liftSystem.tick()
+
+        assertThat(liftA.areDoorsOpen()).isFalse()
+    }
 }

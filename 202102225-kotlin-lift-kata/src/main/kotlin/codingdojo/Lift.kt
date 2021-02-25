@@ -4,7 +4,7 @@ class Lift(
         val id: String,
         private var floor: Int,
         private val requests: List<Int> = emptyList(),
-        private val doorsOpen: Boolean = false) {
+        private var doorsOpen: Boolean = false) {
 
     fun getFloor() = floor
 
@@ -17,8 +17,15 @@ class Lift(
     }
 
     fun tick() {
-        if (doorsOpen) return
+        if (doorsOpen) {
+            closeDoors()
+            return
+        }
         if (floor != requests.first())
             floor = requests.first()
+    }
+
+    private fun closeDoors() {
+        doorsOpen = false
     }
 }
