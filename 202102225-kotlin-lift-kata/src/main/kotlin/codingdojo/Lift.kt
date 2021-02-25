@@ -21,8 +21,11 @@ class Lift(
             closeDoors()
             return
         }
-        if (floor != requests.first())
+        if (floor != requests.first()) {
             floor = requests.first()
+        } else {
+            doorsOpen = true
+        }
     }
 
     private fun closeDoors() {
