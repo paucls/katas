@@ -17,6 +17,7 @@ class Lift(
     }
 
     fun tick() {
-        floor = 1
+        if (floor != requests.first())
+            floor = requests.first()
     }
 }
