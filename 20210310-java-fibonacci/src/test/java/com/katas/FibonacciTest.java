@@ -17,4 +17,9 @@ public class FibonacciTest {
     public void second_number_in_sequence_is_one() {
         assertThat(fibonacci.numberAt(1)).isOne();
     }
+
+    @Test
+    public void third_number_in_sequence_is_one() {
+        assertThat(fibonacci.numberAt(2)).isOne();
+    }
 }
