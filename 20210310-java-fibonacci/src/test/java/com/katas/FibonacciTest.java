@@ -22,4 +22,9 @@ public class FibonacciTest {
     public void third_number_in_sequence_is_one() {
         assertThat(fibonacci.numberAt(2)).isOne();
     }
+
+    @Test
+    public void fourth_number_in_sequence_is_two() {
+        assertThat(fibonacci.numberAt(3)).isEqualTo(2);
+    }
 }
