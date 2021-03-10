@@ -10,15 +10,11 @@ public class FibonacciTest {
 
     @Test
     public void first_number_in_sequence_is_zero() {
-        Integer number = fibonacci.getNumberAt(0);
-
-        assertThat(number).isZero();
+        assertThat(fibonacci.numberAt(0)).isZero();
     }
 
     @Test
     public void second_number_in_sequence_is_one() {
-        Integer number = fibonacci.getNumberAt(1);
-
-        assertThat(number).isOne();
+        assertThat(fibonacci.numberAt(1)).isOne();
     }
 }
