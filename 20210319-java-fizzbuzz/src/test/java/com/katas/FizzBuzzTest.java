@@ -15,16 +15,20 @@ public class FizzBuzzTest {
 
     @Test
     public void should_print_1_as_first_number() {
-        assertThat(fizzBuzz.numbers().get(0)).isEqualTo("1");
+        assertThat(fizzBuzzValueFor(1)).isEqualTo("1");
     }
 
     @Test
     public void should_print_2_as_second_number() {
-        assertThat(fizzBuzz.numbers().get(1)).isEqualTo("2");
+        assertThat(fizzBuzzValueFor(2)).isEqualTo("2");
     }
 
     @Test
     public void should_print_Fizz_for_number_3() {
-        assertThat(fizzBuzz.numbers().get(2)).isEqualTo("Fizz");
+        assertThat(fizzBuzzValueFor(3)).isEqualTo("Fizz");
+    }
+
+    private String fizzBuzzValueFor(int number) {
+        return fizzBuzz.numbers().get(number - 1);
     }
 }
