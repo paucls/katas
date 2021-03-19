@@ -17,4 +17,9 @@ public class FizzBuzzTest {
     public void should_print_1_as_first_number() {
         assertThat(fizzBuzz.numbers()[0]).isEqualTo("1");
     }
+
+    @Test
+    public void should_print_2_as_second_number() {
+        assertThat(fizzBuzz.numbers()[1]).isEqualTo("2");
+    }
 }

@@ -1,10 +1,15 @@
 package com.katas;
 
 public class FizzBuzz {
-    public String[] print() {
-        String[] numbers = new String[100];
 
-        numbers[0] = "1";
+    public static final int NUMBERS_LENGTH = 100;
+
+    public String[] numbers() {
+        String[] numbers = new String[NUMBERS_LENGTH];
+
+        for (int i = 0; i < NUMBERS_LENGTH; i++) {
+            numbers[i] = Integer.toString(i + 1);
+        }
 
         return numbers;
     }
