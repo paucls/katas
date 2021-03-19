@@ -22,4 +22,9 @@ public class FizzBuzzTest {
     public void should_print_2_as_second_number() {
         assertThat(fizzBuzz.numbers()[1]).isEqualTo("2");
     }
+
+    @Test
+    public void should_print_Fizz_for_number_3() {
+        assertThat(fizzBuzz.numbers()[2]).isEqualTo("Fizz");
+    }
 }
