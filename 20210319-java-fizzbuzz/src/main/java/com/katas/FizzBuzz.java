@@ -1,18 +1,21 @@
 package com.katas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FizzBuzz {
 
     public static final int NUMBERS_TO_PRINT = 100;
 
-    public String[] numbers() {
-        String[] fizzBuzzedNumbers = new String[NUMBERS_TO_PRINT];
+    public List<String> numbers() {
+        List<String> fizzBuzzedNumbers = new ArrayList<>();
 
         for (int number = 1; number <= NUMBERS_TO_PRINT; number++) {
 
             if (number == 3) {
-                fizzBuzzedNumbers[number - 1] = "Fizz";
+                fizzBuzzedNumbers.add("Fizz");
             } else {
-                fizzBuzzedNumbers[number - 1] = Integer.toString(number);
+                fizzBuzzedNumbers.add(Integer.toString(number));
             }
         }
 
