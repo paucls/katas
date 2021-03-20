@@ -18,4 +18,9 @@ class LeapYearTest {
     internal fun `should be atypical common year if divisible by 4 and 100`() {
         assertThat(isLeapYear(1900)).isFalse()
     }
+
+    @Test
+    internal fun `should be atypical leap year if divisible by 400`() {
+        assertThat(isLeapYear(2000)).isTrue()
+    }
 }
