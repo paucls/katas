@@ -8,4 +8,9 @@ class LeapYearTest {
     internal fun `should be leap year if divisible by 4`() {
         assertThat(isLeapYear(1996)).isTrue()
     }
+
+    @Test
+    internal fun `should be common year if not divisible by 4`() {
+        assertThat(isLeapYear(2001)).isFalse()
+    }
 }
