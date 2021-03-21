@@ -10,4 +10,9 @@ class FibonacciSequenceTest {
     internal fun `first number in sequence is zero`() {
         assertThat(fibonacciSequence.numberAt(0)).isZero()
     }
+
+    @Test
+    internal fun `second number in sequence is one`() {
+        assertThat(fibonacciSequence.numberAt(1)).isOne()
+    }
 }
