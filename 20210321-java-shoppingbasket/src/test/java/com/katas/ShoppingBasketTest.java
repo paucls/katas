@@ -28,6 +28,12 @@ public class ShoppingBasketTest {
         assertThat(shoppingBasket.getTotal()).isEqualTo(120);
     }
 
+    @Test
+    public void should_calculate_total_when_item_quantity_is_more_than_one() {
+        shoppingBasket = aShoppingBasket(new Item(100, 2));
+        assertThat(shoppingBasket.getTotal()).isEqualTo(200);
+    }
+
     private ShoppingBasket aShoppingBasket(Item... items) {
         return new ShoppingBasket(Arrays.asList(items));
     }
