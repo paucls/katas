@@ -21,4 +21,9 @@ class ShoppingBasketTest {
         val shoppingBasket = ShoppingBasket(listOf(Item(100, 1), Item(25, 1)))
         assertThat(shoppingBasket.total).isEqualTo(125)
     }
+    @Test
+    fun `should calculate total when item quantity is more than one`() {
+        val shoppingBasket = ShoppingBasket(listOf(Item(100, 2)))
+        assertThat(shoppingBasket.total).isEqualTo(200)
+    }
 }
