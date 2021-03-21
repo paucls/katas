@@ -9,11 +9,7 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public double getQuantity() {
-        return quantity;
+    double getSubTotal() {
+        return price * quantity;
     }
 }
