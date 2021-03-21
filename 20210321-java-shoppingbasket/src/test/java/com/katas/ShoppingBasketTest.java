@@ -22,6 +22,12 @@ public class ShoppingBasketTest {
         assertThat(shoppingBasket.getTotal()).isEqualTo(100);
     }
 
+    @Test
+    public void should_calculate_total_for_two_items() {
+        shoppingBasket = aShoppingBasket(new Item(100, 1), new Item(20, 1));
+        assertThat(shoppingBasket.getTotal()).isEqualTo(120);
+    }
+
     private ShoppingBasket aShoppingBasket(Item... items) {
         return new ShoppingBasket(Arrays.asList(items));
     }
