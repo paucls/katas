@@ -1,5 +1,3 @@
 package com.katas
 
-class Item(price: Int, quantity: Int) {
-
-}
+data class Item(val price: Int, val quantity: Int)

@@ -11,8 +11,14 @@ class ShoppingBasketTest {
     }
 
     @Test
-    fun `should calculate total when single item`() {
+    fun `should calculate total for single item`() {
         val shoppingBasket = ShoppingBasket(listOf(Item(100, 1)))
         assertThat(shoppingBasket.total).isEqualTo(100)
+    }
+
+    @Test
+    fun `should calculate total for two items`() {
+        val shoppingBasket = ShoppingBasket(listOf(Item(100, 1), Item(25, 1)))
+        assertThat(shoppingBasket.total).isEqualTo(125)
     }
 }
