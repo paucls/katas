@@ -20,4 +20,9 @@ class FibonacciSequenceTest {
     internal fun `third number in sequence is one`() {
         assertThat(fibonacciSequence.numberAt(2)).isOne()
     }
+
+    @Test
+    internal fun `fourth number in sequence is two`() {
+        assertThat(fibonacciSequence.numberAt(3)).isEqualTo(2)
+    }
 }
