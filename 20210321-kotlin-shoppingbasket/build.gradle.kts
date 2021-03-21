@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation("junit:junit:4.12")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
     testImplementation("org.assertj:assertj-core:3.8.0")
     testImplementation("org.mockito:mockito-core:2.12.0")
