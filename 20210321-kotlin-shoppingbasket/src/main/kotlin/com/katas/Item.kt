@@ -1,3 +1,10 @@
 package com.katas
 
-data class Item(val price: Int, val quantity: Int)
+class Item(
+    private val price: Int,
+    private val quantity: Int
+) {
+    fun calculateSubTotal(): Int {
+        return price * quantity
+    }
+}
