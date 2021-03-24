@@ -1,17 +1,7 @@
-Kotlin Kata Seed
-================
+# Fibonacci sequence
 
-This is a seed project to quickly start practicing TDD in Kotlin using the JUnit5 test framework.
+The Fibonacci sequence starts with the numbers zero and one, and then every number after the first two is the sum of the two preceding ones.
 
-Includes dependencies for:
-- [AssertJ](http://joel-costigliola.github.io/assertj)
-- [Mockito](https://site.mockito.org)
-- [Mockito Kotlin](https://github.com/nhaarman/mockito-kotlin/wiki/Mocking-and-verifying)
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 
-## Running Tests
-
-With gradle
-
-```./gradlew test```
-
-[Gradle's native JUnit Platform support]: https://docs.gradle.org/current/userguide/java_testing.html#using_junit5
+Your task is to write some code to calculate numbers in the sequence.
