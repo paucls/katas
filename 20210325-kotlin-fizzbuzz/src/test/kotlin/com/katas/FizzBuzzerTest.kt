@@ -8,13 +8,10 @@ class FizzBuzzerTest {
     private val fizzBuzzer = FizzBuzzer()
 
     @Test
-    fun `should return the string 1 for number 1`() {
+    fun `should return the string representation of given number when not divisible by 3 or 5`() {
         assertThat(fizzBuzzer.fizzBuzz(1)).isEqualTo("1")
-    }
-
-    @Test
-    fun `should return the string 2 for number 2`() {
         assertThat(fizzBuzzer.fizzBuzz(2)).isEqualTo("2")
+        assertThat(fizzBuzzer.fizzBuzz(4)).isEqualTo("4")
     }
 
     @Test
@@ -27,5 +24,10 @@ class FizzBuzzerTest {
     fun `should return Buzz for numbers divisible by 5`() {
         assertThat(fizzBuzzer.fizzBuzz(5)).isEqualTo("Buzz")
         assertThat(fizzBuzzer.fizzBuzz(25)).isEqualTo("Buzz")
+    }
+
+    @Test
+    fun `should return FizzBuzz for numbers divisible by 3 and 5`() {
+        assertThat(fizzBuzzer.fizzBuzz(15)).isEqualTo("FizzBuzz")
     }
 }
