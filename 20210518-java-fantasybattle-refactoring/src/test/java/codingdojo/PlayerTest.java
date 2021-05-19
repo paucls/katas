@@ -27,7 +27,8 @@ public class PlayerTest {
     void damageCalculations() {
         BasicItem sword = new BasicItem("sword", 10, 1);
         BasicItem zeroDamageItem = new BasicItem("empty hand", 0, 0);
-        Inventory inventory = new Inventory(new Equipment(sword, zeroDamageItem, zeroDamageItem, zeroDamageItem, zeroDamageItem));
+        Equipment equipment = new Equipment(sword, zeroDamageItem, zeroDamageItem, zeroDamageItem, zeroDamageItem);
+        Inventory inventory = new Inventory(equipment);
         Stats stats = new Stats(0);
         SimpleEnemy target = new SimpleEnemy(new SimpleArmor(0), Collections.emptyList());
 
