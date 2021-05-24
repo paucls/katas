@@ -1,32 +1,29 @@
 package codingdojo
 
-import org.junit.Ignore
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Test
-import org.mockito.Mockito.mock
 import kotlin.test.assertEquals
 
 class PlayerTest {
 
-    // choose this one if you are familiar with mocks
-    @Ignore("Test is not finished yet")
     @Test
     fun damageCalculationsWithMocks() {
-        val inventory = mock(Inventory::class.java)
-        val stats = mock(Stats::class.java)
-        val target = mock(SimpleEnemy::class.java)
+        val inventory: Inventory = mock()
+        val stats: Stats = mock()
+        val target: SimpleEnemy = mock()
+        whenever(target.armor).thenReturn(SimpleArmor(5))
+
+        val leftHand = BasicItem("sword", 10, 1.0F)
+        val rightHand = BasicItem("shield", 0, 1.4F)
+        val head = BasicItem("helmet", 0, 1.2F)
+        val feet = BasicItem("boots", 0, 0.1F)
+        val chest = BasicItem("breastplate", 0, 1.4F)
+        val equipment = Equipment(leftHand, rightHand, head, feet, chest)
+        whenever(inventory.equipment).thenReturn(equipment)
 
         val damage = Player(inventory, stats).calculateDamage(target)
-        assertEquals(10, damage.amount)
-    }
 
-    // choose this one if you are not familiar with mocks
-    @Ignore("Test is not finished yet")
-    @Test
-    fun damageCalculations() {
-        val inventory = Inventory(null !!)
-        val stats = Stats(0)
-        val target = SimpleEnemy(null !!, null !!)
-        val damage = Player(inventory, stats).calculateDamage(target)
-        assertEquals(10, damage.amount)
+        assertEquals(50, damage.amount)
     }
 }
