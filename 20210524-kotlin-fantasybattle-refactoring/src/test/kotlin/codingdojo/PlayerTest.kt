@@ -8,7 +8,7 @@ import kotlin.test.assertEquals
 class PlayerTest {
 
     @Test
-    fun damageCalculationsWithMocks() {
+    fun `should calculate damage against simple enemy`() {
         val inventory: Inventory = mock()
         val stats: Stats = mock()
         val target: SimpleEnemy = mock()
