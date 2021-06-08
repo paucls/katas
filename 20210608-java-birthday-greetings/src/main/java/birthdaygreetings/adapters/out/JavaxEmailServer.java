@@ -1,4 +1,6 @@
-package birthdaygreetings;
+package birthdaygreetings.adapters.out;
+
+import birthdaygreetings.EmailSender;
 
 public class JavaxEmailServer implements EmailSender {
     @Override

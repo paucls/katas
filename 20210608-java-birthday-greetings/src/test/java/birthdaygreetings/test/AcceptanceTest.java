@@ -7,24 +7,27 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 
 import birthdaygreetings.BirthdayService;
+import birthdaygreetings.EmailSender;
 import birthdaygreetings.OurDate;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class AcceptanceTest {
 
     private static final int SMTP_PORT = 25;
     private List<Message> messagesSent;
+    private final EmailSender emailSenderMock = mock(EmailSender.class);
     private BirthdayService service;
 
     @Before
     public void setUp() throws Exception {
         messagesSent = new ArrayList<Message>();
 
-        service = new BirthdayService() {
+        service = new BirthdayService(emailSenderMock) {
             @Override
             protected void sendMessage(Message msg) throws MessagingException {
                 messagesSent.add(msg);

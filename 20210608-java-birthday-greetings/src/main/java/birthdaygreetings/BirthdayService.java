@@ -1,5 +1,7 @@
 package birthdaygreetings;
 
+import birthdaygreetings.adapters.out.JavaxEmailServer;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +16,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class BirthdayService {
+
+    private EmailSender emailSender;
+
+    public BirthdayService(EmailSender emailSender) {
+        this.emailSender = emailSender;
+    }
 
     public void sendGreetings(String fileName, OurDate ourDate,
             String smtpHost, int smtpPort) throws IOException, ParseException,
@@ -32,6 +40,8 @@ public class BirthdayService {
                 String subject = "Happy Birthday!";
                 sendMessage(smtpHost, smtpPort, "sender@here.com", subject,
                         body, recipient);
+
+                emailSender.sendMessage(subject, body, recipient);
             }
         }
     }
@@ -63,7 +73,7 @@ public class BirthdayService {
     }
 
     public static void main(String[] args) {
-        BirthdayService service = new BirthdayService();
+        BirthdayService service = new BirthdayService(new JavaxEmailServer());
         try {
             service.sendGreetings("employee_data.txt",
                     new OurDate("2008/10/08"), "localhost", 25);
