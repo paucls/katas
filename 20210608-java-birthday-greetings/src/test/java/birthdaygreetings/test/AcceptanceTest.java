@@ -2,14 +2,13 @@ package birthdaygreetings.test;
 
 import birthdaygreetings.BirthdayService;
 import birthdaygreetings.EmailSender;
-import birthdaygreetings.EmployeesReader;
+import birthdaygreetings.adapters.in.FileEmployeesReader;
 import birthdaygreetings.OurDate;
 import birthdaygreetings.adapters.out.SmtpEmailServer;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +26,12 @@ public class AcceptanceTest {
 
         emailSenderMock = new SmtpEmailServer("xxx", 123) {
             @Override
-            protected void sendMessage(Message msg) throws MessagingException {
+            protected void sendMessage(Message msg) {
                 messagesSent.add(msg);
             }
         };
 
-        service = new BirthdayService(emailSenderMock, new EmployeesReader());
+        service = new BirthdayService(emailSenderMock, new FileEmployeesReader());
     }
 
     @Test
