@@ -8,7 +8,7 @@ import java.text.ParseException;
 
 public class BirthdayService {
 
-    private EmailSender emailSender;
+    private final EmailSender emailSender;
 
     public BirthdayService(EmailSender emailSender) {
         this.emailSender = emailSender;
@@ -16,6 +16,7 @@ public class BirthdayService {
 
     public void sendGreetings(String fileName, OurDate ourDate) throws IOException, ParseException,
             MessagingException {
+
         BufferedReader in = new BufferedReader(new FileReader(fileName));
         String str = "";
         str = in.readLine(); // skip header
@@ -23,14 +24,19 @@ public class BirthdayService {
             String[] employeeData = str.split(", ");
             Employee employee = new Employee(employeeData[1], employeeData[0],
                     employeeData[2], employeeData[3]);
-            if (employee.isBirthday(ourDate)) {
-                String recipient = employee.getEmail();
-                String body = "Happy Birthday, dear %NAME%!".replace("%NAME%",
-                        employee.getFirstName());
-                String subject = "Happy Birthday!";
 
-                emailSender.sendMessage(subject, body, recipient);
+            if (employee.isBirthday(ourDate)) {
+                sendEmailTo(employee);
             }
         }
+    }
+
+    private void sendEmailTo(Employee employee) throws MessagingException {
+        String body = "Happy Birthday, dear %NAME%!".replace("%NAME%",
+                employee.getFirstName());
+        String subject = "Happy Birthday!";
+        String recipient = employee.getEmail();
+
+        emailSender.sendMessage(subject, body, recipient);
     }
 }
