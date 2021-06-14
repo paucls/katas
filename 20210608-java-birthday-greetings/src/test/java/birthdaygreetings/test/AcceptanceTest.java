@@ -2,6 +2,7 @@ package birthdaygreetings.test;
 
 import birthdaygreetings.BirthdayService;
 import birthdaygreetings.EmailSender;
+import birthdaygreetings.EmployeesReader;
 import birthdaygreetings.OurDate;
 import birthdaygreetings.adapters.out.SmtpEmailServer;
 import org.junit.Before;
@@ -31,7 +32,7 @@ public class AcceptanceTest {
             }
         };
 
-        service = new BirthdayService(emailSenderMock);
+        service = new BirthdayService(emailSenderMock, new EmployeesReader());
     }
 
     @Test

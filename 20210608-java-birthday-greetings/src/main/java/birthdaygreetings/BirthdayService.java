@@ -8,15 +8,16 @@ import java.util.List;
 public class BirthdayService {
 
     private final EmailSender emailSender;
+    private final EmployeesReader employeesReader;
 
-    public BirthdayService(EmailSender emailSender) {
+    public BirthdayService(EmailSender emailSender, EmployeesReader employeesReader) {
         this.emailSender = emailSender;
+        this.employeesReader = employeesReader;
     }
 
     public void sendGreetings(String fileName, OurDate ourDate) throws IOException, ParseException,
             MessagingException {
 
-        EmployeesReader employeesReader = new EmployeesReader();
         List<Employee> employees = employeesReader.readEmployees(fileName);
 
         for (Employee employee : employees) {
