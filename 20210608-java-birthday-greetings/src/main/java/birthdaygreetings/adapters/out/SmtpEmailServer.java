@@ -6,23 +6,20 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class JavaxEmailServer implements EmailSender {
-    public JavaxEmailServer(String smtpHost, int smtpPort) {
-        
+public class SmtpEmailServer implements EmailSender {
+    private String smtpHost;
+    private int smtpPort;
+
+    public SmtpEmailServer(String smtpHost, int smtpPort) {
+        this.smtpHost = smtpHost;
+        this.smtpPort = smtpPort;
     }
 
     @Override
-    public void sendMessage(String subject, String body, String recipient) {
-
-    }
-
-    private void sendMessage(String smtpHost, int smtpPort,
-                             String subject, String body, String recipient)
-            throws AddressException, MessagingException {
+    public void sendMessage(String subject, String body, String recipient) throws MessagingException {
         // Create a mail session
         java.util.Properties props = new java.util.Properties();
         props.put("mail.smtp.host", smtpHost);
