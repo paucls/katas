@@ -19,6 +19,16 @@ public class BirthdayService {
     public void sendGreetings(String fileName, OurDate ourDate) throws IOException, ParseException,
             MessagingException {
 
+        List<Employee> employees = readEmployees(fileName);
+
+        for (Employee employee : employees) {
+            if (employee.isBirthday(ourDate)) {
+                sendGreetingTo(employee);
+            }
+        }
+    }
+
+    private List<Employee> readEmployees(String fileName) throws IOException, ParseException {
         List<Employee> employees = new ArrayList<>();
 
         BufferedReader in = new BufferedReader(new FileReader(fileName));
@@ -31,14 +41,10 @@ public class BirthdayService {
             employees.add(employee);
         }
 
-        for (Employee employee : employees) {
-            if (employee.isBirthday(ourDate)) {
-                sendEmailTo(employee);
-            }
-        }
+        return employees;
     }
 
-    private void sendEmailTo(Employee employee) throws MessagingException {
+    private void sendGreetingTo(Employee employee) throws MessagingException {
         String body = "Happy Birthday, dear %NAME%!".replace("%NAME%",
                 employee.getFirstName());
         String subject = "Happy Birthday!";
