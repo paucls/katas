@@ -28,11 +28,10 @@ public class AcceptanceTest {
 
 	@Test
 	public void willSendGreetings_whenItsSomebodysBirthday() throws Exception {
-
 		birthdayService.sendGreetings("employee_data.txt", new XDate("2008/10/08"), "localhost", NONSTANDARD_PORT);
 
 		assertEquals("message not sent?", 1, mailServer.getReceivedEmails().size());
-		SmtpMessage message = (SmtpMessage) mailServer.getReceivedEmails().get(0);
+		SmtpMessage message = mailServer.getReceivedEmails().get(0);
 		assertEquals("Happy Birthday, dear John!", message.getBody());
 		assertEquals("Happy Birthday!", message.getHeaderValue("Subject"));
 		List<String> recipients = message.getHeaderValues("To");
