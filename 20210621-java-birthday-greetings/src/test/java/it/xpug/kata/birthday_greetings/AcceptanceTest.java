@@ -2,6 +2,9 @@ package it.xpug.kata.birthday_greetings;
 
 import static org.junit.Assert.*;
 
+import it.xpug.kata.birthday_greetings.adapters.EmployeesFileRepository;
+import it.xpug.kata.birthday_greetings.application.BirthdayService;
+import it.xpug.kata.birthday_greetings.application.XDate;
 import org.junit.*;
 
 import com.dumbster.smtp.*;
