@@ -18,6 +18,16 @@ import javax.mail.internet.MimeMessage;
 public class BirthdayService {
 
 	public void sendGreetings(String fileName, XDate xDate, String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
+		List<Employee> employees = getEmployees(fileName);
+
+		for (Employee employee : employees) {
+			if (employee.isBirthday(xDate)) {
+				sendGreetingToEmployee(smtpHost, smtpPort, employee);
+			}
+		}
+	}
+
+	private List<Employee> getEmployees(String fileName) throws IOException, ParseException {
 		List<Employee> employees = new ArrayList<>();
 
 		BufferedReader in = new BufferedReader(new FileReader(fileName));
@@ -29,11 +39,7 @@ public class BirthdayService {
 			employees.add(employee);
 		}
 
-		for (Employee employee : employees) {
-			if (employee.isBirthday(xDate)) {
-				sendGreetingToEmployee(smtpHost, smtpPort, employee);
-			}
-		}
+		return employees;
 	}
 
 	private void sendGreetingToEmployee(String smtpHost, int smtpPort, Employee employee) throws MessagingException {
