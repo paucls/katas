@@ -7,13 +7,14 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeesFileRepository {
-    private String fileName;
+public class EmployeesFileRepository implements EmployeesRepository {
+    private final String fileName;
 
     public EmployeesFileRepository(String fileName) {
         this.fileName = fileName;
     }
 
+    @Override
     public List<Employee> getEmployees() throws IOException, ParseException {
         List<Employee> employees = new ArrayList<>();
 

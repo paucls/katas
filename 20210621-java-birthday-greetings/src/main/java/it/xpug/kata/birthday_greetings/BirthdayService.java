@@ -14,9 +14,9 @@ import javax.mail.internet.MimeMessage;
 
 public class BirthdayService {
 
-	private final EmployeesFileRepository employeesRepository;
+	private final EmployeesRepository employeesRepository;
 
-	public BirthdayService(EmployeesFileRepository employeesRepository) {
+	public BirthdayService(EmployeesRepository employeesRepository) {
 		this.employeesRepository = employeesRepository;
 	}
 
