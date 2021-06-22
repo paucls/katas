@@ -14,8 +14,13 @@ import javax.mail.internet.MimeMessage;
 
 public class BirthdayService {
 
-	public void sendGreetings(String fileName, XDate xDate, String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
-		EmployeesFileRepository employeesRepository = new EmployeesFileRepository(fileName);
+	private final EmployeesFileRepository employeesRepository;
+
+	public BirthdayService(EmployeesFileRepository employeesRepository) {
+		this.employeesRepository = employeesRepository;
+	}
+
+	public void sendGreetings(XDate xDate, String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
 		List<Employee> employees = employeesRepository.getEmployees();
 
 		for (Employee employee : employees) {
