@@ -16,21 +16,21 @@ public class BirthdayService {
 		this.messageSender = messageSender;
 	}
 
-	public void sendGreetings(XDate xDate, String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
+	public void sendGreetings(XDate xDate) throws IOException, ParseException, MessagingException {
 		List<Employee> employees = employeesRepository.getEmployees();
 
 		for (Employee employee : employees) {
 			if (employee.isBirthday(xDate)) {
-				sendGreetingToEmployee(smtpHost, smtpPort, employee);
+				sendGreetingToEmployee(employee);
 			}
 		}
 	}
 
-	private void sendGreetingToEmployee(String smtpHost, int smtpPort, Employee employee) throws MessagingException {
+	private void sendGreetingToEmployee(Employee employee) throws MessagingException {
 		String recipient = employee.getEmail();
 		String body = "Happy Birthday, dear %NAME%!".replace("%NAME%", employee.getFirstName());
 		String subject = "Happy Birthday!";
-		messageSender.sendMessage(smtpHost, smtpPort, "sender@here.com", subject, body, recipient);
+		messageSender.sendMessage("sender@here.com", subject, body, recipient);
 	}
 
 }

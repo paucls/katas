@@ -16,7 +16,7 @@ public class MessageSender {
         this.smtpPort = smtpPort;
     }
 
-    void sendMessage(String smtpHost, int smtpPort, String sender, String subject, String body, String recipient) throws MessagingException {
+    void sendMessage(String sender, String subject, String body, String recipient) throws MessagingException {
         // Create a mail session
         java.util.Properties props = new java.util.Properties();
         props.put("mail.smtp.host", smtpHost);

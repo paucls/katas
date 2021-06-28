@@ -14,7 +14,7 @@ public class Main {
 				new EmployeesFileRepository("employee_data.txt"),
 				new MessageSender("localhost", 25)
 		);
-		service.sendGreetings(new XDate(), "localhost", 25);
+		service.sendGreetings(new XDate());
 	}
 
 }

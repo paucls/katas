@@ -35,7 +35,7 @@ public class AcceptanceTest {
 
 	@Test
 	public void willSendGreetings_whenItsSomebodysBirthday() throws Exception {
-		birthdayService.sendGreetings(new XDate("2008/10/08"), "localhost", NONSTANDARD_PORT);
+		birthdayService.sendGreetings(new XDate("2008/10/08"));
 
 		assertEquals("message not sent?", 1, mailServer.getReceivedEmails().size());
 		SmtpMessage message = mailServer.getReceivedEmails().get(0);
@@ -48,7 +48,7 @@ public class AcceptanceTest {
 
 	@Test
 	public void willNotSendEmailsWhenNobodysBirthday() throws Exception {
-		birthdayService.sendGreetings(new XDate("2008/01/01"), "localhost", NONSTANDARD_PORT);
+		birthdayService.sendGreetings(new XDate("2008/01/01"));
 
 		assertEquals("what? messages?", 0, mailServer.getReceivedEmails().size());
 	}
