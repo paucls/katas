@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import it.xpug.kata.birthday_greetings.adapters.EmployeesFileRepository;
 import it.xpug.kata.birthday_greetings.application.BirthdayService;
+import it.xpug.kata.birthday_greetings.application.MessageSender;
 import it.xpug.kata.birthday_greetings.application.XDate;
 import org.junit.*;
 
@@ -20,7 +21,10 @@ public class AcceptanceTest {
 	@Before
 	public void setUp() throws Exception {
 		mailServer = SimpleSmtpServer.start(NONSTANDARD_PORT);
-		birthdayService = new BirthdayService(new EmployeesFileRepository("employee_data.txt"));
+		birthdayService = new BirthdayService(
+				new EmployeesFileRepository("employee_data.txt"),
+				new MessageSender("localhost", NONSTANDARD_PORT)
+		);
 	}
 
 	@After

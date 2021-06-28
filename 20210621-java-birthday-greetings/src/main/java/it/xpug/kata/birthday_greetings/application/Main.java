@@ -10,7 +10,10 @@ import javax.mail.*;
 public class Main {
 
 	public static void main(String[] args) throws IOException, ParseException, MessagingException {
-		BirthdayService service = new BirthdayService(new EmployeesFileRepository("employee_data.txt"));
+		BirthdayService service = new BirthdayService(
+				new EmployeesFileRepository("employee_data.txt"),
+				new MessageSender("localhost", 25)
+		);
 		service.sendGreetings(new XDate(), "localhost", 25);
 	}
 
