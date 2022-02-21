@@ -1,24 +1,26 @@
 package com.katas
 
 class Directory(
-        val name: String,
-        files: Set<File> = emptySet()
-) {
-    private val _files = mutableSetOf<File>()
+        name: String,
+        files: Set<Resource> = emptySet()
+) : Resource(name) {
+    private val _files = mutableSetOf<Resource>()
 
     init {
         _files.addAll(files)
     }
 
-    fun addFile(file: File) {
+    fun add(file: Resource) {
         _files.add(file)
     }
 
-    fun getFiles(): Set<File> {
+    fun getFiles(): Set<Resource> {
         return _files.toSet()
     }
 
-    fun deleteFile(file: File) {
+    fun delete(file: File) {
         _files.remove(file)
     }
 }
+
+abstract class Resource(val name: String)

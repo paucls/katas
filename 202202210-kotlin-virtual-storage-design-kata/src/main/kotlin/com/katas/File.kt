@@ -1,6 +1,6 @@
 package com.katas
 
-data class File(
-        val name: String,
+class File(
+        name: String,
         val size: Int
-)
+) : Resource(name)
