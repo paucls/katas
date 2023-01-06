@@ -15,7 +15,6 @@ class TennisGame1(
 
     override fun getScore(): String {
         var score = ""
-        var tempScore = 0
         if (scoresAreLevel()) {
             score = calculateLevelScore(score)
         } else if (player1Score >= 4 || player2Score >= 4) {
@@ -29,6 +28,7 @@ class TennisGame1(
             else
                 score = "Win for player2"
         } else {
+            var tempScore: Int
             for (i in 1..2) {
                 if (i == 1)
                     tempScore = player1Score
