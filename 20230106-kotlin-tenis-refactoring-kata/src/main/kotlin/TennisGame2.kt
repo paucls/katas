@@ -15,12 +15,12 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
 
         if (player1Points > 0 && player2Points == 0) {
             player1Result = translateToPlayerResult(player1Points)
-            player2Result = "Love"
+            player2Result = translateToPlayerResult(player2Points)
             score = "$player1Result-$player2Result"
         }
 
         if (player2Points > 0 && player1Points == 0) {
-            player1Result = "Love"
+            player1Result = translateToPlayerResult(player1Points)
             player2Result = translateToPlayerResult(player2Points)
             score = "$player1Result-$player2Result"
         }
@@ -40,9 +40,11 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
         if (player1Points >= 4 && player2Points >= 0 && player1Points - player2Points >= 2) {
             score = "Win for player1"
         }
+
         if (player2Points >= 4 && player1Points >= 0 && player2Points - player1Points >= 2) {
             score = "Win for player2"
         }
+
         return score
     }
 
