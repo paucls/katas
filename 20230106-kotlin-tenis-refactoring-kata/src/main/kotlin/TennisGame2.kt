@@ -2,11 +2,11 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
     private var player1Points: Int = 0
     private var player2Points: Int = 0
 
-    var P1res: String = ""
-    var P2res: String = ""
-
     override fun getScore(): String {
         var score = ""
+        var player1Result: String = ""
+        var player2Result: String = ""
+
         if (player1Points == player2Points && player1Points < 4) {
             if (player1Points == 0)
                 score = "Love"
@@ -21,48 +21,48 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
 
         if (player1Points > 0 && player2Points == 0) {
             if (player1Points == 1)
-                P1res = "Fifteen"
+                player1Result = "Fifteen"
             if (player1Points == 2)
-                P1res = "Thirty"
+                player1Result = "Thirty"
             if (player1Points == 3)
-                P1res = "Forty"
+                player1Result = "Forty"
 
-            P2res = "Love"
-            score = "$P1res-$P2res"
+            player2Result = "Love"
+            score = "$player1Result-$player2Result"
         }
         if (player2Points > 0 && player1Points == 0) {
             if (player2Points == 1)
-                P2res = "Fifteen"
+                player2Result = "Fifteen"
             if (player2Points == 2)
-                P2res = "Thirty"
+                player2Result = "Thirty"
             if (player2Points == 3)
-                P2res = "Forty"
+                player2Result = "Forty"
 
-            P1res = "Love"
-            score = "$P1res-$P2res"
+            player1Result = "Love"
+            score = "$player1Result-$player2Result"
         }
 
         if (player1Points > player2Points && player1Points < 4) {
             if (player1Points == 2)
-                P1res = "Thirty"
+                player1Result = "Thirty"
             if (player1Points == 3)
-                P1res = "Forty"
+                player1Result = "Forty"
             if (player2Points == 1)
-                P2res = "Fifteen"
+                player2Result = "Fifteen"
             if (player2Points == 2)
-                P2res = "Thirty"
-            score = "$P1res-$P2res"
+                player2Result = "Thirty"
+            score = "$player1Result-$player2Result"
         }
         if (player2Points > player1Points && player2Points < 4) {
             if (player2Points == 2)
-                P2res = "Thirty"
+                player2Result = "Thirty"
             if (player2Points == 3)
-                P2res = "Forty"
+                player2Result = "Forty"
             if (player1Points == 1)
-                P1res = "Fifteen"
+                player1Result = "Fifteen"
             if (player1Points == 2)
-                P1res = "Thirty"
-            score = "$P1res-$P2res"
+                player1Result = "Thirty"
+            score = "$player1Result-$player2Result"
         }
 
         if (player1Points > player2Points && player2Points >= 3) {
