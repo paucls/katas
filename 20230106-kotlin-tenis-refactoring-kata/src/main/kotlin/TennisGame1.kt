@@ -16,13 +16,8 @@ class TennisGame1(
     override fun getScore(): String {
         var score = ""
         var tempScore = 0
-        if (player1Score == player2Score) {
-            when (player1Score) {
-                0 -> score = "Love-All"
-                1 -> score = "Fifteen-All"
-                2 -> score = "Thirty-All"
-                else -> score = "Deuce"
-            }
+        if (scoresAreLevel()) {
+            score = calculateLevelScore(score)
         } else if (player1Score >= 4 || player2Score >= 4) {
             val minusResult = player1Score - player2Score
             if (minusResult == 1)
@@ -51,4 +46,17 @@ class TennisGame1(
         }
         return score
     }
+
+    private fun calculateLevelScore(score: String): String {
+        var score1 = score
+        when (player1Score) {
+            0 -> score1 = "Love-All"
+            1 -> score1 = "Fifteen-All"
+            2 -> score1 = "Thirty-All"
+            else -> score1 = "Deuce"
+        }
+        return score1
+    }
+
+    private fun scoresAreLevel() = player1Score == player2Score
 }
