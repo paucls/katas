@@ -17,19 +17,25 @@ class TennisGame1(
         return if (scoresAreLevel()) {
             calculateLevelScore()
         } else if (scoresHaveNotPassedDeuce()) {
-            translateScoreToTennisTerms(player1Score) + "-" + translateScoreToTennisTerms(player2Score)
+            calculateNotPassedDeuceScore()
         } else {
-            val minusResult = player1Score - player2Score
-            when {
-                minusResult == 1 -> "Advantage player1"
-                minusResult == -1 -> "Advantage player2"
-                minusResult >= 2 -> "Win for player1"
-                else -> "Win for player2"
-            }
+            calculatePassedDeuceScore()
         }
     }
 
+    private fun scoresAreLevel() = player1Score == player2Score
+
+    private fun calculateLevelScore() = when (player1Score) {
+        0 -> "Love-All"
+        1 -> "Fifteen-All"
+        2 -> "Thirty-All"
+        else -> "Deuce"
+    }
+
     private fun scoresHaveNotPassedDeuce() = player1Score < 4 && player2Score < 4
+
+    private fun calculateNotPassedDeuceScore() =
+        translateScoreToTennisTerms(player1Score) + "-" + translateScoreToTennisTerms(player2Score)
 
     private fun translateScoreToTennisTerms(playerScore: Int) = when (playerScore) {
         0 -> "Love"
@@ -39,12 +45,13 @@ class TennisGame1(
         else -> ""
     }
 
-    private fun calculateLevelScore() = when (player1Score) {
-        0 -> "Love-All"
-        1 -> "Fifteen-All"
-        2 -> "Thirty-All"
-        else -> "Deuce"
+    private fun calculatePassedDeuceScore(): String {
+        val minusResult = player1Score - player2Score
+        return when {
+            minusResult == 1 -> "Advantage player1"
+            minusResult == -1 -> "Advantage player2"
+            minusResult >= 2 -> "Win for player1"
+            else -> "Win for player2"
+        }
     }
-
-    private fun scoresAreLevel() = player1Score == player2Score
 }
