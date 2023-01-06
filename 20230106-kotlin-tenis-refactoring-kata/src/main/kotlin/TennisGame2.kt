@@ -8,31 +8,20 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
         var player2Result = ""
 
         if (player1Points == player2Points && player1Points < 3) {
-            return translateToPlayerScore(player1Points) + "-All"
+            return translateToPlayerResult(player1Points) + "-All"
         } else if (player1Points == player2Points && player1Points >= 3) {
             return "Deuce"
         }
 
         if (player1Points > 0 && player2Points == 0) {
-            if (player1Points == 1)
-                player1Result = "Fifteen"
-            if (player1Points == 2)
-                player1Result = "Thirty"
-            if (player1Points == 3)
-                player1Result = "Forty"
-
+            player1Result = translateToPlayerResult(player1Points)
             player2Result = "Love"
             score = "$player1Result-$player2Result"
         }
-        if (player2Points > 0 && player1Points == 0) {
-            if (player2Points == 1)
-                player2Result = "Fifteen"
-            if (player2Points == 2)
-                player2Result = "Thirty"
-            if (player2Points == 3)
-                player2Result = "Forty"
 
+        if (player2Points > 0 && player1Points == 0) {
             player1Result = "Love"
+            player2Result = translateToPlayerResult(player2Points)
             score = "$player1Result-$player2Result"
         }
 
@@ -76,13 +65,15 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
         return score
     }
 
-    private fun translateToPlayerScore(playerScore: Int): String {
-        if (playerScore == 0)
+    private fun translateToPlayerResult(playerPoints: Int): String {
+        if (playerPoints == 0)
             return "Love"
-        if (playerScore == 1)
+        if (playerPoints == 1)
             return "Fifteen"
-        if (playerScore == 2)
+        if (playerPoints == 2)
             return "Thirty"
+        if (playerPoints == 3)
+            return "Forty"
         return ""
     }
 
