@@ -28,20 +28,18 @@ class TennisGame1(
             else
                 score = "Win for player2"
         } else {
-            var tempScore: Int
-            for (i in 1..2) {
-                if (i == 1)
-                    tempScore = player1Score
-                else {
-                    score += "-"
-                    tempScore = player2Score
-                }
-                when (tempScore) {
-                    0 -> score += "Love"
-                    1 -> score += "Fifteen"
-                    2 -> score += "Thirty"
-                    3 -> score += "Forty"
-                }
+            when (player1Score) {
+                0 -> score += "Love"
+                1 -> score += "Fifteen"
+                2 -> score += "Thirty"
+                3 -> score += "Forty"
+            }
+            score += "-"
+            when (player2Score) {
+                0 -> score += "Love"
+                1 -> score += "Fifteen"
+                2 -> score += "Thirty"
+                3 -> score += "Forty"
             }
         }
         return score
