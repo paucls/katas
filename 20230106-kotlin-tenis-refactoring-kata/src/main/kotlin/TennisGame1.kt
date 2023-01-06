@@ -18,31 +18,23 @@ class TennisGame1(
             return calculateLevelScore()
         } else if (player1Score >= 4 || player2Score >= 4) {
             val minusResult = player1Score - player2Score
-            if (minusResult == 1)
-                return "Advantage player1"
-            else if (minusResult == -1)
-                return "Advantage player2"
-            else if (minusResult >= 2)
-                return "Win for player1"
-            else
-                return "Win for player2"
+            return when {
+                minusResult == 1 -> "Advantage player1"
+                minusResult == -1 -> "Advantage player2"
+                minusResult >= 2 -> "Win for player1"
+                else -> "Win for player2"
+            }
         } else {
-            var score = ""
-            when (player1Score) {
-                0 -> score += "Love"
-                1 -> score += "Fifteen"
-                2 -> score += "Thirty"
-                3 -> score += "Forty"
-            }
-            score += "-"
-            when (player2Score) {
-                0 -> score += "Love"
-                1 -> score += "Fifteen"
-                2 -> score += "Thirty"
-                3 -> score += "Forty"
-            }
-            return score
+            return translateScoreToTennisTerms(player1Score) + "-" + translateScoreToTennisTerms(player2Score)
         }
+    }
+
+    private fun translateScoreToTennisTerms(playerScore: Int) = when (playerScore) {
+        0 -> "Love"
+        1 -> "Fifteen"
+        2 -> "Thirty"
+        3 -> "Forty"
+        else -> ""
     }
 
     private fun calculateLevelScore() = when (player1Score) {
