@@ -4,20 +4,14 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
 
     override fun getScore(): String {
         var score = ""
-        var player1Result: String = ""
-        var player2Result: String = ""
+        var player1Result = ""
+        var player2Result = ""
 
-        if (player1Points == player2Points && player1Points < 4) {
-            if (player1Points == 0)
-                score = "Love"
-            if (player1Points == 1)
-                score = "Fifteen"
-            if (player1Points == 2)
-                score = "Thirty"
-            score += "-All"
+        if (player1Points == player2Points && player1Points < 3) {
+            return translateToPlayerScore(player1Points) + "-All"
+        } else if (player1Points == player2Points && player1Points >= 3) {
+            return "Deuce"
         }
-        if (player1Points == player2Points && player1Points >= 3)
-            score = "Deuce"
 
         if (player1Points > 0 && player2Points == 0) {
             if (player1Points == 1)
@@ -80,6 +74,16 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
             score = "Win for player2"
         }
         return score
+    }
+
+    private fun translateToPlayerScore(playerScore: Int): String {
+        if (playerScore == 0)
+            return "Love"
+        if (playerScore == 1)
+            return "Fifteen"
+        if (playerScore == 2)
+            return "Thirty"
+        return ""
     }
 
     override fun wonPoint(playerName: String) {
