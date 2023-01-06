@@ -25,27 +25,8 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
             score = "$player1Result-$player2Result"
         }
 
-        if (player1Points > player2Points && player1Points < 4) {
-            if (player1Points == 2)
-                player1Result = "Thirty"
-            if (player1Points == 3)
-                player1Result = "Forty"
-            if (player2Points == 1)
-                player2Result = "Fifteen"
-            if (player2Points == 2)
-                player2Result = "Thirty"
-            score = "$player1Result-$player2Result"
-        }
-        if (player2Points > player1Points && player2Points < 4) {
-            if (player2Points == 2)
-                player2Result = "Thirty"
-            if (player2Points == 3)
-                player2Result = "Forty"
-            if (player1Points == 1)
-                player1Result = "Fifteen"
-            if (player1Points == 2)
-                player1Result = "Thirty"
-            score = "$player1Result-$player2Result"
+        if (player1Points != player2Points && player1Points < 4 && player2Points < 4) {
+            return "${translateToPlayerResult(player1Points)}-${translateToPlayerResult(player2Points)}"
         }
 
         if (player1Points > player2Points && player2Points >= 3) {
