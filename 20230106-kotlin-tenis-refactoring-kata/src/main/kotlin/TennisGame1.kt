@@ -14,20 +14,22 @@ class TennisGame1(
     }
 
     override fun getScore(): String {
-        if (scoresAreLevel()) {
-            return calculateLevelScore()
-        } else if (player1Score >= 4 || player2Score >= 4) {
+        return if (scoresAreLevel()) {
+            calculateLevelScore()
+        } else if (scoresHaveNotPassedDeuce()) {
+            translateScoreToTennisTerms(player1Score) + "-" + translateScoreToTennisTerms(player2Score)
+        } else {
             val minusResult = player1Score - player2Score
-            return when {
+            when {
                 minusResult == 1 -> "Advantage player1"
                 minusResult == -1 -> "Advantage player2"
                 minusResult >= 2 -> "Win for player1"
                 else -> "Win for player2"
             }
-        } else {
-            return translateScoreToTennisTerms(player1Score) + "-" + translateScoreToTennisTerms(player2Score)
         }
     }
+
+    private fun scoresHaveNotPassedDeuce() = player1Score < 4 && player2Score < 4
 
     private fun translateScoreToTennisTerms(playerScore: Int) = when (playerScore) {
         0 -> "Love"
