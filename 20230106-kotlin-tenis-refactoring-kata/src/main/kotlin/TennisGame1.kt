@@ -14,20 +14,20 @@ class TennisGame1(
     }
 
     override fun getScore(): String {
-        var score = ""
         if (scoresAreLevel()) {
-            score = calculateLevelScore(score)
+            return calculateLevelScore()
         } else if (player1Score >= 4 || player2Score >= 4) {
             val minusResult = player1Score - player2Score
             if (minusResult == 1)
-                score = "Advantage player1"
+                return "Advantage player1"
             else if (minusResult == -1)
-                score = "Advantage player2"
+                return "Advantage player2"
             else if (minusResult >= 2)
-                score = "Win for player1"
+                return "Win for player1"
             else
-                score = "Win for player2"
+                return "Win for player2"
         } else {
+            var score = ""
             when (player1Score) {
                 0 -> score += "Love"
                 1 -> score += "Fifteen"
@@ -41,19 +41,15 @@ class TennisGame1(
                 2 -> score += "Thirty"
                 3 -> score += "Forty"
             }
+            return score
         }
-        return score
     }
 
-    private fun calculateLevelScore(score: String): String {
-        var score1 = score
-        when (player1Score) {
-            0 -> score1 = "Love-All"
-            1 -> score1 = "Fifteen-All"
-            2 -> score1 = "Thirty-All"
-            else -> score1 = "Deuce"
-        }
-        return score1
+    private fun calculateLevelScore() = when (player1Score) {
+        0 -> "Love-All"
+        1 -> "Fifteen-All"
+        2 -> "Thirty-All"
+        else -> "Deuce"
     }
 
     private fun scoresAreLevel() = player1Score == player2Score
