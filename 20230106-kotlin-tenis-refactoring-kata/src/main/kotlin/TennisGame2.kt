@@ -82,34 +82,11 @@ class TennisGame2(private val player1Name: String, private val player2Name: Stri
         return score
     }
 
-    fun SetP1Score(number: Int) {
-
-        for (i in 0 until number) {
-            P1Score()
-        }
-
-    }
-
-    fun SetP2Score(number: Int) {
-
-        for (i in 0 until number) {
-            P2Score()
-        }
-
-    }
-
-    fun P1Score() {
-        P1point++
-    }
-
-    fun P2Score() {
-        P2point++
-    }
-
     override fun wonPoint(player: String) {
-        if (player === "player1")
-            P1Score()
-        else
-            P2Score()
+        if (player === player1Name) {
+            P1point++
+        } else {
+            P2point++
+        }
     }
 }
