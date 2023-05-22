@@ -12,10 +12,23 @@ public class GossipingTest {
                 {1, 2},
                 {3, 4}
         };
-        Gossiping gossiping = new Gossiping();
+        Gossiping gossiping = new Gossiping(routes);
 
         String result = gossiping.howLongItTakes();
 
         assertThat(result).isEqualTo("never");
+    }
+
+    @Test
+    void takes_one_stop_when_routes_intersect_in_first_stop() {
+        int[][] routes = {
+                {1, 2},
+                {1, 3}
+        };
+        Gossiping gossiping = new Gossiping(routes);
+
+        String result = gossiping.howLongItTakes();
+
+        assertThat(result).isEqualTo("1");
     }
 }
