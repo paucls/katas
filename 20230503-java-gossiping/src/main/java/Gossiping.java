@@ -18,19 +18,22 @@ public class Gossiping {
         for (int stopIdx = 0; stopIdx < routes[0].length; stopIdx++) {
 
             for (int driverIdx = 0; driverIdx < drivers.size(); driverIdx++) {
-                for (int otherDriverIdx = 0; otherDriverIdx < drivers.size(); otherDriverIdx++) {
-                    if (routes[driverIdx][stopIdx] == routes[otherDriverIdx][stopIdx]) {
-                        drivers.get(driverIdx).exchangeGossipsWith(drivers.get(otherDriverIdx));
+                for (int anotherDriverIdx = 0; anotherDriverIdx < drivers.size(); anotherDriverIdx++) {
+                    if (routes[driverIdx][stopIdx] == routes[anotherDriverIdx][stopIdx]) {
+                        drivers.get(driverIdx).exchangeGossipsWith(drivers.get(anotherDriverIdx));
                     }
                 }
             }
 
-            boolean allKnowAll = drivers.values().stream().allMatch(driver -> driver.gossipsCount() == drivers.size());
-            if (allKnowAll) {
+            if (allDriversKnowAllGossips()) {
                 return String.valueOf(stopIdx + 1);
             }
         }
 
         return "never";
+    }
+
+    private boolean allDriversKnowAllGossips() {
+        return drivers.values().stream().allMatch(driver -> driver.gossipsCount() == drivers.size());
     }
 }
