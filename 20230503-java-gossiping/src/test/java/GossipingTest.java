@@ -45,17 +45,17 @@ public class GossipingTest {
         assertThat(result).isEqualTo("2");
     }
 
-//    @Test
-//    void calculates_how_long_it_task_when_multiple_drivers() {
-//        int[][] routes = {
-//                {1, 2},
-//                {1, 3},
-//                {1, 4},
-//        };
-//        Gossiping gossiping = new Gossiping(routes);
-//
-//        String result = gossiping.howLongItTakes();
-//
-//        assertThat(result).isEqualTo("1");
-//    }
+    @Test
+    void calculates_how_long_it_task_when_multiple_drivers() {
+        int[][] routes = {
+                {1, 2},
+                {1, 3},
+                {1, 4},
+        };
+        Gossiping gossiping = new Gossiping(routes);
+
+        String result = gossiping.howLongItTakes();
+
+        assertThat(result).isEqualTo("1");
+    }
 }
