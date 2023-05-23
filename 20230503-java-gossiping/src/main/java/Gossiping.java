@@ -17,22 +17,15 @@ public class Gossiping {
 
     public String howLongItTakes() {
 
-        if (routes[0][0] == routes[1][0]) {
-            drivers.get(0).indicateItKnowsAboutGossip(drivers.get(1).getGossipsItKnowsAbout());
-            drivers.get(1).indicateItKnowsAboutGossip(drivers.get(0).getGossipsItKnowsAbout());
+        for (int stopIdx = 0; stopIdx < routes[0].length; stopIdx++) {
+            if (routes[0][stopIdx] == routes[1][stopIdx]) {
+                drivers.get(0).indicateItKnowsAboutGossip(drivers.get(1).getGossipsItKnowsAbout());
+                drivers.get(1).indicateItKnowsAboutGossip(drivers.get(0).getGossipsItKnowsAbout());
 
-            if (drivers.get(0).getGossipsItKnowsAbout().size() == drivers.size()
-            && drivers.get(1).getGossipsItKnowsAbout().size() == drivers.size()) {
-                return "1";
-            }
-        }
-        if (routes[0][1] == routes[1][1]) {
-            drivers.get(0).indicateItKnowsAboutGossip(drivers.get(1).getGossipsItKnowsAbout());
-            drivers.get(1).indicateItKnowsAboutGossip(drivers.get(0).getGossipsItKnowsAbout());
-
-            if (drivers.get(0).getGossipsItKnowsAbout().size() == drivers.size()
-                    && drivers.get(1).getGossipsItKnowsAbout().size() == drivers.size()) {
-                return "2";
+                if (drivers.get(0).getGossipsItKnowsAbout().size() == drivers.size()
+                        && drivers.get(1).getGossipsItKnowsAbout().size() == drivers.size()) {
+                    return String.valueOf(stopIdx + 1);
+                }
             }
         }
 
