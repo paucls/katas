@@ -1,6 +1,4 @@
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Gossiping {
@@ -22,35 +20,17 @@ public class Gossiping {
             for (int driverIdx = 0; driverIdx < drivers.size(); driverIdx++) {
                 for (int otherDriverIdx = 0; otherDriverIdx < drivers.size(); otherDriverIdx++) {
                     if (routes[driverIdx][stopIdx] == routes[otherDriverIdx][stopIdx]) {
-                        // exchange gossips
-                        drivers.get(driverIdx).indicateItKnowsAboutGossip(drivers.get(otherDriverIdx).getGossipsItKnowsAbout());
-                        drivers.get(otherDriverIdx).indicateItKnowsAboutGossip(drivers.get(driverIdx).getGossipsItKnowsAbout());
+                        drivers.get(driverIdx).exchangeGossipsWith(drivers.get(otherDriverIdx));
                     }
                 }
             }
 
-            boolean allKnowAll = drivers.values().stream().allMatch(driver -> driver.getGossipsItKnowsAbout().size() == drivers.size());
+            boolean allKnowAll = drivers.values().stream().allMatch(driver -> driver.gossipsCount() == drivers.size());
             if (allKnowAll) {
                 return String.valueOf(stopIdx + 1);
             }
         }
 
         return "never";
-    }
-}
-
-class Driver {
-    private final Set<Integer> gossipsItKnowsAbout = new HashSet<>();
-
-    public Driver(Integer driverNumber) {
-        gossipsItKnowsAbout.add(driverNumber);
-    }
-
-    public Set<Integer> getGossipsItKnowsAbout() {
-        return gossipsItKnowsAbout;
-    }
-
-    public void indicateItKnowsAboutGossip(Set<Integer> gossipNumber) {
-        gossipsItKnowsAbout.addAll(gossipNumber);
     }
 }
