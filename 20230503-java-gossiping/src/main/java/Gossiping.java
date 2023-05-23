@@ -18,14 +18,16 @@ public class Gossiping {
     public String howLongItTakes() {
 
         for (int stopIdx = 0; stopIdx < routes[0].length; stopIdx++) {
+
             if (routes[0][stopIdx] == routes[1][stopIdx]) {
                 drivers.get(0).indicateItKnowsAboutGossip(drivers.get(1).getGossipsItKnowsAbout());
                 drivers.get(1).indicateItKnowsAboutGossip(drivers.get(0).getGossipsItKnowsAbout());
+            }
 
-                if (drivers.get(0).getGossipsItKnowsAbout().size() == drivers.size()
-                        && drivers.get(1).getGossipsItKnowsAbout().size() == drivers.size()) {
-                    return String.valueOf(stopIdx + 1);
-                }
+            boolean allKnowAll = drivers.values().stream().allMatch(driver -> driver.getGossipsItKnowsAbout().size() == drivers.size());
+
+            if (allKnowAll) {
+                return String.valueOf(stopIdx + 1);
             }
         }
 
