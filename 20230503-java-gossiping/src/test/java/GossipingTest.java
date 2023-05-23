@@ -31,4 +31,17 @@ public class GossipingTest {
 
         assertThat(result).isEqualTo("1");
     }
+
+    @Test
+    void takes_two_stops_when_routes_intersect_in_second_stop() {
+        int[][] routes = {
+                {2, 1},
+                {3, 1}
+        };
+        Gossiping gossiping = new Gossiping(routes);
+
+        String result = gossiping.howLongItTakes();
+
+        assertThat(result).isEqualTo("2");
+    }
 }

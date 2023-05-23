@@ -26,6 +26,15 @@ public class Gossiping {
                 return "1";
             }
         }
+        if (routes[0][1] == routes[1][1]) {
+            drivers.get(0).indicateItKnowsAboutGossip(drivers.get(1).getGossipsItKnowsAbout());
+            drivers.get(1).indicateItKnowsAboutGossip(drivers.get(0).getGossipsItKnowsAbout());
+
+            if (drivers.get(0).getGossipsItKnowsAbout().size() == drivers.size()
+                    && drivers.get(1).getGossipsItKnowsAbout().size() == drivers.size()) {
+                return "2";
+            }
+        }
 
         return "never";
     }
