@@ -32,4 +32,12 @@ class MarsRoverTest {
         assertThat(marsRover.position()).isEqualTo(Coordinate(0, -1))
     }
 
+    @Test
+    fun `should move considering what direction is facing`() {
+        val marsRover = MarsRover(Coordinate(0, 0), "S")
+
+        marsRover.execute("f")
+
+        assertThat(marsRover.position()).isEqualTo(Coordinate(0, -1))
+    }
 }
