@@ -12,7 +12,11 @@ class MarsRover(
     }
 
     fun execute(commands: String) {
-        position = Coordinate(0, 1)
+        var newY = position.y
+        commands.forEach {
+            newY += 1
+        }
+        position = Coordinate(0, newY)
     }
 
 }
