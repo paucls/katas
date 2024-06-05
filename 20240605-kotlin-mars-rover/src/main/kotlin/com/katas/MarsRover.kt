@@ -1,6 +1,9 @@
 package com.katas
 
 private const val MOVE_FORWARD = 'f'
+private const val N = "N"
+private const val S = "S"
+private const val E = "E"
 
 class MarsRover(
     initialPosition: Coordinate,
@@ -14,18 +17,21 @@ class MarsRover(
     }
 
     fun execute(commands: String) {
+        var newX = position.x
         var newY = position.y
         commands.forEach {
             if (it == MOVE_FORWARD) {
-                if (direction == "N")
-                    newY += 1
-                else if (direction == "S")
-                    newY -= 1
+                when (direction) {
+                    N -> newY += 1
+                    S -> newY -= 1
+                    E -> newX += 1
+                    else -> newX -= 1
+                }
             } else {
                 newY -= 1
             }
         }
-        position = Coordinate(0, newY)
+        position = Coordinate(newX, newY)
     }
 
 }

@@ -35,12 +35,12 @@ class MarsRoverTest {
     }
 
     @ParameterizedTest
-    @CsvSource("N,1", "S,-1")
-    fun `should move considering what direction is facing`(direction: String, expectedY: Int) {
+    @CsvSource("N,0,1", "S,0,-1", "E,1,0", "W,-1,0")
+    fun `should move forward considering what direction is facing`(direction: String, expectedX: Int, expectedY: Int) {
         val marsRover = MarsRover(Coordinate(0, 0), direction)
 
         marsRover.execute("f")
 
-        assertThat(marsRover.position()).isEqualTo(Coordinate(0, expectedY))
+        assertThat(marsRover.position()).isEqualTo(Coordinate(expectedX, expectedY))
     }
 }
