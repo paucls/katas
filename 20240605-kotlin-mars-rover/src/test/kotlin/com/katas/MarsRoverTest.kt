@@ -23,4 +23,13 @@ class MarsRoverTest {
         assertThat(marsRover.position()).isEqualTo(Coordinate(0, 12))
     }
 
+    @Test
+    fun `should move backward one square`() {
+        val marsRover = MarsRover(Coordinate(0, 0), "N")
+
+        marsRover.execute("b")
+
+        assertThat(marsRover.position()).isEqualTo(Coordinate(0, -1))
+    }
+
 }
