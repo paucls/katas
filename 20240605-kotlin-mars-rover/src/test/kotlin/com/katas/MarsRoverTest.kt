@@ -2,6 +2,8 @@ package com.katas
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 class MarsRoverTest {
 
@@ -32,12 +34,13 @@ class MarsRoverTest {
         assertThat(marsRover.position()).isEqualTo(Coordinate(0, -1))
     }
 
-    @Test
-    fun `should move considering what direction is facing`() {
-        val marsRover = MarsRover(Coordinate(0, 0), "S")
+    @ParameterizedTest
+    @CsvSource("N,1", "S,-1")
+    fun `should move considering what direction is facing`(direction: String, expectedY: Int) {
+        val marsRover = MarsRover(Coordinate(0, 0), direction)
 
         marsRover.execute("f")
 
-        assertThat(marsRover.position()).isEqualTo(Coordinate(0, -1))
+        assertThat(marsRover.position()).isEqualTo(Coordinate(0, expectedY))
     }
 }
