@@ -12,6 +12,7 @@ class MarsRover(
     }
 
     fun execute(commands: String) {
+        position = Coordinate(0, 1)
     }
 
 }
