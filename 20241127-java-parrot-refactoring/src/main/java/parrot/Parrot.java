@@ -1,9 +1,11 @@
 package parrot;
 
+import java.util.Objects;
+
 public class Parrot {
 
     private final ParrotTypeEnum type;
-    private final int numberOfCoconuts;
+    protected final int numberOfCoconuts;
     private final double voltage;
     private final boolean isNailed;
 
@@ -23,22 +25,17 @@ public class Parrot {
     }
 
     public double getSpeed() {
-        return switch (type) {
-            case EUROPEAN -> getBaseSpeed();
-            case AFRICAN -> Math.max(0, getBaseSpeed() - getLoadFactor() * numberOfCoconuts);
-            case NORWEGIAN_BLUE -> (isNailed) ? 0 : getBaseSpeed(voltage);
-        };
+        if (Objects.requireNonNull(type) == ParrotTypeEnum.NORWEGIAN_BLUE) {
+            return (isNailed) ? 0 : getBaseSpeed(voltage);
+        }
+        return getBaseSpeed();
     }
 
     private double getBaseSpeed(double voltage) {
         return Math.min(24.0, voltage * getBaseSpeed());
     }
 
-    private double getLoadFactor() {
-        return 9.0;
-    }
-
-    private double getBaseSpeed() {
+    protected double getBaseSpeed() {
         return 12.0;
     }
 
