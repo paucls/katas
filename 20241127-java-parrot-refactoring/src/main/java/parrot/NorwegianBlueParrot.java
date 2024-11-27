@@ -14,4 +14,8 @@ public class NorwegianBlueParrot extends Parrot {
     public String getCry() {
         return voltage > 0 ? "Bzzzzzz" : "...";
     }
+
+    private double getBaseSpeed(double voltage) {
+        return Math.min(24.0, voltage * getBaseSpeed());
+    }
 }
