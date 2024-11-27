@@ -6,8 +6,8 @@ public class Parrot {
 
     private final ParrotTypeEnum type;
     protected final int numberOfCoconuts;
-    private final double voltage;
-    private final boolean isNailed;
+    protected final double voltage;
+    protected final boolean isNailed;
 
     protected Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, boolean isNailed) {
         this.type = type;
@@ -25,13 +25,10 @@ public class Parrot {
     }
 
     public double getSpeed() {
-        if (Objects.requireNonNull(type) == ParrotTypeEnum.NORWEGIAN_BLUE) {
-            return (isNailed) ? 0 : getBaseSpeed(voltage);
-        }
         return getBaseSpeed();
     }
 
-    private double getBaseSpeed(double voltage) {
+    protected double getBaseSpeed(double voltage) {
         return Math.min(24.0, voltage * getBaseSpeed());
     }
 
