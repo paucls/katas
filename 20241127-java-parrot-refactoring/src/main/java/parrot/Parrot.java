@@ -1,7 +1,5 @@
 package parrot;
 
-import java.util.Objects;
-
 public class Parrot {
 
     private final ParrotTypeEnum type;
@@ -37,10 +35,6 @@ public class Parrot {
     }
 
     public String getCry() {
-        return switch (type) {
-            case EUROPEAN -> "Sqoork!";
-            case AFRICAN -> "Sqaark!";
-            case NORWEGIAN_BLUE -> voltage > 0 ? "Bzzzzzz" : "...";
-        };
+        return "Sqoork!";
     }
 }
