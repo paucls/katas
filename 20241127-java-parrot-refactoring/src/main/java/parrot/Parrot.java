@@ -1,6 +1,6 @@
 package parrot;
 
-public class Parrot {
+public abstract class Parrot {
 
     private final ParrotTypeEnum type;
     protected final int numberOfCoconuts;
@@ -22,9 +22,7 @@ public class Parrot {
         };
     }
 
-    public double getSpeed() {
-        return getBaseSpeed();
-    }
+    public abstract double getSpeed();
 
     protected double getBaseSpeed(double voltage) {
         return Math.min(24.0, voltage * getBaseSpeed());
@@ -34,7 +32,5 @@ public class Parrot {
         return 12.0;
     }
 
-    public String getCry() {
-        return "Sqoork!";
-    }
+    public abstract String getCry();
 }
