@@ -18,30 +18,31 @@ public class Customer {
         return name;
     }
 
-    public String statement() {
+    public String generateStatement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration<Rental> rentals = this.rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
 
+
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
+            double rentalPrice = 0;
             Rental each = rentals.nextElement();
 
             // determines the amount for each line
             switch (each.movie().priceCode()) {
                 case Movie.REGULAR:
-                    thisAmount += 2;
+                    rentalPrice += 2;
                     if (each.daysRented() > 2)
-                        thisAmount += (each.daysRented() - 2) * 1.5;
+                        rentalPrice += (each.daysRented() - 2) * 1.5;
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += each.daysRented() * 3;
+                    rentalPrice += each.daysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
+                    rentalPrice += 1.5;
                     if (each.daysRented() > 3)
-                        thisAmount += (each.daysRented() - 3) * 1.5;
+                        rentalPrice += (each.daysRented() - 3) * 1.5;
                     break;
             }
 
@@ -52,8 +53,8 @@ public class Customer {
                 frequentRenterPoints++;
 
             result += "\t" + each.movie().title() + "\t"
-                    + thisAmount + "\n";
-            totalAmount += thisAmount;
+                    + rentalPrice + "\n";
+            totalAmount += rentalPrice;
 
         }
 

@@ -17,7 +17,7 @@ public class VideoStoreTest {
                 \tThe Cell\t9.0
                 You owed 9.0
                 You earned 2 frequent renter points
-                """, customer.statement());
+                """, customer.generateStatement());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class VideoStoreTest {
                 \tThe Tigger Movie\t9.0
                 You owed 18.0
                 You earned 4 frequent renter points
-                """, customer.statement());
+                """, customer.generateStatement());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class VideoStoreTest {
                 \tThe Tigger Movie\t1.5
                 You owed 1.5
                 You earned 1 frequent renter points
-                """, customer.statement());
+                """, customer.generateStatement());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class VideoStoreTest {
                 \tEraserhead\t3.5
                 You owed 7.5
                 You earned 3 frequent renter points
-                """, customer.statement());
+                """, customer.generateStatement());
     }
 
     private Customer customer;
