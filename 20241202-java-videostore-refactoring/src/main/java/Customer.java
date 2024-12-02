@@ -13,7 +13,7 @@ public class Customer {
     public String getName() {
         return name;
     }
-	
+
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
@@ -25,7 +25,7 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
 
             // determines the amount for each line
-            switch (each.getMovie().getPriceCode()) {
+            switch (each.getMovie().priceCode()) {
                 case Movie.REGULAR:
                     thisAmount += 2;
                     if (each.getDaysRented() > 2)
@@ -43,11 +43,11 @@ public class Customer {
 
             frequentRenterPoints++;
 
-            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE
+            if (each.getMovie().priceCode() == Movie.NEW_RELEASE
                     && each.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            result += "\t" + each.getMovie().getTitle() + "\t"
+            result += "\t" + each.getMovie().title() + "\t"
                     + String.valueOf(thisAmount) + "\n";
             totalAmount += thisAmount;
 
