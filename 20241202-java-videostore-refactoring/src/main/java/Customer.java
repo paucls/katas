@@ -2,6 +2,10 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class Customer {
+
+    private final String name;
+    private final Vector<Rental> rentals = new Vector<>();
+
     public Customer(String name) {
         this.name = name;
     }
@@ -25,42 +29,39 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
 
             // determines the amount for each line
-            switch (each.getMovie().priceCode()) {
+            switch (each.movie().priceCode()) {
                 case Movie.REGULAR:
                     thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
+                    if (each.daysRented() > 2)
+                        thisAmount += (each.daysRented() - 2) * 1.5;
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
+                    thisAmount += each.daysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
                     thisAmount += 1.5;
-                    if (each.getDaysRented() > 3)
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
+                    if (each.daysRented() > 3)
+                        thisAmount += (each.daysRented() - 3) * 1.5;
                     break;
             }
 
             frequentRenterPoints++;
 
-            if (each.getMovie().priceCode() == Movie.NEW_RELEASE
-                    && each.getDaysRented() > 1)
+            if (each.movie().priceCode() == Movie.NEW_RELEASE
+                    && each.daysRented() > 1)
                 frequentRenterPoints++;
 
-            result += "\t" + each.getMovie().title() + "\t"
-                    + String.valueOf(thisAmount) + "\n";
+            result += "\t" + each.movie().title() + "\t"
+                    + thisAmount + "\n";
             totalAmount += thisAmount;
 
         }
 
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
+        result += "You owed " + totalAmount + "\n";
+        result += "You earned " + frequentRenterPoints + " frequent renter points\n";
 
 
         return result;
     }
 
-
-    private String name;
-    private Vector rentals = new Vector();
 }
