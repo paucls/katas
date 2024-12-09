@@ -65,8 +65,6 @@ public class Item {
             if (sellIn < 0) {
                 quality = 0;
             }
-        } else if (name.equals("Sulfuras, Hand of Ragnaros")) {
-            // does not decrease quality
         } else {
             if (quality > 0) {
                 quality = quality - 1;

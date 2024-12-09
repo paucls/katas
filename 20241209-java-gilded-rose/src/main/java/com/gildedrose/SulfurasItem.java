@@ -4,4 +4,9 @@ public class SulfurasItem extends Item {
     protected SulfurasItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
+
+    @Override
+    public void updateQuality() {
+        // nothing
+    }
 }
