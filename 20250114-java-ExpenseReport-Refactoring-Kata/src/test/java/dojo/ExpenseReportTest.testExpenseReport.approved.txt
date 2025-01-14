@@ -1,0 +1,8 @@
+Expenses [Date1]
+Dinner	5000	 
+Dinner	5001	X
+Breakfast	1000	 
+Breakfast	1001	X
+Car Rental	200	 
+Meal expenses: 12002
+Total expenses: 12202
