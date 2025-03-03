@@ -96,64 +96,7 @@ public class RobotCleaner {
         //if steps is less than 0 or greater than MAX_STEPS it exits
         if (steps < 0 || steps > MAX_STEPS)
             return;
-        switch (direction)
-        {
-            case 'N':
-                cleanNorthDirection(steps);
-                break;
-            case 'S':
-                cleanDirection('S', steps);
-                break;
-            case 'E':
-                cleanEastDirection(steps);
-                break;
-            case 'W':
-                cleanWestDirection(steps);
-                break;
-        }
-    }
 
-    private void cleanWestDirection(int steps) {
-        for (int i = 0; i < steps; i++)
-        {
-            if (isRobotAtTheBoundaryOfTheFloor('W')) {
-                break;
-            }
-            //if place is not visited
-            if (!cleanedPlaces.containsKey(String.format("%s %s", CURRENT_X + 1, CURRENT_Y)))
-            {
-                //Visit it and add to the visited places
-                cleanedPlaces.put(String.format("%s %s", CURRENT_X + 1, CURRENT_Y), new Coordinates(++CURRENT_X, CURRENT_Y));
-            }
-            else
-            {
-                //otherwise moves to the next location
-                ++CURRENT_X;
-            }
-        }
-    }
-
-    private void cleanEastDirection(int steps) {
-        for (int i = 0; i < steps; i++)
-        {
-            if (isRobotAtTheBoundaryOfTheFloor('E')) {
-                break;
-            }
-            //if place is not visited
-            if (!cleanedPlaces.containsKey(String.format("%s %s", CURRENT_X - 1, CURRENT_Y)))
-            {
-                //Visit it and add to the visited places
-                cleanedPlaces.put(String.format("%s %s", CURRENT_X - 1, CURRENT_Y), new Coordinates(--CURRENT_X, CURRENT_Y));
-            }
-            else
-            {
-                //otherwise moves to the next location
-                --CURRENT_X;
-            }
-        }
-    }
-
-    private void cleanDirection(char direction, int steps) {
         for (int i = 0; i < steps; i++) {
             if (isRobotAtTheBoundaryOfTheFloor(direction)) {
                 break;
@@ -164,7 +107,6 @@ public class RobotCleaner {
 
             // clean (if place is not visited)
             if (!cleanedPlaces.containsKey(String.format("%s %s", CURRENT_X, CURRENT_Y))) {
-                //Visit it and add to the visited places
                 cleanedPlaces.put(String.format("%s %s", CURRENT_X, CURRENT_Y), new Coordinates(CURRENT_X, CURRENT_Y));
             }
         }
@@ -172,27 +114,13 @@ public class RobotCleaner {
 
     private static void move(char direction) {
         if (direction == 'N') {
+            ++CURRENT_Y;
         } else if (direction == 'S') {
             --CURRENT_Y;
         } else if (direction == 'E') {
+            --CURRENT_X;
         } else if (direction == 'W') {
-        }
-    }
-
-    private void cleanNorthDirection(int steps) {
-        for (int i = 0; i < steps; i++) {
-            if (isRobotAtTheBoundaryOfTheFloor('N')) {
-                break;
-            }
-
-            //if place is not visited
-            if (!cleanedPlaces.containsKey(String.format("%s %s", CURRENT_X, CURRENT_Y + 1))) {
-                // clean
-                cleanedPlaces.put(String.format("%s %s", CURRENT_X, CURRENT_Y + 1), new Coordinates(CURRENT_X, ++CURRENT_Y));
-            } else {
-                //otherwise moves to the next location
-                ++CURRENT_Y;
-            }
+            ++CURRENT_X;
         }
     }
 
@@ -211,7 +139,6 @@ public class RobotCleaner {
 
     public void PrintVisitedPlaces()
     {
-
         var result = "";
         for (var spot : cleanedPlaces.values())
         {
@@ -219,6 +146,5 @@ public class RobotCleaner {
             result += "\n";
         }
         //System.out.println(result);
-
     }
 }
