@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "post_write_code": [
+      {
+        "command": "python3 /Users/paulo/code/katas/20260420-harness-engineering-kata/.windsurf/scripts/checkstyle_gate.py",
+        "powershell": "python3 /Users/paulo/code/katas/20260420-harness-engineering-kata/.windsurf/scripts/checkstyle_gate.py",
+        "show_output": true
+      }
+    ],
+    "post_cascade_response": [
+      {
+        "command": "python3 /Users/paulo/code/katas/20260420-harness-engineering-kata/.windsurf/scripts/log_cascade_response.py",
+        "show_output": true
+      }
+    ]
+  }
+}
